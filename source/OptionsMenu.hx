@@ -119,9 +119,6 @@ class OptionsMenu extends MusicBeatState
 						ctrl.isMenuItem = true;
 						ctrl.targetY = curSelected - 2;
 						grpControls.add(ctrl);
-					case 3:
-						trace('switch');
-						FlxG.switchState(new LoadReplayState());
 				}
 			}
 	}
