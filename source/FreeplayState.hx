@@ -24,20 +24,23 @@ class FreeplayState extends MusicBeatState
 	var diffText:FlxText;
 	var lerpScore:Int = 0;
 	var intendedScore:Int = 0;
+	var page:Int = 0;
+	var bside:Bool = false;
 
-	private var grpSongs:FlxTypedGroup<Alphabet>;
+	var grpSongs:FlxTypedGroup<Alphabet>;
 	private var curPlaying:Bool = false;
 
-	private var iconArray:Array<HealthIcon> = [];
+	var iconArray:Array<HealthIcon> = [];
 
 	override function create()
 	{
-		var initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplaySonglist'));
+		/*var initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplaySonglist'));
+
 
 		for (i in 0...initSonglist.length)
 		{
 			songs.push(new SongMetadata(initSonglist[i], 1, 'gf'));
-		}
+		}*/
 
 		/* 
 			if (FlxG.sound.music != null)
@@ -53,14 +56,7 @@ class FreeplayState extends MusicBeatState
 		isDebug = true;
 		#end
 
-			addWeek(['Bopeebo', 'Fresh', 'Dadbattle'], 1, ['dad']);
-			addWeek(['Spookeez', 'South', 'Monster'], 2, ['spooky']);
-			addWeek(['Pico', 'Philly', 'Blammed'], 3, ['pico']);
-
-			addWeek(['Satin-Panties', 'High', 'Milf'], 4, ['pico']);
-			addWeek(['Cocoa', 'Eggnog', 'Winter-Horrorland'], 5, ['parents-christmas', 'parents-christmas', 'monster-christmas']);
-			
-			addWeek(['Senpai', 'Roses', 'Thorns'], 6, ['senpai', 'senpai', 'spirit']);
+		addBaseSongs();
 
 		// LOAD MUSIC
 
@@ -72,24 +68,7 @@ class FreeplayState extends MusicBeatState
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
 
-		for (i in 0...songs.length)
-		{
-			var songText:Alphabet = new Alphabet(0, (70 * i) + 30, songs[i].songName, true, false);
-			songText.isMenuItem = true;
-			songText.targetY = i;
-			grpSongs.add(songText);
-
-			var icon:HealthIcon = new HealthIcon(songs[i].songCharacter);
-			icon.sprTracker = songText;
-
-			// using a FlxGroup is too much fuss!
-			iconArray.push(icon);
-			add(icon);
-
-			// songText.x += 40;
-			// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
-			// songText.screenCenter(X);
-		}
+		refreshSongList();
 
 		scoreText = new FlxText(FlxG.width * 0.7, 5, 0, "", 32);
 		// scoreText.autoSize = false;
@@ -158,6 +137,48 @@ class FreeplayState extends MusicBeatState
 				num++;
 		}
 	}
+	
+	public function addBaseSongs() {
+		addSong("Tutorial", 1, "gf");
+		addWeek(['Bopeebo', 'Fresh', 'Dadbattle'], 1, ['dad']);
+		addWeek(['Spookeez', 'South', 'Monster'], 2, ['spooky']);
+		addWeek(['Pico', 'Philly', 'Blammed'], 3, ['pico']);
+
+		addWeek(['Satin-Panties', 'High', 'Milf'], 4, ['pico']);
+		addWeek(['Cocoa', 'Eggnog', 'Winter-Horrorland'], 5, ['parents-christmas', 'parents-christmas', 'monster-christmas']);
+			
+		addWeek(['Senpai', 'Roses', 'Thorns'], 6, ['senpai', 'senpai', 'spirit']);
+	}
+
+	public function refreshSongList() {
+
+		for (i in 0...songs.length) {
+			grpSongs.members[i].destroy();
+			iconArray[i].destroy();
+		}
+
+		grpSongs.clear();
+		iconArray = [];
+
+		for (i in 0...songs.length)
+			{
+				var songText:Alphabet = new Alphabet(0, (70 * i) + 30, songs[i].songName, true, false);
+				songText.isMenuItem = true;
+				songText.targetY = i;
+				grpSongs.add(songText);
+	
+				var icon:HealthIcon = new HealthIcon(songs[i].songCharacter);
+				icon.sprTracker = songText;
+	
+				// using a FlxGroup is too much fuss!
+				iconArray.push(icon);
+				add(icon);
+	
+				// songText.x += 40;
+				// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
+				// songText.screenCenter(X);
+			}
+	}
 
 	override function update(elapsed:Float)
 	{
@@ -178,6 +199,7 @@ class FreeplayState extends MusicBeatState
 		var upP = controls.UP_P;
 		var downP = controls.DOWN_P;
 		var accepted = controls.ACCEPT;
+		var b = FlxG.keys.justPressed.B;
 
 		if (upP)
 		{
@@ -186,6 +208,20 @@ class FreeplayState extends MusicBeatState
 		if (downP)
 		{
 			changeSelection(1);
+		}
+
+		if (b && !bside)
+		{
+			bside = true;
+			songs = [];
+			addSong("Tutorial BSide", 1, 'gf');
+			refreshSongList();
+		} else if (b && bside)
+		{
+			bside = false;
+			songs = [];
+			addBaseSongs();
+			refreshSongList();
 		}
 
 		if (controls.LEFT_P)
