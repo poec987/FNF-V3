@@ -693,7 +693,10 @@ class PlayState extends MusicBeatState
 
 		FlxG.fixedTimestep = false;
 
-		healthBarBG = new FlxSprite(0, FlxG.height * 0.9).loadGraphic(Paths.image('healthBar'));
+		if (curSong == "Thorns")
+			healthBarBG = new FlxSprite(0, FlxG.height * 0.9).loadGraphic(Paths.image('healthBar-good'));
+		else
+			healthBarBG = new FlxSprite(0, FlxG.height * 0.9).loadGraphic(Paths.image('healthBar'));
 		healthBarBG.screenCenter(X);
 		healthBarBG.scrollFactor.set();
 		add(healthBarBG);
@@ -910,9 +913,9 @@ class PlayState extends MusicBeatState
 				'weeb/pixelUI/date-pixel'
 			]);
 			introAssets.set('schoolEvil', [
-				'weeb/pixelUI/ready-pixel',
-				'weeb/pixelUI/set-pixel',
-				'weeb/pixelUI/date-pixel'
+				'weeb/pixelUI/ready-pixel-good',
+				'weeb/pixelUI/set-pixel-good',
+				'weeb/pixelUI/date-pixel-good'
 			]);
 
 			var introAlts:Array<String> = introAssets.get('default');
@@ -1796,7 +1799,10 @@ class PlayState extends MusicBeatState
 			if (curStage.startsWith('school'))
 			{
 				pixelShitPart1 = 'weeb/pixelUI/';
-				pixelShitPart2 = '-pixel';
+				if (curSong == "Thorns")
+					pixelShitPart2 = '-pixel-good';
+				else
+					pixelShitPart2 = '-pixel';
 			}
 	
 			rating.loadGraphic(Paths.image(pixelShitPart1 + daRating + pixelShitPart2));
