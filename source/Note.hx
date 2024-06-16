@@ -54,7 +54,7 @@ class Note extends FlxSprite
 		switch (daStage)
 		{
 			case 'school' | 'schoolEvil':
-				if (PlayState.curSong == "thorns")
+				if (PlayState.curSong == "Thorns")
 					loadGraphic(Paths.image('weeb/pixelUI/arrows-pixels-good'), true, 17, 17);
 				else
 					loadGraphic(Paths.image('weeb/pixelUI/arrows-pixels'), true, 17, 17);
@@ -65,7 +65,7 @@ class Note extends FlxSprite
 
 				if (isSustainNote)
 				{
-					if (PlayState.curSong == "thorns")
+					if (PlayState.curSong == "Thorns")
 						loadGraphic(Paths.image('weeb/pixelUI/arrowEnds-good'), true, 7, 6);
 					else
 						loadGraphic(Paths.image('weeb/pixelUI/arrowEnds'), true, 7, 6);
