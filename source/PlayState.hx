@@ -1626,11 +1626,9 @@ class PlayState extends MusicBeatState
 
 		if (!inCutscene)
 			keyShit();
-
-		#if debug
+		
 		if (FlxG.keys.justPressed.ONE)
 			endSong();
-		#end
 	}
 
 	function endSong():Void

@@ -33,6 +33,7 @@ class DialogueBox extends FlxSpriteGroup
 
 	var handSelect:FlxSprite;
 	var bgFade:FlxSprite;
+	var leftChar:String = "sigmio";
 
 	public function new(talkingRight:Bool = true, ?dialogueList:Array<String>)
 	{
@@ -153,9 +154,11 @@ class DialogueBox extends FlxSpriteGroup
 		// HARD CODING CUZ IM STUPDI
 		if (PlayState.SONG.song.toLowerCase() == 'roses')
 			portraitLeft.visible = false;
+			swagDialogue.color = FlxColor.WHITE;
+			dropText.color = FlxColor.BLACK;
 		if (PlayState.SONG.song.toLowerCase() == 'thorns')
 		{
-			portraitLeft.color = FlxColor.BLACK;
+			portraitLeft.visible = false;
 			swagDialogue.color = FlxColor.WHITE;
 			dropText.color = FlxColor.BLACK;
 		}
