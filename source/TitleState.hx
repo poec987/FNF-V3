@@ -274,7 +274,7 @@ class TitleState extends MusicBeatState
 			transitioning = true;
 			// FlxG.sound.music.stop();
 
-			new FlxTimer().start(2, function(tmr:FlxTimer)
+			/*new FlxTimer().start(2, function(tmr:FlxTimer)
 			{
 
 				// Get current version of Kade Engine
@@ -304,7 +304,7 @@ class TitleState extends MusicBeatState
 
 			});
 			// FlxG.sound.play(Paths.music('titleShoot'), 0.7);
-		}
+		}*/
 
 		if (pressedEnter && !skippedIntro)
 		{
