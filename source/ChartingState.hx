@@ -326,6 +326,13 @@ class ChartingState extends MusicBeatState
 
 	var stepperSusLength:FlxUINumericStepper;
 
+	var noteTypes:Array<String> = [
+		"Normal",
+		"Test"
+	];
+
+	var noteTypeDropDown:FlxUIDropDownMenu;
+
 	function addNoteUI():Void
 	{
 		var tab_group_note = new FlxUI(null, UI_box);
@@ -337,8 +344,14 @@ class ChartingState extends MusicBeatState
 
 		var applyLength:FlxButton = new FlxButton(100, 10, 'Apply');
 
+		noteTypeDropDown = new FlxUIDropDownMenu(10, 100, FlxUIDropDownMenu.makeStrIdLabelArray(noteTypes, true), function(type:String)
+		{
+			curSelectedNote[3] = noteTypes[Std.parseInt(type)];
+		});
+
 		tab_group_note.add(stepperSusLength);
 		tab_group_note.add(applyLength);
+		tab_group_note.add(noteTypeDropDown);
 
 		UI_box.addGroup(tab_group_note);
 	}
@@ -806,7 +819,14 @@ class ChartingState extends MusicBeatState
 	function updateNoteUI():Void
 	{
 		if (curSelectedNote != null)
+		{
 			stepperSusLength.value = curSelectedNote[2];
+			
+			if (curSelectedNote[3] != null)
+				noteTypeDropDown.selectedLabel = curSelectedNote[3];
+			else
+				noteTypeDropDown.selectedLabel = "Normal";
+		}
 	}
 
 	function updateGrid():Void
@@ -945,8 +965,9 @@ class ChartingState extends MusicBeatState
 		var noteStrum = getStrumTime(dummyArrow.y) + sectionStartTime();
 		var noteData = Math.floor(FlxG.mouse.x / GRID_SIZE);
 		var noteSus = 0;
+		var noteType = "Normal";
 
-		_song.notes[curSection].sectionNotes.push([noteStrum, noteData, noteSus]);
+		_song.notes[curSection].sectionNotes.push([noteStrum, noteData, noteSus, noteType]);
 
 		curSelectedNote = _song.notes[curSection].sectionNotes[_song.notes[curSection].sectionNotes.length - 1];
 

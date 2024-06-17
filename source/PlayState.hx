@@ -1118,6 +1118,7 @@ class PlayState extends MusicBeatState
 			{
 				var daStrumTime:Float = songNotes[0];
 				var daNoteData:Int = Std.int(songNotes[1] % 4);
+				var noteType = songNotes[3];
 
 				var gottaHitNote:Bool = section.mustHitSection;
 
@@ -1132,7 +1133,7 @@ class PlayState extends MusicBeatState
 				else
 					oldNote = null;
 
-				var swagNote:Note = new Note(daStrumTime, daNoteData, oldNote);
+				var swagNote:Note = new Note(daStrumTime, daNoteData, oldNote, false, noteType);
 				swagNote.sustainLength = songNotes[2];
 				swagNote.scrollFactor.set(0, 0);
 
@@ -1145,7 +1146,7 @@ class PlayState extends MusicBeatState
 				{
 					oldNote = unspawnNotes[Std.int(unspawnNotes.length - 1)];
 
-					var sustainNote:Note = new Note(daStrumTime + (Conductor.stepCrochet * susNote) + Conductor.stepCrochet, daNoteData, oldNote, true);
+					var sustainNote:Note = new Note(daStrumTime + (Conductor.stepCrochet * susNote) + Conductor.stepCrochet, daNoteData, oldNote, true, noteType);
 					sustainNote.scrollFactor.set();
 					unspawnNotes.push(sustainNote);
 
@@ -2298,6 +2299,8 @@ class PlayState extends MusicBeatState
 					}
 					else
 						totalNotesHit += 1;
+
+					noteTypeCheck(note, true);
 		
 					if (note.noteData >= 0)
 						health += 0.023;
@@ -2326,6 +2329,8 @@ class PlayState extends MusicBeatState
 		
 					note.wasGoodHit = true;
 					vocals.volume = 1;
+
+					noteTypeCheck(note);
 		
 					note.kill();
 					notes.remove(note, true);
@@ -2334,7 +2339,32 @@ class PlayState extends MusicBeatState
 					updateAccuracy();
 				}
 			}
-		
+	
+	function noteTypeCheck(notezzz:Note, ?precheck:Bool = false) {
+		var zeNoteType:String = notezzz.noteType;
+		if (zeNoteType == null)
+			zeNoteType = "Normal";
+
+		if (precheck) { // Before animation & health shit
+			switch (zeNoteType) {
+				case "Normal":
+					trace("Normal Note Hit");
+				case "Test":
+					trace("Test Note PRE HIT");
+				default:
+					trace(zeNoteType + "was HITTTEEEEEEEEEEEEED");
+			}
+		} else { // AFTER the note shit happened
+			switch (zeNoteType) {
+				case "Normal":
+					trace("Normal Note Hit");
+				case "Test":
+					trace("Test Note POST HIT");
+				default:
+					trace(zeNoteType + "was HITTTEEEEEEEEEEEEED");
+			}
+		}
+	}
 
 	var fastCarCanDrive:Bool = true;
 
