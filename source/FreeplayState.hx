@@ -68,7 +68,7 @@ class FreeplayState extends MusicBeatState
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
 
-		refreshSongList();
+		refreshSongList(true);
 
 		scoreText = new FlxText(FlxG.width * 0.7, 5, 0, "", 32);
 		// scoreText.autoSize = false;
@@ -150,15 +150,21 @@ class FreeplayState extends MusicBeatState
 		addWeek(['Senpai', 'Roses', 'Thorns'], 6, ['senpai', 'senpai', 'spirit']);
 	}
 
-	public function refreshSongList() {
+	// I WANT TO FUCKING SHOOT MYSELF
 
-		for (i in 0...songs.length) {
-			grpSongs.members[i].destroy();
-			iconArray[i].destroy();
+	public function refreshSongList(skipDestroy:Bool=false) {
+		if (!skipDestroy) {
+			for (i in 0...grpSongs.length) {
+				grpSongs.members[i].destroy();
+			}
+
+			for (i in 0...iconArray.length) {
+				iconArray[i].destroy();
+			}
+
+			iconArray = [];
+			grpSongs.clear();
 		}
-
-		grpSongs.clear();
-		iconArray = [];
 
 		for (i in 0...songs.length)
 			{
@@ -178,6 +184,7 @@ class FreeplayState extends MusicBeatState
 				// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
 				// songText.screenCenter(X);
 			}
+			//trace("Icons: "+iconArray);
 	}
 
 	override function update(elapsed:Float)
@@ -214,7 +221,7 @@ class FreeplayState extends MusicBeatState
 		{
 			bside = true;
 			songs = [];
-			addSong("Tutorial BSide", 1, 'gf');
+			addSong("Tutorial-BSide", 1, 'gf');
 			refreshSongList();
 		} else if (b && bside)
 		{
