@@ -74,6 +74,12 @@ class FreeplayState extends MusicBeatState
 		],
 		"Remixes");
 
+		pages[2] = new FreeplayPage([
+			newSong("Do-You-Get-The-Refrance", 1, "impostor"),
+			newSong("Stop-It-Right-There-Criminal-Scum", 1, "dave")
+		],
+		"Extras");
+
 		var isDebug:Bool = false;
 
 		#if debug
