@@ -26,6 +26,7 @@ class FreeplayState extends MusicBeatState
 	var intendedScore:Int = 0;
 	var bside:Bool = false; // Old
 
+	var pageText:FlxText;
 	var page:Int = 0;
 	var pageName:String = "Funkin";
 
@@ -70,20 +71,25 @@ class FreeplayState extends MusicBeatState
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
 
-		refreshSongList(true);
 
 		scoreText = new FlxText(FlxG.width * 0.7, 5, 0, "", 32);
 		// scoreText.autoSize = false;
 		scoreText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT);
 		// scoreText.alignment = RIGHT;
 
-		var scoreBG:FlxSprite = new FlxSprite(scoreText.x - 6, 0).makeGraphic(Std.int(FlxG.width * 0.35), 66, 0xFF000000);
+		var scoreBG:FlxSprite = new FlxSprite(scoreText.x - 6, 0).makeGraphic(Std.int(FlxG.width * 0.35), 99, 0xFF000000);
 		scoreBG.alpha = 0.6;
 		add(scoreBG);
 
-		diffText = new FlxText(scoreText.x, scoreText.y + 36, 0, "", 24);
-		diffText.font = scoreText.font;
+		diffText = new FlxText(FlxG.width * 0.7, 42, 0, "", 24);
+		diffText.setFormat(Paths.font("vcr.ttf"), 24, FlxColor.WHITE, RIGHT);
 		add(diffText);
+
+		pageText = new FlxText(FlxG.width * 0.7, 75, 0 , "", 16);
+		pageText.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT);
+		add(pageText);
+
+		refreshSongList(true);
 
 		add(scoreText);
 
@@ -187,6 +193,9 @@ class FreeplayState extends MusicBeatState
 				// songText.screenCenter(X);
 			}
 			//trace("Icons: "+iconArray);
+
+
+			pageText.text = "Page " + page + " - " + pageName + " (Press B to scroll)";
 	}
 
 	override function update(elapsed:Float)
@@ -229,14 +238,17 @@ class FreeplayState extends MusicBeatState
 			switch (page) {
 				case 0:
 					songs = [];
+					pageName = "Funkin";
 					addBaseSongs();
 					refreshSongList();
 				case 1:
 					songs = [];
+					pageName = "B-Side";
 					addSong("Tutorial-BSide", 1, 'gf');
 					refreshSongList();
 				case 2:
 					songs = [];
+					pageName = "idfk";
 					addSong("Stop-Criminal-Scum", 1, 'dave');
 					refreshSongList();
 			}
@@ -254,17 +266,22 @@ class FreeplayState extends MusicBeatState
 
 		if (accepted)
 		{
-			var poop:String = Highscore.formatSong(songs[curSelected].songName.toLowerCase(), curDifficulty);
+			try {
+				var poop:String = Highscore.formatSong(songs[curSelected].songName.toLowerCase(), curDifficulty);
 
-			trace(poop);
+				trace(poop);
 
-			PlayState.SONG = Song.loadFromJson(poop, songs[curSelected].songName.toLowerCase());
-			PlayState.isStoryMode = false;
-			PlayState.storyDifficulty = curDifficulty;
+				PlayState.SONG = Song.loadFromJson(poop, songs[curSelected].songName.toLowerCase());
+				PlayState.isStoryMode = false;
+				PlayState.storyDifficulty = curDifficulty;
 
-			PlayState.storyWeek = songs[curSelected].week;
-			trace('CUR WEEK' + PlayState.storyWeek);
-			LoadingState.loadAndSwitchState(new PlayState());
+				PlayState.storyWeek = songs[curSelected].week;
+				trace('CUR WEEK' + PlayState.storyWeek);
+				LoadingState.loadAndSwitchState(new PlayState());
+			}
+			catch(e) {
+				trace(e);
+			}
 		}
 	}
 
