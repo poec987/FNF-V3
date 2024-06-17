@@ -24,8 +24,10 @@ class FreeplayState extends MusicBeatState
 	var diffText:FlxText;
 	var lerpScore:Int = 0;
 	var intendedScore:Int = 0;
+	var bside:Bool = false; // Old
+
 	var page:Int = 0;
-	var bside:Bool = false;
+	var pageName:String = "Funkin";
 
 	var grpSongs:FlxTypedGroup<Alphabet>;
 	private var curPlaying:Bool = false;
@@ -217,18 +219,27 @@ class FreeplayState extends MusicBeatState
 			changeSelection(1);
 		}
 
-		if (b && !bside)
+		if (b) // Page Switching
 		{
-			bside = true;
-			songs = [];
-			addSong("Tutorial-BSide", 1, 'gf');
-			refreshSongList();
-		} else if (b && bside)
-		{
-			bside = false;
-			songs = [];
-			addBaseSongs();
-			refreshSongList();
+			if (page != 2)
+				page++;
+			else
+				page = 0;
+
+			switch (page) {
+				case 0:
+					songs = [];
+					addBaseSongs();
+					refreshSongList();
+				case 1:
+					songs = [];
+					addSong("Tutorial-BSide", 1, 'gf');
+					refreshSongList();
+				case 2:
+					songs = [];
+					addSong("Stop-Criminal-Scum", 1, 'dave');
+					refreshSongList();
+			}
 		}
 
 		if (controls.LEFT_P)
