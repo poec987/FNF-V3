@@ -153,6 +153,7 @@ class PlayState extends MusicBeatState
 		bads = 0;
 		shits = 0;
 		goods = 0;
+		misses = 0;
 
 		// var gameCam:FlxCamera = FlxG.camera;
 		camGame = new FlxCamera();
