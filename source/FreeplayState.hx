@@ -62,7 +62,7 @@ class FreeplayState extends MusicBeatState
 
 			newSong("Cocoa", 5, "parents-christmas"),
 			newSong("Eggnog", 5, "parents-christmas"),
-			newSong("Winter-Horrorland", 5, "monste-christmas"),
+			newSong("Winter-Horrorland", 5, "monster-christmas"),
 
 			newSong("Senpai", 6, "senpai"),
 			newSong("Roses", 6, "senpai"),
@@ -100,8 +100,6 @@ class FreeplayState extends MusicBeatState
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Menus", null);
 		#end
-
-		addBaseSongs();
 
 		// LOAD MUSIC
 
