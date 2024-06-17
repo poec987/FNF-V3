@@ -360,7 +360,7 @@ class TitleState extends MusicBeatState
 			// credTextShit.text = 'In association \nwith';
 			// credTextShit.screenCenter();
 			case 5:
-				createCoolText(['Kade Engine 2', 'by']);
+				createCoolText(['Cinema Engine', 'by']);
 			case 7:
 				addMoreText('these stupid fucks:');
 				addMoreText('poedev didgie xeight');
