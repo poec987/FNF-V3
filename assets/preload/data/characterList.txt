@@ -13,6 +13,7 @@ bf-christmas
 gf-christmas
 monster
 bf-pixel
+bf-pixel-good
 senpai
 senpai-angry
 spirit
