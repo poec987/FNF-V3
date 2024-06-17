@@ -19,6 +19,7 @@ using StringTools;
 class FreeplayState extends MusicBeatState
 {
 	var songs:Array<SongMetadata> = [];
+	var pages:Array<FreeplayPage> = [];
 
 	var selector:FlxText;
 	var curSelected:Int = 0;
@@ -32,7 +33,6 @@ class FreeplayState extends MusicBeatState
 
 	var pageText:FlxText;
 	var page:Int = 0;
-	var pageName:String = "Funkin";
 
 	var grpSongs:FlxTypedGroup<Alphabet>;
 	private var curPlaying:Bool = false;
@@ -41,6 +41,39 @@ class FreeplayState extends MusicBeatState
 
 	override function create()
 	{
+		pages[0] = new FreeplayPage([
+			newSong("Tutorial", 1, "gf"),
+
+			newSong("Bopeebo", 1, "dad"),
+			newSong("Fresh", 1, "dad"),
+			newSong("Dadbattle", 1, "dad"),
+
+			newSong("Spookeez", 2, "spooky"),
+			newSong("South", 2, "spooky"),
+			newSong("Monster", 2, "monster"),
+
+			newSong("Pico", 3, "pico"),
+			newSong("Philly", 3, "pico"),
+			newSong("Blammed", 3, "pico"),
+
+			newSong("Satin-Panties", 4, "pico"),
+			newSong("High", 4, "pico"),
+			newSong("MILF", 4, "pico"),
+
+			newSong("Cocoa", 5, "parents-christmas"),
+			newSong("Eggnog", 5, "parents-christmas"),
+			newSong("Winter-Horrorland", 5, "monste-christmas"),
+
+			newSong("Senpai", 6, "senpai"),
+			newSong("Roses", 6, "senpai"),
+			newSong("Thorns", 6, "spirit"),
+		],
+		"Funkin");
+
+		pages[1] = new FreeplayPage([
+			newSong("Tutorial-BSide", 1, "gf")
+		],
+		"Remixes");
 		/*var initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplaySonglist'));
 
 
@@ -140,6 +173,16 @@ class FreeplayState extends MusicBeatState
 		songs.push(new SongMetadata(songName, weekNum, songCharacter));
 	}
 
+	public function newSong(songName:String, weekNum:Int, songCharacter:String):SongMetadata {
+		return new SongMetadata(songName, weekNum, songCharacter);
+	}
+
+	public function addPageSongs(page:FreeplayPage) {
+		for (song in page.songs) {
+			songs.push(song);
+		}
+	}
+
 	public function addWeek(songs:Array<String>, weekNum:Int, ?songCharacters:Array<String>)
 	{
 		if (songCharacters == null)
@@ -204,7 +247,7 @@ class FreeplayState extends MusicBeatState
 			//trace("Icons: "+iconArray);
 
 
-			pageText.text = "Page " + page + " - " + pageName + " (Press B to scroll)";
+			pageText.text = "Page " + Std.string(page+1) + " (of " + Std.string(pages.length) + ") - " + pages[page].name + " (Press B to scroll)";
 	}
 
 	override function update(elapsed:Float)
@@ -239,28 +282,14 @@ class FreeplayState extends MusicBeatState
 
 		if (b) // Page Switching
 		{
-			if (page != 2)
+			if (page != pages.length-1)
 				page++;
 			else
 				page = 0;
 
-			switch (page) {
-				case 0:
-					songs = [];
-					pageName = "Funkin";
-					addBaseSongs();
-					refreshSongList();
-				case 1:
-					songs = [];
-					pageName = "B-Side";
-					addSong("Tutorial-BSide", 1, 'gf');
-					refreshSongList();
-				case 2:
-					songs = [];
-					pageName = "idfk";
-					addSong("Stop-Criminal-Scum", 1, 'dave');
-					refreshSongList();
-			}
+			songs = [];
+			addPageSongs(pages[page]);
+			refreshSongList();
 		}
 
 		if (controls.LEFT_P)
@@ -385,5 +414,15 @@ class SongMetadata
 		this.songName = song;
 		this.week = week;
 		this.songCharacter = songCharacter;
+	}
+}
+
+class FreeplayPage {
+	public var songs:Array<SongMetadata> = [];
+	public var name:String = "";
+
+	public function new(songs:Array<SongMetadata>, name:String) {
+		this.songs = songs;
+		this.name = name;
 	}
 }
