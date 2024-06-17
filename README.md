@@ -1,3 +1,10 @@
+# FNF v3
+> Hottest mod ever made -michael yiik
+
+Have you played Friday Night Funkin' and thought "hmm, i wonder when they will update the gaem?" or maybe you played [FNF V2](https://gamebanana.com/wips/84226) and wanted more? We gotchu
+
+This mod is everything your heart could possibly desire - New and improved sprites, songs, engine.
+
 ![KadeEngineLogo](https://user-images.githubusercontent.com/26305836/110529589-4b4eb600-80ce-11eb-9c44-e899118b0bf0.png)
 
 ![image](https://user-images.githubusercontent.com/26305836/110532077-3c1d3780-80d1-11eb-8348-0e63d5c0f4f1.png)

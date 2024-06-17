@@ -10,6 +10,10 @@ import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import lime.utils.Assets;
 
+#if desktop
+import Discord.DiscordClient;
+#end
+
 using StringTools;
 
 class FreeplayState extends MusicBeatState
@@ -57,6 +61,11 @@ class FreeplayState extends MusicBeatState
 
 		#if debug
 		isDebug = true;
+		#end
+
+		#if desktop
+		// Updating Discord Rich Presence
+		DiscordClient.changePresence("In the Menus", null);
 		#end
 
 		addBaseSongs();
@@ -176,7 +185,7 @@ class FreeplayState extends MusicBeatState
 
 		for (i in 0...songs.length)
 			{
-				var songText:Alphabet = new Alphabet(0, (70 * i) + 30, songs[i].songName, true, false);
+				var songText:Alphabet = new Alphabet(64, 320, songs[i].songName, true);
 				songText.isMenuItem = true;
 				songText.targetY = i;
 				grpSongs.add(songText);
@@ -258,6 +267,9 @@ class FreeplayState extends MusicBeatState
 			changeDiff(-1);
 		if (controls.RIGHT_P)
 			changeDiff(1);
+		
+		if (controls.RESET)
+			FlxG.sound.playMusic(Paths.inst(songs[curSelected].songName), 0);
 
 		if (controls.BACK)
 		{
@@ -333,7 +345,7 @@ class FreeplayState extends MusicBeatState
 		#end
 
 		#if PRELOAD_ALL
-		FlxG.sound.playMusic(Paths.inst(songs[curSelected].songName), 0);
+		//FlxG.sound.playMusic(Paths.inst(songs[curSelected].songName), 0);
 		#end
 
 		var bullShit:Int = 0;

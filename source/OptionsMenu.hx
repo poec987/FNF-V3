@@ -53,7 +53,7 @@ class OptionsMenu extends MusicBeatState
 
 		for (i in 0...controlsStrings.length)
 		{
-				var controlLabel:Alphabet = new Alphabet(0, (70 * i) + 30, controlsStrings[i], true, false);
+				var controlLabel:Alphabet = new Alphabet(64, 320, controlsStrings[i], true);
 				controlLabel.isMenuItem = true;
 				controlLabel.targetY = i;
 				grpControls.add(controlLabel);
@@ -101,7 +101,7 @@ class OptionsMenu extends MusicBeatState
 				{
 					case 0:
 						FlxG.save.data.dfjk = !FlxG.save.data.dfjk;
-						var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, (FlxG.save.data.dfjk ? 'DFJK' : 'WASD'), true, false);
+						var ctrl:Alphabet = new Alphabet(64, 320, (FlxG.save.data.dfjk ? 'DFJK' : 'WASD'), true);
 						ctrl.isMenuItem = true;
 						ctrl.targetY = curSelected;
 						grpControls.add(ctrl);
@@ -112,19 +112,19 @@ class OptionsMenu extends MusicBeatState
 						
 					case 1:
 						FlxG.save.data.newInput = !FlxG.save.data.newInput;
-						var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, (FlxG.save.data.newInput ? "New input" : "Old Input"), true, false);
+						var ctrl:Alphabet = new Alphabet(64, 320, (FlxG.save.data.newInput ? "New input" : "Old Input"), true);
 						ctrl.isMenuItem = true;
 						ctrl.targetY = curSelected - 1;
 						grpControls.add(ctrl);
 					case 2:
 						FlxG.save.data.downscroll = !FlxG.save.data.downscroll;
-						var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, (FlxG.save.data.downscroll ? 'Downscroll' : 'Upscroll'), true, false);
+						var ctrl:Alphabet = new Alphabet(64, 320, (FlxG.save.data.downscroll ? 'Downscroll' : 'Upscroll'), true);
 						ctrl.isMenuItem = true;
 						ctrl.targetY = curSelected - 2;
 						grpControls.add(ctrl);
 					case 3:
 						FlxG.save.data.freaky = !FlxG.save.data.freaky;
-						var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, (FlxG.save.data.freaky ? 'Freaky' : 'Normal'), true, false);
+						var ctrl:Alphabet = new Alphabet(64, 320, (FlxG.save.data.freaky ? 'Freaky' : 'Normal'), true);
 						ctrl.isMenuItem = true;
 						ctrl.targetY = curSelected - 3;
 						grpControls.add(ctrl);

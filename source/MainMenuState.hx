@@ -15,6 +15,10 @@ import lime.app.Application;
 
 using StringTools;
 
+#if desktop
+import Discord.DiscordClient;
+#end
+
 class MainMenuState extends MusicBeatState
 {
 	var curSelected:Int = 0;
@@ -45,6 +49,11 @@ class MainMenuState extends MusicBeatState
 		}
 
 		persistentUpdate = persistentDraw = true;
+
+		#if desktop
+		// Updating Discord Rich Presence
+		DiscordClient.changePresence("In the Menus", null);
+		#end
 
 		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('menuBG'));
 		bg.scrollFactor.x = 0;

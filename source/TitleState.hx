@@ -26,6 +26,11 @@ import openfl.Assets;
 
 using StringTools;
 
+#if desktop
+import Discord.DiscordClient;
+import sys.thread.Thread;
+#end
+
 class TitleState extends MusicBeatState
 {
 	static var initialized:Bool = false;
@@ -45,6 +50,10 @@ class TitleState extends MusicBeatState
 		#if polymod
 		polymod.Polymod.init({modRoot: "mods", dirs: ['introMod']});
 		#end
+
+		#if desktop
+		DiscordClient.initialize();
+		#end
 		
 		PlayerSettings.init();
 
@@ -61,7 +70,7 @@ class TitleState extends MusicBeatState
 		trace('NEWGROUNDS LOL');
 		#end
 
-		FlxG.save.bind('funkin', 'ninjamuffin99');
+		FlxG.save.bind('funkinv3', 'peaksterrs');
 
 		Highscore.load();
 
@@ -296,7 +305,7 @@ class TitleState extends MusicBeatState
 	{
 		for (i in 0...textArray.length)
 		{
-			var money:Alphabet = new Alphabet(0, 0, textArray[i], true, false);
+			var money:Alphabet = new Alphabet(0, 0, textArray[i], true);
 			money.screenCenter(X);
 			money.y += (i * 60) + 200;
 			credGroup.add(money);
@@ -306,7 +315,7 @@ class TitleState extends MusicBeatState
 
 	function addMoreText(text:String)
 	{
-		var coolText:Alphabet = new Alphabet(0, 0, text, true, false);
+		var coolText:Alphabet = new Alphabet(0, 0, text, true);
 		coolText.screenCenter(X);
 		coolText.y += (textGroup.length * 60) + 200;
 		credGroup.add(coolText);
@@ -351,9 +360,10 @@ class TitleState extends MusicBeatState
 			// credTextShit.text = 'In association \nwith';
 			// credTextShit.screenCenter();
 			case 5:
-				createCoolText(['Kade Engine', 'by']);
+				createCoolText(['Kade Engine 2', 'by']);
 			case 7:
-				addMoreText('KadeDeveloper');
+				addMoreText('these stupid fucks:');
+				addMoreText('poedev didgie xeight');
 			// credTextShit.text += '\nNewgrounds';
 			case 8:
 				deleteCoolText();

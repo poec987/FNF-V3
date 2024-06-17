@@ -15,6 +15,10 @@ import lime.net.curl.CURLCode;
 
 using StringTools;
 
+#if desktop
+import Discord.DiscordClient;
+#end
+
 class StoryMenuState extends MusicBeatState
 {
 	var scoreText:FlxText;
@@ -70,6 +74,11 @@ class StoryMenuState extends MusicBeatState
 
 	override function create()
 	{
+		#if desktop
+		// Updating Discord Rich Presence
+		DiscordClient.changePresence("In the Menus", null);
+		#end
+
 		transIn = FlxTransitionableState.defaultTransIn;
 		transOut = FlxTransitionableState.defaultTransOut;
 
