@@ -1664,23 +1664,29 @@ class PlayState extends MusicBeatState
 							if (SONG.notes[Math.floor(curStep / 16)].altAnim)
 								altAnim = '-alt';
 						}
-	
-						switch (Math.abs(daNote.noteData))
-						{
-							case 2:
-								dad.playAnim('singUP' + altAnim, true);
-							case 3:
-								dad.playAnim('singRIGHT' + altAnim, true);
-							case 1:
-								dad.playAnim('singDOWN' + altAnim, true);
-							case 0:
-								dad.playAnim('singLEFT' + altAnim, true);
+
+						noteTypeCheck(daNote, true, true);
+						
+						if (daNote.noteType != "No Animation") {
+							switch (Math.abs(daNote.noteData))
+							{
+								case 2:
+									dad.playAnim('singUP' + altAnim, true);
+								case 3:
+									dad.playAnim('singRIGHT' + altAnim, true);
+								case 1:
+									dad.playAnim('singDOWN' + altAnim, true);
+								case 0:
+									dad.playAnim('singLEFT' + altAnim, true);
+							}
 						}
 	
 						dad.holdTimer = 0;
 	
 						if (SONG.needsVoices)
 							vocals.volume = 1;
+
+						noteTypeCheck(daNote, false, true);
 	
 						daNote.kill();
 						notes.remove(daNote, true);
@@ -1708,7 +1714,9 @@ class PlayState extends MusicBeatState
 							health -= 0.075;
 							vocals.volume = 0;
 							if (theFunne)
+								noteTypeCheck(daNote, true, false, true);
 								noteMiss(daNote.noteData);
+								noteTypeCheck(daNote, false, false, true);
 						}
 	
 						daNote.active = false;
@@ -2092,28 +2100,7 @@ class PlayState extends MusicBeatState
 					{	
 						noteCheck(controlArray[daNote.noteData], daNote);
 					}
-					/* 
-						if (controlArray[daNote.noteData])
-							goodNoteHit(daNote);
-					 */
-					// trace(daNote.noteData);
-					/* 
-						switch (daNote.noteData)
-						{
-							case 2: // NOTES YOU JUST PRESSED
-								if (upP || rightP || downP || leftP)
-									noteCheck(upP, daNote);
-							case 3:
-								if (upP || rightP || downP || leftP)
-									noteCheck(rightP, daNote);
-							case 1:
-								if (upP || rightP || downP || leftP)
-									noteCheck(downP, daNote);
-							case 0:
-								if (upP || rightP || downP || leftP)
-									noteCheck(leftP, daNote);
-						}
-					 */
+					
 					if (daNote.wasGoodHit)
 					{
 						daNote.kill();
@@ -2342,7 +2329,7 @@ class PlayState extends MusicBeatState
 				}
 			}
 	
-	function noteTypeCheck(notezzz:Note, ?precheck:Bool = false) {
+	function noteTypeCheck(notezzz:Note, ?precheck:Bool = false, ?dadHit:Bool = false, ?miss:Bool = false) {
 		var zeNoteType:String = notezzz.noteType;
 		if (zeNoteType == null)
 			zeNoteType = "Normal";
