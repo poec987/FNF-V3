@@ -2337,20 +2337,20 @@ class PlayState extends MusicBeatState
 		if (precheck) { // Before animation & health shit
 			switch (zeNoteType) {
 				case "Normal":
-					trace("Normal Note Hit");
+					// trace("Normal Note Hit");
 				case "Test":
-					trace("Test Note PRE HIT");
+					// trace("Test Note PRE HIT");
 				default:
-					trace(zeNoteType + "was HITTTEEEEEEEEEEEEED");
+					// trace(zeNoteType + "was HITTTEEEEEEEEEEEEED");
 			}
 		} else { // AFTER the note shit happened
 			switch (zeNoteType) {
 				case "Normal":
-					trace("Normal Note Hit");
+					// trace("Normal Note Hit");
 				case "Test":
-					trace("Test Note POST HIT");
+					// trace("Test Note POST HIT");
 				default:
-					trace(zeNoteType + "was HITTTEEEEEEEEEEEEED");
+					// trace(zeNoteType + "was HITTTEEEEEEEEEEEEED");
 			}
 		}
 	}
