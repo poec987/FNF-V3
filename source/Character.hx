@@ -215,18 +215,22 @@ class Character extends FlxSprite
 			case 'monster-christmas':
 				tex = Paths.getSparrowAtlas('christmas/monsterChristmas');
 				frames = tex;
-				animation.addByPrefix('idle', 'monster idle', 24, false);
-				animation.addByPrefix('singUP', 'monster up note', 24, false);
-				animation.addByPrefix('singDOWN', 'monster down', 24, false);
-				animation.addByPrefix('singLEFT', 'Monster left note', 24, false);
-				animation.addByPrefix('singRIGHT', 'Monster Right note', 24, false);
+				animation.addByPrefix('idle', 'monster idle', 60, true);
+				animation.addByPrefix('singUP', 'monster up note', 60, false);
+				animation.addByPrefix('singDOWN', 'monster down', 60, false);
+				animation.addByPrefix('singLEFT', 'Monster left note', 60, false);
+				animation.addByPrefix('singRIGHT', 'Monster Right note', 60, false);
 
 				addOffset('idle');
-				addOffset("singUP", -20, 50);
-				addOffset("singRIGHT", -51);
-				addOffset("singLEFT", -30);
-				addOffset("singDOWN", -40, -94);
+				addOffset('singUP');
+				addOffset('singRIGHT');
+				addOffset('singLEFT');
+				addOffset('singDOWN');
 				playAnim('idle');
+				setGraphicSize(Std.int(width * 1.5));
+				updateHitbox();
+
+				antialiasing = false;
 			case 'pico':
 				tex = Paths.getSparrowAtlas('Pico_FNF_assetss');
 				frames = tex;
