@@ -70,7 +70,7 @@ class TitleState extends MusicBeatState
 		trace('NEWGROUNDS LOL');
 		#end
 
-		FlxG.save.bind('funkinv3', 'peaksterrs');
+		FlxG.save.bind('funkinv3', 'cinemamakers');
 
 		Highscore.load();
 

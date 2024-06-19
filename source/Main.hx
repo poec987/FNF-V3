@@ -106,12 +106,14 @@ class Main extends Sprite
 					case FilePos(s, file, line, column):
 						errMsg += file + " (line " + line + ")\n";
 					default:
+						#if desktop
 						Sys.println(stackItem);
+						#end
 				}
 			}
 	
 			errMsg += "\nUncaught Error: " + e.error + "\nShitty Game did a SHitty Crsahs\n\n> Crash Handler written by: sqirra-rng";
-	
+			#if desktop
 			if (!FileSystem.exists("./crash/"))
 				FileSystem.createDirectory("./crash/");
 	
@@ -122,5 +124,6 @@ class Main extends Sprite
 	
 			Application.current.window.alert(errMsg, "it crashed, lol");
 			Sys.exit(1);
+			#end
 		}
 }
