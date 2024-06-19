@@ -15,7 +15,6 @@ typedef FunkinResults = {
     var bad:Int;
     var shit:Int;
     var miss:Int;
-
     var score:Int;
     var accuracy:Float;
 }
@@ -30,7 +29,6 @@ class ResultsSubState extends MusicBeatSubstate {
     var accText:FlxText;
 
     var texts:FlxTypedGroup<FlxText>;
-
     var playState:PlayState;
     
     public function new(x:Float, y:Float, results:FunkinResults, playState:PlayState) {
@@ -99,5 +97,4 @@ class ResultsSubState extends MusicBeatSubstate {
             close();
         }
     }
-
 }
