@@ -256,6 +256,8 @@ class PlayState extends MusicBeatState
 				dialogue = CoolUtil.coolTextFile(Paths.txt('roses/rosesDialogue'));
 			case 'thorns':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('thorns/thornsDialogue'));
+			case 'winter-horrorland':
+				dialogue = CoolUtil.coolTextFile(Paths.txt('winter-horrorland/winter-horrorlandDialogue'));				
 		}
 
 		if (SONG.song.toLowerCase() == 'spookeez' || SONG.song.toLowerCase() == 'monster' || SONG.song.toLowerCase() == 'south')
@@ -832,7 +834,7 @@ class PlayState extends MusicBeatState
 								ease: FlxEase.quadInOut,
 								onComplete: function(twn:FlxTween)
 								{
-									startCountdown();
+									startDialogue(doof);
 								}
 							});
 						});
@@ -858,6 +860,18 @@ class PlayState extends MusicBeatState
 		}
 
 		super.create();
+	}
+
+	function startDialogue(?dialogueBox:DialogueBox):Void {
+		if (dialogueBox != null) {
+			new FlxTimer().start(0.3, function(tmr:FlxTimer){
+				inCutscene = true;
+
+				add(dialogueBox);
+			});
+		}
+		else
+			startCountdown();
 	}
 
 	function schoolIntro(?dialogueBox:DialogueBox):Void
