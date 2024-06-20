@@ -49,6 +49,9 @@ class MainMenuState extends MusicBeatState
 			FlxG.sound.playMusic(Paths.music('freakyMenu'));
 		}
 
+		if (FlxG.save.data.beatSongs == null) // shhhhhhh
+			FlxG.save.data.beatSongs = [];
+
 		persistentUpdate = persistentDraw = true;
 
 		#if desktop
@@ -146,11 +149,7 @@ class MainMenuState extends MusicBeatState
 			{
 				if (optionShit[curSelected] == 'donate')
 				{
-					#if linux
-					Sys.command('/usr/bin/xdg-open', ["https://ninja-muffin24.itch.io/funkin", "&"]);
-					#else
-					FlxG.openURL('https://ninja-muffin24.itch.io/funkin');
-					#end
+					FreeplayState.playSong("do-you-get-the-refrance", 1);
 				}
 				else
 				{

@@ -132,12 +132,26 @@ class FreeplayState extends MusicBeatState
 		super.create();
 	}
 
-	public function addSong(songName:String, weekNum:Int, songCharacter:String)
+	public function addSong(songName:String, weekNum:Int, songCharacter:String, ?isLocked:Bool=false)
 	{
-		songs.push(new SongMetadata(songName, weekNum, songCharacter));
+		if (isLocked) {
+			if (FlxG.save.data.beatSongs.contains(songName))
+				songs.push(new SongMetadata(songName, weekNum, songCharacter));
+			else
+				songs.push(new SongMetadata("LOCKED", 1, "monster"));
+		} else {
+			songs.push(new SongMetadata(songName, weekNum, songCharacter));
+		}
 	}
 
-	public function newSong(songName:String, weekNum:Int, songCharacter:String):SongMetadata {
+
+	public function newSong(songName:String, weekNum:Int, songCharacter:String, ?isLocked:Bool=false):SongMetadata {
+		if (isLocked) {
+			if (FlxG.save.data.beatSongs.contains(songName))
+				return new SongMetadata(songName, weekNum, songCharacter);
+			else
+				return new SongMetadata("LOCKED", 1, "monster");
+		}
 		return new SongMetadata(songName, weekNum, songCharacter);
 	}
 
@@ -147,7 +161,7 @@ class FreeplayState extends MusicBeatState
 		}
 	}
 
-	public function addWeek(songs:Array<String>, weekNum:Int, ?songCharacters:Array<String>)
+	public function addWeek(songs:Array<String>, weekNum:Int, ?songCharacters:Array<String>, ?isLocked:Bool=false)
 	{
 		if (songCharacters == null)
 			songCharacters = ['bf'];
@@ -155,7 +169,7 @@ class FreeplayState extends MusicBeatState
 		var num:Int = 0;
 		for (song in songs)
 		{
-			addSong(song, weekNum, songCharacters[num]);
+			addSong(song, weekNum, songCharacters[num], isLocked);
 
 			if (songCharacters.length != 1)
 				num++;
@@ -163,6 +177,17 @@ class FreeplayState extends MusicBeatState
 	}
 
 	// I WANT TO FUCKING SHOOT MYSELF
+
+	public static function playSong(song:String, diff:Int, ?storyWeek:Int=1) {
+		var poop:String = Highscore.formatSong(song, diff); // Funny
+		PlayState.SONG = Song.loadFromJson(poop, song);
+		PlayState.isStoryMode = false;
+		PlayState.storyDifficulty = diff;
+
+		PlayState.storyWeek = storyWeek;
+		trace('CUR WEEK' + PlayState.storyWeek);
+		LoadingState.loadAndSwitchState(new PlayState());
+	}
 
 	public function refreshSongList(skipDestroy:Bool=false) {
 		if (!skipDestroy) {
