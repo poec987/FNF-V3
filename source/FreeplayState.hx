@@ -75,7 +75,7 @@ class FreeplayState extends MusicBeatState
 		"Remixes");
 
 		pages[2] = new FreeplayPage([
-			newSong("Do-You-Get-The-Refrance", 1, "impostor"),
+			newSong("Do-You-Get-The-Refrance", 1, "impostor", true),
 			newSong("Stop-It-Right-There-Criminal-Scum", 1, "dave")
 		],
 		"Extras");
@@ -135,7 +135,7 @@ class FreeplayState extends MusicBeatState
 	public function addSong(songName:String, weekNum:Int, songCharacter:String, ?isLocked:Bool=false)
 	{
 		if (isLocked) {
-			if (FlxG.save.data.beatSongs.contains(songName))
+			if (FlxG.save.data.beatSongs.contains(songName.toLowerCase()))
 				songs.push(new SongMetadata(songName, weekNum, songCharacter));
 			else
 				songs.push(new SongMetadata("LOCKED", 1, "monster"));
@@ -147,7 +147,7 @@ class FreeplayState extends MusicBeatState
 
 	public function newSong(songName:String, weekNum:Int, songCharacter:String, ?isLocked:Bool=false):SongMetadata {
 		if (isLocked) {
-			if (FlxG.save.data.beatSongs.contains(songName))
+			if (FlxG.save.data.beatSongs.contains(songName.toLowerCase()))
 				return new SongMetadata(songName, weekNum, songCharacter);
 			else
 				return new SongMetadata("LOCKED", 1, "monster");
