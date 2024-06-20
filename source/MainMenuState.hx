@@ -49,6 +49,9 @@ class MainMenuState extends MusicBeatState
 			FlxG.sound.playMusic(Paths.music('freakyMenu'));
 		}
 
+		if (FlxG.save.data.beatSongs == null) // shhhhhhh
+			FlxG.save.data.beatSongs = [];
+
 		persistentUpdate = persistentDraw = true;
 
 		#if desktop
@@ -146,14 +149,7 @@ class MainMenuState extends MusicBeatState
 			{
 				if (optionShit[curSelected] == 'donate')
 				{
-					var poop:String = Highscore.formatSong("do-you-get-the-refrance", 1); // Funny
-					PlayState.SONG = Song.loadFromJson(poop, "do-you-get-the-refrance");
-					PlayState.isStoryMode = false;
-					PlayState.storyDifficulty = 1;
-
-					PlayState.storyWeek = 1;
-					trace('CUR WEEK' + PlayState.storyWeek);
-					LoadingState.loadAndSwitchState(new PlayState());
+					FreeplayState.playSong("do-you-get-the-refrance", 1);
 				}
 				else
 				{
