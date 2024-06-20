@@ -1414,6 +1414,8 @@ class PlayState extends MusicBeatState
 			accDisplay = "Not an FC smh";
 		else if (accuracy >= 95)
 			accDisplay = "uhhh i guess its good?";
+		else if (accuracy >= 94)
+			accDisplay = "not the best";
 		else if (accuracy >= 93)
 			accDisplay = "93 lollll";
 		else if (accuracy >= 90)
@@ -1424,29 +1426,37 @@ class PlayState extends MusicBeatState
 			accDisplay = "WAS THAT THE BI-";
 		else if (accuracy >= 85)
 			accDisplay = "SFC (stands for shit fuck cake)";
+		else if (accuracy >= 84)
+			accDisplay = "speechless";
 		else if  (accuracy >= 83)
 			accDisplay = "83 lollll";
-		else if  (accuracy >= 73)
+		else if  (accuracy >= 73 && accuracy <= 74)
 			accDisplay = "73 lollll";
 		else if (accuracy >= 69)
 			accDisplay = "haha sex";
-		else if  (accuracy >= 63)
+		else if  (accuracy >= 63 && accuracy <= 64)
 			accDisplay = "63 lollll";
-		else if (accuracy >= 56)
+		else if (accuracy >= 56  && accuracy <= 57)
 			accDisplay = "jo56hs";
+		else if (accuracy >= 55)
+			accDisplay = "im gonna leave this one blank in case anyone wants to change it later";
+		else if (accuracy >= 54)
+			accDisplay = "";
 		else if  (accuracy >= 53)
 			accDisplay = "53 lollll";
-		else if  (accuracy >= 43)
+		else if  (accuracy >= 43 && accuracy <= 44)
 			accDisplay = "43 lollll";
-		else if  (accuracy >= 33)
+		else if  (accuracy >= 33 && accuracy <= 34)
 			accDisplay = "33 lollll";
-		else if  (accuracy >= 23)
+		else if  (accuracy >= 23 && accuracy <= 24)
 			accDisplay = "23 lollll";
-		else if  (accuracy >= 13)
+		else if  (accuracy >= 13 && accuracy <= 14)
 			accDisplay = "13 lollll";
 		else if (accuracy >= 10)
 			accDisplay = "certain death";
-		else if  (accuracy >= 3)
+		else if (accuracy >= 5 && accuracy <= 6)
+			accDisplay = "this is my lucky number";
+		else if  (accuracy >= 3 && accuracy <= 4)
 			accDisplay = "3 lollll";
 		else if (accuracy == 0)
 			accDisplay = "HOW ARE YOU STILL ALIVE";
@@ -2228,7 +2238,6 @@ class PlayState extends MusicBeatState
 						if (upP && spr.animation.curAnim.name != 'confirm')
 						{
 							spr.animation.play('pressed');
-							trace('play');
 						}
 						if (upR)
 						{

@@ -28,6 +28,7 @@ class ResultsSubState extends MusicBeatSubstate {
     var missText:FlxText;
     var scoreText:FlxText;
     var accText:FlxText;
+    var ratingText:FlxText;
 
     var texts:FlxTypedGroup<FlxText>;
     var playState:PlayState;
@@ -53,7 +54,8 @@ class ResultsSubState extends MusicBeatSubstate {
         shitText = new FlxText(-150, 245, 0, "Shits: " + results.shit, 32, false);
         missText = new FlxText(-150, 275, 0, "Misses: " + results.miss, 32, false);
         scoreText = new FlxText(-150, 25, 0, "Score: " + results.score, 64, false);
-        accText = new FlxText(-150, 450, 0, "Accuracy: " + results.accuracy + "% (" + results.rating + ")", 48, false);
+        accText = new FlxText(-150, 450, 0, "Accuracy: " + results.accuracy, 48, false);
+        ratingText = new FlxText(-150, 500, 0, "Rating: " + results.rating, 48, false);
 
         sickText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, FlxTextAlign.LEFT);
         goodText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, FlxTextAlign.LEFT);
@@ -62,6 +64,7 @@ class ResultsSubState extends MusicBeatSubstate {
         missText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, FlxTextAlign.LEFT);
         scoreText.setFormat(Paths.font("vcr.ttf"), 64, FlxColor.WHITE, FlxTextAlign.LEFT);
         accText.setFormat(Paths.font("vcr.ttf"), 48, FlxColor.WHITE, FlxTextAlign.LEFT);
+        ratingText.setFormat(Paths.font("vcr.ttf"), 48, FlxColor.WHITE, FlxTextAlign.LEFT);
 
         texts.add(sickText);
         texts.add(goodText);
@@ -70,6 +73,7 @@ class ResultsSubState extends MusicBeatSubstate {
         texts.add(missText);
         texts.add(scoreText);
         texts.add(accText);
+        texts.add(ratingText);
         texts.add(exitText);
 
         texts.forEach((t:FlxText) -> {
