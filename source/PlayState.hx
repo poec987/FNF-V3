@@ -1835,7 +1835,7 @@ class PlayState extends MusicBeatState
 		persistentUpdate = false;
 		persistentDraw = true;
 
-		FlxG.save.data.beatSongs.append(curSong.toLowerCase());
+		//FlxG.save.data.beatSongs.append(curSong.toLowerCase());
 
 		openSubState(new ResultsSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y, results, this));		
 	}
