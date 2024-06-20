@@ -59,6 +59,7 @@ class PlayState extends MusicBeatState
 	public static var bads:Int = 0;
 	public static var goods:Int = 0;
 	public static var sicks:Int = 0;
+	public static var accDisplay:String = "";
 
 	var halloweenLevel:Bool = false;
 
@@ -1403,8 +1404,54 @@ class PlayState extends MusicBeatState
 		}
 
 		super.update(elapsed);
+		if (songScore == 0)
+			accDisplay = "boowomp";
+		else if (accuracy == 100)
+			accDisplay = "PFC";
+		else if (misses == 0 && shits == 0 && bads == 0)
+			accDisplay = "Good FC";
+		else if (accuracy >= 99)
+			accDisplay = "Not an FC smh";
+		else if (accuracy >= 95)
+			accDisplay = "uhhh i guess its good?";
+		else if (accuracy >= 93)
+			accDisplay = "93 lollll";
+		else if (accuracy >= 90)
+			accDisplay = "inaccurate andy";
+		else if (accuracy >= 89)
+			accDisplay = "kill this guy with hammers";
+		else if (accuracy >= 87)
+			accDisplay = "WAS THAT THE BI-";
+		else if (accuracy >= 85)
+			accDisplay = "SFC (stands for shit fuck cake)";
+		else if  (accuracy >= 83)
+			accDisplay = "83 lollll";
+		else if  (accuracy >= 73)
+			accDisplay = "73 lollll";
+		else if (accuracy >= 69)
+			accDisplay = "haha sex";
+		else if  (accuracy >= 63)
+			accDisplay = "63 lollll";
+		else if (accuracy >= 56)
+			accDisplay = "jo56hs";
+		else if  (accuracy >= 53)
+			accDisplay = "53 lollll";
+		else if  (accuracy >= 43)
+			accDisplay = "43 lollll";
+		else if  (accuracy >= 33)
+			accDisplay = "33 lollll";
+		else if  (accuracy >= 23)
+			accDisplay = "23 lollll";
+		else if  (accuracy >= 13)
+			accDisplay = "13 lollll";
+		else if (accuracy >= 10)
+			accDisplay = "certain death";
+		else if  (accuracy >= 3)
+			accDisplay = "3 lollll";
+		else if (accuracy == 0)
+			accDisplay = "HOW ARE YOU STILL ALIVE";
 
-		scoreTxt.text = "Score:" + songScore + " | Misses:" + misses + " | Accuracy:" + accuracy + "% " + (fc ? "| FC" : misses == 0 ? "| A" : accuracy <= 75 ? "| BAD" : "");
+		scoreTxt.text = "Score:" + songScore + " | Misses:" + misses + " | Accuracy:" + accuracy + "% | " + accDisplay;
 
 		if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
 		{
@@ -1829,7 +1876,8 @@ class PlayState extends MusicBeatState
 			shit: shits,
 			miss: misses,
 			score: songScore,
-			accuracy: accuracy
+			accuracy: accuracy,
+			rating: accDisplay
 		};
 
 		persistentUpdate = false;
@@ -1837,7 +1885,9 @@ class PlayState extends MusicBeatState
 
 		FlxG.save.data.beatSongs.push(curSong.toLowerCase());
 
-		openSubState(new ResultsSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y, results, this));		
+		var sub:FlxSubState = new ResultsSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y, results, this);
+		sub.cameras = [camHUD];
+		openSubState(sub);		
 	}
 
 	var endingSong:Bool = false;

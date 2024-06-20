@@ -17,6 +17,7 @@ typedef FunkinResults = {
     var miss:Int;
     var score:Int;
     var accuracy:Float;
+    var rating:String;
 }
 
 class ResultsSubState extends MusicBeatSubstate {
@@ -38,21 +39,21 @@ class ResultsSubState extends MusicBeatSubstate {
 
         texts = new FlxTypedGroup<FlxText>();
 
-        var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+        var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.stage.stageWidth, FlxG.stage.stageHeight, FlxColor.BLACK);
 		bg.alpha = 0;
 		bg.scrollFactor.set();
 		add(bg);
 
-        var exitText = new FlxText(20, FlxG.height - 150, 0, "Press ENTER to finish", 24, false);
+        var exitText = new FlxText(-150, FlxG.height - 150, 0, "Press ENTER to finish", 24, false);
         exitText.setFormat(Paths.font("vcr.ttf"), 24, FlxColor.WHITE, FlxTextAlign.LEFT);
 
-        sickText = new FlxText(20, 150, 0, "Sicks: " + results.sick, 32, false);
-        goodText = new FlxText(20, 185, 0, "Goods: " + results.good, 32, false);
-        badText = new FlxText(20, 215, 0, "Bads: " + results.bad, 32, false);
-        shitText = new FlxText(20, 245, 0, "Shits: " + results.shit, 32, false);
-        missText = new FlxText(20, 275, 0, "Misses: " + results.miss, 32, false);
-        scoreText = new FlxText(20, 25, 0, "Score: " + results.score, 64, false);
-        accText = new FlxText(20, 450, 0, "Accuracy: " + results.accuracy + "%", 48, false);
+        sickText = new FlxText(-150, 150, 0, "Sicks: " + results.sick, 32, false);
+        goodText = new FlxText(-150, 185, 0, "Goods: " + results.good, 32, false);
+        badText = new FlxText(-150, 215, 0, "Bads: " + results.bad, 32, false);
+        shitText = new FlxText(-150, 245, 0, "Shits: " + results.shit, 32, false);
+        missText = new FlxText(-150, 275, 0, "Misses: " + results.miss, 32, false);
+        scoreText = new FlxText(-150, 25, 0, "Score: " + results.score, 64, false);
+        accText = new FlxText(-150, 450, 0, "Accuracy: " + results.accuracy + "% (" + results.rating + ")", 48, false);
 
         sickText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, FlxTextAlign.LEFT);
         goodText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, FlxTextAlign.LEFT);
@@ -73,14 +74,13 @@ class ResultsSubState extends MusicBeatSubstate {
 
         texts.forEach((t:FlxText) -> {
             t.alpha = 0;
-            t.x = -150;
         });
 
         add(texts);
 
         for (i in 0... texts.length) {
             new FlxTimer().start(0.1 * (i+1), (timer:FlxTimer) -> {
-                FlxTween.tween(texts.members[i], {alpha: 1, x: 20}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.3});
+                FlxTween.tween(texts.members[i], {alpha: 1, x: 50}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.3});
             });
             new FlxTimer().start(0.3 + (0.1*(i + 1)), (timer:FlxTimer) -> {
                 FlxG.sound.play(Paths.sound('scrollMenu'));
