@@ -49,9 +49,6 @@ class MainMenuState extends MusicBeatState
 			FlxG.sound.playMusic(Paths.music('freakyMenu'));
 		}
 
-		if (FlxG.save.data.beatSongs == null) // shhhhhhh
-			FlxG.save.data.beatSongs = [];
-
 		persistentUpdate = persistentDraw = true;
 
 		#if desktop

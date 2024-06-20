@@ -72,6 +72,9 @@ class TitleState extends MusicBeatState
 
 		FlxG.save.bind('funkinv3', 'cinemamakers');
 
+		if (FlxG.save.data.beatSongs == null) // shhhhhhh
+			FlxG.save.data.beatSongs = [];
+
 		Highscore.load();
 
 		if (FlxG.save.data.weekUnlocked != null)
