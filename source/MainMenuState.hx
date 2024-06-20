@@ -146,11 +146,14 @@ class MainMenuState extends MusicBeatState
 			{
 				if (optionShit[curSelected] == 'donate')
 				{
-					#if linux
-					Sys.command('/usr/bin/xdg-open', ["https://ninja-muffin24.itch.io/funkin", "&"]);
-					#else
-					FlxG.openURL('https://ninja-muffin24.itch.io/funkin');
-					#end
+					var poop:String = Highscore.formatSong("do-you-get-the-refrance", 1); // Funny
+					PlayState.SONG = Song.loadFromJson(poop, "do-you-get-the-refrance");
+					PlayState.isStoryMode = false;
+					PlayState.storyDifficulty = 1;
+
+					PlayState.storyWeek = 1;
+					trace('CUR WEEK' + PlayState.storyWeek);
+					LoadingState.loadAndSwitchState(new PlayState());
 				}
 				else
 				{
