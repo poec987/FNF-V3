@@ -418,9 +418,11 @@ class PlayState extends MusicBeatState
 
 			santa = new FlxSprite(-840, 150);
 			santa.frames = Paths.getSparrowAtlas('christmas/santa');
-			santa.animation.addByPrefix('idle', 'santa idle in fear', 24, false);
+			santa.animation.addByPrefix('idle', 'santa idle in fear', 24, true);
+			santa.animation.addByPrefix('DIE', 'santa DIE', 2, false);
 			santa.antialiasing = true;
 			add(santa);
+			santa.animation.play('idle', true);
 		}
 		else if (SONG.song.toLowerCase() == 'winter-horrorland')
 		{
@@ -2444,6 +2446,8 @@ class PlayState extends MusicBeatState
 					// trace("Normal Note Hit");
 				case "Test":
 					// trace("Test Note POST HIT");
+				case "Kill Santa":
+					santa.animation.play('DIE', true);
 				default:
 					// trace(zeNoteType + "was HITTTEEEEEEEEEEEEED");
 			}
@@ -2639,7 +2643,6 @@ class PlayState extends MusicBeatState
 			case 'mall':
 				upperBoppers.animation.play('bop', true);
 				bottomBoppers.animation.play('bop', true);
-				santa.animation.play('idle', true);
 
 			case 'limo':
 				grpLimoDancers.forEach(function(dancer:BackgroundDancer)

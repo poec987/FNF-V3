@@ -329,7 +329,8 @@ class ChartingState extends MusicBeatState
 	var noteTypes:Array<String> = [
 		"Normal",
 		"Test",
-		"No Animation"
+		"No Animation",
+		"Kill Santa"
 	];
 
 	var noteTypeDropDown:FlxUIDropDownMenu;
