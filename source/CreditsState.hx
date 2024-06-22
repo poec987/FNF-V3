@@ -1,11 +1,14 @@
 package;
 
+import flixel.FlxObject;
+import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.FlxG;
 
 class CreditsState extends MusicBeatState {
     var curSelected:Int = 0;
+    var camFollow:FlxObject;
 
     var credits:Array<CreditsCredit> = [
         {name: "Le devs", description: ""},
@@ -22,19 +25,27 @@ class CreditsState extends MusicBeatState {
         {name: "KadeDev", description: "Made Kade Engine lol"}
     ];
 
-    var grpCredits:Array<Alphabet> = [];
+    var grpCredits:FlxTypedGroup<Alphabet>;
 
     public override function create() {
         super.create();
+
+        camFollow = new FlxObject(0, 0, 0, 1);
+        add(camFollow);
+
+        FlxG.camera.follow(camFollow, null, 10);
         
+        grpCredits = new FlxTypedGroup<Alphabet>();
+
         for (i in 0...credits.length) {
-            var thing:Alphabet = new Alphabet(64, 150 + (i*64), credits[i].name);
+            var thing:Alphabet = new Alphabet(64, 150 + (i*32), credits[i].name);
+            thing.isMenuItem = true;
             thing.targetY = i;
-            grpCredits.push(thing);
+            grpCredits.add(thing);
             add(thing);
         }
 
-        scroll(0);
+        scroll();
     }
 
     public override function update(elapsed:Float) {
@@ -51,7 +62,23 @@ class CreditsState extends MusicBeatState {
             scroll(-1);
     }
 
-    function scroll(change:Int) {
+    function scroll(change:Int = 0) {
+        FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
+
+        
+		if (curSelected < 0)
+			curSelected = grpCredits.length - 1;
+		if (curSelected >= grpCredits.length)
+			curSelected = 0;
+
+        var bulshite:Int = 0;
+
+        for (item in grpCredits.members){
+            item.targetY = bulshite - curSelected;
+            bulshite++;
+        }
+
+        camFollow.setPosition(0, grpCredits.members[curSelected].getGraphicMidpoint().y - grpCredits.length * 8);
     }
 }
 
