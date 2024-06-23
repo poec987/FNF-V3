@@ -1,5 +1,6 @@
 package;
 
+import flixel.sound.FlxSound;
 import flixel.util.FlxTimer;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.tweens.FlxEase;
@@ -32,9 +33,15 @@ class ResultsSubState extends MusicBeatSubstate {
 
     var texts:FlxTypedGroup<FlxText>;
     var playState:PlayState;
+
+    var music:FlxSound;
     
     public function new(x:Float, y:Float, results:FunkinResults, playState:PlayState) {
         super();
+
+        music = new FlxSound().loadEmbedded(Paths.music("youHaveDidIt"), true, false).play();
+        music.volume = 0;
+        FlxTween.tween(music, {"volume": 0.75}, 0.25, {ease: FlxEase.expoIn});
 
         this.playState = playState;
 
@@ -98,6 +105,7 @@ class ResultsSubState extends MusicBeatSubstate {
     override function update(elapsed:Float) {
         if (FlxG.keys.justPressed.ENTER) {
             playState.wakeTheFuckUp();
+            music.destroy();
             close();
         }
     }

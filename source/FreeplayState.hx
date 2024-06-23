@@ -263,6 +263,7 @@ class FreeplayState extends MusicBeatState
 			songs = [];
 			addPageSongs(pages[page]);
 			refreshSongList();
+			changeSelection();
 		}
 
 		if (controls.LEFT_P)
