@@ -330,6 +330,7 @@ class ChartingState extends MusicBeatState
 		"Normal",
 		"Test",
 		"No Animation",
+		"Laugh",
 		"Kill Santa"
 	];
 

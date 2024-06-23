@@ -139,6 +139,27 @@ class Character extends FlxSprite
 				addOffset("singDOWN", 0, -30);
 
 				playAnim('idle');
+				
+			case 'sonicexe':
+				// DAD ANIMATION LOADING CODE
+				tex = Paths.getSparrowAtlas('sonicexe');
+				frames = tex;
+				animation.addByPrefix('idle', 'Idle', 30, false);
+				animation.addByPrefix('singUP', 'Up', 30, false);
+				animation.addByPrefix('singRIGHT', 'Right', 30, false);
+				animation.addByPrefix('singDOWN', 'Down', 30, false);
+				animation.addByPrefix('singLEFT', 'Left', 30, false);
+				animation.addByPrefix('laugh', 'Laugh', 30, false);
+
+				addOffset('idle');
+				addOffset("singUP", 176, 90);
+				addOffset("singRIGHT", -120, 10);
+				addOffset("singLEFT", 190, 0);
+				addOffset("singDOWN", 0, -100);
+				
+				setGraphicSize(Std.int(width * 1.25));
+
+				playAnim('idle');
 			case 'spooky':
 				tex = Paths.getSparrowAtlas('spooky_kids_assets');
 				frames = tex;

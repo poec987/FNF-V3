@@ -662,6 +662,10 @@ class PlayState extends MusicBeatState
 				dad.x -= 150;
 				dad.y += 100;
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
+			case 'sonicexe':
+				dad.x += 100;
+				dad.y += 330;
+				camPos.set(dad.getGraphicMidpoint().x + 200, dad.getGraphicMidpoint().y - 200);
 		}
 
 
@@ -1589,6 +1593,8 @@ class PlayState extends MusicBeatState
 					case 'senpai-angry':
 						camFollow.y = dad.getMidpoint().y - 430;
 						camFollow.x = dad.getMidpoint().x - 100;
+					case 'sonicexe':
+						camFollow.y = dad.getMidpoint().y + 30;
 				}
 
 				if (dad.curCharacter == 'mom')
@@ -1743,7 +1749,7 @@ class PlayState extends MusicBeatState
 
 						noteTypeCheck(daNote, true, true);
 						
-						if (daNote.noteType != "No Animation") {
+						if (daNote.noteType != "No Animation" && daNote.noteType != "Laugh") {
 							switch (Math.abs(daNote.noteData))
 							{
 								case 2:
@@ -2446,6 +2452,8 @@ class PlayState extends MusicBeatState
 					// trace("Normal Note Hit");
 				case "Test":
 					// trace("Test Note POST HIT");
+				case "Laugh":
+					dad.animation.play('laugh', true);
 				case "Kill Santa":
 					santa.animation.play('DIE', true);
 				default:
