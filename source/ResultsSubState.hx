@@ -35,6 +35,7 @@ class ResultsSubState extends MusicBeatSubstate {
     var playState:PlayState;
 
     var music:FlxSound;
+    var judgement:FlxSound;
     
     public function new(x:Float, y:Float, results:FunkinResults, playState:PlayState) {
         super();
@@ -97,7 +98,24 @@ class ResultsSubState extends MusicBeatSubstate {
                 FlxG.sound.play(Paths.sound('scrollMenu'));
             });
         };
+        new FlxTimer().start(0.4 + (0.1*texts.length), (timer:FlxTimer) -> {
+            var selectedJudgement:String = "";
+            if (results.accuracy == 100)
+                selectedJudgement = "pfc";
+            else if (results.accuracy >= 95)
+                selectedJudgement = "good";
+            else if (results.accuracy >= 90)
+                selectedJudgement = "meh";
+            else if (results.accuracy >= 80)
+                selectedJudgement = "bad";
+            else if (results.accuracy >= 50)
+                selectedJudgement = "shit";
+            else
+                selectedJudgement = "worst";
 
+            judgement = new FlxSound().loadEmbedded(Paths.sound('judgements/'+selectedJudgement), false, true).play();
+            judgement.volume = 0.5;
+        });
         FlxTween.tween(bg, {alpha: 0.6}, 0.4, {ease: FlxEase.quartInOut});
 
     }
@@ -106,6 +124,7 @@ class ResultsSubState extends MusicBeatSubstate {
         if (FlxG.keys.justPressed.ENTER) {
             playState.wakeTheFuckUp();
             music.destroy();
+            judgement.destroy();
             close();
         }
     }
