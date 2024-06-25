@@ -65,6 +65,7 @@ class ChartingState extends MusicBeatState
 
 	var curRenderedNotes:FlxTypedGroup<Note>;
 	var curRenderedSustains:FlxTypedGroup<FlxSprite>;
+	var shownNotes:Array<Note> = [];
 
 	var gridBG:FlxSprite;
 
@@ -82,6 +83,9 @@ class ChartingState extends MusicBeatState
 
 	var leftIcon:HealthIcon;
 	var rightIcon:HealthIcon;
+
+	var hitSounds:Array<Note> = [];
+	var doHitSounds:Bool = true;
 
 	override function create()
 	{
@@ -489,6 +493,8 @@ class ChartingState extends MusicBeatState
 	{
 		curStep = recalculateSteps();
 
+		shownNotes = [];
+
 		Conductor.songPosition = FlxG.sound.music.time;
 		_song.song = typingShit.text;
 
@@ -510,6 +516,22 @@ class ChartingState extends MusicBeatState
 
 		FlxG.watch.addQuick('daBeat', curBeat);
 		FlxG.watch.addQuick('daStep', curStep);
+
+		for (note in curRenderedNotes)
+		{
+			var diff = note.strumTime - Conductor.songPosition;
+			if (diff < 8000 && diff >= -8000)
+			{
+				shownNotes.push(note);
+				note.active = true;
+				note.visible = true;
+			}
+			else
+			{
+				note.active = false;
+				note.visible = false;
+			}
+		}
 
 		if (FlxG.mouse.justPressed)
 		{
@@ -599,6 +621,7 @@ class ChartingState extends MusicBeatState
 				{
 					FlxG.sound.music.pause();
 					vocals.pause();
+					hitSounds.splice(0, hitSounds.length);
 				}
 				else
 				{
@@ -619,6 +642,7 @@ class ChartingState extends MusicBeatState
 			{
 				FlxG.sound.music.pause();
 				vocals.pause();
+				hitSounds.splice(0, hitSounds.length);
 
 				FlxG.sound.music.time -= (FlxG.mouse.wheel * Conductor.stepCrochet * 0.4);
 				vocals.time = FlxG.sound.music.time;
@@ -630,6 +654,8 @@ class ChartingState extends MusicBeatState
 				{
 					FlxG.sound.music.pause();
 					vocals.pause();
+
+					hitSounds.splice(0, hitSounds.length);
 
 					var daTime:Float = 700 * FlxG.elapsed;
 
@@ -679,6 +705,15 @@ class ChartingState extends MusicBeatState
 		if (FlxG.keys.justPressed.LEFT || FlxG.keys.justPressed.A)
 			changeSection(curSection - shiftThing);
 
+		// HITSOUNDS
+		if (doHitSounds) {
+			for (note in shownNotes) {
+					if (note.strumTime <= Conductor.songPosition && !hitSounds.contains(note) && FlxG.sound.music.playing) {
+						hitSounds.push(note);
+						FlxG.sound.play(Paths.sound('hitsound'));
+					}
+				}
+		}
 		bpmTxt.text = bpmTxt.text = Std.string(FlxMath.roundDecimal(Conductor.songPosition / 1000, 2))
 			+ " / "
 			+ Std.string(FlxMath.roundDecimal(FlxG.sound.music.length / 1000, 2))
@@ -774,6 +809,8 @@ class ChartingState extends MusicBeatState
 
 			updateGrid();
 			updateSectionUI();
+
+			hitSounds.splice(0, hitSounds.length);
 		}
 	}
 
