@@ -159,7 +159,6 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
-
 		theFunne = FlxG.save.data.newInput;
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
@@ -227,6 +226,15 @@ class PlayState extends MusicBeatState
 
 		if (SONG == null)
 			SONG = Song.loadFromJson('tutorial');
+
+		// Unlock songs when you play them, aint fucking no one beating unfairness j after other 3 songs
+		if (FlxG.save.data.beatSongs != null) {
+			if (!FlxG.save.data.beatSongs.contains(curSong.toLowerCase))
+				FlxG.save.data.beatSongs.push(curSong.toLowerCase());
+			#if debug
+			trace(curSong.toLowerCase());
+			#end
+		}
 
 		Conductor.mapBPMChanges(SONG);
 		Conductor.changeBPM(SONG.bpm);
@@ -1108,10 +1116,14 @@ class PlayState extends MusicBeatState
 		previousFrameTime = FlxG.game.ticks;
 		lastReportedPlayheadPosition = 0;
 
-		if (!paused)
-			FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song), 1, false);
-		FlxG.sound.music.onComplete = endSong;
+		FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song), 1, false);
 		vocals.play();
+
+		if (paused) {
+			FlxG.sound.music.pause();
+			vocals.pause();
+		}
+		FlxG.sound.music.onComplete = endSong;
 
 		#if desktop
 		// Song duration in a float, useful for the time left feature
@@ -1932,14 +1944,6 @@ class PlayState extends MusicBeatState
 
 		persistentUpdate = false;
 		persistentDraw = true;
-
-		if (FlxG.save.data.beatSongs != null) {
-			if (!FlxG.save.data.beatSongs.contains(curSong.toLowerCase))
-				FlxG.save.data.beatSongs.push(curSong.toLowerCase());
-			#if debug
-			trace(curSong.toLowerCase());
-			#end
-		}
 	
 
 		var sub:FlxSubState = new ResultsSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y, results, this);
