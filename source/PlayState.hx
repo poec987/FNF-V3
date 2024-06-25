@@ -1933,7 +1933,14 @@ class PlayState extends MusicBeatState
 		persistentUpdate = false;
 		persistentDraw = true;
 
-		FlxG.save.data.beatSongs.push(curSong.toLowerCase());
+		if (FlxG.save.data.beatSongs != null) {
+			if (!FlxG.save.data.beatSongs.contains(curSong.toLowerCase))
+				FlxG.save.data.beatSongs.push(curSong.toLowerCase());
+			#if debug
+			trace(curSong.toLowerCase());
+			#end
+		}
+	
 
 		var sub:FlxSubState = new ResultsSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y, results, this);
 		sub.cameras = [camHUD];

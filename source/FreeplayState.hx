@@ -137,6 +137,8 @@ class FreeplayState extends MusicBeatState
 	public function addSong(songName:String, weekNum:Int, songCharacter:String, ?isLocked:Bool=false)
 	{
 		if (isLocked) {
+			if (FlxG.save.data.beatSongs == null)
+				FlxG.save.data.beatSongs = [];
 			if (FlxG.save.data.beatSongs.contains(songName.toLowerCase()))
 				songs.push(new SongMetadata(songName, weekNum, songCharacter));
 			else
@@ -149,6 +151,11 @@ class FreeplayState extends MusicBeatState
 
 	public function newSong(songName:String, weekNum:Int, songCharacter:String, ?isLocked:Bool=false):SongMetadata {
 		if (isLocked) {
+			#if debug
+			trace(FlxG.save.data.beatSongs);
+			#end
+			if (FlxG.save.data.beatSongs == null)
+				FlxG.save.data.beatSongs = [];
 			if (FlxG.save.data.beatSongs.contains(songName.toLowerCase()))
 				return new SongMetadata(songName, weekNum, songCharacter);
 			else
