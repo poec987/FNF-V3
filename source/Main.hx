@@ -58,6 +58,8 @@ class Main extends Sprite
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 		}
 
+		FlxG.save.bind('funkinv3', 'cinemamakers');
+
 		setupGame();
 	}
 
@@ -80,7 +82,9 @@ class Main extends Sprite
 		#end
 
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, framerate, framerate, skipSplash, startFullscreen));
-
+		
+		SaveManagement.init();
+		
 		#if !mobile
 		addChild(new FPS(10, 3, 0xFFFFFF));
 		#end

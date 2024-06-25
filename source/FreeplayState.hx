@@ -87,6 +87,7 @@ class FreeplayState extends MusicBeatState
 		#if debug
 		isDebug = true;
 		#end
+		trace(FlxG.save.data.unlockedSongs);
 
 		#if desktop
 		// Updating Discord Rich Presence
@@ -137,9 +138,9 @@ class FreeplayState extends MusicBeatState
 	public function addSong(songName:String, weekNum:Int, songCharacter:String, ?isLocked:Bool=false)
 	{
 		if (isLocked) {
-			if (FlxG.save.data.beatSongs == null)
-				FlxG.save.data.beatSongs = [];
-			if (FlxG.save.data.beatSongs.contains(songName.toLowerCase()))
+			if (FlxG.save.data.unlockedSongs == null)
+				FlxG.save.data.unlockedSongs = [];
+			if (FlxG.save.data.unlockedSongs.contains(songName.toLowerCase()))
 				songs.push(new SongMetadata(songName, weekNum, songCharacter));
 			else
 				songs.push(new SongMetadata("LOCKED", 1, "lock"));
@@ -152,11 +153,11 @@ class FreeplayState extends MusicBeatState
 	public function newSong(songName:String, weekNum:Int, songCharacter:String, ?isLocked:Bool=false):SongMetadata {
 		if (isLocked) {
 			#if debug
-			trace(FlxG.save.data.beatSongs);
+			trace(FlxG.save.data.unlockedSongs);
 			#end
-			if (FlxG.save.data.beatSongs == null)
-				FlxG.save.data.beatSongs = [];
-			if (FlxG.save.data.beatSongs.contains(songName.toLowerCase()))
+			if (FlxG.save.data.unlockedSongs == null)
+				FlxG.save.data.unlockedSongs = [];
+			if (FlxG.save.data.unlockedSongs.contains(songName.toLowerCase()))
 				return new SongMetadata(songName, weekNum, songCharacter);
 			else
 				return new SongMetadata("LOCKED", 1, "lock");
@@ -287,7 +288,7 @@ class FreeplayState extends MusicBeatState
 		}
 
 		if (FlxG.keys.justPressed.ONE) { // Clear beat songs data key for testing purposes. (Also for exterminating your pesky memory leaks :3)
-			FlxG.save.data.beatSongs = [];
+			FlxG.save.data.unlockedSongs = [];
 		}
 
 		if (accepted)

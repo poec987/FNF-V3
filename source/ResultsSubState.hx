@@ -103,7 +103,6 @@ class ResultsSubState extends MusicBeatSubstate {
 
         for (i in 0... texts.length) {
             textTimer = new FlxTimer().start(0.1 * (i+1), (timer:FlxTimer) -> {
-                trace(texts.members[i]);
                 textTween = FlxTween.tween(texts.members[i], {alpha: 1, x: 50}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.3}).start();
             });
             soundTimer = new FlxTimer().start(0.3 + (0.1*(i + 1)), (timer:FlxTimer) -> {

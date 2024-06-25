@@ -48,12 +48,12 @@ class StoryMenuState extends MusicBeatState
 
 	var weekNames:Array<String> = [
 		"",
-		"Daddy Dearest",
+		"Rizzy Rearest",
 		"Spooky Month",
 		"PICO",
-		"MOMMY MUST MURDER",
+		"PICO MUST MURDER",
 		"RED SNOW",
-		"hating simulator ft. moawling"
+		"sigma simulator"
 	];
 
 	var txtWeekTitle:FlxText;

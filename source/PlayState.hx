@@ -228,15 +228,12 @@ class PlayState extends MusicBeatState
 			SONG = Song.loadFromJson('tutorial');
 
 		// Unlock songs when you play them, aint fucking no one beating unfairness j after other 3 songs
-		if (FlxG.save.data.beatSongs != null) {
-			if (!FlxG.save.data.beatSongs.contains(curSong.toLowerCase))
-				FlxG.save.data.beatSongs.push(curSong.toLowerCase());
-		}
+		SaveManagement.unlockSong(SONG.song);
 
 		Conductor.mapBPMChanges(SONG);
 		Conductor.changeBPM(SONG.bpm);
 
-		switch (SONG.song.toLowerCase())
+		switch (SONG.song.toLowerCase().trim())
 		{
 			case 'tutorial':
 				dialogue = ["Hey you're pretty cute.", 'Use the arrow keys to keep up \nwith me singing.'];
@@ -1852,6 +1849,8 @@ class PlayState extends MusicBeatState
 				campaignScore += songScore;
 	
 				storyPlaylist.remove(storyPlaylist[0]);
+
+				endSongEvents();
 	
 				if (storyPlaylist.length <= 0)
 				{
@@ -1886,17 +1885,6 @@ class PlayState extends MusicBeatState
 	
 					trace('LOADING NEXT SONG');
 					trace(PlayState.storyPlaylist[0].toLowerCase() + difficulty);
-	
-					if (SONG.song.toLowerCase() == 'eggnog')
-					{
-						var blackShit:FlxSprite = new FlxSprite(-FlxG.width * FlxG.camera.zoom,
-							-FlxG.height * FlxG.camera.zoom).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.BLACK);
-						blackShit.scrollFactor.set();
-						add(blackShit);
-						camHUD.visible = false;
-	
-						FlxG.sound.play(Paths.sound('Lights_Shut_off'));
-					}
 	
 					FlxTransitionableState.skipNextTransIn = true;
 					FlxTransitionableState.skipNextTransOut = true;
@@ -1943,9 +1931,28 @@ class PlayState extends MusicBeatState
 		persistentDraw = true;
 	
 
-		var sub:FlxSubState = new ResultsSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y, results, this);
-		sub.cameras = [camHUD];
-		openSubState(sub);		
+		// var sub:FlxSubState = new ResultsSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y, results, this);
+		// sub.cameras = [camHUD];
+		// openSubState(sub);	
+		
+		wakeTheFuckUp();
+	}
+
+	function endSongEvents() {
+		switch (SONG.song.toLowerCase()) {
+			case 'eggnog':
+				var blackShit:FlxSprite = new FlxSprite(-FlxG.width * FlxG.camera.zoom,
+					-FlxG.height * FlxG.camera.zoom).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.BLACK);
+				blackShit.scrollFactor.set();
+				add(blackShit);
+				camHUD.visible = false;
+
+				FlxG.sound.play(Paths.sound('Lights_Shut_off'));
+			case 'thorns':
+				SaveManagement.unlockSong("Unfairness-Jside");
+			default:
+				//
+		}
 	}
 
 	var endingSong:Bool = false;
