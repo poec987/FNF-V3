@@ -85,7 +85,7 @@ class ChartingState extends MusicBeatState
 	var rightIcon:HealthIcon;
 
 	var hitSounds:Array<Note> = [];
-	var doHitSounds:Bool = true;
+	var doHitSounds:Bool = false;
 
 	override function create()
 	{
@@ -131,7 +131,7 @@ class ChartingState extends MusicBeatState
 		}
 
 		FlxG.mouse.visible = true;
-		FlxG.save.bind('funkinv3', 'cinemamakeers');
+		FlxG.save.bind('funkinv3', 'cinemamakers');
 
 		tempBpm = _song.bpm;
 
@@ -158,7 +158,8 @@ class ChartingState extends MusicBeatState
 		var tabs = [
 			{name: "Song", label: 'Song'},
 			{name: "Section", label: 'Section'},
-			{name: "Note", label: 'Note'}
+			{name: "Note", label: 'Note'},
+			{name: "Options", label: 'Options'}
 		];
 
 		UI_box = new FlxUITabMenu(null, tabs, true);
@@ -171,6 +172,7 @@ class ChartingState extends MusicBeatState
 		addSongUI();
 		addSectionUI();
 		addNoteUI();
+		addOptionsUI();
 
 		add(curRenderedNotes);
 		add(curRenderedSustains);
@@ -270,6 +272,7 @@ class ChartingState extends MusicBeatState
 	var check_changeBPM:FlxUICheckBox;
 	var stepperSectionBPM:FlxUINumericStepper;
 	var check_altAnim:FlxUICheckBox;
+	var check_hitSounds:FlxUICheckBox;
 
 	function addSectionUI():Void
 	{
@@ -361,6 +364,22 @@ class ChartingState extends MusicBeatState
 		tab_group_note.add(noteTypeDropDown);
 
 		UI_box.addGroup(tab_group_note);
+	}
+
+	function addOptionsUI():Void {
+		var tab_group_options = new FlxUI(null, UI_box);
+		tab_group_options.name = 'Options';
+
+		check_hitSounds = new FlxUICheckBox(10, 10, null, null, "Hitsounds", 100);
+		check_hitSounds.name = 'check_hitSounds';
+		check_hitSounds.callback = function() {
+			doHitSounds = check_hitSounds.checked;
+			hitSounds.splice(0, hitSounds.length);
+		};
+
+		tab_group_options.add(check_hitSounds);
+
+		UI_box.addGroup(tab_group_options);
 	}
 
 	function loadSong(daSong:String):Void
