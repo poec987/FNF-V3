@@ -92,6 +92,10 @@ class ChartingState extends MusicBeatState
 	{
 		curSection = lastSection;
 
+		var chartBg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('charterBG'));
+		chartBg.scrollFactor.set(0, 0);
+		add(chartBg);
+
 		gridBG = FlxGridOverlay.create(GRID_SIZE, GRID_SIZE, GRID_SIZE * 8, GRID_SIZE * 16);
 		add(gridBG);
 
