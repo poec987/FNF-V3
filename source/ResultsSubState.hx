@@ -112,6 +112,7 @@ class ResultsSubState extends MusicBeatSubstate {
                 selectedJudgement = "shit";
             else
                 selectedJudgement = "worst";
+				FlxTween.tween(music, {"volume": 0}, 4, {ease: FlxEase.linear});
 
             judgement = new FlxSound().loadEmbedded(Paths.sound('judgements/'+selectedJudgement), false, true).play();
             judgement.volume = 0.5;
