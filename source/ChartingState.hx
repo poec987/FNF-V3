@@ -899,9 +899,15 @@ class ChartingState extends MusicBeatState
 			stepperSusLength.value = curSelectedNote[2];
 			
 			if (curSelectedNote[3] != null)
+			{
 				noteTypeDropDown.selectedLabel = curSelectedNote[3];
+				selectedNoteType = curSelectedNote[3];
+			}
 			else
+			{
 				noteTypeDropDown.selectedLabel = "Normal";
+				selectedNoteType = "Normal";
+			}
 		}
 	}
 
