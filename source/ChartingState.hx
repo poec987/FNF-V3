@@ -65,6 +65,7 @@ class ChartingState extends MusicBeatState
 
 	var curRenderedNotes:FlxTypedGroup<Note>;
 	var curRenderedSustains:FlxTypedGroup<FlxSprite>;
+	var curRenderedTypes:FlxTypedGroup<FlxSprite>;
 	var shownNotes:Array<Note> = [];
 
 	var gridBG:FlxSprite;
@@ -113,6 +114,7 @@ class ChartingState extends MusicBeatState
 
 		curRenderedNotes = new FlxTypedGroup<Note>();
 		curRenderedSustains = new FlxTypedGroup<FlxSprite>();
+		curRenderedTypes = new FlxTypedGroup<FlxSprite>();
 
 		if (PlayState.SONG != null)
 			_song = PlayState.SONG;
@@ -176,6 +178,7 @@ class ChartingState extends MusicBeatState
 
 		add(curRenderedNotes);
 		add(curRenderedSustains);
+		add(curRenderedTypes);
 
 		super.create();
 	}
@@ -335,13 +338,15 @@ class ChartingState extends MusicBeatState
 
 	var noteTypes:Array<String> = [
 		"Normal",
-		"Test",
+		// "Test",
 		"No Animation",
 		"Laugh",
 		"Kill Santa"
 	];
 
 	var noteTypeDropDown:FlxUIDropDownMenu;
+
+	var selectedNoteType:String;
 
 	function addNoteUI():Void
 	{
@@ -356,7 +361,14 @@ class ChartingState extends MusicBeatState
 
 		noteTypeDropDown = new FlxUIDropDownMenu(10, 100, FlxUIDropDownMenu.makeStrIdLabelArray(noteTypes, true), function(type:String)
 		{
-			curSelectedNote[3] = noteTypes[Std.parseInt(type)];
+			if (curSelectedNote != null) {
+				curSelectedNote[3] = noteTypes[Std.parseInt(type)];
+				selectedNoteType = noteTypes[Std.parseInt(type)];
+			} else {
+				selectedNoteType = noteTypes[Std.parseInt(type)];
+			}
+
+			updateGrid();
 		});
 
 		tab_group_note.add(stepperSusLength);
@@ -900,6 +912,11 @@ class ChartingState extends MusicBeatState
 			curRenderedSustains.remove(curRenderedSustains.members[0], true);
 		}
 
+		while (curRenderedTypes.members.length > 0)
+		{
+			curRenderedTypes.remove(curRenderedTypes.members[0], true);
+		}
+
 		var sectionInfo:Array<Dynamic> = _song.notes[curSection].sectionNotes;
 
 		if (_song.notes[curSection].changeBPM && _song.notes[curSection].bpm > 0)
@@ -936,6 +953,7 @@ class ChartingState extends MusicBeatState
 			var daNoteInfo = i[1];
 			var daStrumTime = i[0];
 			var daSus = i[2];
+			var daType = i[3];
 
 			var note:Note = new Note(daStrumTime, daNoteInfo % 4);
 			note.sustainLength = daSus;
@@ -945,6 +963,12 @@ class ChartingState extends MusicBeatState
 			note.y = Math.floor(getYfromStrum((daStrumTime - sectionStartTime()) % (Conductor.stepCrochet * _song.notes[curSection].lengthInSteps)));
 
 			curRenderedNotes.add(note);
+
+			var sillyNoteType:FlxSprite = new FlxSprite(Math.floor(daNoteInfo * GRID_SIZE), Math.floor(getYfromStrum((daStrumTime - sectionStartTime()) % (Conductor.stepCrochet * _song.notes[curSection].lengthInSteps)))).loadGraphic(Paths.image("noteTypes/"+daType));
+			sillyNoteType.setGraphicSize(GRID_SIZE, GRID_SIZE);
+			sillyNoteType.updateHitbox();
+
+			curRenderedTypes.add(sillyNoteType);
 
 			if (daSus > 0)
 			{
@@ -1025,6 +1049,10 @@ class ChartingState extends MusicBeatState
 		var noteData = Math.floor(FlxG.mouse.x / GRID_SIZE);
 		var noteSus = 0;
 		var noteType = "Normal";
+
+		if (selectedNoteType != null) {
+			noteType = selectedNoteType;
+		}
 
 		_song.notes[curSection].sectionNotes.push([noteStrum, noteData, noteSus, noteType]);
 

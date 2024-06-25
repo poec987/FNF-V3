@@ -71,14 +71,15 @@ class FreeplayState extends MusicBeatState
 		"Funkin");
 
 		pages[1] = new FreeplayPage([
-			newSong("Tutorial-BSide", 1, "gf")
+			newSong("Tutorial-BSide", 1, "gf"),
+			newSong("Spookeez-Erect", 1, "spooky")
 		],
 		"Remixes");
 
 		pages[2] = new FreeplayPage([
 			newSong("Do-You-Get-The-Refrance", 1, "impostor", true),
 			newSong("dotdotdot", 1, "sonicexe"),
-			newSong("Stop-It-Right-There-Criminal-Scum", 1, "dave")
+			newSong("Stop-Right-There-Criminal-Scum", 1, "dave")
 		],
 		"Extras");
 
