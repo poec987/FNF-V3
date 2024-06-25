@@ -59,7 +59,12 @@ class Note extends FlxSprite
 				if (PlayState.curSong == "Thorns")
 					loadGraphic(Paths.image('weeb/pixelUI/arrows-pixels-good'), true, 17, 17);
 				else
-					loadGraphic(Paths.image('weeb/pixelUI/arrows-pixels'), true, 17, 17);
+					switch (noteType) {
+						case 'Kill':
+							loadGraphic(Paths.image('weeb/pixelUI/customNotes/kill-pixels'), true, 17, 17);
+						default:
+							loadGraphic(Paths.image('weeb/pixelUI/arrows-pixels'), true, 17, 17);
+					}
 				animation.add('greenScroll', [6]);
 				animation.add('redScroll', [7]);
 				animation.add('blueScroll', [5]);
@@ -70,7 +75,12 @@ class Note extends FlxSprite
 					if (PlayState.curSong == "Thorns")
 						loadGraphic(Paths.image('weeb/pixelUI/arrowEnds-good'), true, 7, 6);
 					else
-						loadGraphic(Paths.image('weeb/pixelUI/arrowEnds'), true, 7, 6);
+						switch (noteType) {
+							case 'Kill':
+								loadGraphic(Paths.image('weeb/pixelUI/customNotes/killEnds'), true, 7, 6);
+							default:
+								loadGraphic(Paths.image('weeb/pixelUI/arrowEnds'), true, 7, 6);
+						}
 
 					animation.add('purpleholdend', [4]);
 					animation.add('greenholdend', [6]);
@@ -87,7 +97,13 @@ class Note extends FlxSprite
 				updateHitbox();
 
 			default:
-				frames = Paths.getSparrowAtlas('NOTE_assets');
+
+				switch (noteType) {
+					case 'Kill':
+						frames = Paths.getSparrowAtlas('customNotes/kill');
+					default:
+						frames = Paths.getSparrowAtlas('NOTE_assets');
+				}
 
 				animation.addByPrefix('greenScroll', 'green0');
 				animation.addByPrefix('redScroll', 'red0');
@@ -108,6 +124,7 @@ class Note extends FlxSprite
 				updateHitbox();
 				antialiasing = true;
 		}
+
 
 		switch (noteData)
 		{

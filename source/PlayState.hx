@@ -124,6 +124,7 @@ class PlayState extends MusicBeatState
 	var santa:FlxSprite;
 
 	var fc:Bool = true;
+	var allowMiss = true;
 
 	var bgGirls:BackgroundGirls;
 	var wiggleShit:WiggleEffect = new WiggleEffect();
@@ -1817,12 +1818,22 @@ class PlayState extends MusicBeatState
 						}
 						else
 						{
-							health -= 0.075;
-							vocals.volume = 0;
-							if (theFunne)
-								noteTypeCheck(daNote, true, false, true);
-								noteMiss(daNote.noteData);
-								noteTypeCheck(daNote, false, false, true);
+							switch (daNote.noteType) { // MISS SHIT
+								case "Kill":
+									allowMiss = false;
+								default:
+									allowMiss = true;
+							}
+
+							if (allowMiss) {
+								health -= 0.075;
+								vocals.volume = 0;
+								if (theFunne)
+									noteTypeCheck(daNote, true, false, true);
+									noteMiss(daNote.noteData);
+									noteTypeCheck(daNote, false, false, true);
+							}
+							
 						}
 	
 						daNote.active = false;
@@ -2338,7 +2349,7 @@ class PlayState extends MusicBeatState
 
 	function noteMiss(direction:Int = 1):Void
 	{
-		if (!boyfriend.stunned)
+		if (!boyfriend.stunned && allowMiss)
 		{
 			misses++;
 			health -= 0.04;
@@ -2470,6 +2481,11 @@ class PlayState extends MusicBeatState
 		if (zeNoteType == null)
 			zeNoteType = "Normal";
 
+		if (zeNoteType == "Kill")
+			allowMiss = false;
+		else
+			allowMiss = true;
+
 		if (precheck) { // Before animation & health shit
 			switch (zeNoteType) {
 				case "Normal":
@@ -2489,6 +2505,8 @@ class PlayState extends MusicBeatState
 					dad.animation.play('laugh', true);
 				case "Kill Santa":
 					santa.animation.play('DIE', true);
+				case "Kill":
+					health = 0;
 				default:
 					// trace(zeNoteType + "was HITTTEEEEEEEEEEEEED");
 			}
