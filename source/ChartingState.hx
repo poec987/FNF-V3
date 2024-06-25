@@ -1001,16 +1001,13 @@ class ChartingState extends MusicBeatState
 
 	function selectNote(note:Note):Void
 	{
-		var swagNum:Int = 0;
-
 		for (i in _song.notes[curSection].sectionNotes)
 		{
-			if (i.strumTime == note.strumTime && i.noteData % 4 == note.noteData)
+			if (i[0] == note.strumTime && i[1] % 4 == note.noteData)
 			{
-				curSelectedNote = _song.notes[curSection].sectionNotes[swagNum];
+				FlxG.log.add('SELECT THE NOTE');
+				curSelectedNote = i;
 			}
-
-			swagNum += 1;
 		}
 
 		updateGrid();
