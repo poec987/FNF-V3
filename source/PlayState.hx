@@ -231,9 +231,6 @@ class PlayState extends MusicBeatState
 		if (FlxG.save.data.beatSongs != null) {
 			if (!FlxG.save.data.beatSongs.contains(curSong.toLowerCase))
 				FlxG.save.data.beatSongs.push(curSong.toLowerCase());
-			#if debug
-			trace(curSong.toLowerCase());
-			#end
 		}
 
 		Conductor.mapBPMChanges(SONG);

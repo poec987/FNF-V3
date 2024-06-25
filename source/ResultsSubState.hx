@@ -36,6 +36,16 @@ class ResultsSubState extends MusicBeatSubstate {
 
     var music:FlxSound;
     var judgement:FlxSound;
+
+    var textTimer:FlxTimer;
+    var soundTimer:FlxTimer;
+    var judgementTimer:FlxTimer;
+
+    var textTween:FlxTween;
+    var bgTween:FlxTween;
+    var judgementTween:FlxTween;
+
+    var canExit:Bool = false;
     
     public function new(x:Float, y:Float, results:FunkinResults, playState:PlayState) {
         super();
@@ -52,6 +62,7 @@ class ResultsSubState extends MusicBeatSubstate {
 		bg.alpha = 0;
 		bg.scrollFactor.set();
 		add(bg);
+        bgTween = FlxTween.tween(bg, {alpha: 0.6}, 0.4, {ease: FlxEase.quartInOut});
 
         var exitText = new FlxText(-150, FlxG.height - 150, 0, "Press ENTER to finish", 24, false);
         exitText.setFormat(Paths.font("vcr.ttf"), 24, FlxColor.WHITE, FlxTextAlign.LEFT);
@@ -91,14 +102,15 @@ class ResultsSubState extends MusicBeatSubstate {
         add(texts);
 
         for (i in 0... texts.length) {
-            new FlxTimer().start(0.1 * (i+1), (timer:FlxTimer) -> {
-                FlxTween.tween(texts.members[i], {alpha: 1, x: 50}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.3});
+            textTimer = new FlxTimer().start(0.1 * (i+1), (timer:FlxTimer) -> {
+                trace(texts.members[i]);
+                textTween = FlxTween.tween(texts.members[i], {alpha: 1, x: 50}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.3}).start();
             });
-            new FlxTimer().start(0.3 + (0.1*(i + 1)), (timer:FlxTimer) -> {
+            soundTimer = new FlxTimer().start(0.3 + (0.1*(i + 1)), (timer:FlxTimer) -> {
                 FlxG.sound.play(Paths.sound('scrollMenu'));
             });
         };
-        new FlxTimer().start(0.4 + (0.1*texts.length), (timer:FlxTimer) -> {
+        judgementTimer = new FlxTimer().start(0.4 + (0.1*texts.length), (timer:FlxTimer) -> {
             var selectedJudgement:String = "";
             if (results.accuracy == 100)
                 selectedJudgement = "pfc";
@@ -112,17 +124,31 @@ class ResultsSubState extends MusicBeatSubstate {
                 selectedJudgement = "shit";
             else
                 selectedJudgement = "worst";
-				FlxTween.tween(music, {"volume": 0}, 4, {ease: FlxEase.linear});
+            
+            if (music != null)
+				judgementTween = FlxTween.tween(music, {"volume": 0}, 4, {ease: FlxEase.linear}).start();
 
             judgement = new FlxSound().loadEmbedded(Paths.sound('judgements/'+selectedJudgement), false, true).play();
             judgement.volume = 0.5;
+
+            canExit = true;
         });
-        FlxTween.tween(bg, {alpha: 0.6}, 0.4, {ease: FlxEase.quartInOut});
 
     }
 
     override function update(elapsed:Float) {
-        if (FlxG.keys.justPressed.ENTER) {
+        if (FlxG.keys.justPressed.ENTER && canExit) {
+            // textTimer.cancel();
+            // soundTimer.cancel();
+            // judgementTimer.cancel();
+
+            // if (textTween != null)
+            //     textTween.cancel();
+            // if (bgTween != null)
+            //     bgTween.cancel();
+            // if (judgementTween != null)
+            //     judgementTween.cancel();
+
             playState.wakeTheFuckUp();
             music.destroy();
             judgement.destroy();

@@ -194,7 +194,7 @@ class FreeplayState extends MusicBeatState
 		PlayState.storyDifficulty = diff;
 
 		PlayState.storyWeek = storyWeek;
-		trace('CUR WEEK' + PlayState.storyWeek);
+		// trace('CUR WEEK' + PlayState.storyWeek);
 		LoadingState.loadAndSwitchState(new PlayState());
 	}
 
