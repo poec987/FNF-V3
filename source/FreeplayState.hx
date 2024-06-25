@@ -142,7 +142,7 @@ class FreeplayState extends MusicBeatState
 			if (FlxG.save.data.beatSongs.contains(songName.toLowerCase()))
 				songs.push(new SongMetadata(songName, weekNum, songCharacter));
 			else
-				songs.push(new SongMetadata("LOCKED", 1, "monster"));
+				songs.push(new SongMetadata("LOCKED", 1, "lock"));
 		} else {
 			songs.push(new SongMetadata(songName, weekNum, songCharacter));
 		}
@@ -159,7 +159,7 @@ class FreeplayState extends MusicBeatState
 			if (FlxG.save.data.beatSongs.contains(songName.toLowerCase()))
 				return new SongMetadata(songName, weekNum, songCharacter);
 			else
-				return new SongMetadata("LOCKED", 1, "monster");
+				return new SongMetadata("LOCKED", 1, "lock");
 		}
 		return new SongMetadata(songName, weekNum, songCharacter);
 	}
@@ -284,6 +284,10 @@ class FreeplayState extends MusicBeatState
 		if (controls.BACK)
 		{
 			FlxG.switchState(new MainMenuState());
+		}
+
+		if (FlxG.keys.justPressed.ONE) { // Clear beat songs data key for testing purposes. (Also for exterminating your pesky memory leaks :3)
+			FlxG.save.data.beatSongs = [];
 		}
 
 		if (accepted)

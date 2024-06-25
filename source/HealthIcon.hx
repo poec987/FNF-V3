@@ -40,6 +40,7 @@ class HealthIcon extends FlxSprite
 		animation.add('dave', [26, 27], 0, false, isPlayer);
 		animation.add('impostor', [29, 30], 0, false, isPlayer);
 		animation.add('sonicexe', [31, 32], 0, false, isPlayer);
+		animation.add('lock', [33, 33], 0, false, isPlayer);
 		animation.play(char);
 		scrollFactor.set();
 	}
