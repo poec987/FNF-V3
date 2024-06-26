@@ -346,7 +346,8 @@ class ChartingState extends MusicBeatState
 		"Play Animation",
 		"Laugh",
 		"Kill Santa",
-		"Kill"
+		"Kill",
+		"Pico Shoot"
 	];
 
 	var noteTypeDropDown:FlxUIDropDownMenu;

@@ -117,6 +117,8 @@ class PlayState extends MusicBeatState
 	var phillyTrain:FlxSprite;
 	var trainSound:FlxSound;
 
+	var picoShoot:FlxSprite;
+
 	var limo:FlxSprite;
 	var grpLimoDancers:FlxTypedGroup<BackgroundDancer>;
 	var fastCar:FlxSprite;
@@ -741,6 +743,17 @@ class PlayState extends MusicBeatState
 			add(limo);
 
 		add(dad);
+
+		if (curStage == 'philly') { // PISSY
+			picoShoot = new FlxSprite(100, (dad.y/2)-30);
+			picoShoot.frames = Paths.getSparrowAtlas('philly/Pico_Shooting');
+			picoShoot.animation.addByPrefix('shoot', "Pico Shoot Hip Full");
+			picoShoot.flipX = true;
+			add(picoShoot);
+
+			picoShoot.visible = false;
+		}
+
 		add(boyfriend);
 
 		var doof:DialogueBox = new DialogueBox(false, dialogue);
@@ -2524,6 +2537,15 @@ class PlayState extends MusicBeatState
 						dad.animation.play(noteTypeParam, true);
 					else
 						boyfriend.animation.play(noteTypeParam, true);
+				case "Pico Shoot":
+					picoShoot.visible = true;
+					dad.visible = false;
+					picoShoot.animation.play('shoot', true);
+					new FlxTimer().start(2.8, function(timer:FlxTimer) {
+						picoShoot.visible = false;
+						dad.visible = true;
+						health -= 0.1;
+					});
 				case "Kill Santa":
 					santa.animation.play('DIE', true);
 				case "Kill":
