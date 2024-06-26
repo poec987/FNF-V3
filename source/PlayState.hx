@@ -2505,6 +2505,11 @@ class PlayState extends MusicBeatState
 					// trace("Test Note POST HIT");
 				case "Laugh":
 					dad.animation.play('laugh', true);
+				case "Play Animation":
+					if (dadHit)
+						dad.animation.play(noteTypeParam, true);
+					else
+						boyfriend.animation.play(noteTypeParam, true);
 				case "Kill Santa":
 					santa.animation.play('DIE', true);
 				case "Kill":

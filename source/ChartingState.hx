@@ -342,8 +342,8 @@ class ChartingState extends MusicBeatState
 
 	var noteTypes:Array<String> = [
 		"Normal",
-		// "Test",
 		"No Animation",
+		"Play Animation",
 		"Laugh",
 		"Kill Santa",
 		"Kill"
