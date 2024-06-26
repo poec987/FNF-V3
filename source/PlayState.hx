@@ -2546,10 +2546,10 @@ class PlayState extends MusicBeatState
 					picoShoot.visible = true;
 					dad.visible = false;
 					picoShoot.animation.play('shoot', true);
-					new FlxTimer().start(2.8, function(timer:FlxTimer) {
+					new FlxTimer().start(0.05714285714, function(timer:FlxTimer) {
 						picoShoot.visible = false;
 						dad.visible = true;
-						health -= 0.1;
+						health -= 0.5;
 					});
 				case "Kill Santa":
 					santa.animation.play('DIE', true);
