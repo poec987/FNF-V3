@@ -2478,6 +2478,8 @@ class PlayState extends MusicBeatState
 	
 	function noteTypeCheck(notezzz:Note, ?precheck:Bool = false, ?dadHit:Bool = false, ?miss:Bool = false) {
 		var zeNoteType:String = notezzz.noteType;
+		var noteTypeParam:String = notezzz.noteTypeParam; // Funny little silly parameter in chart editor :P
+
 		if (zeNoteType == null)
 			zeNoteType = "Normal";
 

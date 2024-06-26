@@ -350,8 +350,9 @@ class ChartingState extends MusicBeatState
 	];
 
 	var noteTypeDropDown:FlxUIDropDownMenu;
-
+	var noteTypeParamTextBox:FlxUIInputText;
 	var selectedNoteType:String;
+	var selectedNoteTypeParam:String;
 
 	function addNoteUI():Void
 	{
@@ -376,9 +377,18 @@ class ChartingState extends MusicBeatState
 			updateGrid();
 		});
 
+		noteTypeParamTextBox = new FlxUIInputText(140, 100, 100);
+		noteTypeParamTextBox.name = "note_param";
+
+		if (curSelectedNote != null) {
+			noteTypeParamTextBox.text = curSelectedNote[4];
+			selectedNoteTypeParam = curSelectedNote[4];
+		}
+
 		tab_group_note.add(stepperSusLength);
 		tab_group_note.add(applyLength);
 		tab_group_note.add(noteTypeDropDown);
+		tab_group_note.add(noteTypeParamTextBox);
 
 		UI_box.addGroup(tab_group_note);
 	}
@@ -494,6 +504,17 @@ class ChartingState extends MusicBeatState
 			{
 				_song.notes[curSection].bpm = Std.int(nums.value);
 				updateGrid();
+			}
+		}
+		else if (id == FlxUIInputText.CHANGE_EVENT && (sender is FlxUIInputText))
+		{
+			var texts:FlxUIInputText = cast sender;
+			var tname = texts.name;
+
+			switch (tname) {
+				case ('note_param'):
+					curSelectedNote[4] = texts.text;
+					updateGrid();
 			}
 		}
 
@@ -908,6 +929,17 @@ class ChartingState extends MusicBeatState
 				noteTypeDropDown.selectedLabel = "Normal";
 				selectedNoteType = "Normal";
 			}
+
+			if (curSelectedNote[4] != null)
+			{
+				noteTypeParamTextBox.text = curSelectedNote[4];
+				selectedNoteTypeParam = curSelectedNote[4];
+			}
+			else
+			{
+				noteTypeParamTextBox.text = "";
+				selectedNoteTypeParam = "";
+			}
 		}
 	}
 
@@ -1057,12 +1089,17 @@ class ChartingState extends MusicBeatState
 		var noteData = Math.floor(FlxG.mouse.x / GRID_SIZE);
 		var noteSus = 0;
 		var noteType = "Normal";
+		var noteTypeParam = "";
 
 		if (selectedNoteType != null) {
 			noteType = selectedNoteType;
 		}
 
-		_song.notes[curSection].sectionNotes.push([noteStrum, noteData, noteSus, noteType]);
+		if (selectedNoteTypeParam != null) {
+			noteTypeParam = selectedNoteTypeParam;
+		}
+
+		_song.notes[curSection].sectionNotes.push([noteStrum, noteData, noteSus, noteType, noteTypeParam]);
 
 		curSelectedNote = _song.notes[curSection].sectionNotes[_song.notes[curSection].sectionNotes.length - 1];
 
