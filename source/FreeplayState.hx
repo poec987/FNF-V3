@@ -101,20 +101,19 @@ class FreeplayState extends MusicBeatState
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
 
-
-		scoreText = new FlxText(FlxG.width * 0.7, 5, 0, "", 32);
-		scoreText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT);
+		scoreText = new FlxText(FlxG.width * 0.7, 5, 0, "", 24);
+		scoreText.setFormat(Paths.font("papyrus.ttf"), 24, FlxColor.WHITE, RIGHT);
 
 		var scoreBG:FlxSprite = new FlxSprite(scoreText.x - 6, 0).makeGraphic(Std.int(FlxG.width * 0.35), 99, 0xFF000000);
 		scoreBG.alpha = 0.6;
 		add(scoreBG);
 
-		diffText = new FlxText(FlxG.width * 0.7, 42, 0, "", 24);
-		diffText.setFormat(Paths.font("vcr.ttf"), 24, FlxColor.WHITE, RIGHT);
+		diffText = new FlxText(FlxG.width * 0.7, 42, 0, "", 20);
+		diffText.setFormat(Paths.font("papyrus.ttf"), 20, FlxColor.WHITE, RIGHT);
 		add(diffText);
 
 		pageText = new FlxText(FlxG.width * 0.7, 75, 0 , "", 16);
-		pageText.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT);
+		pageText.setFormat(Paths.font("papyrus.ttf"), 16, FlxColor.WHITE, RIGHT);
 		add(pageText);
 
 		addPageSongs(pages[page]);
