@@ -344,9 +344,6 @@ class PlayState extends MusicBeatState
 			trainSound = new FlxSound().loadEmbedded(Paths.sound('train_passes'));
 			FlxG.sound.list.add(trainSound);
 
-			shootSound = new FlxSound().loadEmbedded(Paths.sound('shoot'));
-			FlxG.sound.list.add(shootSound);
-
 			// var cityLights:FlxSprite = new FlxSprite().loadGraphic(AssetPaths.win0.png);
 
 			var street:FlxSprite = new FlxSprite(-40, streetBehind.y).loadGraphic(Paths.image('philly/street'));
@@ -749,7 +746,10 @@ class PlayState extends MusicBeatState
 
 		add(dad);
 
-		if (curStage == 'philly') { // PISSY
+		if (SONG.player2 == 'pico') { // PISSY
+			shootSound = new FlxSound().loadEmbedded(Paths.sound('shoot'));
+			FlxG.sound.list.add(shootSound);
+			
 			picoShoot = new FlxSprite(100, (dad.y/2)-30);
 			picoShoot.frames = Paths.getSparrowAtlas('philly/Pico_Shooting');
 			picoShoot.animation.addByPrefix('shoot', "Pico Shoot Hip Full");
