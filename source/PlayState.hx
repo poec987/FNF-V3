@@ -763,7 +763,7 @@ class PlayState extends MusicBeatState
 			FlxG.sound.list.add(shootSound);
 
 			picoShoot = new FlxSprite(100, (dad.y/2)-30);
-			picoShoot.frames = Paths.getSparrowAtlas('philly/Pico_Shooting');
+			picoShoot.frames = Paths.getSparrowAtlas('characters/Pico_Shooting');
 			picoShoot.animation.addByPrefix('shoot', "Pico Shoot Hip Full");
 			picoShoot.flipX = true;
 			add(picoShoot);
