@@ -1786,7 +1786,7 @@ class PlayState extends MusicBeatState
 
 						noteTypeCheck(daNote, true, true);
 						
-						if (daNote.noteType != "No Animation" && daNote.noteType != "Laugh") {
+						if (daNote.noteType != "No Animation" && daNote.noteType != "Laugh" && daNote.noteType != "Play Animation") {
 							switch (Math.abs(daNote.noteData))
 							{
 								case 2:
@@ -2453,7 +2453,7 @@ class PlayState extends MusicBeatState
 					else
 						health += 0.004;
 
-					if (note.noteType != "No Animation") {
+					if (note.noteType != "No Animation" && note.noteType != "Play Animation") {
 						switch (note.noteData)
 						{
 							case 2:
@@ -2492,7 +2492,7 @@ class PlayState extends MusicBeatState
 		var zeNoteType:String = notezzz.noteType;
 		var noteTypeParam:String = notezzz.noteTypeParam; // Funny little silly parameter in chart editor :P
 
-		trace("NTParam: "+noteTypeParam);
+		//trace("NTParam: "+noteTypeParam);
 
 		if (zeNoteType == null)
 			zeNoteType = "Normal";
