@@ -103,6 +103,8 @@ class Note extends FlxSprite
 				switch (noteType) {
 					case 'Kill':
 						frames = Paths.getSparrowAtlas('customNotes/kill');
+					case 'Shield Note':
+						frames = Paths.getSparrowAtlas('customNotes/shield');
 					default:
 						frames = Paths.getSparrowAtlas('NOTE_assets');
 				}

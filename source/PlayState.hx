@@ -118,6 +118,8 @@ class PlayState extends MusicBeatState
 	var trainSound:FlxSound;
 
 	var picoShoot:FlxSprite;
+	var beefSafe:Bool = false;
+	var shootSound:FlxSound;
 
 	var limo:FlxSprite;
 	var grpLimoDancers:FlxTypedGroup<BackgroundDancer>;
@@ -341,6 +343,9 @@ class PlayState extends MusicBeatState
 
 			trainSound = new FlxSound().loadEmbedded(Paths.sound('train_passes'));
 			FlxG.sound.list.add(trainSound);
+
+			shootSound = new FlxSound().loadEmbedded(Paths.sound('shoot'));
+			FlxG.sound.list.add(shootSound);
 
 			// var cityLights:FlxSprite = new FlxSprite().loadGraphic(AssetPaths.win0.png);
 
@@ -2524,8 +2529,8 @@ class PlayState extends MusicBeatState
 			switch (zeNoteType) {
 				case "Normal":
 					// trace("Normal Note Hit");
-				case "Test":
-					// trace("Test Note PRE HIT");
+				case "Shield Note":
+					beefSafe = true;
 				default:
 					// trace(zeNoteType + "was HITTTEEEEEEEEEEEEED");
 			}
@@ -2546,10 +2551,15 @@ class PlayState extends MusicBeatState
 					picoShoot.visible = true;
 					dad.visible = false;
 					picoShoot.animation.play('shoot', true);
+					if (curSong.toLowerCase() != "philly") {
+						shootSound.play(true);
+					}
 					new FlxTimer().start(0.05714285714, function(timer:FlxTimer) {
 						picoShoot.visible = false;
 						dad.visible = true;
-						health -= 0.5;
+						if (!beefSafe)
+							health -= 0.5;
+						beefSafe = false;
 					});
 				case "Kill Santa":
 					santa.animation.play('DIE', true);
