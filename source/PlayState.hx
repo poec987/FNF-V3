@@ -108,6 +108,8 @@ class PlayState extends MusicBeatState
 
 	var dialogue:Array<String> = ['blah blah blah', 'coolswag'];
 
+	var songCard:SongCard;
+
 	var halloweenBG:FlxSprite;
 	var isHalloween:Bool = false;
 
@@ -132,7 +134,6 @@ class PlayState extends MusicBeatState
 	var talking:Bool = true;
 	var songScore:Int = 0;
 	var scoreTxt:FlxText;
-
 	
 	public static var campaignScore:Int = 0;
 
@@ -221,6 +222,10 @@ class PlayState extends MusicBeatState
 		FlxG.cameras.add(camHUD);
 
 		FlxCamera.defaultCameras = [camGame];
+
+		songCard = new SongCard();
+		add(songCard);
+		songCard.cameras = [camHUD];
 
 		persistentUpdate = true;
 		persistentDraw = true;
@@ -1119,6 +1124,12 @@ class PlayState extends MusicBeatState
 			vocals.pause();
 		}
 		FlxG.sound.music.onComplete = endSong;
+
+		songCard.show();
+		
+		new FlxTimer().start(4, (timer:FlxTimer) -> {
+            songCard.hide();
+        });
 
 		#if desktop
 		// Song duration in a float, useful for the time left feature
