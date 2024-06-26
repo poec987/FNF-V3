@@ -1178,6 +1178,7 @@ class PlayState extends MusicBeatState
 				var daStrumTime:Float = songNotes[0];
 				var daNoteData:Int = Std.int(songNotes[1] % 4);
 				var noteType = songNotes[3];
+				var noteTypeParam = songNotes[4];
 
 				var gottaHitNote:Bool = section.mustHitSection;
 
@@ -1192,7 +1193,7 @@ class PlayState extends MusicBeatState
 				else
 					oldNote = null;
 
-				var swagNote:Note = new Note(daStrumTime, daNoteData, oldNote, false, noteType);
+				var swagNote:Note = new Note(daStrumTime, daNoteData, oldNote, false, noteType, noteTypeParam);
 				swagNote.sustainLength = songNotes[2];
 				swagNote.scrollFactor.set(0, 0);
 
@@ -1205,7 +1206,7 @@ class PlayState extends MusicBeatState
 				{
 					oldNote = unspawnNotes[Std.int(unspawnNotes.length - 1)];
 
-					var sustainNote:Note = new Note(daStrumTime + (Conductor.stepCrochet * susNote) + Conductor.stepCrochet, daNoteData, oldNote, true, noteType);
+					var sustainNote:Note = new Note(daStrumTime + (Conductor.stepCrochet * susNote) + Conductor.stepCrochet, daNoteData, oldNote, true, noteType, noteTypeParam);
 					sustainNote.scrollFactor.set();
 					unspawnNotes.push(sustainNote);
 
@@ -2490,6 +2491,8 @@ class PlayState extends MusicBeatState
 	function noteTypeCheck(notezzz:Note, ?precheck:Bool = false, ?dadHit:Bool = false, ?miss:Bool = false) {
 		var zeNoteType:String = notezzz.noteType;
 		var noteTypeParam:String = notezzz.noteTypeParam; // Funny little silly parameter in chart editor :P
+
+		trace("NTParam: "+noteTypeParam);
 
 		if (zeNoteType == null)
 			zeNoteType = "Normal";
