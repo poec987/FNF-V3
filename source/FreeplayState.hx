@@ -1,5 +1,6 @@
 package;
 
+import openfl.utils.Dictionary;
 import flash.text.TextField;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -194,8 +195,7 @@ class FreeplayState extends MusicBeatState
 		PlayState.isStoryMode = false;
 		PlayState.storyDifficulty = diff;
 
-		PlayState.storyWeek = storyWeek;
-		// trace('CUR WEEK' + PlayState.storyWeek);
+		PlayState.storyWeek = PlayState.stageDictionary[PlayState.SONG.stage];
 		LoadingState.loadAndSwitchState(new PlayState());
 	}
 
@@ -302,8 +302,7 @@ class FreeplayState extends MusicBeatState
 				PlayState.isStoryMode = false;
 				PlayState.storyDifficulty = curDifficulty;
 
-				PlayState.storyWeek = songs[curSelected].week;
-				trace('CUR WEEK' + PlayState.storyWeek);
+				PlayState.storyWeek = PlayState.stageDictionary[PlayState.SONG.stage];
 				LoadingState.loadAndSwitchState(new PlayState());
 			}
 			catch(e) {

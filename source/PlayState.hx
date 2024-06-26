@@ -154,6 +154,18 @@ class PlayState extends MusicBeatState
 	public static var timeCurrently:Float = 0;
 	public static var timeCurrentlyR:Float = 0;
 
+	public static var stageDictionary:Map<String, Int> = [
+		"stage" => 1,
+		"spooky" => 2,
+		"philly" => 3,
+		"limo" => 4,
+		"mall" => 5,
+		"mallEvil" => 5,
+		"school" => 6,
+		"schoolEvil" => 6,
+		"exe" => 1
+	];
+
 	#if desktop
 	// Discord RPC variables
 	var storyDifficultyText:String = "";
@@ -272,7 +284,7 @@ class PlayState extends MusicBeatState
 				dialogue = CoolUtil.coolTextFile(Paths.txt('winter-horrorland/winter-horrorlandDialogue'));				
 		}
 
-		if (SONG.song.toLowerCase() == 'spookeez' || SONG.song.toLowerCase() == 'monster' || SONG.song.toLowerCase() == 'south')
+		if (SONG.stage == "spooky")
 		{
 			curStage = "spooky";
 			halloweenLevel = true;
@@ -289,7 +301,7 @@ class PlayState extends MusicBeatState
 
 			isHalloween = true;
 		}
-		else if (SONG.song.toLowerCase() == 'dotdotdot')
+		else if (SONG.stage == "exe")
 		{
 			curStage = 'exe';
 
@@ -307,7 +319,7 @@ class PlayState extends MusicBeatState
 			stageFront.active = false;
 			add(stageFront);
 		}
-		else if (SONG.song.toLowerCase() == 'pico' || SONG.song.toLowerCase() == 'blammed' || SONG.song.toLowerCase() == 'philly')
+		else if (SONG.stage == "philly")
 		{
 			curStage = 'philly';
 
@@ -349,7 +361,7 @@ class PlayState extends MusicBeatState
 			var street:FlxSprite = new FlxSprite(-40, streetBehind.y).loadGraphic(Paths.image('philly/street'));
 			add(street);
 		}
-		else if (SONG.song.toLowerCase() == 'milf' || SONG.song.toLowerCase() == 'satin-panties' || SONG.song.toLowerCase() == 'high')
+		else if (SONG.stage == "limo")
 		{
 			curStage = 'limo';
 			defaultCamZoom = 0.90;
@@ -396,7 +408,7 @@ class PlayState extends MusicBeatState
 			fastCar = new FlxSprite(-300, 160).loadGraphic(Paths.image('limo/fastCarLol'));
 			// add(limo);
 		}
-		else if (SONG.song.toLowerCase() == 'cocoa' || SONG.song.toLowerCase() == 'eggnog')
+		else if (SONG.stage == "mall")
 		{
 			curStage = 'mall';
 
@@ -454,7 +466,7 @@ class PlayState extends MusicBeatState
 			add(santa);
 			santa.animation.play('idle', true);
 		}
-		else if (SONG.song.toLowerCase() == 'winter-horrorland')
+		else if (SONG.stage == "mallEvil")
 		{
 			curStage = 'mallEvil';
 			var bg:FlxSprite = new FlxSprite(-400, -500).loadGraphic(Paths.image('christmas/evilBG'));
@@ -474,7 +486,7 @@ class PlayState extends MusicBeatState
 			evilSnow.antialiasing = true;
 			add(evilSnow);
 		}
-		else if (SONG.song.toLowerCase() == 'senpai' || SONG.song.toLowerCase() == 'roses')
+		else if (SONG.stage == "school")
 		{
 			curStage = 'school';
 
@@ -541,7 +553,7 @@ class PlayState extends MusicBeatState
 			bgGirls.updateHitbox();
 			add(bgGirls);
 		}
-		else if (SONG.song.toLowerCase() == 'thorns')
+		else if (SONG.stage == "schoolEvil")
 		{
 			curStage = 'schoolEvil';
 
@@ -749,7 +761,7 @@ class PlayState extends MusicBeatState
 		if (SONG.player2 == 'pico') { // PISSY
 			shootSound = new FlxSound().loadEmbedded(Paths.sound('shoot'));
 			FlxG.sound.list.add(shootSound);
-			
+
 			picoShoot = new FlxSprite(100, (dad.y/2)-30);
 			picoShoot.frames = Paths.getSparrowAtlas('philly/Pico_Shooting');
 			picoShoot.animation.addByPrefix('shoot', "Pico Shoot Hip Full");
