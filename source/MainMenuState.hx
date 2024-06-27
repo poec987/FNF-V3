@@ -49,6 +49,9 @@ class MainMenuState extends MusicBeatState
 			FlxG.sound.playMusic(Paths.music('freakyMenu'));
 		}
 
+		if (!FlxG.save.data.unlockedFreeplay)
+			optionShit.remove("freeplay");
+
 		persistentUpdate = persistentDraw = true;
 
 		#if desktop
@@ -117,9 +120,7 @@ class MainMenuState extends MusicBeatState
 	var selectedSomethin:Bool = false;
 
 	override function update(elapsed:Float)
-	{
-		if (FlxG.keys.justPressed.END)
-			FlxG.switchState(new YouCanNowPlayFreeplayState());
+	{			
 
 		if (FlxG.sound.music.volume < 0.8)
 		{

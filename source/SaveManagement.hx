@@ -27,6 +27,10 @@ class SaveManagement {
 
 		if (FlxG.save.data.freaky == null)
 			FlxG.save.data.freaky = false;
+
+        // Shit that happened
+        if (FlxG.save.data.unlockedFreeplay == null)
+            FlxG.save.data.unlockedFreeplay = false;
     }
 
     public static function unlockSong(song:String) {
@@ -36,5 +40,15 @@ class SaveManagement {
             if (!FlxG.save.data.unlockedSongs.contains(song.toLowerCase().trim())) FlxG.save.data.unlockedSongs.push(song.toLowerCase().trim());
             FlxG.save.flush();
         }
+    }
+
+    public static function resetSaveData() {
+        FlxG.save.data.unlockedSongs = [];
+        FlxG.save.data.newInput = true;
+        FlxG.save.data.freaky = false;
+        FlxG.save.data.dfjk = false;
+        FlxG.save.data.downscroll = false;
+        FlxG.save.data.unlockedFreeplay = false;
+
     }
 }

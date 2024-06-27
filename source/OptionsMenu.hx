@@ -67,6 +67,8 @@ class OptionsMenu extends MusicBeatState
 				changeSelection(-1);
 			if (controls.DOWN_P)
 				changeSelection(1);
+			if (FlxG.keys.justPressed.DELETE)
+				SaveManagement.resetSaveData();
 			
 			if (controls.RIGHT_R)
 			{
