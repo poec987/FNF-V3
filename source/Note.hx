@@ -55,78 +55,80 @@ class Note extends FlxSprite
 
 		var daStage:String = PlayState.curStage;
 
-		switch (daStage)
-		{
-			case 'school' | 'schoolEvil':
+		
+		if (daStage == 'school' || daStage == 'schoolEvil' || PlayState.isPixel) {
+			if (PlayState.curSong == "Thorns" || PlayState.isGood)
+				loadGraphic(Paths.image('stages/weeb/pixelUI/arrows-pixels-good'), true, 17, 17);
+			else
+				switch (noteType) {
+					case 'Kill':
+						loadGraphic(Paths.image('stages/weeb/pixelUI/customNotes/kill-pixels'), true, 17, 17);
+					default:
+						loadGraphic(Paths.image('stages/weeb/pixelUI/arrows-pixels'), true, 17, 17);
+				}
+			animation.add('greenScroll', [6]);
+			animation.add('redScroll', [7]);
+			animation.add('blueScroll', [5]);
+			animation.add('purpleScroll', [4]);
+
+			if (isSustainNote)
+			{
 				if (PlayState.curSong == "Thorns")
-					loadGraphic(Paths.image('weeb/pixelUI/arrows-pixels-good'), true, 17, 17);
+					loadGraphic(Paths.image('weeb/pixelUI/arrowEnds-good'), true, 7, 6);
 				else
 					switch (noteType) {
 						case 'Kill':
-							loadGraphic(Paths.image('weeb/pixelUI/customNotes/kill-pixels'), true, 17, 17);
+							loadGraphic(Paths.image('stages/weeb/pixelUI/customNotes/killEnds'), true, 7, 6);
 						default:
-							loadGraphic(Paths.image('weeb/pixelUI/arrows-pixels'), true, 17, 17);
+							loadGraphic(Paths.image('stages/weeb/pixelUI/arrowEnds'), true, 7, 6);
 					}
-				animation.add('greenScroll', [6]);
-				animation.add('redScroll', [7]);
-				animation.add('blueScroll', [5]);
-				animation.add('purpleScroll', [4]);
 
-				if (isSustainNote)
-				{
-					if (PlayState.curSong == "Thorns")
-						loadGraphic(Paths.image('weeb/pixelUI/arrowEnds-good'), true, 7, 6);
-					else
-						switch (noteType) {
-							case 'Kill':
-								loadGraphic(Paths.image('weeb/pixelUI/customNotes/killEnds'), true, 7, 6);
-							default:
-								loadGraphic(Paths.image('weeb/pixelUI/arrowEnds'), true, 7, 6);
-						}
+				animation.add('purpleholdend', [4]);
+				animation.add('greenholdend', [6]);
+				animation.add('redholdend', [7]);
+				animation.add('blueholdend', [5]);
 
-					animation.add('purpleholdend', [4]);
-					animation.add('greenholdend', [6]);
-					animation.add('redholdend', [7]);
-					animation.add('blueholdend', [5]);
+				animation.add('purplehold', [0]);
+				animation.add('greenhold', [2]);
+				animation.add('redhold', [3]);
+				animation.add('bluehold', [1]);
+			}
 
-					animation.add('purplehold', [0]);
-					animation.add('greenhold', [2]);
-					animation.add('redhold', [3]);
-					animation.add('bluehold', [1]);
-				}
+			setGraphicSize(Std.int(width * PlayState.daPixelZoom));
+			updateHitbox();
 
-				setGraphicSize(Std.int(width * PlayState.daPixelZoom));
-				updateHitbox();
+		} else {
 
-			default:
-
-				switch (noteType) {
-					case 'Kill':
-						frames = Paths.getSparrowAtlas('customNotes/kill');
-					case 'Shield Note':
-						frames = Paths.getSparrowAtlas('customNotes/shield');
-					default:
+			switch (noteType) {
+				case 'Kill':
+					frames = Paths.getSparrowAtlas('customNotes/kill');
+				case 'Shield Note':
+					frames = Paths.getSparrowAtlas('customNotes/shield');
+				default:
+					if (!PlayState.isGood)
 						frames = Paths.getSparrowAtlas('NOTE_assets');
-				}
+					else
+						frames = Paths.getSparrowAtlas('NOTE_assets-good');
+			}
 
-				animation.addByPrefix('greenScroll', 'green0');
-				animation.addByPrefix('redScroll', 'red0');
-				animation.addByPrefix('blueScroll', 'blue0');
-				animation.addByPrefix('purpleScroll', 'purple0');
+			animation.addByPrefix('greenScroll', 'green0');
+			animation.addByPrefix('redScroll', 'red0');
+			animation.addByPrefix('blueScroll', 'blue0');
+			animation.addByPrefix('purpleScroll', 'purple0');
 
-				animation.addByPrefix('purpleholdend', 'pruple end hold');
-				animation.addByPrefix('greenholdend', 'green hold end');
-				animation.addByPrefix('redholdend', 'red hold end');
-				animation.addByPrefix('blueholdend', 'blue hold end');
+			animation.addByPrefix('purpleholdend', 'pruple end hold');
+			animation.addByPrefix('greenholdend', 'green hold end');
+			animation.addByPrefix('redholdend', 'red hold end');
+			animation.addByPrefix('blueholdend', 'blue hold end');
 
-				animation.addByPrefix('purplehold', 'purple hold piece');
-				animation.addByPrefix('greenhold', 'green hold piece');
-				animation.addByPrefix('redhold', 'red hold piece');
-				animation.addByPrefix('bluehold', 'blue hold piece');
+			animation.addByPrefix('purplehold', 'purple hold piece');
+			animation.addByPrefix('greenhold', 'green hold piece');
+			animation.addByPrefix('redhold', 'red hold piece');
+			animation.addByPrefix('bluehold', 'blue hold piece');
 
-				setGraphicSize(Std.int(width * 0.7));
-				updateHitbox();
-				antialiasing = true;
+			setGraphicSize(Std.int(width * 0.7));
+			updateHitbox();
+			antialiasing = true;
 		}
 
 

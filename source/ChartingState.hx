@@ -134,7 +134,10 @@ class ChartingState extends MusicBeatState
 				player2: 'dad',
 				stage: 'stage',
 				speed: 1,
-				validScore: false
+				validScore: false,
+				hasDialogue: false,
+				isPixel: false,
+				isGood: false
 			};
 		}
 
@@ -256,10 +259,30 @@ class ChartingState extends MusicBeatState
 
 		var stages:Array<String> = CoolUtil.coolTextFile(Paths.txt('stageList'));
 
-		var stageDropDown = new FlxUIDropDownMenu(100, 200, FlxUIDropDownMenu.makeStrIdLabelArray(stages, true), function(stage:String) {
+		var stageDropDown = new FlxUIDropDownMenu(10, 125, FlxUIDropDownMenu.makeStrIdLabelArray(stages, true), function(stage:String) {
 			_song.stage = stages[Std.parseInt(stage)];
 		});
 		stageDropDown.selectedLabel = _song.stage;
+
+		// Extra check boxessss
+
+		var hasDialogueCheckbox:FlxUICheckBox = new FlxUICheckBox(10, 150, null, null, "Has Dialogue", 100);
+		hasDialogueCheckbox.checked = _song.hasDialogue;
+		hasDialogueCheckbox.callback = function() {
+			_song.hasDialogue = hasDialogueCheckbox.checked;
+		}
+
+		var isPixelCheckbox:FlxUICheckBox = new FlxUICheckBox(140, 150, null, null, "Is Pixel", 100);
+		isPixelCheckbox.checked = _song.isPixel;
+		isPixelCheckbox.callback = function() {
+			_song.isPixel = isPixelCheckbox.checked;
+		}
+
+		var isGoodCheckbox:FlxUICheckBox = new FlxUICheckBox(10, 170, null, null, "Is Good", 100);
+		isGoodCheckbox.checked = _song.isGood;
+		isGoodCheckbox.callback = function() {
+			_song.isGood = isGoodCheckbox.checked;
+		}
 
 		var tab_group_song = new FlxUI(null, UI_box);
 		tab_group_song.name = "Song";
@@ -276,6 +299,10 @@ class ChartingState extends MusicBeatState
 		tab_group_song.add(player1DropDown);
 		tab_group_song.add(player2DropDown);
 		tab_group_song.add(stageDropDown);
+
+		tab_group_song.add(hasDialogueCheckbox);
+		tab_group_song.add(isGoodCheckbox);
+		tab_group_song.add(isPixelCheckbox);
 
 		UI_box.addGroup(tab_group_song);
 		UI_box.scrollFactor.set();
