@@ -1,5 +1,6 @@
 spookeez::week2
 south::week2
+monster::week2
 pico::week3
 philly::week3
 blammed::week3
