@@ -927,7 +927,8 @@ class PlayState extends MusicBeatState
 				case 'thorns':
 					schoolIntro(doof);
 				default:
-					startCountdown();
+					if (!hasDialogue)
+						startCountdown();
 			}
 
 			if (hasDialogue) {
