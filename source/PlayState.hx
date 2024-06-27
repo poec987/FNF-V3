@@ -44,6 +44,7 @@ using StringTools;
 
 #if desktop
 import Discord.DiscordClient;
+import sys.FileSystem;
 #end
 
 class PlayState extends MusicBeatState
@@ -282,8 +283,18 @@ class PlayState extends MusicBeatState
 				dialogue = CoolUtil.coolTextFile(Paths.txt('winter-horrorland/winter-horrorlandDialogue'));				
 		}
 
+		#if desktop
 		if (hasDialogue)
-			dialogue = CoolUtil.coolTextFile(Paths.txt(SONG.song.toLowerCase().trim()+'/'+SONG.song.toLowerCase().trim()+'Dialogue'));
+		{
+			var files:Array<String> = sys.FileSystem.readDirectory('assets/data/'+SONG.song.toLowerCase().trim());
+			var dialogueFiles:Array<String> = [];
+			for (i in 0...files.length) {
+				if (files[i].endsWith('.txt'))
+					dialogueFiles.push(files[i].replace('.txt', '').trim());
+			}
+			dialogue = CoolUtil.coolTextFile(Paths.txt(SONG.song.toLowerCase().trim()+'/'+dialogueFiles[FlxG.random.int(0, dialogueFiles.length-1)]));
+		}
+		#end
 
 		if (SONG.stage == "spooky")
 		{
