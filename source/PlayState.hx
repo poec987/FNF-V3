@@ -2601,8 +2601,10 @@ class PlayState extends MusicBeatState
 					new FlxTimer().start(0.05714285714, function(timer:FlxTimer) {
 						picoShoot.visible = false;
 						dad.visible = true;
-						if (!beefSafe)
+						if (!beefSafe) {
 							health -= 0.5;
+							if (health <= 0) health = 0.1;
+						}
 						beefSafe = false;
 					});
 				case "Kill Santa":
