@@ -124,6 +124,7 @@ class PlayState extends MusicBeatState
 	var picoShoot:FlxSprite;
 	var beefSafe:Bool = false;
 	var shootSound:FlxSound;
+	var lastShootBeat:Int = 0;
 
 	var limo:FlxSprite;
 	var grpLimoDancers:FlxTypedGroup<BackgroundDancer>;
@@ -773,7 +774,7 @@ class PlayState extends MusicBeatState
 			shootSound = new FlxSound().loadEmbedded(Paths.sound('shoot'));
 			FlxG.sound.list.add(shootSound);
 
-			picoShoot = new FlxSprite(100, (dad.y/2)-30);
+			picoShoot = new FlxSprite(dad.x+30, (dad.y/2)-30);
 			picoShoot.frames = Paths.getSparrowAtlas('characters/Pico_Shooting');
 			picoShoot.animation.addByPrefix('shoot', "Pico Shoot Hip Full");
 			picoShoot.flipX = true;
@@ -1621,10 +1622,12 @@ class PlayState extends MusicBeatState
 		if (health > 2)
 			health = 2;
 
-		if (healthBar.percent < 20)
-			iconP1.animation.curAnim.curFrame = 1;
-		else
-			iconP1.animation.curAnim.curFrame = 0;
+		if (curBeat > lastShootBeat + 1) {
+			if (healthBar.percent < 20)
+				iconP1.animation.curAnim.curFrame = 1;
+			else
+				iconP1.animation.curAnim.curFrame = 0;
+		}
 
 		if (healthBar.percent > 80)
 			iconP2.animation.curAnim.curFrame = 1;
@@ -2604,6 +2607,8 @@ class PlayState extends MusicBeatState
 						if (!beefSafe) {
 							health -= 0.5;
 							if (health <= 0) health = 0.1;
+							iconP1.animation.curAnim.curFrame = 1;
+							lastShootBeat = curBeat;
 						}
 						beefSafe = false;
 					});
@@ -2774,6 +2779,8 @@ class PlayState extends MusicBeatState
 
 		iconP1.setGraphicSize(Std.int(iconP1.width + 30));
 		iconP2.setGraphicSize(Std.int(iconP2.width + 30));
+		iconP1.angle = curBeat % 2 == 0 ? 15 : -15;
+		iconP2.angle = curBeat % 2 == 0 ? -15 : 15;
 
 		iconP1.updateHitbox();
 		iconP2.updateHitbox();
