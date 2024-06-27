@@ -223,6 +223,15 @@ class ChartingState extends MusicBeatState
 			saveLevel();
 		});
 
+		var clearChart:FlxButton = new FlxButton(110, saveButton.y + 30, "Clear Chart", function()
+		{
+			for (i in 0..._song.notes.length) {
+				_song.notes[i].sectionNotes = [];
+			}
+			
+			updateGrid();
+		});
+
 		var reloadSong:FlxButton = new FlxButton(saveButton.x + saveButton.width + 10, saveButton.y, "Reload Audio", function()
 		{
 			loadSong(_song.song);
@@ -303,6 +312,8 @@ class ChartingState extends MusicBeatState
 		tab_group_song.add(hasDialogueCheckbox);
 		tab_group_song.add(isGoodCheckbox);
 		tab_group_song.add(isPixelCheckbox);
+
+		tab_group_song.add(clearChart);
 
 		UI_box.addGroup(tab_group_song);
 		UI_box.scrollFactor.set();
