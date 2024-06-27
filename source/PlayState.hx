@@ -1065,6 +1065,7 @@ class PlayState extends MusicBeatState
 
 			var introAssets:Map<String, Array<String>> = new Map<String, Array<String>>();
 			introAssets.set('default', ['ready', "set", "go"]);
+			introAssets.set('good', ['ready-good', "set-good", "go-good"]);
 			introAssets.set('school', [
 				'stages/weeb/pixelUI/ready-pixel',
 				'stages/weeb/pixelUI/set-pixel',
@@ -1080,6 +1081,7 @@ class PlayState extends MusicBeatState
 			var altSuffix:String = "";
 
 			if (isGood)
+				introAlts = introAssets.get('good');
 				altSuffix = '-good';
 
 			for (value in introAssets.keys())
@@ -1089,6 +1091,7 @@ class PlayState extends MusicBeatState
 					introAlts = introAssets.get(value);
 					altSuffix = '-pixel';
 					if (isGood)
+						introAlts = introAssets.get('schoolEvil');
 						altSuffix = '-pixel-good';
 				}
 			}
