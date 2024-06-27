@@ -107,6 +107,8 @@ class PlayState extends MusicBeatState
 
 	private var iconP1:HealthIcon;
 	private var iconP2:HealthIcon;
+	private var updateIconP1:Bool = true;
+	private var updateIconP2:Bool = true;
 	private var camHUD:FlxCamera;
 	private var camGame:FlxCamera;
 
@@ -124,7 +126,6 @@ class PlayState extends MusicBeatState
 	var picoShoot:FlxSprite;
 	var beefSafe:Bool = false;
 	var shootSound:FlxSound;
-	var lastShootBeat:Int = 0;
 
 	var limo:FlxSprite;
 	var grpLimoDancers:FlxTypedGroup<BackgroundDancer>;
@@ -1622,17 +1623,19 @@ class PlayState extends MusicBeatState
 		if (health > 2)
 			health = 2;
 
-		if (curBeat > lastShootBeat + 1) {
+		if (updateIconP1) {
 			if (healthBar.percent < 20)
 				iconP1.animation.curAnim.curFrame = 1;
 			else
 				iconP1.animation.curAnim.curFrame = 0;
 		}
 
-		if (healthBar.percent > 80)
-			iconP2.animation.curAnim.curFrame = 1;
-		else
-			iconP2.animation.curAnim.curFrame = 0;
+		if (updateIconP2) {
+			if (healthBar.percent > 80)
+				iconP2.animation.curAnim.curFrame = 1;
+			else
+				iconP2.animation.curAnim.curFrame = 0;
+		}
 
 		/* if (FlxG.keys.justPressed.NINE)
 			FlxG.switchState(new Charting()); */
@@ -2608,7 +2611,11 @@ class PlayState extends MusicBeatState
 							health -= 0.5;
 							if (health <= 0) health = 0.1;
 							iconP1.animation.curAnim.curFrame = 1;
-							lastShootBeat = curBeat;
+							updateIconP1 = false;
+							new FlxTimer().start((Conductor.crochet/1000) * 2, (tmr) -> {
+								iconP1.animation.curAnim.curFrame = 0;
+								updateIconP1 = true;
+							});
 						}
 						beefSafe = false;
 					});
