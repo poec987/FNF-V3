@@ -55,17 +55,18 @@ class Note extends FlxSprite
 
 		var daStage:String = PlayState.curStage;
 
+		var suffix:String = '';
+
+		if (PlayState.isGood || PlayState.curSong == "Thorns")
+			suffix = '-good';
 		
 		if (daStage == 'school' || daStage == 'schoolEvil' || PlayState.isPixel) {
-			if (PlayState.curSong == "Thorns" || PlayState.isGood)
-				loadGraphic(Paths.image('stages/weeb/pixelUI/arrows-pixels-good'), true, 17, 17);
-			else
-				switch (noteType) {
-					case 'Kill':
-						loadGraphic(Paths.image('stages/weeb/pixelUI/customNotes/kill-pixels'), true, 17, 17);
-					default:
-						loadGraphic(Paths.image('stages/weeb/pixelUI/arrows-pixels'), true, 17, 17);
-				}
+			switch (noteType) {
+				case 'Kill':
+					loadGraphic(Paths.image('stages/weeb/pixelUI/customNotes/kill-pixels'+suffix), true, 17, 17);
+				default:
+					loadGraphic(Paths.image('stages/weeb/pixelUI/arrows-pixels'+suffix), true, 17, 17);
+			}
 			animation.add('greenScroll', [6]);
 			animation.add('redScroll', [7]);
 			animation.add('blueScroll', [5]);
@@ -73,15 +74,12 @@ class Note extends FlxSprite
 
 			if (isSustainNote)
 			{
-				if (PlayState.curSong == "Thorns")
-					loadGraphic(Paths.image('weeb/pixelUI/arrowEnds-good'), true, 7, 6);
-				else
-					switch (noteType) {
-						case 'Kill':
-							loadGraphic(Paths.image('stages/weeb/pixelUI/customNotes/killEnds'), true, 7, 6);
-						default:
-							loadGraphic(Paths.image('stages/weeb/pixelUI/arrowEnds'), true, 7, 6);
-					}
+				switch (noteType) {
+					case 'Kill':
+						loadGraphic(Paths.image('stages/weeb/pixelUI/customNotes/killEnds'+suffix), true, 7, 6);
+					default:
+						loadGraphic(Paths.image('stages/weeb/pixelUI/arrowEnds'+suffix), true, 7, 6);
+				}
 
 				animation.add('purpleholdend', [4]);
 				animation.add('greenholdend', [6]);
@@ -101,14 +99,11 @@ class Note extends FlxSprite
 
 			switch (noteType) {
 				case 'Kill':
-					frames = Paths.getSparrowAtlas('customNotes/kill');
+					frames = Paths.getSparrowAtlas('customNotes/kill'+suffix);
 				case 'Shield Note':
-					frames = Paths.getSparrowAtlas('customNotes/shield');
+					frames = Paths.getSparrowAtlas('customNotes/shield'+suffix);
 				default:
-					if (!PlayState.isGood)
-						frames = Paths.getSparrowAtlas('NOTE_assets');
-					else
-						frames = Paths.getSparrowAtlas('NOTE_assets-good');
+					frames = Paths.getSparrowAtlas('NOTE_assets'+suffix);
 			}
 
 			animation.addByPrefix('greenScroll', 'green0');
