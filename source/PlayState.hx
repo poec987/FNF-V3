@@ -146,6 +146,8 @@ class PlayState extends MusicBeatState
 	var songScore:Int = 0;
 	var scoreTxt:FlxText;
 	
+	var specialgf:Bool = false;
+	
 	public static var campaignScore:Int = 0;
 
 	var defaultCamZoom:Float = 1.05;
@@ -183,6 +185,11 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
+		if (FlxG.random.bool(1))
+		{
+			specialgf = true;
+		}
+		
 		theFunne = FlxG.save.data.newInput;
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
@@ -661,20 +668,29 @@ class PlayState extends MusicBeatState
 
 		var gfVersion:String = 'gf';
 
-		switch (curStage)
+		if (specialgf == false || SONG.song.toLowerCase() == 'tutorial')
 		{
-			case 'limo':
+			switch (curStage)
+			{
+				case 'limo':
+					gfVersion = 'gf-car';
+				case 'mall' | 'mallEvil':
+					gfVersion = 'gf-christmas';
+				case 'school':
+					gfVersion = 'gf-pixel';
+				case 'schoolEvil':
+					gfVersion = 'gf-pixel';
+					
+			}
+			if (curStage == 'limo')
 				gfVersion = 'gf-car';
-			case 'mall' | 'mallEvil':
-				gfVersion = 'gf-christmas';
-			case 'school':
-				gfVersion = 'gf-pixel';
-			case 'schoolEvil':
-				gfVersion = 'gf-pixel';
+		}
+		else
+		{
+			gfVersion = 'gogfgo';
 		}
 
-		if (curStage == 'limo')
-			gfVersion = 'gf-car';
+		
 
 		gf = new Character(400, 130, gfVersion);
 		gf.scrollFactor.set(0.95, 0.95);

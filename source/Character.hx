@@ -61,6 +61,20 @@ class Character extends FlxSprite
 				addOffset('scared', -2, -17);
 
 				playAnim('danceRight');
+				
+			case 'gogfgo':
+				// GIRLFRIEND CODE
+				tex = Paths.getSparrowAtlas('characters/gogirlfriendgo');
+				frames = tex;
+				animation.addByPrefix('idle', 'dance', 30, true);
+
+				addOffset("idle", -200, -400);
+
+				playAnim('idle');
+				
+				setGraphicSize(Std.int(width * 2));
+				updateHitbox();
+
 
 			case 'gf-christmas':
 				tex = Paths.getSparrowAtlas('characters/christmas/gfChristmas');
