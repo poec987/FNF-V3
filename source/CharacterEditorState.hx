@@ -74,7 +74,7 @@ class CharacterEditorState extends MusicBeatState
 
         add(char);
 
-        bpmTxt = new FlxText(1000, 50, 0, "F1 to leave bro", 16);
+        bpmTxt = new FlxText(1000, 50, 0, "F1 to kys", 16);
 		bpmTxt.scrollFactor.set();
 		add(bpmTxt);
 
@@ -126,6 +126,10 @@ class CharacterEditorState extends MusicBeatState
         var flipXCB:FlxUICheckBox = new FlxUICheckBox(10,90,null,null,"FlipX?");
         var flipYCB:FlxUICheckBox = new FlxUICheckBox(10,110,null,null,"FlipY?");
 
+        var playAnimButton:FlxUIButton = new FlxUIButton(100, 75, "Play", () -> {
+            char.animation.curAnim.play(true);
+        });
+
         var addAnimButton:FlxUIButton = new FlxUIButton(10,130,"Add Animation", function() {
             charArray.push("anim::"+animNameTB.text+"::"+animXmlTB.text+"::"+Std.string(fpsNumStep.value)+"::"+Std.string(loopCB.checked)+"::"+Std.string(flipXCB.checked)+"::"+Std.string(flipYCB.checked));
             //trace(charArray);
@@ -133,7 +137,7 @@ class CharacterEditorState extends MusicBeatState
         });
 
         animsDropdown = new FlxUIDropDownMenu(100, 50, FlxUIDropDownMenu.makeStrIdLabelArray(animsList, true), function(anim:String) {
-            char.playAnim(animsList[Std.parseInt(anim)], true);
+            char.playAnim(anim, true);
         });
 
         animsDropdown.dropDirection = FlxUIDropDownMenuDropDirection.Down;
@@ -145,6 +149,7 @@ class CharacterEditorState extends MusicBeatState
         tab_group_animations.add(flipXCB);
         tab_group_animations.add(flipYCB);
         tab_group_animations.add(addAnimButton);
+        tab_group_animations.add(playAnimButton);
         tab_group_animations.add(animsDropdown);
 
         UI_box.addGroup(tab_group_animations);
