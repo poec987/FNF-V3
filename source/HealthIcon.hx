@@ -45,10 +45,8 @@ class HealthIcon extends FlxSprite
 		animation.add('lock', [33, 33], 0, false, isPlayer);
 
 		if (!animation.exists(char)) {
-			trace("Softcoded Character Detected");
 			var charFile:String = Paths.txtImages("characters/"+char);
 			var charFileParams:Array<String> = CoolUtil.coolTextFile(charFile);
-			trace("CHARACTER PARAMS: "+charFileParams);
 
 			for (i in 0...charFileParams.length) {
 				charFileParams[i].trim();
