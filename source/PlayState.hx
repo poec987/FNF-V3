@@ -852,7 +852,7 @@ class PlayState extends MusicBeatState
 		var scorePosOffsetY = PlayState.SONG.song.toLowerCase() == "thorns" || isGood ? 50 : 30;
 
 		// Add Kade Engine watermark
-		var kadeEngineWatermark = new FlxText(4,FlxG.height - 4,0,SONG.song + " - KE " + MainMenuState.kadeEngineVer, 16);
+		var kadeEngineWatermark = new FlxText(4,FlxG.height - 4,0,SONG.song + " - CE " + MainMenuState.kadeEngineVer, 16);
 		kadeEngineWatermark.setFormat(Paths.font(scoreFont), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		kadeEngineWatermark.scrollFactor.set();
 		add(kadeEngineWatermark);
