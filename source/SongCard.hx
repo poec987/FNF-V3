@@ -61,21 +61,21 @@ class SongCard extends FlxTypedGroup<FlxSprite>{
             case 'south':
                 setName("South V3", "Didgie");
             case 'monster':
-                setName("Monster V3", "");
+                setName("Monster V3", "NOT DIDGIE (ft PoeDev)");
             // Week 3
             case 'pico':
                 setName("Pico V3", "");
             case 'philly':
                 setName("Philly Nice V3", "Didgie");
             case 'blammed':
-                setName("Blammed V3", "");
+                setName("Blammed V3", "x8c8r and Didgie");
             // Week 4
             case 'satin-panties':
                 setName("Satin Panties V3", "");
             case 'high':
                 setName("High V3", "jo560hs");
             case 'milf':
-                setName("M.I.L.F. V3", "");
+                setName("M.I.L.F. V3", "Xarion");
             // Week 5
             case 'cocoa':
                 setName("Cocoa V3", "Didgie");
@@ -91,7 +91,7 @@ class SongCard extends FlxTypedGroup<FlxSprite>{
             case 'thorns':
                 setName("Thorns V3", "");
             case 'unfairness-jside':
-                setName("Unfairness J-Side V3", "");
+                setName("Unfairness J-Side V3", "jo560hs");
             // Remixes
             case 'tutorial-bside':
                 setName("Tutorial BSide", "x8c8r");
@@ -101,7 +101,7 @@ class SongCard extends FlxTypedGroup<FlxSprite>{
             case 'do-you-get-the-refrance':
                 setName("do you get the refrance", "x8c8r");
             case 'stop-right-there-criminal-scum':
-                setName("Stop right there criminal scum", "");
+                setName("Stop right there criminal scum", "PoeDev");
 
             default:
                 setName("keemstar", "bald shadow mario");
