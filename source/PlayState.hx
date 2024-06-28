@@ -110,6 +110,7 @@ class PlayState extends MusicBeatState
 	private var updateIconP1:Bool = true;
 	private var updateIconP2:Bool = true;
 	private var camHUD:FlxCamera;
+	private var camOther:FlxCamera;
 	private var camGame:FlxCamera;
 
 	var dialogue:Array<String> = ['blah blah blah', 'coolswag'];
@@ -232,9 +233,12 @@ class PlayState extends MusicBeatState
 		camGame = new FlxCamera();
 		camHUD = new FlxCamera();
 		camHUD.bgColor.alpha = 0;
+		camOther = new FlxCamera();
+		camOther.bgColor.alpha = 0;
 
 		FlxG.cameras.reset(camGame);
 		FlxG.cameras.add(camHUD);
+		FlxG.cameras.add(camOther);
 
 		FlxCamera.defaultCameras = [camGame];
 
@@ -891,32 +895,17 @@ class PlayState extends MusicBeatState
 			switch (curSong.toLowerCase())
 			{
 				case "winter-horrorland":
-					var blackScreen:FlxSprite = new FlxSprite(0, 0).makeGraphic(Std.int(FlxG.width * 2), Std.int(FlxG.height * 2), FlxColor.BLACK);
-					add(blackScreen);
-					blackScreen.scrollFactor.set();
+					var frosted:FlxSprite = new FlxSprite().loadGraphic(Paths.image('thefrostedoneishere'));
+					add(frosted);
+					frosted.scrollFactor.set();
+					frosted.cameras = [camOther];
 					camHUD.visible = false;
 
-					new FlxTimer().start(0.1, function(tmr:FlxTimer)
+					new FlxTimer().start(4, function(tmr:FlxTimer)
 					{
-						remove(blackScreen);
-						FlxG.sound.play(Paths.sound('Lights_Turn_On'));
-						camFollow.y = -2050;
-						camFollow.x += 200;
-						FlxG.camera.focusOn(camFollow.getPosition());
-						FlxG.camera.zoom = 1.5;
-
-						new FlxTimer().start(0.8, function(tmr:FlxTimer)
-						{
-							camHUD.visible = true;
-							remove(blackScreen);
-							FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, 2.5, {
-								ease: FlxEase.quadInOut,
-								onComplete: function(twn:FlxTween)
-								{
-									startDialogue(doof);
-								}
-							});
-						});
+						remove(frosted);
+						camHUD.visible = true;
+						startDialogue(doof);
 					});
 				case 'senpai':
 					schoolIntro(doof);
