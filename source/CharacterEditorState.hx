@@ -165,10 +165,24 @@ class CharacterEditorState extends MusicBeatState
         UI_box.addGroup(tab_group_animations);
     }
 
+    var offsetAnimsDropdown:FlxUIDropDownMenu;
+
     function addOffsetsUI():Void
     {
         var tab_group_offsets = new FlxUI(null, UI_box);
         tab_group_offsets.name = 'Offsets';
+
+        offsetAnimsDropdown = new FlxUIDropDownMenu(100, 50, FlxUIDropDownMenu.makeStrIdLabelArray(animsList, true));
+
+        var offsetStepperX:FlxUINumericStepper = new FlxUINumericStepper(10,25,1,0,-1000,1000);
+        var offsetStepperY:FlxUINumericStepper = new FlxUINumericStepper(10,50,1,0,-1000,1000);
+
+        var animNameTB:FlxUIInputText = new FlxUIInputText(10,10,180);
+
+        tab_group_offsets.add(offsetAnimsDropdown);
+        tab_group_offsets.add(animNameTB);
+        tab_group_offsets.add(offsetStepperX);
+        tab_group_offsets.add(offsetStepperY);
 
         UI_box.addGroup(tab_group_offsets);
     }
