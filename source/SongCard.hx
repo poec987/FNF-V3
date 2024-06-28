@@ -68,7 +68,7 @@ class SongCard extends FlxTypedGroup<FlxSprite>{
             case 'philly':
                 setName("Philly Nice V3", "Didgie");
             case 'blammed':
-                setName("Blammed V3", "x8c8r and Didgie");
+                setName("Blammed V3", "x8c8r");
             // Week 4
             case 'satin-panties':
                 setName("Satin Panties V3", "");
@@ -95,6 +95,8 @@ class SongCard extends FlxTypedGroup<FlxSprite>{
             // Remixes
             case 'tutorial-bside':
                 setName("Tutorial BSide", "x8c8r");
+			case 'blammed-alt':
+                setName("Blammed V3 ALT", "x8c8r & Didgie");
             // Bonus
             case 'dotdotdot':
                 setName("Dotdotdot", "Didgie");
