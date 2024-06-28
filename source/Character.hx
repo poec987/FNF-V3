@@ -611,8 +611,7 @@ class Character extends FlxSprite
 						case 'flipY':
 							flipY = true;
 						case 'size':
-							width = Std.parseFloat(line[1]);
-							height = Std.parseFloat(line[2]);
+							setGraphicSize(Std.parseFloat(line[1]), Std.parseFloat(line[2]));
 					}
 				}
 
