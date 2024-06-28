@@ -1,0 +1,46 @@
+sprite::BOYFRIEND
+icon::26::27
+
+anim::idle::BF idle dance::24
+
+anim::singUP::BF NOTE UP0::24
+anim::singDOWN::BF NOTE DOWN0::24
+anim::singLEFT::BF NOTE LEFT0::24
+anim::singRIGHT::BF NOTE RIGHT0::24
+
+anim::singUPmiss::BF NOTE UP MISS::24
+anim::singDOWNmiss::BF NOTE DOWN MISS::24
+anim::singLEFTmiss::BF NOTE LEFT MISS::24
+anim::singRIGHTmiss::BF NOTE RIGHT MISS::24
+
+anim::hey::BF HEY::24
+
+anim::firstDeath::BF dies::24
+anim::deathLoop::BF Dead Loop::24::true
+anim::deathConfirm::BF Dead confirm::24
+
+anim::scared::BF idle shaking::24
+
+
+
+offset::idle::-5::0
+
+offset::singUP::-29::27
+offset::singDOWN::-10::-50
+offset::singLEFT::12::-6
+offset::singRIGHT::-38::-7
+
+offset::singUPmiss::-29::27
+offset::singDOWNmiss::-11::-19
+offset::singLEFTmiss::12::24
+offset::singRIGHTmiss::-30::21
+
+offset::hey::7::4
+
+offset::firstDeath::37::11
+offset::deathLoop::37::5
+offset::deathConfirm::37::69
+
+offset::scared::-4::0
+
+flipX

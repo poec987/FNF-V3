@@ -110,7 +110,6 @@ class CharacterEditorState extends MusicBeatState
 
     var animsDropdown:FlxUIDropDownMenu;
     var animsList:Array<String> = [""];
-    var animsData:Array<String> = [""];
 
     function addAnimationsUI():Void
     {
@@ -122,18 +121,29 @@ class CharacterEditorState extends MusicBeatState
         
         var fpsNumStep:FlxUINumericStepper = new FlxUINumericStepper(10,50,1,24,0,999);
 
-        var loopCB:FlxUICheckBox = new FlxUICheckBox(10,70,null,null,"Loops?");
-        var flipXCB:FlxUICheckBox = new FlxUICheckBox(10,90,null,null,"FlipX?");
-        var flipYCB:FlxUICheckBox = new FlxUICheckBox(10,110,null,null,"FlipY?");
+        var loopCB:FlxUICheckBox = new FlxUICheckBox(10,70,null,null,"Loop");
+        var flipXCB:FlxUICheckBox = new FlxUICheckBox(10,90,null,null,"FlipX");
+        var flipYCB:FlxUICheckBox = new FlxUICheckBox(10,110,null,null,"FlipY");
 
         var playAnimButton:FlxUIButton = new FlxUIButton(100, 75, "Play", () -> {
             char.animation.curAnim.play(true);
         });
 
         var addAnimButton:FlxUIButton = new FlxUIButton(10,130,"Add Animation", function() {
-            charArray.push("anim::"+animNameTB.text+"::"+animXmlTB.text+"::"+Std.string(fpsNumStep.value)+"::"+Std.string(loopCB.checked)+"::"+Std.string(flipXCB.checked)+"::"+Std.string(flipYCB.checked));
+            var addedAnimData = "anim::"+animNameTB.text+"::"+animXmlTB.text+"::"+Std.string(fpsNumStep.value)+"::"+Std.string(loopCB.checked)+"::"+Std.string(flipXCB.checked)+"::"+Std.string(flipYCB.checked);
+            if (!animsList.contains(animNameTB.text.trim()))
+                charArray.push(addedAnimData);
+            else
+            {
+                for (i in 0...charArray.length) {
+                    var line:Array<String> = charArray[i].trim().split("::");
+                    if (line[0] == "anim" && line[1] == animNameTB.text.trim()) {
+                        charArray[i] = addedAnimData;
+                    }
+                }
+            }
             //trace(charArray);
-            updateAnimsTab();
+            updateAnimsTab(true);
         });
 
         animsDropdown = new FlxUIDropDownMenu(100, 50, FlxUIDropDownMenu.makeStrIdLabelArray(animsList, true), function(anim:String) {
@@ -201,30 +211,25 @@ class CharacterEditorState extends MusicBeatState
 
     function loadAnims() {
         animsList = [];
-        animsData = [];
         // char.animation.destroyAnimations();
         for (i in 0...charArray.length) {
             var line:Array<String> = charArray[i].trim().split("::");
 
             if (line[0] == "anim") {
-                /*var loopa:Bool = false;
-				var flipXa:Bool = false;
-				var flipYa:Bool = false;
-
-				if (line[4] == "true")
-					loopa = true;
-				if (line[5] == "true")
-					flipXa = true;
-				if (line[6] == "true")
-					flipYa = true;*/
                 animsList.push(line[1]);
-                animsData.push(charArray[i]);
-                // char.animation.addByPrefix(line[1], line[2], Std.parseFloat(line[3]), loopa, flipXa, flipYa);
             }
         }
     }
 
-    function updateAnimsTab() {
+    function updateAnimsTab(?reloadChar:Bool = false) {
+        for (i in 0...charArray.length) {
+            charArray[i] = charArray[i].replace("\n", "").trim();
+        }
+        if (reloadChar) {
+            char.destroy();
+            char = new Character(0, 0, charName, false, charArray);
+            add(char);
+        }
         loadAnims();
         animsDropdown.setData(FlxUIDropDownMenu.makeStrIdLabelArray(animsList));
     }

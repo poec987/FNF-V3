@@ -17,7 +17,7 @@ class Character extends FlxSprite
 
 	public var holdTimer:Float = 0;
 
-	public function new(x:Float, y:Float, ?character:String = "bf", ?isPlayer:Bool = false)
+	public function new(x:Float, y:Float, ?character:String = "bf", ?isPlayer:Bool = false, ?characterArray:Array<String>)
 	{
 		super(x, y);
 
@@ -578,15 +578,19 @@ class Character extends FlxSprite
 
 				playAnim('idle');
 			default:
-				var charFile:String = Paths.txtImages("characters/"+curCharacter);
+				var charFile:String = Paths.txt("characters/"+curCharacter);
 				var charFileParams:Array<String> = CoolUtil.coolTextFile(charFile);
+
+				if (characterArray != null) {
+					charFileParams = characterArray;
+				}
 
 				for (i in 0...charFileParams.length) {
 					charFileParams[i].trim();
 					var line:Array<String> = charFileParams[i].split("::");
 					switch (line[0]) {
 						case 'sprite':
-							frames = Paths.getSparrowAtlas('characters/'+line[1]);
+							frames = Paths.getSparrowAtlasShared('characters/'+line[1]);
 						case 'anim':
 							var loopa:Bool = false;
 							var flipXa:Bool = false;

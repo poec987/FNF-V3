@@ -16,7 +16,7 @@ class Paths
 		currentLevel = name.toLowerCase();
 	}
 
-	static function getPath(file:String, type:AssetType, library:Null<String>)
+	static function getPath(file:String, type:AssetType, library:Null<String>, ?forceShared:Bool=false)
 	{
 		if (library != null)
 			return getLibraryPath(file, library);
@@ -24,7 +24,7 @@ class Paths
 		if (currentLevel != null)
 		{
 			var levelPath = getLibraryPathForce(file, currentLevel);
-			if (OpenFlAssets.exists(levelPath, type))
+			if (OpenFlAssets.exists(levelPath, type) && !forceShared)
 				return levelPath;
 
 			levelPath = getLibraryPathForce(file, "shared");
@@ -53,6 +53,11 @@ class Paths
 	inline static public function file(file:String, type:AssetType = TEXT, ?library:String)
 	{
 		return getPath(file, type, library);
+	}
+
+	inline static public function sharedFile(file:String, type:AssetType = TEXT, ?library:String)
+	{
+		return getPath(file, type, library, true);
 	}
 
 	inline static public function txt(key:String, ?library:String)
@@ -105,6 +110,11 @@ class Paths
 		return getPath('images/$key.png', IMAGE, library);
 	}
 
+	inline static public function sharedImage(key:String, ?library:String)
+	{
+		return getPath('images/$key.png', IMAGE, library, true);
+	}
+
 	inline static public function font(key:String)
 	{
 		return 'assets/fonts/$key';
@@ -113,6 +123,11 @@ class Paths
 	inline static public function getSparrowAtlas(key:String, ?library:String)
 	{
 		return FlxAtlasFrames.fromSparrow(image(key, library), file('images/$key.xml', library));
+	}
+
+	inline static public function getSparrowAtlasShared(key:String, ?library:String)
+	{
+		return FlxAtlasFrames.fromSparrow(sharedImage(key, library), sharedFile('images/$key.xml', library));
 	}
 
 	inline static public function getPackerAtlas(key:String, ?library:String)
