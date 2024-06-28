@@ -59,6 +59,8 @@ class CharacterEditorState extends MusicBeatState
 
     var charName:String;
 
+    var isPlayer:Bool = false;
+
     override function create() {
 
         var tabs = [
@@ -68,7 +70,7 @@ class CharacterEditorState extends MusicBeatState
 			{name: "Options", label: 'Options'}
 		];
 
-        char = new Character(0, 0);
+        char = new Character(0, 0, "bf", isPlayer);
 
         FlxG.mouse.visible = true;
 
@@ -147,6 +149,27 @@ class CharacterEditorState extends MusicBeatState
         });
 
         animsDropdown = new FlxUIDropDownMenu(100, 50, FlxUIDropDownMenu.makeStrIdLabelArray(animsList, true), function(anim:String) {
+            for (i in 0...charArray.length) {
+                var line:Array<String> = charArray[i].trim().split("::");
+                if (line[0] == "anim" && line[1] == anim.trim()) {
+                    animNameTB.text = line[1].trim();
+                    animXmlTB.text = line[2].trim();
+                    fpsNumStep.value = Std.parseFloat(line[3].trim());
+                    if (line[4] == "true")
+                        loopCB.checked = true;
+                    else
+                        loopCB.checked = false;
+                    if (line[5] == "true")
+                        flipXCB.checked = true;
+                    else
+                        flipXCB.checked = false;
+                    if (line[6] == "true")
+                        flipYCB.checked = true;
+                    else
+                        flipYCB.checked = false;
+                }
+            }
+
             char.playAnim(anim, true);
         });
 
@@ -172,15 +195,54 @@ class CharacterEditorState extends MusicBeatState
         var tab_group_offsets = new FlxUI(null, UI_box);
         tab_group_offsets.name = 'Offsets';
 
-        offsetAnimsDropdown = new FlxUIDropDownMenu(100, 50, FlxUIDropDownMenu.makeStrIdLabelArray(animsList, true));
+        var offsetStepperX:FlxUINumericStepper = new FlxUINumericStepper(10,10,1,0,-1000,1000);
+        var offsetStepperY:FlxUINumericStepper = new FlxUINumericStepper(10,30,1,0,-1000,1000);
 
-        var offsetStepperX:FlxUINumericStepper = new FlxUINumericStepper(10,25,1,0,-1000,1000);
-        var offsetStepperY:FlxUINumericStepper = new FlxUINumericStepper(10,50,1,0,-1000,1000);
+        offsetAnimsDropdown = new FlxUIDropDownMenu(100, 10, FlxUIDropDownMenu.makeStrIdLabelArray(animsList, true), function(anim:String) {
+            var offsetExists = false;
+            for (i in 0...charArray.length) {
+                var line:Array<String> = charArray[i].trim().split("::");
+                if (line[0] == "offset" && line[1] == anim.trim()) {
+                    offsetStepperX.value = Std.parseFloat(line[2].trim());
+                    offsetStepperY.value = Std.parseFloat(line[3].trim());
+                    offsetExists = true;
+                }
+            }
 
-        var animNameTB:FlxUIInputText = new FlxUIInputText(10,10,180);
+            if (!offsetExists) {
+                offsetStepperX.value = 0;
+                offsetStepperY.value = 0;
+            }
 
+            char.playAnim(anim, true);
+        });
+        
+        offsetAnimsDropdown.dropDirection = FlxUIDropDownMenuDropDirection.Down;
+
+        var addOffsetButton:FlxUIButton = new FlxUIButton(10,50,"Add Offset", function() {
+            var addedOffsetData = "offset::"+offsetAnimsDropdown.selectedLabel.trim()+"::"+Std.string(offsetStepperX.value)+"::"+Std.string(offsetStepperY.value);
+            var offsetExists = false;
+            
+            for (i in 0...charArray.length) {
+                var line:Array<String> = charArray[i].trim().split("::");
+                if (line[0] == "offset" && line[1] == offsetAnimsDropdown.selectedLabel.trim()) {
+                    charArray[i] = addedOffsetData;
+                    offsetExists = true;
+                }
+            }
+            
+            if (!offsetExists)
+                charArray.push(addedOffsetData);
+
+            //trace(charArray);
+            updateAnimsTab(true);
+        });
+
+        //var animNameTB:FlxUIInputText = new FlxUIInputText(10,10,180);
+
+        tab_group_offsets.add(addOffsetButton);
         tab_group_offsets.add(offsetAnimsDropdown);
-        tab_group_offsets.add(animNameTB);
+        //tab_group_offsets.add(animNameTB);
         tab_group_offsets.add(offsetStepperX);
         tab_group_offsets.add(offsetStepperY);
 
@@ -191,6 +253,14 @@ class CharacterEditorState extends MusicBeatState
     {
         var tab_group_options = new FlxUI(null, UI_box);
         tab_group_options.name = 'Options';
+
+        var isPlayerCB:FlxUICheckBox = new FlxUICheckBox(10,10,null,null,"isPlayer");
+        isPlayerCB.callback = function() {
+            isPlayer = !isPlayer;
+            updateAnimsTab(true);
+        }
+
+        tab_group_options.add(isPlayerCB);
 
         UI_box.addGroup(tab_group_options);
     }
@@ -216,7 +286,7 @@ class CharacterEditorState extends MusicBeatState
         charArray = textData.trim().split("\n");
         charName = _file.name.replace(".txt","").trim();
         char.destroy();
-        char = new Character(0,0, charName);
+        char = new Character(0,0, charName, isPlayer);
         add(char);
         updateAnimsTab();
         _file.removeEventListener(Event.SELECT, onBrowseComplete);
@@ -241,10 +311,11 @@ class CharacterEditorState extends MusicBeatState
         }
         if (reloadChar) {
             char.destroy();
-            char = new Character(0, 0, charName, false, charArray);
+            char = new Character(0, 0, charName, isPlayer, charArray);
             add(char);
         }
         loadAnims();
         animsDropdown.setData(FlxUIDropDownMenu.makeStrIdLabelArray(animsList));
+        offsetAnimsDropdown.setData(FlxUIDropDownMenu.makeStrIdLabelArray(animsList));
     }
 }
