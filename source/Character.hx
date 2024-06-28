@@ -577,6 +577,46 @@ class Character extends FlxSprite
 				addOffset("singDOWN-alt", -30, -27);
 
 				playAnim('idle');
+			default:
+				var charFile:String = Paths.txtImages("characters/"+curCharacter);
+				var charFileParams:Array<String> = CoolUtil.coolTextFile(charFile);
+
+				for (i in 0...charFileParams.length) {
+					charFileParams[i].trim();
+					var line:Array<String> = charFileParams[i].split("::");
+					switch (line[0]) {
+						case 'sprite':
+							frames = Paths.getSparrowAtlas('characters/'+line[1]);
+						case 'anim':
+							var loopa:Bool = false;
+							var flipXa:Bool = false;
+							var flipYa:Bool = false;
+
+							if (line[4] == "true")
+								loopa = true;
+							if (line[5] == "true")
+								flipXa = true;
+							if (line[6] == "true")
+								flipYa = true;
+
+							animation.addByPrefix(line[1], line[2], Std.parseFloat(line[3]), loopa, flipXa, flipYa);
+						case 'offset':
+							addOffset(line[1], Std.parseFloat(line[2]), Std.parseFloat(line[3]));
+						case 'pixel':
+							setGraphicSize(Std.int(width * 6));
+							updateHitbox();
+							antialiasing = false;
+						case 'flipX':
+							flipX = true;
+						case 'flipY':
+							flipY = true;
+						case 'size':
+							width = Std.parseFloat(line[1]);
+							height = Std.parseFloat(line[2]);
+					}
+				}
+
+				playAnim('idle');
 		}
 
 		dance();
