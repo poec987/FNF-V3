@@ -220,7 +220,7 @@ class FreeplayState extends MusicBeatState
 			}
 
 
-			pageText.text = "Page " + Std.string(page+1) + " (of " + Std.string(pages.length) + ") - " + pages[page].name + " (Press B to scroll)";
+			pageText.text = "Page " + Std.string(page+1) + " (of " + Std.string(pages.length) + ") - " + pages[page].name + " (Press B or arrows to scroll)";
 	}
 
 	override function update(elapsed:Float)
@@ -241,6 +241,8 @@ class FreeplayState extends MusicBeatState
 
 		var upP = controls.UP_P;
 		var downP = controls.DOWN_P;
+		var leftP = controls.LEFT_P;
+		var rightP = controls.RIGHT_P;
 		var accepted = controls.ACCEPT;
 		var b = FlxG.keys.justPressed.B;
 
@@ -253,12 +255,25 @@ class FreeplayState extends MusicBeatState
 			changeSelection(1);
 		}
 
-		if (b) // Page Switching
+		if (b || rightP) // Page Switching
 		{
 			if (page != pages.length-1)
 				page++;
 			else
 				page = 0;
+
+			songs = [];
+			addPageSongs(pages[page]);
+			refreshSongList();
+			changeSelection();
+		}
+		
+		if (leftP) // Page Switching
+		{
+			if (page != 0)
+				page--;
+			else
+				page = pages.length-1;
 
 			songs = [];
 			addPageSongs(pages[page]);
