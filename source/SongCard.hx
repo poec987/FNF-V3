@@ -87,7 +87,7 @@ class SongCard extends FlxTypedGroup<FlxSprite>{
             case 'senpai':
                 setName("Senpai V3", "");
             case 'roses':
-                setName("Roses V3", "");
+                setName("Roses V3", "Xarion");
             case 'thorns':
                 setName("Thorns V3", "");
             case 'unfairness-jside':
