@@ -592,11 +592,15 @@ class Character extends FlxSprite
 
 				playAnim('idle');
 			default:
-				var charFile:String = Paths.txt("characters/"+curCharacter);
-				var charFileParams:Array<String> = CoolUtil.coolTextFile(charFile);
+				var charFile:String;
+				var charFileParams:Array<String> = [];
 
 				if (characterArray != null) {
 					charFileParams = characterArray;
+				}
+				else {
+					charFile = Paths.txt("characters/"+curCharacter);
+					charFileParams = CoolUtil.coolTextFile(charFile);
 				}
 
 				for (i in 0...charFileParams.length) {
