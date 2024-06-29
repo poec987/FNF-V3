@@ -34,6 +34,9 @@ class SaveManagement {
         // Shit that happened
         if (FlxG.save.data.unlockedFreeplay == null)
             FlxG.save.data.unlockedFreeplay = false;
+
+        if (FlxG.save.data.options == null)
+            FlxG.save.data.options = new Array<Dynamic>();
     }
 
     public static function unlockSong(song:String) {

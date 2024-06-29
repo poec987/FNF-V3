@@ -22,6 +22,51 @@ class OptionsMenu extends MusicBeatState
 
 	private var grpControls:FlxTypedGroup<Alphabet>;
 	var versionShit:FlxText;
+
+	/*
+	DOCS KINDA
+
+	ENTRY STRUCTURE
+	name => [
+		Universal:
+		type - 2Type,
+		name,
+		initial value
+
+		2Type:
+		values = [val1, val2]
+		currently selected value
+		writtenValues = [textForVal1, textForVal2]
+	]
+	*/
+
+	var options:Array<Array<Dynamic>> = [
+		[ // Keybinds
+			"2Type",
+			"Keybinds",
+			0,
+			[0, 1],
+			0,
+			["DFJK", "WASD"]
+		]
+	];
+
+	function restoreOptionValues() {
+		var it = 0;
+		trace(FlxG.save.data.options);
+		for (option in options.iterator()) {
+			var type:String = option[0];
+
+			switch (type) {
+				case "2Type":
+					option[4] = FlxG.save.data.options[it];
+				default:
+					trace("Invalid option type");
+			}
+			it++;
+		}
+	}
+
 	override function create()
 	{
 		var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
@@ -31,8 +76,6 @@ class OptionsMenu extends MusicBeatState
 			(FlxG.save.data.downscroll ? 'Downscroll' : 'Upscroll') + "\n" + 
 			(FlxG.save.data.hitsounds ? 'Hitsounds: On' : 'Hitsounds: Off') + "\n" + 
 			(FlxG.save.data.freaky ? 'Freaky' : 'Normal') + "\nLoad replays" );
-		
-		trace(controlsStrings);
 
 		menuBG.color = 0xFFea71fd;
 		menuBG.setGraphicSize(Std.int(menuBG.width * 1.1));
@@ -43,6 +86,19 @@ class OptionsMenu extends MusicBeatState
 
 		grpControls = new FlxTypedGroup<Alphabet>();
 		add(grpControls);
+
+		/*restoreOptionValues();
+		
+		var it = 0;
+		for (option in options.iterator()) {
+			var thing:Alphabet = new Alphabet(64, 320, option[1], true);
+			thing.isMenuItem = true;
+			thing.targetY = it;
+			grpControls.add(thing);
+
+			changeOption(option, it, false);
+			it++;
+		}*/
 
 		for (i in 0...controlsStrings.length)
 		{
@@ -90,6 +146,7 @@ class OptionsMenu extends MusicBeatState
 
 			if (controls.ACCEPT)
 			{
+				// changeOption(options[curSelected], curSelected);
 				if (curSelected != grpControls.length-1)
 					grpControls.remove(grpControls.members[curSelected]);
 				switch(curSelected)
@@ -167,6 +224,30 @@ class OptionsMenu extends MusicBeatState
 				item.alpha = 1;
 				// item.setGraphicSize(Std.int(item.width));
 			}
+		}
+	}
+
+	function changeOption(option:Array<Dynamic>, selectNumber:Int, update:Bool = true):Void {
+		var type:String = option[0];
+		var name:String = option[1];
+
+		switch (type) {
+			case "2Type":
+				var values = option[3];
+				var curValue = option[4];
+				var writtenValues = option[5];
+
+				if (update) {
+					option[4] = curValue == 0 ? 1 : 0;
+					FlxG.save.data.options[selectNumber] = option[4];
+				}
+
+				trace(writtenValues);
+				trace(option[4]);
+				grpControls.members[selectNumber].text = name+": " + writtenValues[option[4]];
+				trace("Changed value of " + name + " to " + option[4]);
+			default:
+				trace("Incorrect option type");
 		}
 	}
 }
