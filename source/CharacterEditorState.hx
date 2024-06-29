@@ -96,16 +96,31 @@ class CharacterEditorState extends MusicBeatState
 
     }
 
+    var charNameTB:FlxUIInputText;
+
 	function addCharacterUI():Void
     {
         var tab_group_character = new FlxUI(null, UI_box);
         tab_group_character.name = 'Character';
 
+        charNameTB = new FlxUIInputText(100,50,180);
+
         var loadCharButton:FlxUIButton = new FlxUIButton(10,10,"Load Character", function() {
             loadCharacterTxt();
         });
 
+        var saveCharButton:FlxUIButton = new FlxUIButton(10,30,"Save Character", function() {
+            saveCharacterTxt();
+        });
+
+        var newCharButton:FlxUIButton = new FlxUIButton(10,50,"New Character", function() {
+            newCharacterTxt();
+        });
+
         tab_group_character.add(loadCharButton);
+        tab_group_character.add(saveCharButton);
+        tab_group_character.add(newCharButton);
+        tab_group_character.add(charNameTB);
 
         UI_box.addGroup(tab_group_character);
     }
@@ -273,11 +288,37 @@ class CharacterEditorState extends MusicBeatState
         super.update(elapsed);
     }
 
+    function newCharacterTxt() {
+        if (_file != null) {
+            _file = new FileReference();
+        }
+
+        charArray = ["sprite::BOYFRIEND","icon::0::1","anim::idle::BF idle dance::24","anim::singUP::BF idle dance::24","anim::singDOWN::BF idle dance::24","anim::singLEFT::BF idle dance::24","anim::singRIGHT::BF idle dance::24"];
+        charName = charNameTB.text.trim();
+        updateAnimsTab(true);
+    }
+
     function loadCharacterTxt() {
         _file = new FileReference();
         var txtFilter = new FileFilter("Character Text File", "*.txt");
         _file.addEventListener(Event.SELECT, onBrowseComplete);
         _file.browse([txtFilter]);
+    }
+
+    function saveCharacterTxt() {
+        var saveData:String = "";
+        for (i in 0...charArray.length) {
+            saveData = saveData + charArray[i].trim() + "\n";
+        }
+        _file = new FileReference();
+        _file.addEventListener(Event.COMPLETE, onSaveComplete);
+        _file.save(saveData, charName.trim()+".txt");
+    }
+
+    function onSaveComplete(_) {
+        _file.removeEventListener(Event.COMPLETE, onSaveComplete);
+        _file = null;
+        trace("SUCCESSFULLY SAVED CHARACTER");
     }
 
     function onBrowseComplete(_):Void {
@@ -290,7 +331,6 @@ class CharacterEditorState extends MusicBeatState
         add(char);
         updateAnimsTab();
         _file.removeEventListener(Event.SELECT, onBrowseComplete);
-        _file = null;
     }
 
     function loadAnims() {
