@@ -121,13 +121,13 @@ class OptionsMenu extends MusicBeatState
 						FlxG.save.data.hitsounds = !FlxG.save.data.hitsounds;
 						var ctrl:Alphabet = new Alphabet(64, 320, (FlxG.save.data.hitsounds ? 'Hitsounds: On' : 'Hitsounds: Off'), true);
 						ctrl.isMenuItem = true;
-						ctrl.targetY = curSelected - 2;
+						ctrl.targetY = curSelected - 3;
 						grpControls.add(ctrl);	
 					case 4:
 						FlxG.save.data.freaky = !FlxG.save.data.freaky;
 						var ctrl:Alphabet = new Alphabet(64, 320, (FlxG.save.data.freaky ? 'Freaky' : 'Normal'), true);
 						ctrl.isMenuItem = true;
-						ctrl.targetY = curSelected - 3;
+						ctrl.targetY = curSelected - 4;
 						grpControls.add(ctrl);
 				}
 			}
