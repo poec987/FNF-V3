@@ -28,6 +28,9 @@ class SaveManagement {
 		if (FlxG.save.data.freaky == null)
 			FlxG.save.data.freaky = false;
 
+        if (FlxG.save.data.hitsounds == null)
+            FlxG.save.data.hitsounds = false;
+
         // Shit that happened
         if (FlxG.save.data.unlockedFreeplay == null)
             FlxG.save.data.unlockedFreeplay = false;
