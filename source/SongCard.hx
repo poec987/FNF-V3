@@ -97,6 +97,8 @@ class SongCard extends FlxTypedGroup<FlxSprite>{
                 setName("Tutorial BSide", "x8c8r");
 			case 'blammed-alt':
                 setName("Blammed V3 ALT", "x8c8r & Didgie");
+            case 'spookeez-erect':
+                setName("Spookeez Erect", "Didgie");
             // Bonus
             case 'dotdotdot':
                 setName("Dotdotdot", "Didgie");
