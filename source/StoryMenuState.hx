@@ -243,24 +243,6 @@ class StoryMenuState extends MusicBeatState
 		}
 	}
 
-	function changeDifficulty(change:Int = 0):Void
-	{
-		curDifficulty += change;
-
-		if (curDifficulty < 0)
-			curDifficulty = 2;
-		if (curDifficulty > 2)
-			curDifficulty = 0;
-
-
-		// USING THESE WEIRD VALUES SO THAT IT DOESNT FLOAT UP
-		intendedScore = Highscore.getWeekScore(curWeek, curDifficulty);
-
-		#if !switch
-		intendedScore = Highscore.getWeekScore(curWeek, curDifficulty);
-		#end
-	}
-
 	var lerpScore:Int = 0;
 	var intendedScore:Int = 0;
 
