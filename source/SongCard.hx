@@ -64,7 +64,7 @@ class SongCard extends FlxTypedGroup<FlxSprite>{
                 setName("Monster V3", "NOT DIDGIE (ft PoeDev)");
             // Week 3
             case 'pico':
-                setName("Pico V3", "");
+                setName("Pico V3", "thomicfee");
             case 'philly':
                 setName("Philly Nice V3", "Didgie");
             case 'blammed':
@@ -101,6 +101,8 @@ class SongCard extends FlxTypedGroup<FlxSprite>{
                 setName("Blammed V3 ALT", "x8c8r & Didgie");
             case 'spookeez-erect':
                 setName("Spookeez Erect", "Didgie");
+            case 'senpai-impossible-ver':
+                setName("Senpai Impossible Ver V3", "EarthLiveCountry");
             // Bonus
             case 'dotdotdot':
                 setName("Dotdotdot", "Didgie");

@@ -117,10 +117,32 @@ class CharacterEditorState extends MusicBeatState
             newCharacterTxt();
         });
 
+        var spriteTB = new FlxUIInputText(10,70,100);
+
+        var updateSpriteButton:FlxUIButton = new FlxUIButton(120,70,"Update Sprite", function() {
+            var addedSpriteData = "sprite::"+spriteTB.text;
+            for (i in 0...charArray.length) {
+                var line:Array<String> = charArray[i].trim().split("::");
+                if (line[0] == "sprite") {
+                    charArray[i] = addedSpriteData.trim();
+                }
+            }
+            //trace(charArray);
+            updateAnimsTab(true);
+        });
+
+        var flipXCB:FlxUICheckBox = new FlxUICheckBox(10,90,null,null,"FlipX");
+        var flipYCB:FlxUICheckBox = new FlxUICheckBox(10,110,null,null,"FlipY");
+
         tab_group_character.add(loadCharButton);
         tab_group_character.add(saveCharButton);
         tab_group_character.add(newCharButton);
         tab_group_character.add(charNameTB);
+
+        tab_group_character.add(spriteTB);
+        tab_group_character.add(updateSpriteButton);
+        tab_group_character.add(flipXCB);
+        tab_group_character.add(flipYCB);
 
         UI_box.addGroup(tab_group_character);
     }

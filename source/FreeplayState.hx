@@ -73,7 +73,8 @@ class FreeplayState extends MusicBeatState
 			newSong("Tutorial-BSide", 1, "gf"),
 			newSong("Tutorial-Erect", 1, "gf"),
 			newSong("Spookeez-Erect", 1, "spooky"),
-			newSong("Blammed-alt", 1, "pico")
+			newSong("Blammed-alt", 1, "pico"),
+			newSong("Senpai-Impossible-Ver", 1, "senpai")
 		],
 		"Remixes");
 
