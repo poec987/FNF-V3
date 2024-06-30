@@ -85,6 +85,8 @@ class TitleState extends MusicBeatState
 			if (!StoryMenuState.weekUnlocked[0])
 				StoryMenuState.weekUnlocked[0] = true;
 		}
+		
+		if (FlxG.save.data.frostedonespotted == null) FlxG.save.data.frostedonespotted = false;
 
 		#if FREEPLAY
 		FlxG.switchState(new FreeplayState());

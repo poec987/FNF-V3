@@ -910,6 +910,7 @@ class PlayState extends MusicBeatState
 			switch (curSong.toLowerCase())
 			{
 				case "winter-horrorland":
+					if (FlxG.save.data.frostedonespotted == false) { FlxG.save.data.frostedonespotted = true; }
 					var frosted:FlxSprite = new FlxSprite().loadGraphic(Paths.image('thefrostedoneishere'));
 					add(frosted);
 					frosted.scrollFactor.set();

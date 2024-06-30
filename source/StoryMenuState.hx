@@ -275,7 +275,14 @@ class StoryMenuState extends MusicBeatState
 	function updateText()
 	{
 		trace(weekNames[curWeek].toLowerCase());
-		banner.loadGraphic(Paths.image('storybanners/' + weekNames[curWeek].toLowerCase()));
+		if (FlxG.save.data.frostedonespotted != true && weekNames[curWeek].toLowerCase() == 'loss and frost')
+		{
+			banner.loadGraphic(Paths.image('storybanners/loss and frost censored'));
+		}
+		else
+		{
+			banner.loadGraphic(Paths.image('storybanners/' + weekNames[curWeek].toLowerCase()));
+		}
 		
 		txtTracklist.text = "Tracks\n";
 
