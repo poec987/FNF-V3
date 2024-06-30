@@ -185,7 +185,7 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
-		if (FlxG.random.bool(1))
+		if (FlxG.random.bool(4))
 		{
 			specialgf = true;
 		}
@@ -668,7 +668,7 @@ class PlayState extends MusicBeatState
 
 		var gfVersion:String = 'gf';
 
-		if (specialgf == false || SONG.song.toLowerCase() == 'tutorial')
+		if (specialgf == false || SONG.song.toLowerCase() == 'tutorial' || SONG.song.toLowerCase() == 'senpai' || SONG.song.toLowerCase() == 'roses' || SONG.song.toLowerCase() == 'thorns')
 		{
 			switch (curStage)
 			{
