@@ -92,7 +92,6 @@ class CharacterEditorState extends MusicBeatState
 
     }
 
-    var charNameTB:FlxUIInputText;
     var spriteTB:FlxUIInputText;
     var flipXCBC:FlxUICheckBox;
     var flipYCBC:FlxUICheckBox;
@@ -102,8 +101,6 @@ class CharacterEditorState extends MusicBeatState
     {
         var tab_group_character = new FlxUI(null, UI_box);
         tab_group_character.name = 'Character';
-
-        charNameTB = new FlxUIInputText(100,50,180);
 
         var loadCharButton:FlxUIButton = new FlxUIButton(10,10,"Load Character", function() {
             loadCharacterTxt();
@@ -168,7 +165,6 @@ class CharacterEditorState extends MusicBeatState
         tab_group_character.add(loadCharButton);
         tab_group_character.add(saveCharButton);
         tab_group_character.add(newCharButton);
-        tab_group_character.add(charNameTB);
 
         tab_group_character.add(spriteTB);
         tab_group_character.add(updateSpriteButton);
@@ -215,6 +211,7 @@ class CharacterEditorState extends MusicBeatState
             }
             //trace(charArray);
             updateAnimsTab(true);
+            char.playAnim(animsDropdown.selectedLabel.trim(),true);
         });
 
         animsDropdown = new FlxUIDropDownMenu(100, 50, FlxUIDropDownMenu.makeStrIdLabelArray(animsList, true), function(anim:String) {
@@ -305,6 +302,7 @@ class CharacterEditorState extends MusicBeatState
 
             //trace(charArray);
             updateAnimsTab(true);
+            char.playAnim(offsetAnimsDropdown.selectedLabel.trim(), true);
         });
 
         //var animNameTB:FlxUIInputText = new FlxUIInputText(10,10,180);
@@ -348,7 +346,7 @@ class CharacterEditorState extends MusicBeatState
         }
 
         charArray = ["sprite::BOYFRIEND","icon::0::1","anim::idle::BF idle dance::24","anim::singUP::BF idle dance::24","anim::singDOWN::BF idle dance::24","anim::singLEFT::BF idle dance::24","anim::singRIGHT::BF idle dance::24"];
-        charName = charNameTB.text.trim();
+        charName = "bf";
         updateAnimsTab(true);
     }
 
@@ -412,8 +410,6 @@ class CharacterEditorState extends MusicBeatState
             if (line[0] == "sprite") {
                 spriteTB.text == line[1];
             }
-
-            charNameTB.text = charName;
 
             if (line[0] == "anim") {
                 animsList.push(line[1]);
