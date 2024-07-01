@@ -1,8 +1,6 @@
 package;
 
-import cpp.Char;
 import openfl.net.FileFilter;
-import openfl.sensors.Accelerometer;
 import flixel.addons.ui.FlxUIButton;
 import flixel.input.FlxInput;
 import lime.tools.Platform;
@@ -30,8 +28,6 @@ import flixel.util.FlxColor;
 import haxe.Json;
 import lime.utils.Assets;
 import openfl.events.Event;
-import openfl.events.IOErrorEvent;
-import openfl.events.IOErrorEvent;
 import openfl.events.IOErrorEvent;
 import openfl.media.Sound;
 import openfl.net.FileReference;
@@ -97,6 +93,10 @@ class CharacterEditorState extends MusicBeatState
     }
 
     var charNameTB:FlxUIInputText;
+    var spriteTB:FlxUIInputText;
+    var flipXCBC:FlxUICheckBox;
+    var flipYCBC:FlxUICheckBox;
+    var pixelCB:FlxUICheckBox;
 
 	function addCharacterUI():Void
     {
@@ -117,7 +117,7 @@ class CharacterEditorState extends MusicBeatState
             newCharacterTxt();
         });
 
-        var spriteTB = new FlxUIInputText(10,70,100);
+        spriteTB = new FlxUIInputText(10,70,100);
 
         var updateSpriteButton:FlxUIButton = new FlxUIButton(120,70,"Update Sprite", function() {
             var addedSpriteData = "sprite::"+spriteTB.text;
@@ -131,8 +131,39 @@ class CharacterEditorState extends MusicBeatState
             updateAnimsTab(true);
         });
 
-        var flipXCB:FlxUICheckBox = new FlxUICheckBox(10,90,null,null,"FlipX");
-        var flipYCB:FlxUICheckBox = new FlxUICheckBox(10,110,null,null,"FlipY");
+        flipXCBC = new FlxUICheckBox(10,90,null,null,"FlipX");
+        flipYCBC = new FlxUICheckBox(10,110,null,null,"FlipY");
+        pixelCB = new FlxUICheckBox(10,130,null,null, "Pixel");
+
+        flipXCBC.callback = function() {
+            if (flipXCBC.checked) {
+                charArray.push("flipX");
+            } else {
+                charArray.remove("flipX");
+            }
+
+            updateAnimsTab(true);
+        }
+
+        flipYCBC.callback = function() {
+            if (flipYCBC.checked) {
+                charArray.push("flipY");
+            } else {
+                charArray.remove("flipY");
+            }
+
+            updateAnimsTab(true);
+        }
+
+        pixelCB.callback = function() {
+            if (pixelCB.checked) {
+                charArray.push("pixel");
+            } else {
+                charArray.remove("pixel");
+            }
+
+            updateAnimsTab(true);
+        }
 
         tab_group_character.add(loadCharButton);
         tab_group_character.add(saveCharButton);
@@ -141,8 +172,9 @@ class CharacterEditorState extends MusicBeatState
 
         tab_group_character.add(spriteTB);
         tab_group_character.add(updateSpriteButton);
-        tab_group_character.add(flipXCB);
-        tab_group_character.add(flipYCB);
+        tab_group_character.add(flipXCBC);
+        tab_group_character.add(flipYCBC);
+        tab_group_character.add(pixelCB);
 
         UI_box.addGroup(tab_group_character);
     }
@@ -358,8 +390,30 @@ class CharacterEditorState extends MusicBeatState
     function loadAnims() {
         animsList = [];
         // char.animation.destroyAnimations();
+        flipXCBC.checked = false;
+        flipYCBC.checked = false;
+        pixelCB.checked = false;
+
         for (i in 0...charArray.length) {
             var line:Array<String> = charArray[i].trim().split("::");
+
+            if (line[0] == "flipX") {
+                flipXCBC.checked = true;
+            }
+
+            if (line[0] == "flipY") {
+                flipYCBC.checked = true;
+            }
+
+            if (line[0] == "pixel") {
+                pixelCB.checked = true;
+            }
+
+            if (line[0] == "sprite") {
+                spriteTB.text == line[1];
+            }
+
+            charNameTB.text = charName;
 
             if (line[0] == "anim") {
                 animsList.push(line[1]);
