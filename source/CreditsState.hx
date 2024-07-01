@@ -45,11 +45,6 @@ class CreditsState extends MusicBeatState {
 		if (curSelected >= grpCredits.length)
 			curSelected = 0;
 
-        /*if (devCreditImage.exists) {
-            devCreditImage.destroy();
-            devCreditImage = new FlxSprite();
-            add(devCreditImage);
-        }*/
         devCreditImage.loadGraphic(Paths.image("credits/"+grpCredits[curSelected]));
     }
 }
