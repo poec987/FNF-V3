@@ -269,9 +269,6 @@ class OptionsMenu extends MusicBeatState
 					SaveManagement.setOption(name, option[2]);
 
 					if (option[5] != null) option[5]();
-
-					trace(name);
-					trace(SaveManagement.getOption(name));
 				}
 
 				grpControls.members[selectNumber].text = name+": " + Std.string(option[2]);

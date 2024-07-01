@@ -195,10 +195,8 @@ class PlayState extends MusicBeatState
 			specialgf = true;
 		}
 		
-		// theFunne = FlxG.save.data.newInput;
 		theFunne = SaveManagement.getOption("Input System") == "New";
 
-		trace(SaveManagement.getOption("Input System"));
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
 
@@ -284,7 +282,6 @@ class PlayState extends MusicBeatState
 					dialogueFiles.push(files[i].replace('.txt', '').trim());
 			}
 
-			trace(dialogueFiles);
 			dialogue = CoolUtil.coolTextFile(Paths.txt(SONG.song.toLowerCase().trim()+'/'+dialogueFiles[FlxG.random.int(0, dialogueFiles.length-1)]));
 		}
 		#else
@@ -816,7 +813,6 @@ class PlayState extends MusicBeatState
 		strumLine = new FlxSprite(0, 50).makeGraphic(FlxG.width, 10);
 		strumLine.scrollFactor.set();
 
-		// if (FlxG.save.data.downscroll)
 		if (SaveManagement.getOption("Scroll Direction") == "Down")
 			strumLine.y = FlxG.height - 165;
 
