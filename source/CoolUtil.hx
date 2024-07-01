@@ -1,5 +1,6 @@
 package;
 
+import flixel.math.FlxRandom;
 import lime.utils.Assets;
 
 using StringTools;
@@ -38,5 +39,10 @@ class CoolUtil
 			dumbArray.push(i);
 		}
 		return dumbArray;
+	}
+
+	public static function randomArray(ar:Array<Dynamic>):Dynamic {
+		var res = new FlxRandom().int(0, ar.length-1);
+		return ar[res];
 	}
 }
