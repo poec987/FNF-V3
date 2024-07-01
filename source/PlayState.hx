@@ -2585,6 +2585,18 @@ class PlayState extends MusicBeatState
 					// trace("Normal Note Hit");
 				case "Shield Note":
 					beefSafe = true;
+				case "Don't End The World":
+					if (miss) {
+						vocals.stop();
+						FlxG.sound.music.stop();
+						FlxG.sound.music.onComplete = null;
+						var silly = new FlxSprite().loadGraphic(Paths.image("worldsaved"));
+						silly.cameras = [camOther];
+						add(silly);
+						new FlxTimer().start(3, function(timer:FlxTimer) {
+							endSong();
+						});
+					}
 				default:
 					// trace(zeNoteType + "was HITTTEEEEEEEEEEEEED");
 			}

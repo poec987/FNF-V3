@@ -395,7 +395,8 @@ class ChartingState extends MusicBeatState
 		"Kill Santa",
 		"Kill",
 		"Pico Shoot",
-		"Shield Note"
+		"Shield Note",
+		"Don't End The World"
 	];
 
 	var noteTypeDropDown:FlxUIDropDownMenu;
