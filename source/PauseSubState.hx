@@ -37,7 +37,7 @@ class PauseSubState extends MusicBeatSubstate
 		bg.scrollFactor.set();
 		add(bg);
 
-		var font = PlayState.SONG.song.toLowerCase() == "thorns" ? "vcr.ttf" : "papyrus.ttf";
+		var font = PlayState.SONG.song.toLowerCase() == "thorns" ? "vcr.ttf" : SaveManagement.getOption("Freaky Mode") == "On" ? "papyrus.ttf" : "vcr.ttf";
 
 		var levelInfo:FlxText = new FlxText(20, 15, 0, "", 32);
 		levelInfo.text += PlayState.SONG.song;

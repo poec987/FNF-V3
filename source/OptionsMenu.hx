@@ -1,5 +1,6 @@
 package;
 
+import flixel.sound.FlxSound;
 import Controls.KeyboardScheme;
 import Controls.Control;
 import flash.text.TextField;
@@ -73,6 +74,21 @@ class OptionsMenu extends MusicBeatState
 			"Off",
 			["Off", "On"],
 			null
+		],
+		[
+			"2Type",
+			"Freaky Mode",
+			"Off",
+			["Off", "On"],
+			() -> {
+				if (SaveManagement.getOption("Freaky Mode") == "On") {
+					FlxG.sound.music.pause();
+					var caveSound:FlxSound = FlxG.sound.play(Paths.sound("cave1", "shared"), 1, false);
+					caveSound.onComplete = () -> {
+						FlxG.sound.music.resume();
+					};
+				}
+			}
 		]
 	];
 
@@ -173,46 +189,6 @@ class OptionsMenu extends MusicBeatState
 			if (controls.ACCEPT)
 			{
 				changeOption(options[curSelected], curSelected);
-				/*if (curSelected != grpControls.length-1)
-					grpControls.remove(grpControls.members[curSelected]);
-				switch(curSelected)
-				{
-					case 0:
-						FlxG.save.data.dfjk = !FlxG.save.data.dfjk;
-						var ctrl:Alphabet = new Alphabet(64, 320, (FlxG.save.data.dfjk ? 'DFJK' : 'WASD'), true);
-						ctrl.isMenuItem = true;
-						ctrl.targetY = curSelected;
-						grpControls.add(ctrl);
-						if (FlxG.save.data.dfjk)
-							controls.setKeyboardScheme(KeyboardScheme.Solo, true);
-						else
-							controls.setKeyboardScheme(KeyboardScheme.Duo(true), true);
-						
-					case 1:
-						FlxG.save.data.newInput = !FlxG.save.data.newInput;
-						var ctrl:Alphabet = new Alphabet(64, 320, (FlxG.save.data.newInput ? "New input" : "Old Input"), true);
-						ctrl.isMenuItem = true;
-						ctrl.targetY = curSelected - 1;
-						grpControls.add(ctrl);
-					case 2:
-						FlxG.save.data.downscroll = !FlxG.save.data.downscroll;
-						var ctrl:Alphabet = new Alphabet(64, 320, (FlxG.save.data.downscroll ? 'Downscroll' : 'Upscroll'), true);
-						ctrl.isMenuItem = true;
-						ctrl.targetY = curSelected - 2;
-						grpControls.add(ctrl);
-					case 3:
-						FlxG.save.data.hitsounds = !FlxG.save.data.hitsounds;
-						var ctrl:Alphabet = new Alphabet(64, 320, (FlxG.save.data.hitsounds ? 'Hitsounds: On' : 'Hitsounds: Off'), true);
-						ctrl.isMenuItem = true;
-						ctrl.targetY = curSelected - 3;
-						grpControls.add(ctrl);	
-					case 4:
-						FlxG.save.data.freaky = !FlxG.save.data.freaky;
-						var ctrl:Alphabet = new Alphabet(64, 320, (FlxG.save.data.freaky ? 'Freaky' : 'Normal'), true);
-						ctrl.isMenuItem = true;
-						ctrl.targetY = curSelected - 4;
-						grpControls.add(ctrl);
-				}*/
 			}
 	}
 
@@ -254,6 +230,8 @@ class OptionsMenu extends MusicBeatState
 	}
 
 	function changeOption(option:Array<Dynamic>, selectNumber:Int, update:Bool = true):Void {
+		FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
+
 		var type:String = option[0];
 		var name:String = option[1];
 
@@ -268,7 +246,7 @@ class OptionsMenu extends MusicBeatState
 
 					SaveManagement.setOption(name, option[2]);
 
-					if (option[5] != null) option[5]();
+					if (option[4] != null) option[4]();
 				}
 
 				grpControls.members[selectNumber].text = name+": " + Std.string(option[2]);

@@ -142,7 +142,7 @@ class ChartingState extends MusicBeatState
 		}
 
 		FlxG.mouse.visible = true;
-		FlxG.save.bind('funkinv3', 'cinemamakers');
+		FlxG.save.bind('funkinv3', 'team-cinemamakers/fnfv3');
 
 		tempBpm = _song.bpm;
 

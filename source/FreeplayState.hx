@@ -104,14 +104,20 @@ class FreeplayState extends MusicBeatState
 		add(grpSongs);
 
 		scoreText = new FlxText(FlxG.width * 0.7, 5, 0, "", 24);
-		scoreText.setFormat(Paths.font("papyrus.ttf"), 24, FlxColor.WHITE, RIGHT);
+		if (SaveManagement.getOption("Freaky Mode") == "On")
+			scoreText.setFormat(Paths.font("papyrus.ttf"), 24, FlxColor.WHITE, RIGHT);
+		else
+			scoreText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT);
 
 		var scoreBG:FlxSprite = new FlxSprite(scoreText.x - 6, 0).makeGraphic(Std.int(FlxG.width * 0.35), 75, 0xFF000000);
 		scoreBG.alpha = 0.6;
 		add(scoreBG);
 
 		pageText = new FlxText(FlxG.width * 0.7, 42, 0 , "", 16);
-		pageText.setFormat(Paths.font("papyrus.ttf"), 16, FlxColor.WHITE, RIGHT);
+		if (SaveManagement.getOption("Freaky Mode") == "On")
+			pageText.setFormat(Paths.font("papyrus.ttf"), 16, FlxColor.WHITE, RIGHT);
+		else
+			pageText.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT);
 		add(pageText);
 
 		addPageSongs(pages[page]);
@@ -223,7 +229,7 @@ class FreeplayState extends MusicBeatState
 			}
 
 
-			pageText.text = "Page " + Std.string(page+1) + " (of " + Std.string(pages.length) + ") - " + pages[page].name + " (Press B or arrows to scroll)";
+			pageText.text = "Page " + Std.string(page+1) + " (of " + Std.string(pages.length) + ") - " + pages[page].name + " (Arrows to scroll)";
 	}
 
 	override function update(elapsed:Float)
@@ -247,7 +253,6 @@ class FreeplayState extends MusicBeatState
 		var leftP = controls.LEFT_P;
 		var rightP = controls.RIGHT_P;
 		var accepted = controls.ACCEPT;
-		var b = FlxG.keys.justPressed.B;
 
 		if (upP)
 		{
@@ -258,7 +263,7 @@ class FreeplayState extends MusicBeatState
 			changeSelection(1);
 		}
 
-		if (b || rightP) // Page Switching
+		if (rightP) // Page Switching
 		{
 			if (page != pages.length-1)
 				page++;

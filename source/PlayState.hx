@@ -863,10 +863,10 @@ class PlayState extends MusicBeatState
 		// healthBar
 		add(healthBar);
 
-		var scoreFont = PlayState.SONG.song.toLowerCase() == "thorns" || isGood ? "vcr.ttf" : "papyrus.ttf";
-		var scoreFontSize = PlayState.SONG.song.toLowerCase() == "thorns" || isGood ? 20 : 28;
-		var scorePosOffsetX = PlayState.SONG.song.toLowerCase() == "thorns" || isGood ? 150 : 600;
-		var scorePosOffsetY = PlayState.SONG.song.toLowerCase() == "thorns" || isGood ? 50 : 30;
+		var scoreFont = PlayState.SONG.song.toLowerCase() == "thorns" || isGood ? "vcr.ttf" : SaveManagement.getOption("Freaky Mode") == "On" ? "papyrus.ttf" : "vcr.ttf";
+		var scoreFontSize = PlayState.SONG.song.toLowerCase() == "thorns" || isGood ? 20 : SaveManagement.getOption("Freaky Mode") == "On" ? 28 : 20;
+		var scorePosOffsetX = PlayState.SONG.song.toLowerCase() == "thorns" || isGood ? 150 : SaveManagement.getOption("Freaky Mode") == "On" ? 600 : 150;
+		var scorePosOffsetY = PlayState.SONG.song.toLowerCase() == "thorns" || isGood ? 50 : SaveManagement.getOption("Freaky Mode") == "On" ? 30 : 50;
 
 		// Add Kade Engine watermark
 		var kadeEngineWatermark = new FlxText(4,FlxG.height - 4,0,SONG.song + " - CE " + MainMenuState.kadeEngineVer, 16);

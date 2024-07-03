@@ -58,7 +58,7 @@ class Main extends Sprite
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 		}
 
-		FlxG.save.bind('funkinv3', 'cinemamakers');
+		FlxG.save.bind('funkinv3', 'team-cinemamakers/fnfv3');
 
 		setupGame();
 	}

@@ -55,6 +55,7 @@ class SaveManagement {
         FlxG.save.data.options.set("Input System", "New");
         FlxG.save.data.options.set("Scroll Direction", "Up");
         FlxG.save.data.options.set("Hitsounds", "Off");
+        FlxG.save.data.options.set("Freaky Mode", "Off");
     }
 
     public static function setOption(option:String, value:Dynamic):Void {
@@ -62,6 +63,8 @@ class SaveManagement {
     }
 
     public static function getOption(option:String):Dynamic {
-        return FlxG.save.data.options.get(option);
+        if (FlxG.save.data.options.get(option) != null)
+            return FlxG.save.data.options.get(option);
+        return null;
     }
 }
