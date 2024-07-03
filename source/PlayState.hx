@@ -2090,11 +2090,11 @@ class PlayState extends MusicBeatState
 		persistentDraw = true;
 	
 
-		// var sub:FlxSubState = new ResultsSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y, results, this);
-		// sub.cameras = [camHUD];
-		// openSubState(sub);	
+		var sub:FlxSubState = new ResultsSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y, results, this);
+		sub.cameras = [camHUD];
+		openSubState(sub);	
 		
-		wakeTheFuckUp();
+		// wakeTheFuckUp();
 	}
 
 	function endSongEvents() {
