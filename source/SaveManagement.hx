@@ -16,27 +16,15 @@ class SaveManagement {
 			FlxG.sound.muted = FlxG.save.data.mute;
 
         // Options
-        if (FlxG.save.data.newInput == null)
-			FlxG.save.data.newInput = true;
-
-		if (FlxG.save.data.downscroll == null)
-			FlxG.save.data.downscroll = false;
-
-		if (FlxG.save.data.dfjk == null)
-			FlxG.save.data.dfjk = false;
-
-		if (FlxG.save.data.freaky == null)
-			FlxG.save.data.freaky = false;
-
-        if (FlxG.save.data.hitsounds == null)
-            FlxG.save.data.hitsounds = false;
+        if (FlxG.save.data.options == null)
+            defaultOptions();
 
         // Shit that happened
         if (FlxG.save.data.unlockedFreeplay == null)
             FlxG.save.data.unlockedFreeplay = false;
 
-        if (FlxG.save.data.options == null)
-            FlxG.save.data.options = new Array<Dynamic>();
+        if (FlxG.save.data.frostedonespotted == null)
+            FlxG.save.data.frostedonespotted = false;
     }
 
     public static function unlockSong(song:String) {
@@ -54,7 +42,26 @@ class SaveManagement {
         FlxG.save.data.freaky = false;
         FlxG.save.data.dfjk = false;
         FlxG.save.data.downscroll = false;
+
         FlxG.save.data.unlockedFreeplay = false;
 
+        defaultOptions();
+    }
+
+    public static function defaultOptions() {
+        FlxG.save.data.options = new Map<String, Dynamic>();
+
+        FlxG.save.data.options.set("Keybinds", "DFJK");
+        FlxG.save.data.options.set("Input System", "New");
+        FlxG.save.data.options.set("Scroll Direction", "Up");
+        FlxG.save.data.options.set("Hitsounds", "Off");
+    }
+
+    public static function setOption(option:String, value:Dynamic):Void {
+        FlxG.save.data.options.set(option, value);
+    }
+
+    public static function getOption(option:String):Dynamic {
+        return FlxG.save.data.options.get(option);
     }
 }

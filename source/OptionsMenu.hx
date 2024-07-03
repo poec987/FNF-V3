@@ -31,12 +31,12 @@ class OptionsMenu extends MusicBeatState
 		Universal:
 		type - 2Type,
 		name,
-		initial value
 
 		2Type:
 		values = [val1, val2]
 		currently selected value
 		writtenValues = [textForVal1, textForVal2]
+		function that runs on change
 	]
 	*/
 
@@ -44,22 +44,48 @@ class OptionsMenu extends MusicBeatState
 		[ // Keybinds
 			"2Type",
 			"Keybinds",
-			0,
-			[0, 1],
-			0,
-			["DFJK", "WASD"]
+			"DFJK",
+			["DFJK", "WASD"],
+			() -> {
+				if (SaveManagement.getOption("Keybinds") == "DFJK")
+					controls.setKeyboardScheme(KeyboardScheme.Solo, true);
+				else
+					controls.setKeyboardScheme(KeyboardScheme.Duo(true), true);
+			}
+		],
+		[ // Inputs
+			"2Type",
+			"Input System",
+			"New",
+			["New", "Old"],
+			null
+		],
+		[ // Scroll Dir
+			"2Type",
+			"Scroll Direction",
+			"Up",
+			["Up", "Down"],
+			null
+		],
+		[ // Hitsounds
+			"2Type",
+			"Hitsounds",
+			"Off",
+			["Off", "On"],
+			null
 		]
 	];
 
 	function restoreOptionValues() {
-		var it = 0;
-		trace(FlxG.save.data.options);
+ 		var it = 0;
 		for (option in options.iterator()) {
 			var type:String = option[0];
+			var name:String = option[1];
 
 			switch (type) {
 				case "2Type":
-					option[4] = FlxG.save.data.options[it];
+					if (SaveManagement.getOption(name) != null)
+						option[2] = SaveManagement.getOption(name);
 				default:
 					trace("Invalid option type");
 			}
@@ -69,7 +95,7 @@ class OptionsMenu extends MusicBeatState
 
 	override function create()
 	{
-		var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
+		/*var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
 		controlsStrings = CoolUtil.coolStringFile(
 			(FlxG.save.data.dfjk ? 'DFJK' : 'WASD') + "\n" +
 		 	(FlxG.save.data.newInput ? "New input" : "Old Input") + "\n" + 
@@ -82,12 +108,12 @@ class OptionsMenu extends MusicBeatState
 		menuBG.updateHitbox();
 		menuBG.screenCenter();
 		menuBG.antialiasing = true;
-		add(menuBG);
+		add(menuBG);*/
 
 		grpControls = new FlxTypedGroup<Alphabet>();
 		add(grpControls);
 
-		/*restoreOptionValues();
+		restoreOptionValues();
 		
 		var it = 0;
 		for (option in options.iterator()) {
@@ -98,7 +124,7 @@ class OptionsMenu extends MusicBeatState
 
 			changeOption(option, it, false);
 			it++;
-		}*/
+		}
 
 		for (i in 0...controlsStrings.length)
 		{
@@ -146,8 +172,8 @@ class OptionsMenu extends MusicBeatState
 
 			if (controls.ACCEPT)
 			{
-				// changeOption(options[curSelected], curSelected);
-				if (curSelected != grpControls.length-1)
+				changeOption(options[curSelected], curSelected);
+				/*if (curSelected != grpControls.length-1)
 					grpControls.remove(grpControls.members[curSelected]);
 				switch(curSelected)
 				{
@@ -186,7 +212,7 @@ class OptionsMenu extends MusicBeatState
 						ctrl.isMenuItem = true;
 						ctrl.targetY = curSelected - 4;
 						grpControls.add(ctrl);
-				}
+				}*/
 			}
 	}
 
@@ -233,19 +259,19 @@ class OptionsMenu extends MusicBeatState
 
 		switch (type) {
 			case "2Type":
-				var values = option[3];
-				var curValue = option[4];
-				var writtenValues = option[5];
+				var curValue:String = option[2];
+				var values:Array<String> = option[3];
 
 				if (update) {
-					option[4] = curValue == 0 ? 1 : 0;
-					FlxG.save.data.options[selectNumber] = option[4];
+					var cur = values.indexOf(curValue)+1;
+					option[2] = values[cur] == null ? values[0] : values[cur];
+
+					SaveManagement.setOption(name, option[2]);
+
+					if (option[5] != null) option[5]();
 				}
 
-				trace(writtenValues);
-				trace(option[4]);
-				grpControls.members[selectNumber].text = name+": " + writtenValues[option[4]];
-				trace("Changed value of " + name + " to " + option[4]);
+				grpControls.members[selectNumber].text = name+": " + Std.string(option[2]);
 			default:
 				trace("Incorrect option type");
 		}

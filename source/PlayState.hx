@@ -49,6 +49,13 @@ import sys.FileSystem;
 
 class PlayState extends MusicBeatState
 {
+	public static var instance(get,null):PlayState;
+	public static function get_instance():PlayState {
+		if (instance == null)
+			instance = new PlayState();
+		return instance;
+	}
+
 	public static var curStage:String = '';
 	public static var SONG:SwagSong;
 	public static var isStoryMode:Bool = false;
@@ -64,8 +71,6 @@ class PlayState extends MusicBeatState
 	public static var hasDialogue:Bool = false;
 	public static var isPixel:Bool = false;
 	public static var isGood:Bool = false;
-
-	var halloweenLevel:Bool = false;
 
 	private var vocals:FlxSound;
 
@@ -150,7 +155,7 @@ class PlayState extends MusicBeatState
 	
 	public static var campaignScore:Int = 0;
 
-	var defaultCamZoom:Float = 1.05;
+	public static var defaultCamZoom:Float = 1.05;
 
 	public static var daPixelZoom:Float = 6;
 
@@ -190,7 +195,8 @@ class PlayState extends MusicBeatState
 			specialgf = true;
 		}
 		
-		theFunne = FlxG.save.data.newInput;
+		theFunne = SaveManagement.getOption("Input System") == "New";
+
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
 
@@ -265,34 +271,6 @@ class PlayState extends MusicBeatState
 		Conductor.mapBPMChanges(SONG);
 		Conductor.changeBPM(SONG.bpm);
 
-		switch (SONG.song.toLowerCase().trim())
-		{
-			case 'tutorial':
-				dialogue = ["Hey you're pretty cute.", 'Use the arrow keys to keep up \nwith me singing.'];
-			case 'bopeebo':
-				dialogue = [
-					'HEY!',
-					"You think you can just sing\nwith my daughter like that?",
-					"If you want to date her...",
-					"You're going to have to go \nthrough ME first!"
-				];
-			case 'fresh':
-				dialogue = ["Not too shabby boy.", ""];
-			case 'dadbattle':
-				dialogue = [
-					"gah you think you're hot stuff?",
-					"If you can beat me here...",
-					"Only then I will even CONSIDER letting you\ndate my daughter!"
-				];
-			case 'senpai':
-				dialogue = CoolUtil.coolTextFile(Paths.txt('senpai/senpaiDialogue'));
-			case 'roses':
-				dialogue = CoolUtil.coolTextFile(Paths.txt('roses/rosesDialogue'));
-			case 'thorns':
-				dialogue = CoolUtil.coolTextFile(Paths.txt('thorns/thornsDialogue'));
-			case 'winter-horrorland':
-				dialogue = CoolUtil.coolTextFile(Paths.txt('winter-horrorland/winter-horrorlandDialogue'));				
-		}
 
 		#if desktop
 		if (hasDialogue)
@@ -303,14 +281,34 @@ class PlayState extends MusicBeatState
 				if (files[i].endsWith('.txt'))
 					dialogueFiles.push(files[i].replace('.txt', '').trim());
 			}
+
 			dialogue = CoolUtil.coolTextFile(Paths.txt(SONG.song.toLowerCase().trim()+'/'+dialogueFiles[FlxG.random.int(0, dialogueFiles.length-1)]));
 		}
+		#else
+		dialogue = [
+			":bf:GO FUCK YOURSELF",
+			":dad:GO FUCK YOURSELF",
+			":bf:GO FUCK YOURSELF",
+			":dad:GO FUCK YOURSELF",
+			":bf:GO FUCK YOURSELF",
+			":dad:GO FUCK YOURSELF",
+			":bf:FUCK YOURSELF",
+			":dad:GO FUCK YOURSELF",
+			":bf:FUCK",
+			":dad:FUCK",
+			":bf:FUCK",
+			":dad:GO FUCK YOURSELF",
+			":bf:GO FUCK YOURSELF",
+			":dad:GO FUCK YOURSELF",
+			":bf:GO FUCK YOURSELF",
+			":dad:GO FUCK YOURSELF",
+			":bf:GO FUCK YOURSELF"
+		]
 		#end
 
 		if (SONG.stage == "spooky")
 		{
 			curStage = "spooky";
-			halloweenLevel = true;
 
 			var hallowTex = Paths.getSparrowAtlas('stages/halloween_bg');
 
@@ -815,7 +813,7 @@ class PlayState extends MusicBeatState
 		strumLine = new FlxSprite(0, 50).makeGraphic(FlxG.width, 10);
 		strumLine.scrollFactor.set();
 
-		if (FlxG.save.data.downscroll)
+		if (SaveManagement.getOption("Scroll Direction") == "Down")
 			strumLine.y = FlxG.height - 165;
 
 		strumLineNotes = new FlxTypedGroup<FlxSprite>();
@@ -1889,7 +1887,7 @@ class PlayState extends MusicBeatState
 						daNote.destroy();
 					}
 	
-					if (FlxG.save.data.downscroll)
+					if (SaveManagement.getOption("Scroll Direction") == "Down")
 						daNote.y = (strumLine.y - (Conductor.songPosition - daNote.strumTime) * (-0.45 * FlxMath.roundDecimal(SONG.speed, 2)));
 					else
 						daNote.y = (strumLine.y - (Conductor.songPosition - daNote.strumTime) * (0.45 * FlxMath.roundDecimal(SONG.speed, 2)));
@@ -1897,7 +1895,7 @@ class PlayState extends MusicBeatState
 					// WIP interpolation shit? Need to fix the pause issue
 					// daNote.y = (strumLine.y - (songTime - daNote.strumTime) * (0.45 * PlayState.SONG.speed));
 	
-					if (daNote.y < -daNote.height && !FlxG.save.data.downscroll || daNote.y >= strumLine.y + 106 && FlxG.save.data.downscroll)
+					if (daNote.y < -daNote.height && SaveManagement.getOption("Scroll Direction") == "Up" || daNote.y >= strumLine.y + 106 && SaveManagement.getOption("Scroll Direction") == "Down")
 					{
 						if (daNote.isSustainNote && daNote.wasGoodHit)
 						{
@@ -2114,7 +2112,7 @@ class PlayState extends MusicBeatState
 	
 			if (daRating != 'shit' || daRating != 'bad')
 			{
-				if (FlxG.save.data.hitsounds)
+				if (SaveManagement.getOption("Hitsounds") == "On")
 					FlxG.sound.play(Paths.sound('hitsound'));
 				songScore += score;
 		
