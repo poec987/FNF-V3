@@ -123,8 +123,6 @@ class ResultsSubState extends MusicBeatSubstate {
                 selectedJudgement = "shit";
             else
                 selectedJudgement = "worst";
-            
-            FlxG.sound.music.fadeOut(4.0);
 
             judgement = new FlxSound().loadEmbedded(Paths.sound('judgements/'+selectedJudgement, "shared"), false, true).play();
             judgement.volume = 0.5;
