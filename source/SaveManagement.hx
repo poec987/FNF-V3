@@ -62,6 +62,8 @@ class SaveManagement {
     }
 
     public static function getOption(option:String):Dynamic {
-        return FlxG.save.data.options.get(option);
+        if (FlxG.save.data.options.get(option) != null)
+            return FlxG.save.data.options.get(option);
+        return null;
     }
 }
