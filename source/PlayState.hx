@@ -795,8 +795,7 @@ class PlayState extends MusicBeatState
 				dad.y += 250;
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
 			case 'senpai-angry':
-				dad.x += 150;
-				dad.y += 360;
+				dad.y += 250;
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
 			case 'spirit':
 				dad.x -= 150;
@@ -1782,7 +1781,7 @@ class PlayState extends MusicBeatState
 						camFollow.y = dad.getMidpoint().y - 200;
 						camFollow.x = dad.getMidpoint().x - 100;
 					case 'senpai-angry':
-						camFollow.y = dad.getMidpoint().y - 430;
+						camFollow.y = dad.getMidpoint().y - 200;
 						camFollow.x = dad.getMidpoint().x - 100;
 					case 'sonicexe':
 						camFollow.y = dad.getMidpoint().y + 30;

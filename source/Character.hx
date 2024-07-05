@@ -526,26 +526,27 @@ class Character extends FlxSprite
 				setGraphicSize(Std.int(width * 3));
 				updateHitbox();
 
-				antialiasing = false;
+				antialiasing = true;
 			case 'senpai-angry':
-				frames = Paths.getSparrowAtlas('characters/weeb/senpai');
-				animation.addByPrefix('idle', 'Angry Senpai Idle', 24, false);
-				animation.addByPrefix('singUP', 'Angry Senpai UP NOTE', 24, false);
-				animation.addByPrefix('singLEFT', 'Angry Senpai LEFT NOTE', 24, false);
-				animation.addByPrefix('singRIGHT', 'Angry Senpai RIGHT NOTE', 24, false);
-				animation.addByPrefix('singDOWN', 'Angry Senpai DOWN NOTE', 24, false);
+				frames = Paths.getSparrowAtlas('characters/weeb/sigmioEVIL');
+				animation.addByPrefix('idle', 'dance', 30, true);
+				animation.addByPrefix('singUP', 'Right', 30, false);
+				animation.addByPrefix('singLEFT', 'Left', 30, false);
+				animation.addByPrefix('singRIGHT', 'Up', 30, false);
+				animation.addByPrefix('singDOWN', 'Down', 30, false);
 
 				addOffset('idle');
-				addOffset("singUP", 5, 37);
+				addOffset("singUP");
 				addOffset("singRIGHT");
-				addOffset("singLEFT", 40);
-				addOffset("singDOWN", 14);
+				addOffset("singLEFT");
+				addOffset("singDOWN");
+
 				playAnim('idle');
 
-				setGraphicSize(Std.int(width * 6));
+				setGraphicSize(Std.int(width * 3));
 				updateHitbox();
 
-				antialiasing = false;
+				antialiasing = true;
 
 			case 'spirit':
 				frames = Paths.getPackerAtlas('weeb/spirit');
