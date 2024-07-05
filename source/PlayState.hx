@@ -181,6 +181,8 @@ class PlayState extends MusicBeatState
 		"exe" => 1
 	];
 
+	var songTimer:SongTimer;
+
 	#if desktop
 	// Discord RPC variables
 	var iconRPC:String = "";
@@ -954,6 +956,10 @@ class PlayState extends MusicBeatState
 		iconP2.y = healthBar.y - (iconP2.height / 2);
 		add(iconP2);
 
+		songTimer = new SongTimer(0);
+		songTimer.cameras = [camHUD];
+		add(songTimer);
+
 		strumLineNotes.cameras = [camHUD];
 		notes.cameras = [camHUD];
 		healthBar.cameras = [camHUD];
@@ -1264,6 +1270,9 @@ class PlayState extends MusicBeatState
 		#if desktop
 		// Song duration in a float, useful for the time left feature
 		songLength = FlxG.sound.music.length;
+
+		songTimer.endTime = Math.round(songLength/1000);
+		songTimer.updateDisplay();
 
 		// Updating Discord Rich Presence (with Time Left)
 		DiscordClient.changePresence(detailsText + " " + SONG.song, "\nAcc: " + truncateFloat(accuracy, 2) + "% | Score: " + songScore + " | Misses: " + misses  , iconRPC);
@@ -1749,6 +1758,9 @@ class PlayState extends MusicBeatState
 
 			// Conductor.lastSongPos = FlxG.sound.music.time;
 		}
+
+		songTimer.curTime = Math.round(Conductor.songPosition/1000);
+		songTimer.updateDisplay();
 
 		if (generatedMusic && PlayState.SONG.notes[Std.int(curStep / 16)] != null)
 		{
