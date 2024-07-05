@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="sigmioEVIL.png">
+	<!-- Created with Adobe Animate version 22.0.0.93 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Down0000" x="0" y="0" width="321" height="257"/>
+	<SubTexture name="Down0001" x="0" y="0" width="321" height="257"/>
+	<SubTexture name="Down0002" x="0" y="0" width="321" height="257"/>
+	<SubTexture name="Down0003" x="321" y="0" width="321" height="257"/>
+	<SubTexture name="Down0004" x="321" y="0" width="321" height="257"/>
+	<SubTexture name="Down0005" x="321" y="0" width="321" height="257"/>
+	<SubTexture name="Left0000" x="642" y="0" width="321" height="257"/>
+	<SubTexture name="Left0001" x="642" y="0" width="321" height="257"/>
+	<SubTexture name="Right0000" x="963" y="0" width="321" height="257"/>
+	<SubTexture name="Right0001" x="1284" y="0" width="321" height="257"/>
+	<SubTexture name="Up0000" x="0" y="257" width="321" height="257"/>
+	<SubTexture name="Up0001" x="0" y="257" width="321" height="257"/>
+	<SubTexture name="Up0002" x="0" y="257" width="321" height="257"/>
+	<SubTexture name="Up0003" x="321" y="257" width="321" height="257"/>
+	<SubTexture name="Up0004" x="321" y="257" width="321" height="257"/>
+	<SubTexture name="Up0005" x="321" y="257" width="321" height="257"/>
+	<SubTexture name="dance0000" x="642" y="257" width="321" height="257"/>
+	<SubTexture name="dance0001" x="963" y="257" width="321" height="257"/>
+</TextureAtlas>
