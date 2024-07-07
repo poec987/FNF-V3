@@ -61,7 +61,7 @@ class SongCard extends FlxTypedGroup<FlxSprite>{
             case 'south':
                 setName("South V3", "Didgie");
             case 'monster':
-                setName("Monster V3", "NOT DIDGIE (ft PoeDev)");
+                setName("Monster V3", "Didgie");
             // Week 3
             case 'pico':
                 setName("Pico V3", "thomicfee");
