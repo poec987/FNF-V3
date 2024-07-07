@@ -284,7 +284,7 @@ class PlayState extends MusicBeatState
 				if (files[i].endsWith('.txt'))
 					dialogueFiles.push(files[i].replace('.txt', '').trim());
 			}
-
+			
 			dialogue = CoolUtil.coolTextFile(Paths.txt(SONG.song.toLowerCase().trim()+'/'+dialogueFiles[FlxG.random.int(0, dialogueFiles.length-1)]));
 		}
 		#else

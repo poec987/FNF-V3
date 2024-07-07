@@ -127,8 +127,7 @@ class ResultsSubState extends MusicBeatSubstate {
             judgement = new FlxSound().loadEmbedded(Paths.sound('judgements/'+selectedJudgement, "shared"), false, true).play();
             judgement.volume = 0.5;
             judgement.onComplete = () -> {
-                if (music != null)
-                    judgementTween = FlxTween.tween(music, {"volume": 0}, 4, {ease: FlxEase.linear}).start();
+                judgementTween = FlxTween.tween(music, {"volume": 0}, 4, {ease: FlxEase.linear}).start();
             };
 
             canExit = true;
@@ -142,7 +141,7 @@ class ResultsSubState extends MusicBeatSubstate {
             // soundTimer.cancel();
             // judgementTimer.cancel();
 
-            judgementTween.cancel();
+            // judgementTween.cancel();
             FlxG.sound.destroy();
 
             playState.wakeTheFuckUp();

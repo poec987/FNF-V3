@@ -41,7 +41,7 @@ class SongTimer extends FlxTypedGroup<FlxText>{
         if (sec < 10)
             secDis = Std.string("0"+secDis);
 
-        return min+":"+sec;
+        return min+":"+secDis;
     }
 
     public function updateDisplay():Void {
