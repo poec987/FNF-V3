@@ -62,8 +62,8 @@ class FreeplayState extends MusicBeatState
 			newSong("Eggnog", 5, "parents-christmas"),
 			newSong("Winter-Horrorland", 5, "monster-christmas"),
 
-			newSong("Senpai", 6, "senpai"),
-			newSong("Roses", 6, "senpai"),
+			newSong("Senpai", 6, "sigmio"),
+			newSong("Roses", 6, "sigmio"),
 			newSong("Thorns", 6, "spirit"),
 			newSong("Unfairness-Jside", 6, "spirit",true),
 		],
@@ -74,7 +74,7 @@ class FreeplayState extends MusicBeatState
 			newSong("Tutorial-Erect", 1, "gf"),
 			newSong("Spookeez-Erect", 1, "spooky"),
 			newSong("Blammed-alt", 1, "pico"),
-			newSong("Senpai-Impossible-Ver", 1, "senpai")
+			newSong("Senpai-Impossible-Ver", 1, "sigmio")
 		],
 		"Remixes");
 

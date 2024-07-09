@@ -283,8 +283,7 @@ class PlayState extends MusicBeatState
 			for (i in 0...files.length) {
 				if (files[i].endsWith('.txt'))
 					dialogueFiles.push(files[i].replace('.txt', '').trim());
-			}
-			
+			}			
 			dialogue = CoolUtil.coolTextFile(Paths.txt(SONG.song.toLowerCase().trim()+'/'+dialogueFiles[FlxG.random.int(0, dialogueFiles.length-1)]));
 		}
 		#else
@@ -313,7 +312,7 @@ class PlayState extends MusicBeatState
 		{
 			curStage = "spooky";
 
-			var hallowTex = Paths.getSparrowAtlas('stages/halloween_bg');
+			var hallowTex = Paths.getSparrowAtlas('stages/spooky/halloween_bg');
 
 			halloweenBG = new FlxSprite(-200, -100);
 			halloweenBG.frames = hallowTex;
@@ -329,13 +328,13 @@ class PlayState extends MusicBeatState
 		{
 			curStage = 'exe';
 
-			var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('stages/exeback'));
+			var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('stages/exe/exeback'));
 			bg.antialiasing = true;
 			bg.scrollFactor.set(0.9, 0.9);
 			bg.active = false;
 			add(bg);
 
-			var stageFront:FlxSprite = new FlxSprite(-650, 600).loadGraphic(Paths.image('stages/exefront'));
+			var stageFront:FlxSprite = new FlxSprite(-650, 600).loadGraphic(Paths.image('stages/exe/exefront'));
 			stageFront.setGraphicSize(Std.int(stageFront.width * 1.1));
 			stageFront.updateHitbox();
 			stageFront.antialiasing = true;
@@ -709,13 +708,13 @@ class PlayState extends MusicBeatState
 		{
 			defaultCamZoom = 0.9;
 			curStage = 'stage';
-			var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('stages/stageback'));
+			var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('stages/stage/stageback'));
 			bg.antialiasing = true;
 			bg.scrollFactor.set(0.9, 0.9);
 			bg.active = false;
 			add(bg);
 
-			var stageFront:FlxSprite = new FlxSprite(-650, 600).loadGraphic(Paths.image('stages/stagefront'));
+			var stageFront:FlxSprite = new FlxSprite(-650, 600).loadGraphic(Paths.image('stages/stage/stagefront'));
 			stageFront.setGraphicSize(Std.int(stageFront.width * 1.1));
 			stageFront.updateHitbox();
 			stageFront.antialiasing = true;
@@ -723,7 +722,7 @@ class PlayState extends MusicBeatState
 			stageFront.active = false;
 			add(stageFront);
 
-			var stageCurtains:FlxSprite = new FlxSprite(-500, -300).loadGraphic(Paths.image('stages/stagecurtains'));
+			var stageCurtains:FlxSprite = new FlxSprite(-500, -300).loadGraphic(Paths.image('stages/stage/stagecurtains'));
 			stageCurtains.setGraphicSize(Std.int(stageCurtains.width * 0.9));
 			stageCurtains.updateHitbox();
 			stageCurtains.antialiasing = true;
@@ -860,7 +859,7 @@ class PlayState extends MusicBeatState
 			FlxG.sound.list.add(shootSound);
 
 			picoShoot = new FlxSprite(dad.x+30, (dad.y/2)-30);
-			picoShoot.frames = Paths.getSparrowAtlas('characters/Pico_Shooting');
+			picoShoot.frames = Paths.getSparrowAtlas('characters/pico/Pico_Shooting');
 			picoShoot.animation.addByPrefix('shoot', "Pico Shoot Hip Full");
 			picoShoot.flipX = true;
 			add(picoShoot);
@@ -917,9 +916,9 @@ class PlayState extends MusicBeatState
 		FlxG.fixedTimestep = false;
 
 		if (curSong == "Thorns" || isGood)
-			healthBarBG = new FlxSprite(0, FlxG.height * 0.9).loadGraphic(Paths.image('healthBar-good'));
+			healthBarBG = new FlxSprite(0, FlxG.height * 0.9).loadGraphic(Paths.image('ui/ui/good/healthBar-good'));
 		else
-			healthBarBG = new FlxSprite(0, FlxG.height * 0.9).loadGraphic(Paths.image('healthBar'));
+			healthBarBG = new FlxSprite(0, FlxG.height * 0.9).loadGraphic(Paths.image('ui/ui/healthBar'));
 		healthBarBG.screenCenter(X);
 		healthBarBG.scrollFactor.set();
 		add(healthBarBG);
@@ -1003,10 +1002,8 @@ class PlayState extends MusicBeatState
 				default:
 					if (!hasDialogue)
 						startCountdown();
-			}
-
-			if (hasDialogue) {
-				startDialogue(doof);
+					else
+						startDialogue(doof);
 			}
 		}
 		else
@@ -1043,7 +1040,7 @@ class PlayState extends MusicBeatState
 		red.scrollFactor.set();
 
 		var senpaiEvil:FlxSprite = new FlxSprite();
-		senpaiEvil.frames = Paths.getSparrowAtlas('weeb/senpaiCrazy');
+		senpaiEvil.frames = Paths.getSparrowAtlas('cutscenes/weeb/senpaiCrazy');
 		senpaiEvil.animation.addByPrefix('idle', 'Senpai Pre Explosion', 24, false);
 		senpaiEvil.setGraphicSize(Std.int(senpaiEvil.width * 6));
 		senpaiEvil.scrollFactor.set();
@@ -1428,9 +1425,9 @@ class PlayState extends MusicBeatState
 				}
 			} else {
 				if (isGood)
-					babyArrow.frames = Paths.getSparrowAtlas('NOTE_assets-good');
+					babyArrow.frames = Paths.getSparrowAtlas('ui/ui/goodNOTE_assets-good');
 				else
-					babyArrow.frames = Paths.getSparrowAtlas('NOTE_assets');
+					babyArrow.frames = Paths.getSparrowAtlas('ui/ui/NOTE_assets');
 				babyArrow.animation.addByPrefix('green', 'arrowUP');
 				babyArrow.animation.addByPrefix('blue', 'arrowDOWN');
 				babyArrow.animation.addByPrefix('purple', 'arrowLEFT');

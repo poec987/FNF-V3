@@ -6,3 +6,7 @@ philly::week3
 blammed::week3
 cocoa::week5
 eggnog::week5
+winter-horrorland::frosted
+senpai::dialogueBox-pixel
+roses::dialogueBox-senpaiMad
+thorns::dialogueBox-evil

@@ -99,11 +99,11 @@ class Note extends FlxSprite
 
 			switch (noteType) {
 				case 'Kill':
-					frames = Paths.getSparrowAtlas('customNotes/kill'+suffix);
+					frames = Paths.getSparrowAtlas('ui/customNotes/kill'+suffix);
 				case 'Shield Note':
-					frames = Paths.getSparrowAtlas('customNotes/shield'+suffix);
+					frames = Paths.getSparrowAtlas('ui/customNotes/shield'+suffix);
 				default:
-					frames = Paths.getSparrowAtlas('NOTE_assets'+suffix);
+					frames = Paths.getSparrowAtlas('ui/ui/NOTE_assets'+suffix);
 			}
 
 			animation.addByPrefix('greenScroll', 'green0');

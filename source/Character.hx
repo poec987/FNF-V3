@@ -108,7 +108,7 @@ class Character extends FlxSprite
 				playAnim('danceRight');
 
 			case 'gf-car':
-				tex = Paths.getSparrowAtlas('characters/gfCar');
+				tex = Paths.getSparrowAtlas('characters/limo/gfCar');
 				frames = tex;
 				animation.addByIndices('singUP', 'GF Dancing Beat Hair blowing CAR', [0], "", 24, false);
 				animation.addByIndices('danceLeft', 'GF Dancing Beat Hair blowing CAR', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
@@ -138,7 +138,7 @@ class Character extends FlxSprite
 
 			case 'dad':
 				// DAD ANIMATION LOADING CODE
-				tex = Paths.getSparrowAtlas('characters/DADDY_DEAREST');
+				tex = Paths.getSparrowAtlas('characters/stage/DADDY_DEAREST');
 				frames = tex;
 				animation.addByPrefix('idle', 'Dad idle dance', 24);
 				animation.addByPrefix('singUP', 'Dad Sing Note UP', 24);
@@ -156,7 +156,7 @@ class Character extends FlxSprite
 				
 			case 'sonicexe':
 				// DAD ANIMATION LOADING CODE
-				tex = Paths.getSparrowAtlas('characters/sonicexe');
+				tex = Paths.getSparrowAtlas('characters/exe/sonicexe');
 				frames = tex;
 				animation.addByPrefix('idle', 'Idle', 30, false);
 				animation.addByPrefix('singUP', 'Up', 30, false);
@@ -175,7 +175,7 @@ class Character extends FlxSprite
 
 				playAnim('idle');
 			case 'spooky':
-				tex = Paths.getSparrowAtlas('characters/spooky_kids_assets');
+				tex = Paths.getSparrowAtlas('characters/spooky/spooky_kids_assets');
 				frames = tex;
 				animation.addByPrefix('singUP', 'spooky UP NOTE', 30, false);
 				animation.addByPrefix('singDOWN', 'spooky DOWN note', 30, false);
@@ -192,7 +192,7 @@ class Character extends FlxSprite
 
 				playAnim('idle');
 			case 'mom':
-				tex = Paths.getSparrowAtlas('characters/Mom_Assets');
+				tex = Paths.getSparrowAtlas('characters/limo/Mom_Assets');
 				frames = tex;
 
 				animation.addByPrefix('idle', "Mom Idle", 30, false);
@@ -212,7 +212,7 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 			case 'mom-car':
-				tex = Paths.getSparrowAtlas('characters/momCar');
+				tex = Paths.getSparrowAtlas('characters/limo/momCar');
 				frames = tex;
 
 				animation.addByPrefix('idle', "Mom Idle", 24, false);
@@ -231,7 +231,7 @@ class Character extends FlxSprite
 
 				playAnim('idle');
 			case 'monster':
-				tex = Paths.getSparrowAtlas('characters/Monster_Assets');
+				tex = Paths.getSparrowAtlas('characters/spooky/Monster_Assets');
 				frames = tex;
 				animation.addByPrefix('idle', 'monster idle', 24, false);
 				animation.addByPrefix('singUP', 'monster up note', 24, false);
@@ -265,7 +265,7 @@ class Character extends FlxSprite
 
 				antialiasing = false;
 			case 'pico':
-				tex = Paths.getSparrowAtlas('characters/Pico_FNF_assetss');
+				tex = Paths.getSparrowAtlas('characters/pico/Pico_FNF_assetss');
 				frames = tex;
 				animation.addByPrefix('idle', "Pico Idle Dance", 24);
 				animation.addByPrefix('singUP', 'pico Up note0', 24, false);
@@ -343,7 +343,7 @@ class Character extends FlxSprite
 				flipX = true;
 
 			case 'bf-bside':
-				var tex = Paths.getSparrowAtlas('characters/BOYFRIEND-BSIDE');
+				var tex = Paths.getSparrowAtlas('characters/bside/BOYFRIEND-BSIDE');
 				frames = tex;
 				animation.addByPrefix('idle', 'BF idle dance', 24, false);
 				animation.addByPrefix('singUP', 'BF NOTE UP0', 24, false);
@@ -397,7 +397,7 @@ class Character extends FlxSprite
 
 				flipX = true;
 			case 'bf-car':
-				var tex = Paths.getSparrowAtlas('characters/bfCar');
+				var tex = Paths.getSparrowAtlas('characters/limo/bfCar');
 				frames = tex;
 				animation.addByPrefix('idle', 'BF idle dance', 24, false);
 				animation.addByPrefix('singUP', 'BF NOTE UP0', 24, false);
@@ -505,7 +505,7 @@ class Character extends FlxSprite
 				antialiasing = false;
 				flipX = true;
 
-			case 'senpai':
+			case 'sigmio':
 				frames = Paths.getSparrowAtlas('characters/weeb/sigmio');
 				animation.addByPrefix('danceLeft', 'danceLeft', 30, false);
 				animation.addByPrefix('danceRight', 'danceRight', 30, false);
@@ -527,7 +527,7 @@ class Character extends FlxSprite
 				updateHitbox();
 
 				antialiasing = true;
-			case 'senpai-angry':
+			case 'sigmio-evil':
 				frames = Paths.getSparrowAtlas('characters/weeb/sigmioEVIL');
 				animation.addByPrefix('idle', 'dance', 30, true);
 				animation.addByPrefix('singUP', 'Right', 30, false);
@@ -549,7 +549,7 @@ class Character extends FlxSprite
 				antialiasing = true;
 
 			case 'spirit':
-				frames = Paths.getPackerAtlas('weeb/spirit');
+				frames = Paths.getPackerAtlas('characters/weeb/spirit');
 				animation.addByPrefix('idle', "idle spirit_", 24, false);
 				animation.addByPrefix('singUP', "up_", 24, false);
 				animation.addByPrefix('singRIGHT', "right_", 24, false);

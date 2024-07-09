@@ -37,7 +37,7 @@ class Stage extends FlxTypedGroup<Dynamic> {
             case "spooky":
                 PlayState.curStage = "spooky";
     
-                var hallowTex = Paths.getSparrowAtlas('stages/halloween_bg');
+                var hallowTex = Paths.getSparrowAtlas('stages/spooky/halloween_bg');
     
                 halloweenBG = new FlxSprite(-200, -100);
                 halloweenBG.frames = hallowTex;

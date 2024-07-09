@@ -15,8 +15,8 @@ gf-christmas
 monster
 bf-pixel
 bf-pixel-good
-senpai
-senpai-angry
+sigmio
+sigmio-evil
 spirit
 sonicexe
 dad-test
