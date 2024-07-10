@@ -1138,8 +1138,8 @@ class PlayState extends MusicBeatState
 			boyfriend.playAnim('idle');
 
 			var introAssets:Map<String, Array<String>> = new Map<String, Array<String>>();
-			introAssets.set('default', ['ready', "set", "go"]);
-			introAssets.set('good', ['ready-good', "set-good", "go-good"]);
+			introAssets.set('default', ['ui/ui/ready', "ui/ui/set", "ui/ui/go"]);
+			introAssets.set('good', ['ui/ui/good/ready-good', "ui/ui/good/set-good", "ui/ui/good/go-good"]);
 			introAssets.set('school', [
 				'stages/weeb/pixelUI/ready-pixel',
 				'stages/weeb/pixelUI/set-pixel',
@@ -2199,23 +2199,43 @@ class PlayState extends MusicBeatState
 						daRating = 'bad';
 				*/
 		
-				var pixelShitPart1:String = "";
-				var pixelShitPart2:String = '';
+				var ratingPart1:String = "";
+				var ratingPart2:String = '';
 		
 				if (curStage.startsWith('school') || isPixel)
 				{
-					pixelShitPart1 = 'stages/weeb/pixelUI/';
+					ratingPart1 = 'stages/weeb/pixelUI/';
 					if (curSong == "Thorns" || isGood)
-						pixelShitPart2 = '-pixel-good';
+						ratingPart2 = '-pixel-good';
 					else
-						pixelShitPart2 = '-pixel';
+						ratingPart2 = '-pixel';
+				}
+				else if (isGood)
+					ratingPart1 = "ui/ui/good/";
+				else 
+					ratingPart1 = "ui/ui/";
+				
+				if (!isPixel && isGood) {
+					ratingPart2 = '-good';
+				}
+
+				var comboPart1:String = "";
+				var comboPart2:String = '';
+		
+				if (curStage.startsWith('school') || isPixel)
+				{
+					comboPart1 = 'stages/weeb/pixelUI/';
+					if (curSong == "Thorns" || isGood)
+						comboPart2 = '-pixel-good';
+					else
+						comboPart2 = '-pixel';
 				}
 				
 				if (!isPixel && isGood) {
-					pixelShitPart2 = '-good';
+					comboPart2 = '-good';
 				}
 		
-				rating.loadGraphic(Paths.image(pixelShitPart1 + daRating + pixelShitPart2));
+				rating.loadGraphic(Paths.image(ratingPart1 + daRating + ratingPart2));
 				rating.screenCenter();
 				rating.x = coolText.x - 40;
 				rating.y -= 60;
@@ -2223,7 +2243,7 @@ class PlayState extends MusicBeatState
 				rating.velocity.y -= FlxG.random.int(140, 175);
 				rating.velocity.x -= FlxG.random.int(0, 10);
 		
-				var comboSpr:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'combo' + pixelShitPart2));
+				var comboSpr:FlxSprite = new FlxSprite().loadGraphic(Paths.image(comboPart1 + 'combo' + comboPart2));
 				comboSpr.screenCenter();
 				comboSpr.x = coolText.x;
 				comboSpr.acceleration.y = 600;
@@ -2257,7 +2277,7 @@ class PlayState extends MusicBeatState
 				var daLoop:Int = 0;
 				for (i in seperatedScore)
 				{
-					var numScore:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'num' + Std.int(i) + pixelShitPart2));
+					var numScore:FlxSprite = new FlxSprite().loadGraphic(Paths.image(comboPart1 + 'num' + Std.int(i) + comboPart2));
 					numScore.screenCenter();
 					numScore.x = coolText.x + (43 * daLoop) - 90;
 					numScore.y += 80;
