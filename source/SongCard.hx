@@ -85,7 +85,7 @@ class SongCard extends FlxTypedGroup<FlxSprite>{
                 setName("the frosted one", "the frosted one");
             // Week 6
             case 'senpai':
-                setName("Senpai V3", "");
+                setName("Senpai V3", "x8c8r");
             case 'roses':
                 setName("Roses V3", "Xarion");
             case 'thorns':
