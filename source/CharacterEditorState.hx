@@ -301,7 +301,7 @@ class CharacterEditorState extends MusicBeatState
                 charArray.push(addedOffsetData);
 
             //trace(charArray);
-            updateAnimsTab(true);
+            updateAnimsTab(true, false);
             char.playAnim(offsetAnimsDropdown.selectedLabel.trim(), true);
         });
 
@@ -417,7 +417,7 @@ class CharacterEditorState extends MusicBeatState
         }
     }
 
-    function updateAnimsTab(?reloadChar:Bool = false) {
+    function updateAnimsTab(?reloadChar:Bool = false, ?updateDropdowns = true) {
         for (i in 0...charArray.length) {
             charArray[i] = charArray[i].replace("\n", "").trim();
         }
@@ -427,7 +427,10 @@ class CharacterEditorState extends MusicBeatState
             add(char);
         }
         loadAnims();
-        animsDropdown.setData(FlxUIDropDownMenu.makeStrIdLabelArray(animsList));
-        offsetAnimsDropdown.setData(FlxUIDropDownMenu.makeStrIdLabelArray(animsList));
+
+        if (updateDropdowns) {
+            animsDropdown.setData(FlxUIDropDownMenu.makeStrIdLabelArray(animsList));
+            offsetAnimsDropdown.setData(FlxUIDropDownMenu.makeStrIdLabelArray(animsList));
+        }
     }
 }
