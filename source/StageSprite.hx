@@ -1,6 +1,6 @@
 package;
 
-import flixel.FlxSprite; // TEST
+import flixel.FlxSprite;
 
 class StageSprite extends FlxSprite {
     public var spriteTag:String = "";
