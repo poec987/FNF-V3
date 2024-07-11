@@ -15,6 +15,33 @@ This mod is everything your heart could possibly desire - New and improved sprit
 
 ![image](https://user-images.githubusercontent.com/26305836/110532204-63740480-80d1-11eb-9641-bf5a641e6d77.png)
 
+# Friday Night Funkin Cinema Engine
+
+## Features
+
+- Chart Editor (Peak)
+
+*Hate the UGLY and UNUSABLE kade engine chart editor?
+...
+WHAT DO YOU MEAN YOU USE PSYCH ENGINE?!
+
+You can have custom notes with parameters for maximum customization.
+
+Also, clear chart button (so cool)
+
+You can like set song to be pixel, good (good option only makes sense for FNF V3 lol, gonna prob be replaced with "ui skins" in standalone) and set whether or not the song has dialogue (that classic pixel dialogue shit frfr) and uhh you can set the stage and gf (not implemented lolllol)*
+
+- Custom Dialogue Shits
+
+*All controlled by txt files and pngs and xmls, you can customize your dialogue for some cool dialogue. You can make custom character portraits and boxes. What makes shit unique is you can have as many dialogues txts in one song for randomized dialogue!! (woo!)*
+
+- Character Editor
+
+*Self explanatory. BUTTTT!!! you can make specific animations be flipped on either x, y or both axises!!!! You can also flip the characters on x and y axis as a whole, scale them, set pixel and icons!*
+
+- Stage Editor
+
+*Basically character editor, but for stages, idk what to say lmao*
 
 # Friday Night Funkin Kade Engine
 
