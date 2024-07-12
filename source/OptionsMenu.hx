@@ -89,6 +89,13 @@ class OptionsMenu extends MusicBeatState
 					};
 				}
 			}
+		],
+		[ // Botplay
+			"2Type",
+			"Botplay",
+			"Off",
+			["Off", "On"],
+			null
 		]
 	];
 

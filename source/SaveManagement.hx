@@ -42,6 +42,7 @@ class SaveManagement {
         FlxG.save.data.freaky = false;
         FlxG.save.data.dfjk = false;
         FlxG.save.data.downscroll = false;
+        FlxG.save.data.botplay = false;
 
         FlxG.save.data.unlockedFreeplay = false;
 
@@ -56,6 +57,7 @@ class SaveManagement {
         FlxG.save.data.options.set("Scroll Direction", "Up");
         FlxG.save.data.options.set("Hitsounds", "Off");
         FlxG.save.data.options.set("Freaky Mode", "Off");
+        FlxG.save.data.options.set("Botplay", "Off");
     }
 
     public static function setOption(option:String, value:Dynamic):Void {

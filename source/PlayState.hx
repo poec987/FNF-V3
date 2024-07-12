@@ -2008,12 +2008,14 @@ class PlayState extends MusicBeatState
 				});
 			}
 
-
+		
 		if (!inCutscene)
 			keyShit();
 		
+		#if notRelease
 		if (FlxG.keys.justPressed.ONE)
 			endSong();
+		#end
 	}
 
 	public function wakeTheFuckUp():Void {
@@ -2177,6 +2179,9 @@ class PlayState extends MusicBeatState
 					score = 200;
 					ss = false;
 					goods++;
+				}
+				else if (SaveManagement.getOption("Botplay") == "On") {
+					daRating = 'sick';
 				}
 			if (daRating == 'sick')
 			{
@@ -2363,7 +2368,7 @@ class PlayState extends MusicBeatState
 		var controlArray:Array<Bool> = [leftP, downP, upP, rightP];
 
 		// FlxG.watch.addQuick('asdfa', upP);
-		if ((upP || rightP || downP || leftP) && !boyfriend.stunned && generatedMusic)
+		if ((upP || rightP || downP || leftP || SaveManagement.getOption("Botplay") == "On") && !boyfriend.stunned && generatedMusic)
 			{
 				repPresses++;
 				boyfriend.holdTimer = 0;
@@ -2399,7 +2404,7 @@ class PlayState extends MusicBeatState
 						{
 							for (coolNote in possibleNotes)
 							{
-								if (controlArray[coolNote.noteData])
+								if (controlArray[coolNote.noteData] || SaveManagement.getOption("Botplay") == "On")
 									goodNoteHit(coolNote);
 								else
 								{
@@ -2454,16 +2459,16 @@ class PlayState extends MusicBeatState
 						{
 							// NOTES YOU ARE HOLDING
 							case 2:
-								if (up)
+								if (up || SaveManagement.getOption("Botplay") == "On")
 									goodNoteHit(daNote);
 							case 3:
-								if (right)
+								if (right || SaveManagement.getOption("Botplay") == "On")
 									goodNoteHit(daNote);
 							case 1:
-								if (down)
+								if (down || SaveManagement.getOption("Botplay") == "On")
 									goodNoteHit(daNote);
 							case 0:
-								if (left)
+								if (left || SaveManagement.getOption("Botplay") == "On")
 									goodNoteHit(daNote);
 						}
 					}
@@ -2594,7 +2599,7 @@ class PlayState extends MusicBeatState
 
 	function noteCheck(keyP:Bool, note:Note):Void // sorry lol
 		{
-			if (keyP)
+			if (keyP || SaveManagement.getOption("Botplay") == "On")
 				{
 				goodNoteHit(note);
 				}
