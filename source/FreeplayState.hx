@@ -23,19 +23,22 @@ class FreeplayState extends MusicBeatState
 	var pages:Array<FreeplayPage> = [];
 
 	var selector:FlxText;
-	var curSelected:Int = 0;
+	static var curSelected:Int = 0;
 
 	var scoreText:FlxText;
 	var lerpScore:Int = 0;
 	var intendedScore:Int = 0;
 
 	var pageText:FlxText;
-	var page:Int = 0;
+	static var page:Int = 0;
 
 	var grpSongs:FlxTypedGroup<Alphabet>;
 	private var curPlaying:Bool = false;
 
 	var iconArray:Array<HealthIcon> = [];
+
+	public static var lastSelected:Int = -1;
+	public static var lastPage:Int = -1;
 
 	override function create()
 	{
@@ -85,6 +88,11 @@ class FreeplayState extends MusicBeatState
 		],
 		"Extras");
 
+		pages[3] = new FreeplayPage([
+			newSong("Rethinker-J-Mix", 1, "bf-pixel", false)
+		],
+		"Covers");
+
 		var isDebug:Bool = false;
 
 		#if debug
@@ -126,6 +134,15 @@ class FreeplayState extends MusicBeatState
 
 		add(scoreText);
 
+		if (lastSelected != -1)
+			curSelected = lastSelected;
+
+		if (lastPage != -1) {
+			songs = [];
+			addPageSongs(pages[lastPage]);
+			refreshSongList();
+		}
+			
 		changeSelection();
 
 		selector = new FlxText();
@@ -197,6 +214,9 @@ class FreeplayState extends MusicBeatState
 		PlayState.isStoryMode = false;
 
 		PlayState.storyWeek = PlayState.stageDictionary[PlayState.SONG.stage];
+
+		PlayState.lastFPpage = page;
+		PlayState.lastFPselect = curSelected;
 		LoadingState.loadAndSwitchState(new PlayState());
 	}
 

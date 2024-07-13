@@ -56,6 +56,9 @@ class PlayState extends MusicBeatState
 		return instance;
 	}
 
+	public static var lastFPselect:Int = -1;
+	public static var lastFPpage:Int = -1;
+
 	public static var curStage:String = '';
 	public static var SONG:SwagSong;
 	public static var isStoryMode:Bool = false;
@@ -2068,6 +2071,8 @@ class PlayState extends MusicBeatState
 			else
 			{
 				trace('WENT BACK TO FREEPLAY??');
+				FreeplayState.lastPage = lastFPpage;
+				FreeplayState.lastSelected = lastFPselect;
 				FlxG.switchState(new FreeplayState());
 			}
 	}
