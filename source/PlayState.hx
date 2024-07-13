@@ -778,7 +778,9 @@ class PlayState extends MusicBeatState
 					camPos.x += 600;
 					tweenCamIn();
 				}
-
+			case 'ogbf-pixel':
+				dad.y += 400;
+				dad.x -= 300;
 			case "spooky":
 				dad.y += 200;
 			case "monster":
