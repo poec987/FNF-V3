@@ -47,7 +47,7 @@ class ResultsSubState extends MusicBeatSubstate {
 
     var canExit:Bool = false;
     
-    public function new(x:Float, y:Float, results:FunkinResults, playState:PlayState) {
+    public function new(x:Float, y:Float, results:FunkinResults, playState:PlayState, playJudgement:Bool = true) {
         super();
 
         music = new FlxSound().loadEmbedded(Paths.music("youHaveDidIt"), true, false).play();
@@ -125,12 +125,14 @@ class ResultsSubState extends MusicBeatSubstate {
             else
                 selectedJudgement = "worst";
 
-            judgement = new FlxSound().loadEmbedded(Paths.sound('judgements/'+selectedJudgement, "shared"), false, true).play();
-            judgement.volume = 0.5;
-            judgement.autoDestroy = true;
-            judgement.onComplete = () -> {
-                judgementTween = FlxTween.tween(music, {"volume": 0}, 4, {ease: FlxEase.linear}).start();
-            };
+            if (playJudgement) {
+                judgement = new FlxSound().loadEmbedded(Paths.sound('judgements/'+selectedJudgement, "shared"), false, true).play();
+                judgement.volume = 0.5;
+                judgement.autoDestroy = true;
+                judgement.onComplete = () -> {
+                    judgementTween = FlxTween.tween(music, {"volume": 0}, 4, {ease: FlxEase.linear}).start();
+                };
+            }
 
             canExit = true;
         });
@@ -145,8 +147,11 @@ class ResultsSubState extends MusicBeatSubstate {
 
             if (judgementTween != null)
                 judgementTween.cancel();
+
             music.destroy();
-            judgement.destroy();
+            
+            if (judgement != null)
+                judgement.destroy();
 
             FlxG.sound.destroy();
 

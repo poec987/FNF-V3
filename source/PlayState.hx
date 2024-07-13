@@ -125,6 +125,9 @@ class PlayState extends MusicBeatState
 
 	var songCard:SongCard;
 
+	var stupidFuckingSpotlight1:FlxSprite;
+	var stupidFuckingSpotlight2:FlxSprite;
+
 	var halloweenBG:FlxSprite;
 	var isHalloween:Bool = false;
 
@@ -874,6 +877,15 @@ class PlayState extends MusicBeatState
 
 		add(boyfriend);
 
+		stupidFuckingSpotlight1 = new FlxSprite(boyfriend.x+50, -50).loadGraphic(Paths.image('stages/stage/spotlight'));
+		stupidFuckingSpotlight2 = new FlxSprite(dad.x+50, -50).loadGraphic(Paths.image('stages/stage/spotlight'));
+
+		stupidFuckingSpotlight1.visible = false;
+		stupidFuckingSpotlight2.visible = false;
+
+		add(stupidFuckingSpotlight1);
+		add(stupidFuckingSpotlight2);
+
 		var doof:DialogueBox = new DialogueBox(false, dialogue);
 		// doof.x += 70;
 		// doof.y = FlxG.height * 0.5;
@@ -967,6 +979,10 @@ class PlayState extends MusicBeatState
 
 		songTimer = new SongTimer(0);
 		songTimer.cameras = [camHUD];
+
+		if (SONG.song.toLowerCase() == 'thorns')
+			songTimer.visible = false;
+
 		add(songTimer);
 
 		strumLineNotes.cameras = [camHUD];
@@ -2117,7 +2133,7 @@ class PlayState extends MusicBeatState
 		persistentDraw = true;
 	
 
-		var sub:FlxSubState = new ResultsSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y, results, this);
+		var sub:FlxSubState = new ResultsSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y, results, this, !isGood);
 		sub.cameras = [camHUD];
 		openSubState(sub);	
 		
@@ -2906,8 +2922,10 @@ class PlayState extends MusicBeatState
 
 		iconP1.setGraphicSize(Std.int(iconP1.width + 30));
 		iconP2.setGraphicSize(Std.int(iconP2.width + 30));
-		iconP1.angle = curBeat % 2 == 0 ? 15 : -15;
-		iconP2.angle = curBeat % 2 == 0 ? -15 : 15;
+		if (curSong.toLowerCase() != 'thorns') {
+			iconP1.angle = curBeat % 2 == 0 ? 15 : -15;
+			iconP2.angle = curBeat % 2 == 0 ? -15 : 15;
+		}
 
 		iconP1.updateHitbox();
 		iconP2.updateHitbox();
