@@ -22,9 +22,13 @@ class PauseSubState extends MusicBeatSubstate
 
 	var pauseMusic:FlxSound;
 
-	public function new(x:Float, y:Float)
+	var comingFromFreeplay:Bool = false;
+
+	public function new(x:Float, y:Float, freeplay:Bool)
 	{
 		super();
+
+		comingFromFreeplay = freeplay;
 
 		pauseMusic = new FlxSound().loadEmbedded(Paths.music('breakfast'), true, true);
 		pauseMusic.volume = 0;
@@ -100,7 +104,10 @@ class PauseSubState extends MusicBeatSubstate
 				case "Restart Song":
 					FlxG.resetState();
 				case "Exit to menu":
-					FlxG.switchState(new MainMenuState());
+					if (comingFromFreeplay)
+						returnToFreeplay();
+					else
+						FlxG.switchState(new MainMenuState());
 			}
 		}
 
@@ -143,5 +150,12 @@ class PauseSubState extends MusicBeatSubstate
 				// item.setGraphicSize(Std.int(item.width));
 			}
 		}
+	}
+
+	function returnToFreeplay() {
+		trace('WENT BACK TO FREEPLAY??');
+		FreeplayState.lastPage = PlayState.lastFPpage;
+		FreeplayState.lastSelected = PlayState.lastFPselect;
+		FlxG.switchState(new FreeplayState());
 	}
 }

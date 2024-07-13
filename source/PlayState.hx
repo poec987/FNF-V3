@@ -1676,7 +1676,7 @@ class PlayState extends MusicBeatState
 				FlxG.switchState(new GitarooPause());
 			}
 			else
-				openSubState(new PauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
+				openSubState(new PauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y, !isStoryMode));
 		}
 
 		if (FlxG.keys.justPressed.SEVEN)
@@ -2070,11 +2070,15 @@ class PlayState extends MusicBeatState
 			}
 			else
 			{
-				trace('WENT BACK TO FREEPLAY??');
-				FreeplayState.lastPage = lastFPpage;
-				FreeplayState.lastSelected = lastFPselect;
-				FlxG.switchState(new FreeplayState());
+				returnToFreeplay();
 			}
+	}
+
+	function returnToFreeplay() {
+		trace('WENT BACK TO FREEPLAY??');
+		FreeplayState.lastPage = lastFPpage;
+		FreeplayState.lastSelected = lastFPselect;
+		FlxG.switchState(new FreeplayState());
 	}
 
 	function endSong():Void
