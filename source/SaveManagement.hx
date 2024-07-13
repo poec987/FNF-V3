@@ -43,10 +43,15 @@ class SaveManagement {
         FlxG.save.data.dfjk = false;
         FlxG.save.data.downscroll = false;
         FlxG.save.data.botplay = false;
+        FlxG.save.data.fps = 60;
 
         FlxG.save.data.unlockedFreeplay = false;
 
+        FlxG.save.data.songScores = new Map<String, Int>();
+
         defaultOptions();
+
+        FlxG.save.flush();
     }
 
     public static function defaultOptions() {
@@ -58,6 +63,7 @@ class SaveManagement {
         FlxG.save.data.options.set("Hitsounds", "Off");
         FlxG.save.data.options.set("Freaky Mode", "Off");
         FlxG.save.data.options.set("Botplay", "Off");
+        FlxG.save.data.options.set("FPS", "60");
     }
 
     public static function setOption(option:String, value:Dynamic):Void {

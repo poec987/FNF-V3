@@ -96,6 +96,16 @@ class OptionsMenu extends MusicBeatState
 			"Off",
 			["Off", "On"],
 			null
+		],
+		[ // FPS
+			"2Type",
+			"FPS",
+			"60",
+			["60", "144"],
+			() -> {
+				var n = Std.int(SaveManagement.getOption("FPS"));
+				FlxG.drawFramerate = n;
+			}
 		]
 	];
 

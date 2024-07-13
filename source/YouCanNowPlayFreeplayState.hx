@@ -15,7 +15,7 @@ class YouCanNowPlayFreeplayState extends FlxState {
         FlxG.save.data.unlockedFreeplay = true;
         FlxG.sound.music.destroy();
 
-        var img:FlxSprite = new FlxSprite().loadGraphic(Paths.image("stages/yay"));
+        var img:FlxSprite = new FlxSprite().loadGraphic(Paths.image("yay"));
         add(img);
         img.alpha = 0;
         new FlxTimer().start(0.5, (tmr:FlxTimer) -> {

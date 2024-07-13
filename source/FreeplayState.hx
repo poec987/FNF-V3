@@ -43,52 +43,52 @@ class FreeplayState extends MusicBeatState
 	override function create()
 	{
 		pages[0] = new FreeplayPage([
-			newSong("Tutorial", 1, "gf"),
+			newSong("Tutorial", "Tutorial", 1, "gf"),
 
-			newSong("Bopeebo", 1, "dad"),
-			newSong("Fresh", 1, "dad"),
-			newSong("Dadbattle", 1, "dad"),
+			newSong("Bopeebo", "Bopeebo", 1, "dad"),
+			newSong("Fresh", "Fresh", 1, "dad"),
+			newSong("Dadbattle", "Dadbattle", 1, "dad"),
 
-			newSong("Spookeez", 2, "spooky"),
-			newSong("South", 2, "spooky"),
-			newSong("Monster", 2, "monster"),
+			newSong("Spookeez", "Spookeez", 2, "spooky"),
+			newSong("South", "South", 2, "spooky"),
+			newSong("Monster", "Monster", 2, "monster"),
 
-			newSong("Pico", 3, "pico"),
-			newSong("Philly", 3, "pico"),
-			newSong("Blammed", 3, "pico"),
+			newSong("Pico", "Pico", 3, "pico"),
+			newSong("Philly", "Philly Nice", 3, "pico"),
+			newSong("Blammed", "Blammed", 3, "pico"),
 
-			newSong("Satin-Panties", 4, "pico"),
-			newSong("High", 4, "pico"),
-			newSong("MILF", 4, "pico"),
+			newSong("Satin-Panties", "Satin Panties", 4, "pico"),
+			newSong("High", "High", 4, "pico"),
+			newSong("MILF", "MILF", 4, "pico"),
 
-			newSong("Cocoa", 5, "parents-christmas"),
-			newSong("Eggnog", 5, "parents-christmas"),
-			newSong("Winter-Horrorland", 5, "monster-christmas"),
+			newSong("Cocoa", "Cocoa", 5, "parents-christmas"),
+			newSong("Eggnog", "Eggnog", 5, "parents-christmas"),
+			newSong("Winter-Horrorland", "Winter Horrorland", 5, "monster-christmas"),
 
-			newSong("Senpai", 6, "sigmio"),
-			newSong("Roses", 6, "sigmio"),
-			newSong("Thorns", 6, "spirit"),
-			newSong("Unfairness-Jside", 6, "spirit",true),
+			newSong("Senpai", "Senpai", 6, "sigmio"),
+			newSong("Roses", "Roses", 6, "sigmio"),
+			newSong("Thorns", "Thorns", 6, "spirit"),
+			newSong("Unfairness-Jside", "Unfairness J-Side", 6, "spirit",true),
 		],
 		"Funkin");
 
 		pages[1] = new FreeplayPage([
-			newSong("Tutorial-BSide", 1, "gf"),
-			newSong("Tutorial-Erect", 1, "gf"),
-			newSong("Spookeez-Erect", 1, "spooky"),
-			newSong("Blammed-alt", 1, "pico"),
-			newSong("Senpai-Impossible-Ver", 1, "sigmio")
+			newSong("Tutorial-BSide", "Tutorial B-Side", 1, "gf"),
+			newSong("Tutorial-Erect", "Tutorial Erect", 1, "gf"),
+			newSong("Spookeez-Erect", "Spookeez Erect", 1, "spooky"),
+			newSong("Blammed-alt", "Blammed (Alt)", 1, "pico"),
+			newSong("Senpai-Impossible-Ver", "Senpai Impossible Ver.", 1, "sigmio")
 		],
 		"Remixes");
 
 		pages[2] = new FreeplayPage([
-			newSong("Do-You-Get-The-Refrance", 1, "impostor", true),
-			newSong("dotdotdot", 1, "sonicexe")
+			newSong("Do-You-Get-The-Refrance", "Do You Get The Refrance?", 1, "impostor", true),
+			newSong("dotdotdot", "dotdotdot", 1, "sonicexe")
 		],
 		"Extras");
 
 		pages[3] = new FreeplayPage([
-			newSong("Rethinker-J-Mix", 1, "bf-pixel", false)
+			newSong("Rethinker-J-Mix", "Rethinker (J mix)", 1, "bf-pixel", false)
 		],
 		"Covers");
 
@@ -154,22 +154,7 @@ class FreeplayState extends MusicBeatState
 		super.create();
 	}
 
-	public function addSong(songName:String, weekNum:Int, songCharacter:String, ?isLocked:Bool=false)
-	{
-		if (isLocked) {
-			if (FlxG.save.data.unlockedSongs == null)
-				FlxG.save.data.unlockedSongs = [];
-			if (FlxG.save.data.unlockedSongs.contains(songName.toLowerCase()))
-				songs.push(new SongMetadata(songName, weekNum, songCharacter));
-			else
-				songs.push(new SongMetadata("LOCKED", 1, "lock"));
-		} else {
-			songs.push(new SongMetadata(songName, weekNum, songCharacter));
-		}
-	}
-
-
-	public function newSong(songName:String, weekNum:Int, songCharacter:String, ?isLocked:Bool=false):SongMetadata {
+	public function newSong(songName:String, displayName:String, weekNum:Int, songCharacter:String, ?isLocked:Bool=false):SongMetadata {
 		if (isLocked) {
 			#if debug
 			trace(FlxG.save.data.unlockedSongs);
@@ -177,31 +162,16 @@ class FreeplayState extends MusicBeatState
 			if (FlxG.save.data.unlockedSongs == null)
 				FlxG.save.data.unlockedSongs = [];
 			if (FlxG.save.data.unlockedSongs.contains(songName.toLowerCase()))
-				return new SongMetadata(songName, weekNum, songCharacter);
+				return new SongMetadata(songName, displayName, weekNum, songCharacter);
 			else
-				return new SongMetadata("LOCKED", 1, "lock");
+				return new SongMetadata("", "Locked", 1, "lock");
 		}
-		return new SongMetadata(songName, weekNum, songCharacter);
+		return new SongMetadata(songName, displayName, weekNum, songCharacter);
 	}
 
 	public function addPageSongs(page:FreeplayPage) {
 		for (song in page.songs) {
 			songs.push(song);
-		}
-	}
-
-	public function addWeek(songs:Array<String>, weekNum:Int, ?songCharacters:Array<String>, ?isLocked:Bool=false)
-	{
-		if (songCharacters == null)
-			songCharacters = ['bf'];
-
-		var num:Int = 0;
-		for (song in songs)
-		{
-			addSong(song, weekNum, songCharacters[num], isLocked);
-
-			if (songCharacters.length != 1)
-				num++;
 		}
 	}
 
@@ -234,7 +204,7 @@ class FreeplayState extends MusicBeatState
 
 		for (i in 0...songs.length)
 			{
-				var songText:Alphabet = new Alphabet(64, 320, songs[i].songName, true);
+				var songText:Alphabet = new Alphabet(64, 320, songs[i].displayName, true);
 				songText.isMenuItem = true;
 				songText.targetY = i;
 				grpSongs.add(songText);
@@ -380,12 +350,14 @@ class FreeplayState extends MusicBeatState
 class SongMetadata
 {
 	public var songName:String = "";
+	public var displayName:String = "";
 	public var week:Int = 0;
 	public var songCharacter:String = "";
 
-	public function new(song:String, week:Int, songCharacter:String)
+	public function new(song:String, displayName:String, week:Int, songCharacter:String)
 	{
 		this.songName = song;
+		this.displayName = displayName;
 		this.week = week;
 		this.songCharacter = songCharacter;
 	}

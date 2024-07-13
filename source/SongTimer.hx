@@ -14,10 +14,14 @@ class SongTimer extends FlxTypedGroup<FlxText>{
 
         this.endTime = endTime;
 
-        _display = new FlxText(FlxG.width/2-100, 50);
-        _display.size = 32;
+        var timerY:Int;
         if (SaveManagement.getOption("Scroll Direction") == "Down")
-			_display.y = FlxG.height - 50;
+			timerY = Std.int(FlxG.height * 0.8);
+		else
+            timerY = 100;
+
+        _display = new FlxText(FlxG.width/2-150, timerY);
+        _display.size = 32;
 
         add(_display);
     }

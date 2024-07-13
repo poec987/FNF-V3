@@ -52,15 +52,22 @@ class Highscore
 	static function setScore(song:String, score:Int):Void
 	{
 		// Reminder that I don't need to format this song, it should come formatted!
+		song = song.toLowerCase(); // i will format it anyways go fuck yourself
 		songScores.set(song, score);
 		FlxG.save.data.songScores = songScores;
 		FlxG.save.flush();
+
+		trace("saving score for " + song + ": " + score);
 	}
 
 	public static function getScore(song:String):Int
 	{
+		song = song.toLowerCase();
+
 		if (!songScores.exists(song))
 			setScore(song, 0);
+
+		trace("getting score for " + song);
 
 		return songScores.get(song);
 	}

@@ -1,3 +1,5 @@
+// big thank to psych engine for allowing me to steal an actually good alphabet class
+
 package; 
 
 import flixel.FlxG;

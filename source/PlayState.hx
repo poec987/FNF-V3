@@ -859,7 +859,7 @@ class PlayState extends MusicBeatState
 
 		if (SONG.player2 == 'pico') { // PISSY
 			shootSound = new FlxSound().loadEmbedded(Paths.sound('shoot'));
-			FlxG.sound.list.add(shootSound);
+			shootSound.autoDestroy = false;
 
 			picoShoot = new FlxSprite(dad.x+30, (dad.y/2)-30);
 			picoShoot.frames = Paths.getSparrowAtlas('characters/pico/Pico_Shooting');
@@ -917,11 +917,17 @@ class PlayState extends MusicBeatState
 		FlxG.worldBounds.set(0, 0, FlxG.width, FlxG.height);
 
 		FlxG.fixedTimestep = false;
+		
+		var healthBarY;
+		if (SaveManagement.getOption("Scroll Direction") == "Down")
+			healthBarY = 75;
+		else
+			healthBarY = Std.int(FlxG.height * 0.9);
 
 		if (curSong == "Thorns" || isGood)
-			healthBarBG = new FlxSprite(0, FlxG.height * 0.9).loadGraphic(Paths.image('ui/ui/good/healthBar-good'));
+			healthBarBG = new FlxSprite(0, healthBarY).loadGraphic(Paths.image('ui/ui/good/healthBar-good'));
 		else
-			healthBarBG = new FlxSprite(0, FlxG.height * 0.9).loadGraphic(Paths.image('ui/ui/healthBar'));
+			healthBarBG = new FlxSprite(0, healthBarY).loadGraphic(Paths.image('ui/ui/healthBar'));
 		healthBarBG.screenCenter(X);
 		healthBarBG.scrollFactor.set();
 		add(healthBarBG);
@@ -935,11 +941,11 @@ class PlayState extends MusicBeatState
 
 		var scoreFont = PlayState.SONG.song.toLowerCase() == "thorns" || isGood ? "vcr.ttf" : SaveManagement.getOption("Freaky Mode") == "On" ? "papyrus.ttf" : "vcr.ttf";
 		var scoreFontSize = PlayState.SONG.song.toLowerCase() == "thorns" || isGood ? 20 : SaveManagement.getOption("Freaky Mode") == "On" ? 28 : 20;
-		var scorePosOffsetX = PlayState.SONG.song.toLowerCase() == "thorns" || isGood ? 150 : SaveManagement.getOption("Freaky Mode") == "On" ? 600 : 150;
+		var scorePosOffsetX = PlayState.SONG.song.toLowerCase() == "thorns" || isGood ? 150 : SaveManagement.getOption("Freaky Mode") == "On" ? 600 : 375;
 		var scorePosOffsetY = PlayState.SONG.song.toLowerCase() == "thorns" || isGood ? 50 : SaveManagement.getOption("Freaky Mode") == "On" ? 30 : 50;
 
 		// Add Kade Engine watermark
-		var kadeEngineWatermark = new FlxText(4,FlxG.height - 4,0,SONG.song + " - CE " + MainMenuState.kadeEngineVer, 16);
+		var kadeEngineWatermark = new FlxText(4,FlxG.height - 4,0,SONG.song + " - CE " + MainMenuState.cinemaEngineVer, 16);
 		kadeEngineWatermark.setFormat(Paths.font(scoreFont), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		kadeEngineWatermark.scrollFactor.set();
 		add(kadeEngineWatermark);
@@ -1602,9 +1608,9 @@ class PlayState extends MusicBeatState
 		super.update(elapsed);
 		if (songScore == 0)
 			accDisplay = "boowomp";
-		else if (accuracy == 100)
+		else if (accuracy == 100 && fc)
 			accDisplay = "PFC";
-		else if (misses == 0 && shits == 0 && bads == 0)
+		else if (misses == 0 && shits == 0 && bads == 0 && fc)
 			accDisplay = "Good FC";
 		else if (accuracy >= 99)
 			accDisplay = "Not an FC smh";
