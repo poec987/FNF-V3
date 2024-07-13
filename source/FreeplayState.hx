@@ -208,8 +208,7 @@ class FreeplayState extends MusicBeatState
 	// I WANT TO FUCKING SHOOT MYSELF
 
 	public static function playSong(song:String, diff:Int, ?storyWeek:Int=1) {
-		var poop:String = Highscore.formatSong(song, diff); // Funny
-		PlayState.SONG = Song.loadFromJson(poop, song);
+		PlayState.SONG = Song.loadFromJson(song, song);
 		PlayState.isStoryMode = false;
 
 		PlayState.storyWeek = PlayState.stageDictionary[PlayState.SONG.stage];
@@ -323,7 +322,7 @@ class FreeplayState extends MusicBeatState
 		if (accepted)
 		{
 			try {
-				var poop:String = Highscore.formatSong(songs[curSelected].songName.toLowerCase(), 1);
+				var poop:String = songs[curSelected].songName.toLowerCase();
 
 				trace(poop);
 
@@ -351,7 +350,7 @@ class FreeplayState extends MusicBeatState
 			curSelected = 0;
 
 		#if !switch
-		intendedScore = Highscore.getScore(songs[curSelected].songName, 1);
+		intendedScore = Highscore.getScore(songs[curSelected].songName);
 		#end
 
 		var bullShit:Int = 0;

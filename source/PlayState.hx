@@ -2090,7 +2090,7 @@ class PlayState extends MusicBeatState
 		if (SONG.validScore)
 		{
 			#if !switch
-			Highscore.saveScore(SONG.song, songScore, 1);
+			Highscore.saveScore(SONG.song, songScore);
 			#end
 		}
 
