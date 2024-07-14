@@ -19,6 +19,9 @@ class SaveManagement {
         if (FlxG.save.data.options == null)
             defaultOptions();
 
+        if (SaveManagement.getOption("FPS") != null)
+            FlxG.drawFramerate = Std.int(SaveManagement.getOption("FPS"));
+
         // Shit that happened
         if (FlxG.save.data.unlockedFreeplay == null)
             FlxG.save.data.unlockedFreeplay = false;
