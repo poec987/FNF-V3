@@ -1,4 +1,4 @@
-tutorial::week1
+tutorial::tutorial
 bopeebo::week1
 fresh::week1
 dadbattle::week1
