@@ -1002,6 +1002,10 @@ class PlayState extends MusicBeatState
 		// cameras = [FlxG.cameras.list[1]];
 		startingSong = true;
 
+		// THORNS SPECIFIC FPS LOCK
+		if (curSong.toLowerCase() == 'thorns')
+			FlxG.updateFramerate = 60;
+
 		if (isStoryMode)
 		{
 			switch (curSong.toLowerCase())
