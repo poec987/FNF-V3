@@ -1,3 +1,7 @@
+tutorial::week1
+bopeebo::week1
+fresh::week1
+dadbattle::week1
 spookeez::week2
 south::week2
 monster::week2

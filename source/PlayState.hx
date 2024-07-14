@@ -877,8 +877,8 @@ class PlayState extends MusicBeatState
 
 		add(boyfriend);
 
-		stupidFuckingSpotlight1 = new FlxSprite(boyfriend.x+50, -50).loadGraphic(Paths.image('stages/stage/spotlight'));
-		stupidFuckingSpotlight2 = new FlxSprite(dad.x+50, -50).loadGraphic(Paths.image('stages/stage/spotlight'));
+		stupidFuckingSpotlight1 = new FlxSprite(boyfriend.x, -50).loadGraphic(Paths.image('stages/stage/spotlight'));
+		stupidFuckingSpotlight2 = new FlxSprite(dad.x, -50).loadGraphic(Paths.image('stages/stage/spotlight'));
 
 		stupidFuckingSpotlight1.visible = false;
 		stupidFuckingSpotlight2.visible = false;
@@ -2947,6 +2947,17 @@ class PlayState extends MusicBeatState
 			if (SONG.song == 'Tutorial' && dad.curCharacter == 'gf')
 			{
 				dad.playAnim('cheer', true);
+			}
+		}
+
+		if (curSong.toLowerCase() == 'dadbattle') {
+			if (curBeat == 96) {
+				stupidFuckingSpotlight1.visible = true;
+				stupidFuckingSpotlight2.visible = true;
+			}
+			if (curBeat == 160) {
+				stupidFuckingSpotlight1.visible = false;
+				stupidFuckingSpotlight2.visible = false;
 			}
 		}
 
