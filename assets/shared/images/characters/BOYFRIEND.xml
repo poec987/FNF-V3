@@ -44,4 +44,7 @@
 <SubTexture name="BF NOTE RIGHT0006" x="0" y="0" width="562" height="423" frameX="0" frameY="0" frameWidth="562" frameHeight="423" />
 <SubTexture name="BF NOTE RIGHT0007" x="0" y="0" width="562" height="423" frameX="0" frameY="0" frameWidth="562" frameHeight="423" />
 <SubTexture name="BF NOTE RIGHT0008" x="0" y="0" width="562" height="423" frameX="0" frameY="0" frameWidth="562" frameHeight="423" />
+<SubTexture name="BF dies0000" x="1686" y="1269" width="562" height="423" frameX="0" frameY="0" frameWidth="562" frameHeight="423" />
+<SubTexture name="BF Dead Loop0000" x="1686" y="1269" width="562" height="423" frameX="0" frameY="0" frameWidth="562" frameHeight="423" />
+<SubTexture name="BF Dead confirm0000" x="1686" y="1269" width="562" height="423" frameX="0" frameY="0" frameWidth="562" frameHeight="423" />
 </TextureAtlas>
