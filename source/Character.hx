@@ -764,6 +764,28 @@ class Character extends FlxSprite
 				
 				
 				playAnim('idle');	
+			case 'afton':
+				// DAD ANIMATION LOADING CODE
+				tex = Paths.getSparrowAtlas('characters/fnaf/afton');
+				frames = tex;
+				animation.addByPrefix('idle', 'Idle', 16, true);
+				animation.addByPrefix('singUP', 'Up', 24, false);
+				animation.addByPrefix('singRIGHT', 'Right', 24, false);
+				animation.addByPrefix('singDOWN', 'Down', 24, false);
+				animation.addByPrefix('singLEFT', 'Left', 24, false);
+				
+				addOffset('idle', 0, -200);
+				addOffset("singUP", 0, -200);
+				addOffset("singRIGHT", 0, -200);
+				addOffset("singLEFT", 0, -200);
+				addOffset("singDOWN", 0, -200);
+				
+				setGraphicSize(Std.int(width * 2.5));
+				
+				updateHitbox();
+				
+				
+				playAnim('idle');	
 			default:
 				trace('couldnt get case');
 				var charFile:String;

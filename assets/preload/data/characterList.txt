@@ -15,6 +15,7 @@ gf-christmas
 monster
 bf-pixel
 bf-pixel-good
+ogbf-pixel
 sigmio
 sigmio-evil
 sigmio-final
@@ -23,4 +24,5 @@ sonicexe
 Nugget
 nuggetdance
 blocku
+afton
 dad-test

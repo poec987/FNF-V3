@@ -188,6 +188,7 @@ class PlayState extends MusicBeatState
 		"schoolEvil" => 6,
 		"exe" => 1,
 		"bopcity" => 1,
+		"fnaf" => 1
 	];
 
 	var songTimer:SongTimer;
@@ -708,7 +709,19 @@ class PlayState extends MusicBeatState
 			bg.scrollFactor.set(0.8, 0.9);
 			bg.scale.set(6, 6);
 			add(bg);
+		}
+		else if (SONG.stage == "fnaf")
+		{
+			curStage = 'fnaf';
 
+			defaultCamZoom = 0.9;
+			var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('stages/fnaf/celebratebgv3'));
+			bg.setGraphicSize(Std.int(bg.width * 10), Std.int(bg.height*5));
+			bg.antialiasing = false;
+			bg.scrollFactor.set(0.9, 0.9);
+			bg.active = false;
+			add(bg);
+		}
 			/* 
 				var bg:FlxSprite = new FlxSprite(posX, posY).loadGraphic(Paths.image('weeb/evilSchoolBG'));
 				bg.scale.set(6, 6);
@@ -752,7 +765,6 @@ class PlayState extends MusicBeatState
 				add(waveSprite);
 				add(waveSpriteFG);
 			 */
-		}
 		else
 		{
 			defaultCamZoom = 0.9;

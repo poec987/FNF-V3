@@ -49,6 +49,7 @@ class HealthIcon extends FlxSprite
 		animation.add('blocku', [36, 37], 0, false, isPlayer);
 		animation.add('evilblocku', [36, 37], 0, false, isPlayer);
 		animation.add('niceblocku', [36, 37], 0, false, isPlayer);
+		animation.add('afton', [38, 39], 0, false, isPlayer);
 		animation.add('lock', [33, 33], 0, false, isPlayer);
 
 		if (!animation.exists(char)) {

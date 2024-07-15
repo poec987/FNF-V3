@@ -124,6 +124,8 @@ class SongCard extends FlxTypedGroup<FlxSprite>{
                 setName("Stop right there criminal scum", "PoeDev");
 			case 'bopcityfansong':
                 setName("bopcityfansong", "Didgie");
+            case 'celebrate':
+                setName("Celebrate V3", "Xarion");
 
             default:
                 setName("keemstar", "bald shadow mario");
