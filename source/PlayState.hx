@@ -146,6 +146,8 @@ class PlayState extends MusicBeatState
 	var upperBoppers:FlxSprite;
 	var bottomBoppers:FlxSprite;
 	var santa:FlxSprite;
+	var explosion:FlxSprite;
+	var fortnitecard:FlxSprite;
 	var whatthe:FlxSprite;
 
 	var fc:Bool = true;
@@ -184,7 +186,8 @@ class PlayState extends MusicBeatState
 		"mallEvil" => 5,
 		"school" => 6,
 		"schoolEvil" => 6,
-		"exe" => 1
+		"exe" => 1,
+		"bopcity" => 1,
 	];
 
 	var songTimer:SongTimer;
@@ -226,7 +229,7 @@ class PlayState extends MusicBeatState
 		// To avoid having duplicate images in Discord assets
 		switch (iconRPC)
 		{
-			case 'senpai-angry':
+			case 'sigmio-evil':
 				iconRPC = 'senpai';
 			case 'monster-christmas':
 				iconRPC = 'monster';
@@ -348,6 +351,45 @@ class PlayState extends MusicBeatState
 			stageFront.scrollFactor.set(0.9, 0.9);
 			stageFront.active = false;
 			add(stageFront);
+		}
+		else if (SONG.stage == "bopcity")
+		{
+			curStage = 'bopcity';
+
+			var bg:FlxSprite = new FlxSprite(-600, -400).loadGraphic(Paths.image('stages/bopcity/bopback'));
+			bg.antialiasing = true;
+			bg.scrollFactor.set(0.9, 0.9);
+			bg.active = false;
+			add(bg);
+
+			var stageFront:FlxSprite = new FlxSprite(-650, 600).loadGraphic(Paths.image('stages/bopcity/bopfront'));
+			stageFront.setGraphicSize(Std.int(stageFront.width * 1.1));
+			stageFront.updateHitbox();
+			stageFront.antialiasing = true;
+			stageFront.scrollFactor.set(0.9, 0.9);
+			stageFront.active = false;
+			add(stageFront);
+			
+			defaultCamZoom = 0.80;
+			
+			explosion = new FlxSprite( -200, 300);
+			explosion.frames = Paths.getSparrowAtlas('stages/bopcity/explosion');
+			explosion.animation.addByPrefix('idle', 'settle', 24, true);
+			explosion.animation.addByPrefix('boom', 'boom', 30, false);
+			explosion.updateHitbox();
+			explosion.antialiasing = false;
+			explosion.scale.set(2,2.4);
+			explosion.cameras = [camHUD];
+			add(explosion);
+			explosion.animation.play('idle', true);
+			
+			fortnitecard = new FlxSprite( -650, 600).loadGraphic(Paths.image('stages/bopcity/card'));
+			
+			fortnitecard.cameras = [camHUD];
+			fortnitecard.screenCenter();
+			fortnitecard.updateHitbox();
+			fortnitecard.alpha = 0;
+			add(fortnitecard);
 		}
 		else if (SONG.stage == "philly")
 		{
@@ -799,10 +841,10 @@ class PlayState extends MusicBeatState
 				dad.y += 300;
 			case 'parents-christmas':
 				dad.x -= 500;
-			case 'senpai':
+			case 'sigmio':
 				dad.y += 250;
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
-			case 'senpai-angry':
+			case 'sigmio-evil':
 				dad.y += 250;
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
 			case 'spirit':
@@ -813,11 +855,22 @@ class PlayState extends MusicBeatState
 				dad.x += 100;
 				dad.y += 330;
 				camPos.set(dad.getGraphicMidpoint().x + 200, dad.getGraphicMidpoint().y - 200);
+			case 'blocku':
+				dad.y += 150;
+				camPos.set(dad.getGraphicMidpoint().x + 200, dad.getGraphicMidpoint().y - 200);
+			case 'niceblocku':
+				dad.y += 150;
+				camPos.set(dad.getGraphicMidpoint().x + 200, dad.getGraphicMidpoint().y - 200);
+			case 'evilblocku':
+				dad.y += 150;
+				camPos.set(dad.getGraphicMidpoint().x + 200, dad.getGraphicMidpoint().y - 200);
 		}
+		
 
 
 		
 		boyfriend = new Boyfriend(770, 450, SONG.player1);
+		
 
 		// REPOSITIONING PER STAGE
 		switch (curStage)
@@ -853,6 +906,16 @@ class PlayState extends MusicBeatState
 				boyfriend.y += 220;
 				gf.x += 180;
 				gf.y += 300;
+			case 'bopcity':
+				gf.visible = false;
+		}
+		
+		switch (SONG.player1)
+		{
+			case 'Nugget':
+				boyfriend.y -= 200;
+			case 'nuggetdance':
+				boyfriend.y -= 300;
 		}
 
 		add(gf);
@@ -1806,15 +1869,22 @@ class PlayState extends MusicBeatState
 				{
 					case 'mom':
 						camFollow.y = dad.getMidpoint().y;
-					case 'senpai':
+					case 'sigmio':
 						camFollow.y = dad.getMidpoint().y - 200;
 						camFollow.x = dad.getMidpoint().x - 100;
-					case 'senpai-angry':
+					case 'sigmio-evil':
 						camFollow.y = dad.getMidpoint().y - 200;
 						camFollow.x = dad.getMidpoint().x - 100;
 					case 'sonicexe':
 						camFollow.y = dad.getMidpoint().y + 30;
+					case 'blocku':
+						camFollow.y = dad.getMidpoint().y + 30;
+					case 'evilblocku':
+						camFollow.y = dad.getMidpoint().y + 30;
+					case 'niceblocku':
+						camFollow.y = dad.getMidpoint().y + 30;
 				}
+				
 
 				if (dad.curCharacter == 'mom')
 					vocals.volume = 1;
@@ -1841,6 +1911,14 @@ class PlayState extends MusicBeatState
 					case 'schoolEvil':
 						camFollow.x = boyfriend.getMidpoint().x - 200;
 						camFollow.y = boyfriend.getMidpoint().y - 200;
+				}
+				
+				switch (boyfriend.curCharacter)
+				{
+					case 'Nugget':
+						camFollow.y = boyfriend.getMidpoint().y + 30;
+					case 'nuggetdance':
+						camFollow.y = boyfriend.getMidpoint().y + 30;
 				}
 
 				if (SONG.song.toLowerCase() == 'tutorial')
@@ -2775,6 +2853,9 @@ class PlayState extends MusicBeatState
 					});
 				case "Kill Santa":
 					santa.animation.play('DIE', true);
+				case "Give Card":
+					fortnitecard.alpha = 1;
+					FlxTween.tween(fortnitecard, {alpha: 0}, 1.5, {ease: FlxEase.quadOut});
 				case "Kill":
 					health = 0;
 				default:
@@ -2872,6 +2953,17 @@ class PlayState extends MusicBeatState
 		{
 			// dad.dance();
 		}
+		
+		if (curSong == 'bopcityfansong') 
+		{
+			switch (curStep)
+			{
+				case 1071:
+					remove(boyfriend);
+					boyfriend = new Boyfriend(770, 150, 'nuggetdance');
+					add(boyfriend);
+			}
+		}
 
 		// yes this updates every step.
 		// yes this is bad
@@ -2965,6 +3057,23 @@ class PlayState extends MusicBeatState
 			if (curBeat == 160) {
 				stupidFuckingSpotlight1.visible = false;
 				stupidFuckingSpotlight2.visible = false;
+			}
+		}
+		
+		if (curSong == 'bopcityfansong') 
+		{
+			switch (curBeat)
+			{
+				case 111:
+					explosion.animation.play('boom', true);
+				case 112:
+					remove(dad);
+					dad = new Character(100, 250, 'evilblocku');
+					add(dad);
+				case 220:
+					remove(dad);
+					dad = new Character(100, 250, 'niceblocku');
+					add(dad);
 			}
 		}
 

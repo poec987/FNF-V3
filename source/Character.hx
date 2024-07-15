@@ -660,7 +660,112 @@ class Character extends FlxSprite
 				addOffset("singDOWN-alt", -30, -27);
 
 				playAnim('idle');
+			case 'Nugget':
+				// DAD ANIMATION LOADING CODE
+				tex = Paths.getSparrowAtlas('characters/bopcity/Nugget');
+				frames = tex;
+				animation.addByPrefix('idle', 'Idle', 16, false);
+				animation.addByPrefix('singUP', 'Up', 30, false);
+				animation.addByPrefix('singRIGHT', 'Right', 30, false);
+				animation.addByPrefix('singDOWN', 'Down', 30, false);
+				animation.addByPrefix('singLEFT', 'Left', 30, false);
+				
+				addOffset("idle",77,0);
+				addOffset("singUP", 68, 50);
+				addOffset("singRIGHT", 20, 0);
+				addOffset("singLEFT", 500, 0);
+				addOffset("singDOWN", 58, -30);
+				
+				scale.set(0.6, 0.6);
+				
+				updateHitbox();
+				
+				playAnim('idle');	
+			case 'nuggetdance':
+				tex = Paths.getSparrowAtlas('characters/bopcity/nuggetdance');
+				frames = tex;
+				animation.addByPrefix('idle', 'dance', 24, true);
+				animation.addByPrefix('singUP', 'dance', 30, false);
+				animation.addByPrefix('singRIGHT', 'dance', 30, false);
+				animation.addByPrefix('singDOWN', 'dance', 30, false);
+				animation.addByPrefix('singLEFT', 'dance', 30, false);
+
+				addOffset('idle');
+				addOffset('singUP');
+				addOffset('singRIGHT');
+				addOffset('singDOWN');
+				addOffset('singLEFT');
+
+				playAnim('idle');
+				
+			case 'blocku':
+				// DAD ANIMATION LOADING CODE
+				tex = Paths.getSparrowAtlas('characters/bopcity/blocku');
+				frames = tex;
+				animation.addByPrefix('idle', 'Idle', 16, false);
+				animation.addByPrefix('singUP', 'Up', 24, false);
+				animation.addByPrefix('singRIGHT', 'Right', 24, false);
+				animation.addByPrefix('singDOWN', 'Down', 24, false);
+				animation.addByPrefix('singLEFT', 'Left', 24, false);
+				
+				addOffset('idle');
+				addOffset("singUP", 10, 210);
+				addOffset("singRIGHT", -50, -20);
+				addOffset("singLEFT", 90, -20);
+				addOffset("singDOWN", 188, -180);
+				
+				scale.set(1.2, 1.2);
+				
+				updateHitbox();
+				
+				
+				playAnim('idle');	
+			case 'evilblocku':
+				// DAD ANIMATION LOADING CODE
+				tex = Paths.getSparrowAtlas('characters/bopcity/evilblocku');
+				frames = tex;
+				animation.addByPrefix('idle', 'Idle', 16, false);
+				animation.addByPrefix('singUP', 'Up', 24, false);
+				animation.addByPrefix('singRIGHT', 'Right', 24, false);
+				animation.addByPrefix('singDOWN', 'Down', 24, false);
+				animation.addByPrefix('singLEFT', 'Left', 24, false);
+				
+				addOffset('idle');
+				addOffset("singUP", 10, 210);
+				addOffset("singRIGHT", -50, -20);
+				addOffset("singLEFT", 90, -20);
+				addOffset("singDOWN", 188, -180);
+				
+				scale.set(1.2, 1.2);
+				
+				updateHitbox();
+				
+				
+				playAnim('idle');	
+			case 'niceblocku':
+				// DAD ANIMATION LOADING CODE
+				tex = Paths.getSparrowAtlas('characters/bopcity/niceblocku');
+				frames = tex;
+				animation.addByPrefix('idle', 'Idle', 16, false);
+				animation.addByPrefix('singUP', 'Up', 24, false);
+				animation.addByPrefix('singRIGHT', 'Right', 24, false);
+				animation.addByPrefix('singDOWN', 'Down', 24, false);
+				animation.addByPrefix('singLEFT', 'Left', 24, false);
+				
+				addOffset('idle');
+				addOffset("singUP", 10, 210);
+				addOffset("singRIGHT", -50, -20);
+				addOffset("singLEFT", 90, -20);
+				addOffset("singDOWN", 188, -180);
+				
+				scale.set(1.2, 1.2);
+				
+				updateHitbox();
+				
+				
+				playAnim('idle');	
 			default:
+				trace('couldnt get case');
 				var charFile:String;
 				var charFileParams:Array<String> = [];
 
