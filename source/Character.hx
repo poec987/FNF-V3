@@ -617,7 +617,7 @@ class Character extends FlxSprite
 
 			case 'sigmio-final':
 				frames = Paths.getSparrowAtlas('characters/unfair/sigmioFONIALFORM');
-				animation.addByPrefix('idle', "idle", 24, false);
+				animation.addByPrefix('idle', "idle", 24, true);
 				animation.addByPrefix('singUP', "up", 24, false);
 				animation.addByPrefix('singRIGHT', "right", 24, false);
 				animation.addByPrefix('singLEFT', "left", 24, false);
