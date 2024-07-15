@@ -1067,7 +1067,7 @@ class PlayState extends MusicBeatState
 
 		// THORNS SPECIFIC FPS LOCK
 		if (curSong.toLowerCase() == 'thorns')
-			FlxG.updateFramerate = 60;
+			FlxG.drawFramerate = 60;
 
 		if (isStoryMode)
 		{
@@ -2129,6 +2129,8 @@ class PlayState extends MusicBeatState
 	}
 
 	public function wakeTheFuckUp():Void {
+		if (curSong.toLowerCase() == 'thorns')
+			FlxG.drawFramerate = Std.int(SaveManagement.getOption("FPS"));
 		if (isStoryMode)
 			{
 				campaignScore += songScore;
