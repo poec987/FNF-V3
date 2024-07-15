@@ -2051,6 +2051,8 @@ class PlayState extends MusicBeatState
 	}
 
 	public function wakeTheFuckUp():Void {
+		if (curSong.toLowerCase() == 'thorns')
+			FlxG.drawFramerate = Std.int(SaveManagement.getOption("FPS"));
 		if (isStoryMode)
 			{
 				campaignScore += songScore;
