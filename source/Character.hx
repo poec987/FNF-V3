@@ -572,7 +572,7 @@ class Character extends FlxSprite
 				setGraphicSize(Std.int(width * 3));
 				updateHitbox();
 
-				antialiasing = true;
+				antialiasing = false;
 			case 'sigmio-evil':
 				frames = Paths.getSparrowAtlas('characters/weeb/sigmioEVIL');
 				animation.addByPrefix('idle', 'dance', 30, true);
@@ -592,7 +592,7 @@ class Character extends FlxSprite
 				setGraphicSize(Std.int(width * 3));
 				updateHitbox();
 
-				antialiasing = true;
+				antialiasing = false;
 
 			case 'spirit':
 				frames = Paths.getPackerAtlas('characters/weeb/spirit');
@@ -609,6 +609,26 @@ class Character extends FlxSprite
 				addOffset("singDOWN", 170, 110);
 
 				setGraphicSize(Std.int(width * 6));
+				updateHitbox();
+
+				playAnim('idle');
+
+				antialiasing = false;
+
+			case 'sigmio-final':
+				frames = Paths.getSparrowAtlas('characters/unfair/sigmioFONIALFORM');
+				animation.addByPrefix('idle', "idle", 24, false);
+				animation.addByPrefix('singUP', "up", 24, false);
+				animation.addByPrefix('singRIGHT', "right", 24, false);
+				animation.addByPrefix('singLEFT', "left", 24, false);
+				animation.addByPrefix('singDOWN', "down", 24, false);
+
+				addOffset('idle');
+				addOffset('singUP');
+				addOffset("singRIGHT");
+				addOffset("singLEFT");
+				addOffset("singDOWN");
+
 				updateHitbox();
 
 				playAnim('idle');

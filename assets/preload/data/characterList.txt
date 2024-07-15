@@ -17,6 +17,7 @@ bf-pixel
 bf-pixel-good
 sigmio
 sigmio-evil
+sigmio-final
 spirit
 sonicexe
 dad-test
