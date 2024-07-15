@@ -14,24 +14,32 @@ class SongCard extends FlxTypedGroup<FlxSprite>{
 
     var nameTxt:FlxText;
     var authorTxt:FlxText;
+    var creditTxt:FlxText;
     var bg:FlxSprite;
 
     public function new() {
         super();
 
-        nameTxt = new FlxText(-300, 185, 0, name, 28);
+        // creditTxt = new FlxText(-1000, 200, 0, "", 28);
+        // creditTxt.alignment = FlxTextAlign.LEFT;
+        // creditTxt.color = FlxColor.WHITE;
+        // creditTxt.textField.background = true;
+        // creditTxt.textField.backgroundColor = new FlxColor(FlxColor.BLACK);
+
+        nameTxt = new FlxText(-1000, 185, 0, name, 28);
         nameTxt.alignment = FlxTextAlign.LEFT;
 
-        authorTxt = new FlxText(-300, 225, 0, author, 20);
+        authorTxt = new FlxText(-1000, 225, 0, author, 20);
         authorTxt.alignment = FlxTextAlign.LEFT;
 
-        bg = new FlxSprite(-325, 175).makeGraphic(300, 100, FlxColor.BLACK);
+        bg = new FlxSprite(-325, 175).makeGraphic(0, 0, FlxColor.BLACK);
         bg.origin.x = 0;
         bg.alpha = 0.5;
 
         add(bg);
         add(nameTxt);
         add(authorTxt);
+        // add(creditTxt);
 
         setShit();
     }
@@ -41,6 +49,10 @@ class SongCard extends FlxTypedGroup<FlxSprite>{
 
         nameTxt.text = name;
         authorTxt.text = author;
+
+        bg.setSize(Math.max(nameTxt.textField.width, authorTxt.textField.width) + 10, Math.max(nameTxt.textField.height, authorTxt.textField.height) + 10);
+        bg.updateHitbox();
+        // creditTxt.text = name+"\nBy: "+author;
     }
 
     private function setShit() {
@@ -117,14 +129,16 @@ class SongCard extends FlxTypedGroup<FlxSprite>{
     }
 
     public function show() {
-        FlxTween.tween(nameTxt, {x: 25}, 0.75, {ease: FlxEase.expoIn});
-        FlxTween.tween(authorTxt, {x: 25}, 0.75, {ease: FlxEase.expoIn});
-        FlxTween.tween(bg, {x: 0}, 0.5, {ease: FlxEase.expoIn});
+        // FlxTween.tween(creditTxt, {x: 25}, 0.75, {ease: FlxEase.expoOut});
+        FlxTween.tween(nameTxt, {x: 25}, 0.75, {ease: FlxEase.expoOut});
+        FlxTween.tween(authorTxt, {x: 25}, 0.75, {ease: FlxEase.expoOut});
+        FlxTween.tween(bg, {x: 0}, 0.5, {ease: FlxEase.expoOut});
     }
 
     public function hide() {
-        FlxTween.tween(nameTxt, {x: -300}, 0.75, {ease: FlxEase.expoIn});
-        FlxTween.tween(authorTxt, {x: -300}, 0.75, {ease: FlxEase.expoIn});
-        FlxTween.tween(bg, {x: -300}, 0.75, {ease: FlxEase.expoIn});
+        // FlxTween.tween(creditTxt, {x: -1000}, 0.75, {ease: FlxEase.expoIn});
+        FlxTween.tween(nameTxt, {x: -1000}, 0.75, {ease: FlxEase.expoIn});
+        FlxTween.tween(authorTxt, {x: -1000}, 0.75, {ease: FlxEase.expoIn});
+        FlxTween.tween(bg, {x: -1000}, 0.75, {ease: FlxEase.expoIn});
     }
 }
