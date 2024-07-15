@@ -19,4 +19,7 @@ sigmio
 sigmio-evil
 spirit
 sonicexe
+Nugget
+nuggetdance
+blocku
 dad-test

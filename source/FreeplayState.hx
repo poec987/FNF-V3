@@ -83,7 +83,8 @@ class FreeplayState extends MusicBeatState
 
 		pages[2] = new FreeplayPage([
 			newSong("Do-You-Get-The-Refrance", "Do You Get The Refrance?", 1, "impostor", true),
-			newSong("dotdotdot", "dotdotdot", 1, "sonicexe")
+			newSong("dotdotdot", "dotdotdot", 1, "sonicexe"),
+			newSong("bopcityfansong", "bopcityfansong", 1, "blocku")
 		],
 		"Extras");
 
