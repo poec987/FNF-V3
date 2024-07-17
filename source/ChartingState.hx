@@ -396,6 +396,7 @@ class ChartingState extends MusicBeatState
 		"Kill",
 		"Pico Shoot",
 		"Shield Note",
+		"Kill Mommy",
 		"Give Card",
 		"Don't End The World"
 	];

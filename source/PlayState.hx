@@ -1883,7 +1883,8 @@ class PlayState extends MusicBeatState
 				switch (dad.curCharacter)
 				{
 					case 'mom':
-						camFollow.y = dad.getMidpoint().y;
+						camFollow.y = boyfriend.getMidpoint().y - 10;
+						camFollow.x = boyfriend.getMidpoint().x - 650;
 					case 'sigmio':
 						camFollow.y = dad.getMidpoint().y - 200;
 						camFollow.x = dad.getMidpoint().x - 100;
@@ -2061,7 +2062,7 @@ class PlayState extends MusicBeatState
 
 						noteTypeCheck(daNote, true, true);
 						
-						if (daNote.noteType != "No Animation" && daNote.noteType != "Laugh" && daNote.noteType != "Play Animation") {
+						if (daNote.noteType != "No Animation" && daNote.noteType != "Laugh" && daNote.noteType != "Play Animation" && daNote.noteType != "Kill Mommy") {
 							switch (Math.abs(daNote.noteData))
 							{
 								case 2:
@@ -2868,6 +2869,10 @@ class PlayState extends MusicBeatState
 					});
 				case "Kill Santa":
 					santa.animation.play('DIE', true);
+				case "Kill Mommy":
+					FlxTween.tween(dad, {x: dad.x - 800}, 1.5, {ease: FlxEase.sineOut});
+					FlxTween.tween(dad, {angle: -210}, 1, {ease: FlxEase.sineOut});
+					FlxTween.tween(dad, {y: dad.y + 550}, 1.2, {ease: FlxEase.sineOut, startDelay: 0.3});
 				case "Give Card":
 					fortnitecard.alpha = 1;
 					FlxTween.tween(fortnitecard, {alpha: 0}, 1.5, {ease: FlxEase.quadOut});
