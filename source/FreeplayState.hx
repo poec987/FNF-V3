@@ -67,8 +67,8 @@ class FreeplayState extends MusicBeatState
 
 			newSong("Senpai", "Senpai", 6, "sigmio"),
 			newSong("Roses", "Roses", 6, "sigmio"),
-			newSong("Thorns", "Thorns", 6, "spirit"),
-			newSong("Unfairness-Jside", "Unfairness J-Side", 6, "spirit",true),
+			newSong("Thorns", "Thorns", 6, "spirit")
+			// newSong("Unfairness-Jside", "Unfairness J-Side", 6, "spirit",true), // i dont think its happening bros im losing hope
 		],
 		"Funkin");
 
@@ -82,17 +82,12 @@ class FreeplayState extends MusicBeatState
 		"Remixes");
 
 		pages[2] = new FreeplayPage([
-			newSong("Do-You-Get-The-Refrance", "Do You Get The Refrance?", 1, "impostor", true),
+			newSong("Do-You-Get-The-Refrance", "Do You Get The Refrance?", 1, "bean", true),
 			newSong("dotdotdot", "dotdotdot", 1, "sonicexe"),
 			newSong("bopcityfansong", "bopcityfansong", 1, "blocku"),
 			newSong("celebrate", "Celebrate", 1, "afton")
 		],
 		"Extras");
-
-		pages[3] = new FreeplayPage([
-			newSong("Rethinker-J-Mix", "Rethinker (J mix)", 1, "bf-pixel", false)
-		],
-		"Covers");
 
 		var isDebug:Bool = false;
 

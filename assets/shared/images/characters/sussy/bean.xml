@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="BEAN.png">
+	<!-- Created with Adobe Animate version 24.0.3.19 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Mogus left instance 10000" x="0" y="0" width="683" height="439" pivotX="232.1" pivotY="-10.95"/>
+	<SubTexture name="Mogus left instance 10001" x="0" y="0" width="683" height="439"/>
+	<SubTexture name="Mogus left instance 10002" x="683" y="0" width="683" height="439"/>
+	<SubTexture name="Mogus left instance 10003" x="683" y="0" width="683" height="439"/>
+	<SubTexture name="Mogus left instance 10004" x="683" y="0" width="683" height="439"/>
+	<SubTexture name="Mogus left instance 10005" x="683" y="0" width="683" height="439"/>
+	<SubTexture name="Mogus left instance 10006" x="683" y="0" width="683" height="439"/>
+	<SubTexture name="Mogus left instance 10007" x="683" y="0" width="683" height="439"/>
+	<SubTexture name="Mogus left instance 10008" x="683" y="0" width="683" height="439"/>
+	<SubTexture name="Mogus left instance 10009" x="683" y="0" width="683" height="439"/>
+	<SubTexture name="Mogus left instance 10010" x="683" y="0" width="683" height="439"/>
+	<SubTexture name="Mogus left instance 10011" x="683" y="0" width="683" height="439"/>
+	<SubTexture name="Mogus left instance 10012" x="683" y="0" width="683" height="439"/>
+	<SubTexture name="Mogus left instance 10013" x="683" y="0" width="683" height="439"/>
+	<SubTexture name="Mogus left instance 10014" x="683" y="0" width="683" height="439"/>
+	<SubTexture name="amogus idle instance 10000" x="1366" y="0" width="473" height="449" pivotX="53.5" pivotY="0.65"/>
+	<SubTexture name="amogus idle instance 10001" x="0" y="449" width="473" height="449"/>
+	<SubTexture name="amogus idle instance 10002" x="473" y="449" width="473" height="449"/>
+	<SubTexture name="amogus idle instance 10003" x="1366" y="0" width="473" height="449"/>
+	<SubTexture name="amogus idle instance 10004" x="0" y="449" width="473" height="449"/>
+	<SubTexture name="amogus idle instance 10005" x="473" y="449" width="473" height="449"/>
+	<SubTexture name="amogus up instance 10000" x="946" y="449" width="422" height="661" pivotX="-27.45" pivotY="208.5"/>
+	<SubTexture name="amogus up instance 10001" x="946" y="449" width="422" height="661"/>
+	<SubTexture name="amogus up instance 10002" x="1368" y="449" width="422" height="661"/>
+	<SubTexture name="amogus up instance 10003" x="1368" y="449" width="422" height="661"/>
+	<SubTexture name="amogus up instance 10004" x="1368" y="449" width="422" height="661"/>
+	<SubTexture name="amogus up instance 10005" x="1368" y="449" width="422" height="661"/>
+	<SubTexture name="amogus up instance 10006" x="1368" y="449" width="422" height="661"/>
+	<SubTexture name="amogus up instance 10007" x="1368" y="449" width="422" height="661"/>
+	<SubTexture name="amogus up instance 10008" x="1368" y="449" width="422" height="661"/>
+	<SubTexture name="amogus up instance 10009" x="1368" y="449" width="422" height="661"/>
+	<SubTexture name="amogus up instance 10010" x="1368" y="449" width="422" height="661"/>
+	<SubTexture name="amogus up instance 10011" x="1368" y="449" width="422" height="661"/>
+	<SubTexture name="amogus up instance 10012" x="1368" y="449" width="422" height="661"/>
+	<SubTexture name="amogus up instance 10013" x="1368" y="449" width="422" height="661"/>
+	<SubTexture name="amogus up instance 10014" x="1368" y="449" width="422" height="661"/>
+	<SubTexture name="down instance 10000" x="0" y="1110" width="590" height="416" pivotX="32.75" pivotY="-34.6"/>
+	<SubTexture name="down instance 10001" x="0" y="1110" width="590" height="416"/>
+	<SubTexture name="down instance 10002" x="590" y="1110" width="590" height="416"/>
+	<SubTexture name="down instance 10003" x="590" y="1110" width="590" height="416"/>
+	<SubTexture name="down instance 10004" x="590" y="1110" width="590" height="416"/>
+	<SubTexture name="down instance 10005" x="590" y="1110" width="590" height="416"/>
+	<SubTexture name="down instance 10006" x="590" y="1110" width="590" height="416"/>
+	<SubTexture name="down instance 10007" x="590" y="1110" width="590" height="416"/>
+	<SubTexture name="down instance 10008" x="590" y="1110" width="590" height="416"/>
+	<SubTexture name="down instance 10009" x="590" y="1110" width="590" height="416"/>
+	<SubTexture name="down instance 10010" x="590" y="1110" width="590" height="416"/>
+	<SubTexture name="down instance 10011" x="590" y="1110" width="590" height="416"/>
+	<SubTexture name="down instance 10012" x="590" y="1110" width="590" height="416"/>
+	<SubTexture name="down instance 10013" x="590" y="1110" width="590" height="416"/>
+	<SubTexture name="down instance 10014" x="590" y="1110" width="590" height="416"/>
+	<SubTexture name="rightt instance 10000" x="1180" y="1110" width="673" height="449" pivotX="-59.45" pivotY="-0.35"/>
+	<SubTexture name="rightt instance 10001" x="1180" y="1110" width="673" height="449"/>
+	<SubTexture name="rightt instance 10002" x="0" y="1559" width="673" height="449"/>
+	<SubTexture name="rightt instance 10003" x="0" y="1559" width="673" height="449"/>
+	<SubTexture name="rightt instance 10004" x="0" y="1559" width="673" height="449"/>
+	<SubTexture name="rightt instance 10005" x="0" y="1559" width="673" height="449"/>
+	<SubTexture name="rightt instance 10006" x="0" y="1559" width="673" height="449"/>
+	<SubTexture name="rightt instance 10007" x="0" y="1559" width="673" height="449"/>
+	<SubTexture name="rightt instance 10008" x="0" y="1559" width="673" height="449"/>
+	<SubTexture name="rightt instance 10009" x="0" y="1559" width="673" height="449"/>
+	<SubTexture name="rightt instance 10010" x="0" y="1559" width="673" height="449"/>
+	<SubTexture name="rightt instance 10011" x="0" y="1559" width="673" height="449"/>
+	<SubTexture name="rightt instance 10012" x="0" y="1559" width="673" height="449"/>
+	<SubTexture name="rightt instance 10013" x="0" y="1559" width="673" height="449"/>
+	<SubTexture name="rightt instance 10014" x="0" y="1559" width="673" height="449"/>
+</TextureAtlas>

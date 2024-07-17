@@ -42,7 +42,7 @@ class HealthIcon extends FlxSprite
 		animation.add('monster-christmas', [19, 20], 0, false, isPlayer);
 		animation.add('dickhead', [24, 25], 0, false, isPlayer);
 		animation.add('dave', [26, 27], 0, false, isPlayer);
-		animation.add('impostor', [29, 30], 0, false, isPlayer);
+		animation.add('bean', [29, 30], 0, false, isPlayer);
 		animation.add('sonicexe', [31, 32], 0, false, isPlayer);
 		animation.add('Nugget', [34, 35], 0, false, isPlayer);
 		animation.add('nuggetdance', [34, 35], 0, false, isPlayer);

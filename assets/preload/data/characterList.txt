@@ -25,4 +25,5 @@ Nugget
 nuggetdance
 blocku
 afton
+bean
 dad-test

@@ -786,6 +786,22 @@ class Character extends FlxSprite
 				
 				
 				playAnim('idle');	
+			case 'bean':
+				tex = Paths.getSparrowAtlas('characters/sussy/bean');
+				frames = tex;
+				animation.addByPrefix('idle', 'amogus idle instance ', 24);
+				animation.addByPrefix('singUP', 'amogus up instance ', 24);
+				animation.addByPrefix('singRIGHT', 'rightt instance ', 24);
+				animation.addByPrefix('singDOWN', 'down instance ', 24);
+				animation.addByPrefix('singLEFT', 'Mogus left instance ', 24);
+
+				addOffset('idle');
+				addOffset("singUP");
+				addOffset("singRIGHT");
+				addOffset("singLEFT");
+				addOffset("singDOWN");
+
+				playAnim('idle');
 			default:
 				trace('couldnt get case');
 				var charFile:String;

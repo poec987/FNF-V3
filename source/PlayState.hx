@@ -219,7 +219,7 @@ class PlayState extends MusicBeatState
 		goods = 0;
 		misses = 0;
 
-		hasDialogue = SONG.hasDialogue;
+		// hasDialogue = SONG.hasDialogue;
 		isPixel = SONG.isPixel;
 		isGood = SONG.isGood;
 
@@ -875,6 +875,9 @@ class PlayState extends MusicBeatState
 				camPos.set(dad.getGraphicMidpoint().x + 200, dad.getGraphicMidpoint().y - 200);
 			case 'evilblocku':
 				dad.y += 150;
+				camPos.set(dad.getGraphicMidpoint().x + 200, dad.getGraphicMidpoint().y - 200);
+			case 'bean':
+				dad.y += 300;
 				camPos.set(dad.getGraphicMidpoint().x + 200, dad.getGraphicMidpoint().y - 200);
 		}
 		
