@@ -335,6 +335,8 @@ class PlayState extends MusicBeatState
 		];
 		#end
 
+		defaultCamZoom = 1.05;
+
 		if (SONG.stage == "spooky")
 		{
 			curStage = "spooky";
