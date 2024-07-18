@@ -309,8 +309,8 @@ class FreeplayState extends MusicBeatState
 			}
 			else
 			{
-				FlxG.sound.play(Paths.sound('flashbang'), 0.4);
-				var flashbang:FlxSprite = new FlxSprite().loadGraphic(Paths.image('hints/' + songs[curSelected].songName));
+				FlxG.sound.play(Paths.sound('flashbang', "shared"), 0.4);
+				var flashbang:FlxSprite = new FlxSprite().loadGraphic(Paths.image('hints/' + songs[curSelected].songName, "shared"));
 				flashbang.screenCenter();
 				add(flashbang);
 				FlxTween.tween(flashbang, {alpha: 0}, 3, {ease: FlxEase.linear});
