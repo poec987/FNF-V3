@@ -64,6 +64,10 @@ class Note extends FlxSprite
 			switch (noteType) {
 				case 'Kill':
 					loadGraphic(Paths.image('stages/weeb/pixelUI/customNotes/kill-pixels'+suffix), true, 17, 17);
+				case 'Change Character':
+					loadGraphic(Paths.image('stages/weeb/pixelUI/customNotes/invis-pixels'+suffix), true, 17, 17);
+				case 'Play Video':
+					loadGraphic(Paths.image('stages/weeb/pixelUI/customNotes/invis-pixels'+suffix), true, 17, 17);
 				default:
 					loadGraphic(Paths.image('stages/weeb/pixelUI/arrows-pixels'+suffix), true, 17, 17);
 			}
@@ -77,6 +81,10 @@ class Note extends FlxSprite
 				switch (noteType) {
 					case 'Kill':
 						loadGraphic(Paths.image('stages/weeb/pixelUI/customNotes/killEnds'+suffix), true, 7, 6);
+					case 'Change Character':
+						loadGraphic(Paths.image('stages/weeb/pixelUI/customNotes/invisEnds'+suffix), true, 7, 6);
+					case 'Play Video':
+						loadGraphic(Paths.image('stages/weeb/pixelUI/customNotes/invisEnds'+suffix), true, 7, 6);	
 					default:
 						loadGraphic(Paths.image('stages/weeb/pixelUI/arrowEnds'+suffix), true, 7, 6);
 				}
@@ -101,6 +109,8 @@ class Note extends FlxSprite
 				case 'Kill':
 					frames = Paths.getSparrowAtlas('ui/customNotes/kill'+suffix);
 				case 'Change Character':
+					frames = Paths.getSparrowAtlas('ui/customNotes/invis'+suffix);
+				case 'Play Video':
 					frames = Paths.getSparrowAtlas('ui/customNotes/invis'+suffix);
 				case 'Shield Note':
 					frames = Paths.getSparrowAtlas('ui/customNotes/shield'+suffix);

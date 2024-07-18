@@ -65,6 +65,11 @@ class Paths
 		return getPath('data/$key.txt', TEXT, library);
 	}
 
+	inline static public function video(key:String, ?library:String)
+	{
+		return getPath('videos/$key.mp4', TEXT, library);
+	}
+
 	inline static public function txtImages(key:String, ?library:String)
 	{
 		return getPath('images/$key.txt', TEXT, library);

@@ -49,6 +49,11 @@ import Discord.DiscordClient;
 import sys.FileSystem;
 #end
 
+#if (hxCodec >= "3.0.0") import hxcodec.flixel.FlxVideo as VideoHandler;
+#elseif (hxCodec >= "2.6.1") import hxcodec.VideoHandler as VideoHandler;
+#elseif (hxCodec == "2.6.0") import VideoHandler;
+#else import vlc.MP4Handler as VideoHandler; #end
+
 class PlayState extends MusicBeatState
 {
 	public static var instance(get,null):PlayState;
@@ -2068,7 +2073,7 @@ class PlayState extends MusicBeatState
 
 						noteTypeCheck(daNote, true, true);
 						
-						if (daNote.noteType != "No Animation" && daNote.noteType != "Laugh" && daNote.noteType != "Play Animation" && daNote.noteType != "Kill Mommy") {
+						if (daNote.noteType != "No Animation" && daNote.noteType != "Laugh" && daNote.noteType != "Play Animation" && daNote.noteType != "Kill Mommy" && daNote.noteType != "Change Character" && daNote.noteType != "Play Video") {
 							switch (Math.abs(daNote.noteData))
 							{
 								case 2:
@@ -2211,6 +2216,39 @@ class PlayState extends MusicBeatState
 		FreeplayState.lastSelected = lastFPselect;
 		FlxG.switchState(new FreeplayState());
 	}
+
+	public function startVideo(name:String)
+		{
+			var filepath:String = Paths.video(name);
+			#if sys
+			if(!FileSystem.exists(filepath))
+			#else
+			if(!OpenFlAssets.exists(filepath))
+			#end
+			{
+				FlxG.log.warn('Couldnt find video file: ' + name);
+				return;
+			}
+	
+			var video:VideoHandler = new VideoHandler();
+				#if (hxCodec >= "3.0.0")
+				// Recent versions
+				video.play(filepath);
+				video.onEndReached.add(function()
+				{
+					video.dispose();
+					return;
+				}, true);
+				#else
+				// Older versions
+				video.playVideo(filepath);
+				video.finishCallback = function()
+				{
+					return;
+				}
+				#end
+		}
+	
 
 	function endSong():Void
 	{
@@ -2768,7 +2806,7 @@ class PlayState extends MusicBeatState
 					else
 						health += 0.004;
 
-					if (note.noteType != "No Animation" && note.noteType != "Play Animation") {
+					if (note.noteType != "No Animation" && note.noteType != "Play Animation" && note.noteType != "Change Character" && note.noteType != "Play Video") {
 						switch (note.noteData)
 						{
 							case 2:
@@ -2849,6 +2887,8 @@ class PlayState extends MusicBeatState
 						boyfriend = new Boyfriend(pos.x, pos.y, params[1]);
 						add(boyfriend);
 					}
+				case "Play Video":
+					startVideo(noteTypeParam);
 				default:
 					// trace(zeNoteType + "was HITTTEEEEEEEEEEEEED");
 			}
