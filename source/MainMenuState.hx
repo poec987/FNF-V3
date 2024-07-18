@@ -1,5 +1,6 @@
 package;
 
+import FreeplayState.FreeplayPage;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
@@ -122,6 +123,7 @@ class MainMenuState extends MusicBeatState
 	}
 
 	var selectedSomethin:Bool = false;
+	var bopCount:Int = 0;
 
 	override function update(elapsed:Float)
 	{			
@@ -148,6 +150,25 @@ class MainMenuState extends MusicBeatState
 			if (controls.BACK)
 			{
 				FlxG.switchState(new TitleState());
+			}
+
+			if (FlxG.keys.justPressed.B && bopCount == 0) {
+				var b = new FlxSprite(150).loadGraphic(Paths.image("B"));
+				add(b);
+				bopCount++;
+			}
+				
+			if (FlxG.keys.justPressed.O && bopCount == 1) {
+				var o = new FlxSprite(300).loadGraphic(Paths.image("O"));
+				add(o);
+				bopCount++;
+			}
+
+			if (FlxG.keys.justPressed.P && bopCount == 2) {
+				var p = new FlxSprite(450).loadGraphic(Paths.image("P"));
+				add(p);
+				bopCount = 0;
+				FreeplayState.playSong("bopcityfansong", 1);
 			}
 
 			if (controls.ACCEPT)
