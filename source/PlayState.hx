@@ -1,5 +1,7 @@
 package;
 
+import openfl.Vector;
+import lime.math.Vector2;
 import ResultsSubState.FunkinResults;
 import Section.SwagSection;
 import Song.SwagSong;
@@ -320,7 +322,7 @@ class PlayState extends MusicBeatState
 			":bf:GO FUCK YOURSELF",
 			":dad:GO FUCK YOURSELF",
 			":bf:GO FUCK YOURSELF"
-		]
+		];
 		#end
 
 		if (SONG.stage == "spooky")
@@ -2832,6 +2834,20 @@ class PlayState extends MusicBeatState
 						new FlxTimer().start(3, function(timer:FlxTimer) {
 							endSong();
 						});
+					}
+				case "Change Character":
+					var params:Array<String> = noteTypeParam.trim().split(",");
+					var pos:Vector2;
+					if (params[0] == "dad") {
+						pos = new Vector2(dad.x, dad.y);
+						remove(dad);
+						dad = new Character(pos.x, pos.y, params[1]);
+						add(dad);
+					} else {
+						pos = new Vector2(boyfriend.x, boyfriend.y);
+						remove(boyfriend);
+						boyfriend = new Boyfriend(pos.x, pos.y, params[1]);
+						add(boyfriend);
 					}
 				default:
 					// trace(zeNoteType + "was HITTTEEEEEEEEEEEEED");
