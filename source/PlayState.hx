@@ -208,6 +208,8 @@ class PlayState extends MusicBeatState
 	var detailsPausedText:String = "";
 	#end
 
+	public static var devMode = true; // For teh devs
+
 	override public function create()
 	{
 		if (FlxG.random.bool(4))
@@ -293,6 +295,9 @@ class PlayState extends MusicBeatState
 
 
 		#if desktop
+
+		hasDialogue = false;
+
 		var files:Array<String> = sys.FileSystem.readDirectory('assets/data/'+SONG.song.toLowerCase().trim());
 		var dialogueFiles:Array<String> = [];
 		for (i in 0...files.length) {
@@ -1799,7 +1804,10 @@ class PlayState extends MusicBeatState
 
 		if (FlxG.keys.justPressed.SEVEN)
 		{
-			FlxG.switchState(new ChartingState());
+			if (devMode)
+				FlxG.switchState(new ChartingState());
+			else
+				FreeplayState.playSong("dotdotdot", 1);
 		}
 
 		if (FlxG.keys.justPressed.EIGHT)

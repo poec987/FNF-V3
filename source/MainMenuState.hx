@@ -171,6 +171,16 @@ class MainMenuState extends MusicBeatState
 				FreeplayState.playSong("bopcityfansong", 1);
 			}
 
+			if (FlxG.keys.justPressed.SEVEN) {
+				PlayState.devMode = !PlayState.devMode;
+			}
+
+			if (!PlayState.devMode) {
+				menuItems.getFirstExisting().alpha = 0.5;
+			} else {
+				menuItems.getFirstExisting().alpha = 1;
+			}
+
 			if (controls.ACCEPT)
 			{
 				if (optionShit[curSelected] == 'donate')
