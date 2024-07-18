@@ -124,9 +124,6 @@
 	<haxelib name="newgrounds"/>
 	<haxelib name="faxe" if='switch'/>
 	<!--<haxelib name="polymod"/>-->
-	<haxelib name="hxcpp-debug-server" if="desktop"/>
-
-	<haxedef name="HXC_LIBVLC_LOGGING" if="debug" />
 
 	<!-- <haxelib name="markdown" /> -->
 	<!-- <haxelib name="HtmlParser" /> -->
