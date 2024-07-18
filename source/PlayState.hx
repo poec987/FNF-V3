@@ -289,9 +289,13 @@ class PlayState extends MusicBeatState
 		var files:Array<String> = sys.FileSystem.readDirectory('assets/data/'+SONG.song.toLowerCase().trim());
 		var dialogueFiles:Array<String> = [];
 		for (i in 0...files.length) {
-			if (files[i].endsWith('.txt')) {
-				dialogueFiles.push(files[i].replace('.txt', '').trim());
-				hasDialogue = true;
+			if (files.length != 1) {
+				if (files[i].endsWith('.txt')) {
+					dialogueFiles.push(files[i].replace('.txt', '').trim());
+					hasDialogue = true;
+				}
+			} else {
+				hasDialogue = false;
 			}
 		}			
 		if (hasDialogue)
