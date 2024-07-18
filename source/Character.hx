@@ -1,5 +1,6 @@
 package;
 
+import lime.math.Vector2;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.animation.FlxBaseAnimation;
@@ -17,9 +18,13 @@ class Character extends FlxSprite
 
 	public var holdTimer:Float = 0;
 
+	public var charPos:Vector2;
+
 	public function new(x:Float, y:Float, ?character:String = "bf", ?isPlayer:Bool = false, ?characterArray:Array<String>)
 	{
 		super(x, y);
+
+		charPos = new Vector2(x, y);
 
 		animOffsets = new Map<String, Array<Dynamic>>();
 		curCharacter = character;

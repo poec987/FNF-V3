@@ -2877,12 +2877,12 @@ class PlayState extends MusicBeatState
 					var params:Array<String> = noteTypeParam.trim().split(",");
 					var pos:Vector2;
 					if (params[0] == "dad") {
-						pos = new Vector2(dad.x, dad.y);
+						pos = new Vector2(dad.charPos.x, dad.charPos.y);
 						remove(dad);
 						dad = new Character(pos.x, pos.y, params[1]);
 						add(dad);
 					} else {
-						pos = new Vector2(boyfriend.x, boyfriend.y);
+						pos = new Vector2(boyfriend.charPos.x, boyfriend.charPos.y);
 						remove(boyfriend);
 						boyfriend = new Boyfriend(pos.x, pos.y, params[1]);
 						add(boyfriend);
