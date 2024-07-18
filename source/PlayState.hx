@@ -822,7 +822,7 @@ class PlayState extends MusicBeatState
 				case 'mall' | 'mallEvil':
 					gfVersion = 'gf-christmas';
 				case 'school':
-					gfVersion = 'gf-pixel';
+					gfVersion = 'gf-pixelgroove';
 				case 'schoolEvil':
 					gfVersion = 'gf-pixel';
 					

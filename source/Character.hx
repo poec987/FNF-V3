@@ -140,6 +140,19 @@ class Character extends FlxSprite
 				setGraphicSize(Std.int(width * PlayState.daPixelZoom));
 				updateHitbox();
 				antialiasing = false;
+				
+			case 'gf-pixelgroove':
+				tex = Paths.getSparrowAtlas('characters/weeb/gfPixelgroove');
+				frames = tex;
+				animation.addByPrefix('idle', 'dance', 30, true);
+
+				addOffset('idle', 0);
+
+				playAnim('idle');
+
+				setGraphicSize(Std.int(width * PlayState.daPixelZoom));
+				updateHitbox();
+				antialiasing = true;
 
 			case 'dad':
 				// DAD ANIMATION LOADING CODE
