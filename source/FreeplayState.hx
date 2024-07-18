@@ -10,6 +10,8 @@ import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import lime.utils.Assets;
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
 
 #if desktop
 import Discord.DiscordClient;
@@ -161,7 +163,7 @@ class FreeplayState extends MusicBeatState
 			if (FlxG.save.data.unlockedSongs.contains(songName.toLowerCase()))
 				return new SongMetadata(songName, displayName, weekNum, songCharacter);
 			else
-				return new SongMetadata("", "Locked", 1, "lock");
+				return new SongMetadata(songName, "Locked", 1, "lock");
 		}
 		return new SongMetadata(songName, displayName, weekNum, songCharacter);
 	}
@@ -288,19 +290,30 @@ class FreeplayState extends MusicBeatState
 
 		if (accepted)
 		{
-			try {
-				var poop:String = songs[curSelected].songName.toLowerCase();
+			if (songs[curSelected].displayName != "Locked")
+			{
+				try {
+					var poop:String = songs[curSelected].songName.toLowerCase();
 
-				trace(poop);
+					trace(poop);
 
-				PlayState.SONG = Song.loadFromJson(poop, songs[curSelected].songName.toLowerCase());
-				PlayState.isStoryMode = false;
+					PlayState.SONG = Song.loadFromJson(poop, songs[curSelected].songName.toLowerCase());
+					PlayState.isStoryMode = false;
 
-				PlayState.storyWeek = PlayState.stageDictionary[PlayState.SONG.stage];
-				LoadingState.loadAndSwitchState(new PlayState());
+					PlayState.storyWeek = PlayState.stageDictionary[PlayState.SONG.stage];
+					LoadingState.loadAndSwitchState(new PlayState());
+				}
+				catch(e) {
+					trace(e);
+				}
 			}
-			catch(e) {
-				trace(e);
+			else
+			{
+				FlxG.sound.play(Paths.sound('flashbang'), 0.4);
+				var flashbang:FlxSprite = new FlxSprite().loadGraphic(Paths.image('hints/' + songs[curSelected].songName));
+				flashbang.screenCenter();
+				add(flashbang);
+				FlxTween.tween(flashbang, {alpha: 0}, 3, {ease: FlxEase.linear});
 			}
 		}
 	}
