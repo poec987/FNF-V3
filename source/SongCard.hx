@@ -78,7 +78,7 @@ class SongCard extends FlxTypedGroup<FlxSprite>{
             case 'pico':
                 setName("Pico V3", "thomicfee");
             case 'philly':
-                setName("Philly Nice V3", "Didgie");
+                setName("Philly V3", "Didgie");
             case 'blammed':
                 setName("Blammed V3", "x8c8r");
             // Week 4
@@ -87,7 +87,7 @@ class SongCard extends FlxTypedGroup<FlxSprite>{
             case 'high':
                 setName("High V3", "jo560hs");
             case 'milf':
-                setName("M.I.L.F. V3", "Xarion");
+                setName("MILF V3", "Xarion");
             // Week 5
             case 'cocoa':
                 setName("Cocoa V3", "Didgie");
@@ -119,7 +119,7 @@ class SongCard extends FlxTypedGroup<FlxSprite>{
             case 'dotdotdot':
                 setName("Dotdotdot", "Didgie");
             case 'do-you-get-the-refrance':
-                setName("do you get the refrance", "x8c8r");
+                setName("Do You Get The Refrance?", "x8c8r");
             case 'stop-right-there-criminal-scum':
                 setName("Stop right there criminal scum", "PoeDev");
 			case 'bopcityfansong':

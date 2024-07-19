@@ -56,7 +56,7 @@ class FreeplayState extends MusicBeatState
 			newSong("Monster", "Monster", 2, "monster"),
 
 			newSong("Pico", "Pico", 3, "pico"),
-			newSong("Philly", "Philly Nice", 3, "pico"),
+			newSong("Philly", "Philly", 3, "pico"),
 			newSong("Blammed", "Blammed", 3, "pico"),
 
 			newSong("Satin-Panties", "Satin Panties", 4, "mom"),

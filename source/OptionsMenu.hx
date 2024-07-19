@@ -203,7 +203,7 @@ class OptionsMenu extends MusicBeatState
 				}
 	
 
-			if (controls.ACCEPT)
+			if (FlxG.keys.justPressed.ENTER)
 			{
 				changeOption(options[curSelected], curSelected);
 			}
@@ -259,6 +259,7 @@ class OptionsMenu extends MusicBeatState
 
 				if (update) {
 					var cur = values.indexOf(curValue)+1;
+					trace(values[cur] == null ? values[0] : values[cur]);
 					option[2] = values[cur] == null ? values[0] : values[cur];
 
 					SaveManagement.setOption(name, option[2]);
