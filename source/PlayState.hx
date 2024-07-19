@@ -1106,6 +1106,13 @@ class PlayState extends MusicBeatState
 		{
 			switch (curSong.toLowerCase())
 			{
+				case "high":
+					dad.y -= 1000;
+					FlxTween.tween(dad, {y: dad.y + 1000}, 1, {ease: FlxEase.quadOut});
+					new FlxTimer().start(2, function(tmr:FlxTimer)
+					{
+						startDialogue(doof);
+					});
 				case "winter-horrorland":
 					if (FlxG.save.data.frostedonespotted == false) { FlxG.save.data.frostedonespotted = true; }
 					var frosted:FlxSprite = new FlxSprite().loadGraphic(Paths.image('thefrostedoneishere'));
