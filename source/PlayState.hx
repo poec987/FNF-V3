@@ -869,7 +869,7 @@ class PlayState extends MusicBeatState
 					gfVersion = 'gf-car';
 				case 'mall' | 'mallEvil' | 'mallsuspicious':
 					gfVersion = 'gf-christmas';
-				case 'school':
+				case 'school' | 'fnaf':
 					gfVersion = 'gf-pixelgroove';
 				case 'schoolEvil':
 					gfVersion = 'gf-pixel';
