@@ -60,7 +60,7 @@ class SaveManagement {
     public static function defaultOptions() {
         FlxG.save.data.options = new Map<String, Dynamic>();
 
-        FlxG.save.data.options.set("Keybinds", "DFJK");
+        FlxG.save.data.options.set("Keybinds", "WASD");
         FlxG.save.data.options.set("Input System", "New");
         FlxG.save.data.options.set("Scroll Direction", "Up");
         FlxG.save.data.options.set("Hitsounds", "Off");
