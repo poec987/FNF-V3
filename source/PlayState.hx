@@ -3008,6 +3008,8 @@ class PlayState extends MusicBeatState
 					FlxTween.tween(dad, {x: dad.x - 800}, 1.5, {ease: FlxEase.sineOut});
 					FlxTween.tween(dad, {angle: -210}, 1, {ease: FlxEase.sineOut});
 					FlxTween.tween(dad, {y: dad.y + 550}, 1.2, {ease: FlxEase.sineOut, startDelay: 0.3});
+				case "Monster Leave":
+					FlxTween.tween(dad, {alpha: 0}, 1.5, {ease: FlxEase.linear});
 				case "Give Card":
 					fortnitecard.alpha = 1;
 					FlxTween.tween(fortnitecard, {alpha: 0}, 1.5, {ease: FlxEase.quadOut});

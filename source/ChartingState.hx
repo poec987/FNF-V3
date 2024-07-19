@@ -394,6 +394,7 @@ class ChartingState extends MusicBeatState
 		"Change Character",
 		"Play Video",
 		"Laugh",
+		"Monster Leave",
 		"Kill Santa",
 		"Kill",
 		"Pico Shoot",
