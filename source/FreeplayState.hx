@@ -77,6 +77,7 @@ class FreeplayState extends MusicBeatState
 		pages[1] = new FreeplayPage([
 			newSong("Tutorial-BSide", "Tutorial B-Side", 1, "gf"),
 			newSong("Tutorial-Erect", "Tutorial Erect", 1, "gf"),
+			newSong("Tutorial-BSide-Erect", "Tutorial B-Side Erect", 1, "gf"),
 			newSong("Spookeez-Erect", "Spookeez Erect", 1, "spooky"),
 			newSong("Blammed-alt", "Blammed (Alt)", 1, "pico"),
 			newSong("Senpai-Impossible-Ver", "Senpai Impossible Ver.", 1, "sigmio")
