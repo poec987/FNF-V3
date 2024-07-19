@@ -165,6 +165,8 @@
 
 	<haxedef name='no-deprecation-warnings' />
 
+	<haxedef name='SHADERS_ENABLED' if="desktop"/>
+
 	<!-- _________________________________ Custom _______________________________ -->
 
 	<!--Place custom nodes like icons here (higher priority to override the HaxeFlixel icon)-->

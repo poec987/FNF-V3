@@ -1,5 +1,6 @@
 package;
 
+import DNBShader.GlitchEffect;
 import openfl.Vector;
 import lime.math.Vector2;
 import ResultsSubState.FunkinResults;
@@ -162,6 +163,7 @@ class PlayState extends MusicBeatState
 
 	var bgGirls:BackgroundGirls;
 	var wiggleShit:WiggleEffect = new WiggleEffect();
+	var unfairjShader:GlitchEffect;
 
 	var talking:Bool = true;
 	var songScore:Int = 0;
@@ -196,7 +198,8 @@ class PlayState extends MusicBeatState
 		"schoolEvil" => 6,
 		"exe" => 1,
 		"bopcity" => 1,
-		"fnaf" => 1
+		"fnaf" => 1,
+		"ikea" => 1
 	];
 
 	var songTimer:SongTimer;
@@ -788,49 +791,19 @@ class PlayState extends MusicBeatState
 			bg.active = false;
 			add(bg);
 		}
-			/* 
-				var bg:FlxSprite = new FlxSprite(posX, posY).loadGraphic(Paths.image('weeb/evilSchoolBG'));
-				bg.scale.set(6, 6);
-				// bg.setGraphicSize(Std.int(bg.width * 6));
-				// bg.updateHitbox();
-				add(bg);
+		else if (SONG.stage == "ikea") {
+			// Code completely stolen from https://github.com/silkycell/DNB-Background-Generator
+			unfairjShader = new GlitchEffect();
+			unfairjShader.waveAmplitude = 0.1;
+			unfairjShader.waveFrequency = 5;
+			unfairjShader.waveSpeed = 1;
 
-				var fg:FlxSprite = new FlxSprite(posX, posY).loadGraphic(Paths.image('weeb/evilSchoolFG'));
-				fg.scale.set(6, 6);
-				// fg.setGraphicSize(Std.int(fg.width * 6));
-				// fg.updateHitbox();
-				add(fg);
-
-				wiggleShit.effectType = WiggleEffectType.DREAMY;
-				wiggleShit.waveAmplitude = 0.01;
-				wiggleShit.waveFrequency = 60;
-				wiggleShit.waveSpeed = 0.8;
-			 */
-
-			// bg.shader = wiggleShit.shader;
-			// fg.shader = wiggleShit.shader;
-
-			/* 
-				var waveSprite = new FlxEffectSprite(bg, [waveEffectBG]);
-				var waveSpriteFG = new FlxEffectSprite(fg, [waveEffectFG]);
-
-				// Using scale since setGraphicSize() doesnt work???
-				waveSprite.scale.set(6, 6);
-				waveSpriteFG.scale.set(6, 6);
-				waveSprite.setPosition(posX, posY);
-				waveSpriteFG.setPosition(posX, posY);
-
-				waveSprite.scrollFactor.set(0.7, 0.8);
-				waveSpriteFG.scrollFactor.set(0.9, 0.8);
-
-				// waveSprite.setGraphicSize(Std.int(waveSprite.width * 6));
-				// waveSprite.updateHitbox();
-				// waveSpriteFG.setGraphicSize(Std.int(fg.width * 6));
-				// waveSpriteFG.updateHitbox();
-
-				add(waveSprite);
-				add(waveSpriteFG);
-			 */
+			var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('stages/ikea/jo'));
+			bg.antialiasing = false;
+			bg.shader = unfairjShader.shader;
+			bg.scrollFactor.set(0.9, 0.9);
+			add(bg);
+		}
 		else
 		{
 			defaultCamZoom = 0.9;
@@ -1763,6 +1736,9 @@ class PlayState extends MusicBeatState
 		perfectMode = false;
 		#end
 
+		if (unfairjShader != null)
+			unfairjShader.update(elapsed);
+		
 		if (FlxG.keys.justPressed.NINE)
 		{
 			if (iconP1.animation.curAnim.name == 'bf-old')
