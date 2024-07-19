@@ -189,6 +189,7 @@ class PlayState extends MusicBeatState
 		"spooky" => 2,
 		"philly" => 3,
 		"limo" => 4,
+		"limonormal" => 4,
 		"mall" => 5,
 		"mallEvil" => 5,
 		"school" => 6,
@@ -489,6 +490,53 @@ class PlayState extends MusicBeatState
 			// overlayShit.shader = shaderBullshit;
 
 			var limoTex = Paths.getSparrowAtlas('stages/limo/limoDrive');
+
+			limo = new FlxSprite(-120, 550);
+			limo.frames = limoTex;
+			limo.animation.addByPrefix('drive', "Limo stage", 24);
+			limo.animation.play('drive');
+			limo.antialiasing = true;
+
+			fastCar = new FlxSprite(-300, 160).loadGraphic(Paths.image('stages/limo/fastCarLol'));
+			// add(limo);
+		}
+		else if (SONG.stage == "limonormal")
+		{
+			curStage = 'limonormal';
+			defaultCamZoom = 0.90;
+
+			var skyBG:FlxSprite = new FlxSprite(-120, -50).loadGraphic(Paths.image('stages/limo/limoSunset'));
+			skyBG.scrollFactor.set(0.1, 0.1);
+			add(skyBG);
+
+			var bgLimo:FlxSprite = new FlxSprite(-200, 480);
+			bgLimo.frames = Paths.getSparrowAtlas('stages/limo/bgLimo');
+			bgLimo.animation.addByPrefix('drive', "background limo pink", 24);
+			bgLimo.animation.play('drive');
+			bgLimo.scrollFactor.set(0.4, 0.4);
+			add(bgLimo);
+
+			grpLimoDancers = new FlxTypedGroup<BackgroundDancer>();
+			add(grpLimoDancers);
+
+			for (i in 0...5)
+			{
+				var dancer:BackgroundDancer = new BackgroundDancer((370 * i) + 130, bgLimo.y - 400);
+				dancer.scrollFactor.set(0.4, 0.4);
+				grpLimoDancers.add(dancer);
+			}
+
+			var overlayShit:FlxSprite = new FlxSprite(-500, -600).loadGraphic(Paths.image('stages/limo/limoOverlay'));
+			overlayShit.alpha = 0.5;
+			// add(overlayShit);
+
+			// var shaderBullshit = new BlendModeEffect(new OverlayShader(), FlxColor.RED);
+
+			// FlxG.camera.setFilters([new ShaderFilter(cast shaderBullshit.shader)]);
+
+			// overlayShit.shader = shaderBullshit;
+
+			var limoTex = Paths.getSparrowAtlas('stages/limo/limoDrivenormal');
 
 			limo = new FlxSprite(-120, 550);
 			limo.frames = limoTex;
@@ -817,9 +865,9 @@ class PlayState extends MusicBeatState
 		{
 			switch (curStage)
 			{
-				case 'limo':
+				case 'limo' | 'limonormal':
 					gfVersion = 'gf-car';
-				case 'mall' | 'mallEvil':
+				case 'mall' | 'mallEvil' | 'mallsuspicious':
 					gfVersion = 'gf-christmas';
 				case 'school':
 					gfVersion = 'gf-pixelgroove';
@@ -914,6 +962,13 @@ class PlayState extends MusicBeatState
 
 				resetFastCar();
 				add(fastCar);
+			case 'limonormal':
+				boyfriend.y -= 220;
+				boyfriend.x += 260;
+
+				resetFastCar();
+				add(fastCar);
+
 
 			case 'mall':
 				boyfriend.x += 200;
@@ -954,8 +1009,9 @@ class PlayState extends MusicBeatState
 		add(gf);
 
 		// Shitty layering but whatev it works LOL
-		if (curStage == 'limo')
+		if (curStage == 'limo' || curStage == 'limonormal')
 			add(limo);
+		
 
 		add(dad);
 
@@ -1946,6 +2002,8 @@ class PlayState extends MusicBeatState
 				switch (curStage)
 				{
 					case 'limo':
+						camFollow.x = boyfriend.getMidpoint().x - 300;
+					case 'limonormal':
 						camFollow.x = boyfriend.getMidpoint().x - 300;
 					case 'mall':
 						camFollow.y = boyfriend.getMidpoint().y - 200;
@@ -3184,6 +3242,14 @@ class PlayState extends MusicBeatState
 				bottomBoppers.animation.play('bop', true);
 
 			case 'limo':
+				grpLimoDancers.forEach(function(dancer:BackgroundDancer)
+				{
+					dancer.dance();
+				});
+
+				if (FlxG.random.bool(10) && fastCarCanDrive)
+					fastCarDrive();
+			case 'limonormal':
 				grpLimoDancers.forEach(function(dancer:BackgroundDancer)
 				{
 					dancer.dance();
