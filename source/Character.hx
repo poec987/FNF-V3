@@ -825,9 +825,9 @@ class Character extends FlxSprite
 				frames = tex;
 				animation.addByPrefix('idle', 'Idle instance ', 24);
 				animation.addByPrefix('singUP', 'Up instance ', 24);
-				animation.addByPrefix('singRIGHT', 'Right instance ', 24);
+				animation.addByPrefix('singRIGHT', 'Left instance ', 24);
 				animation.addByPrefix('singDOWN', 'Down instance ', 24);
-				animation.addByPrefix('singLEFT', 'Left instance ', 24);
+				animation.addByPrefix('singLEFT', 'Right instance ', 24);
 
 				addOffset('idle');
 				addOffset("singUP");

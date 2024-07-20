@@ -160,6 +160,8 @@ class PlayState extends MusicBeatState
 
 	var unfairJbg:FlxSprite;
 	var unfairJevents:Array<Bool> = [false, false];
+	var blackShitJ:FlxSprite;
+	var lol:FlxSprite;
 
 	var fc:Bool = true;
 	var allowMiss = true;
@@ -1189,6 +1191,8 @@ class PlayState extends MusicBeatState
 					startCountdown();
 			}
 		}
+		
+		blackShitJ = new FlxSprite(-100, -100).makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
 
 		super.create();
 	}
@@ -3248,14 +3252,13 @@ class PlayState extends MusicBeatState
 		}
 		
 		// UNFAIRJ EVENTS
-		var blackShitJ:FlxSprite = new FlxSprite(-100, -100).makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
 		if (curSong == 'unfairness-jside') {
 			switch (curBeat) {
 				case 480: // 480
 					unfairJevents[0] = true;
 
-					// blackShitJ.scrollFactor.set();
-					// add(blackShitJ);
+					 blackShitJ.scrollFactor.set();
+					add(blackShitJ);
 					camHUD.visible = false;
 
 					dad.setGraphicSize(Std.int(dad.width * 0.5));
@@ -3270,10 +3273,10 @@ class PlayState extends MusicBeatState
 					unfairjShader.waveAmplitude = 0.2;
 					unfairjShader.waveSpeed = 1.5;
 				case 484: //484
-					// blackShitJ.color = FlxColor.TRANSPARENT;
+					remove(blackShitJ);
 					camHUD.visible = true;
 				case 492: // 492
-					var lol:FlxSprite = new FlxSprite(boyfriend.x-200, boyfriend.y - 50).loadGraphic(Paths.image('stages/ikea/cobble'));
+					lol = new FlxSprite(boyfriend.x-200, boyfriend.y - 50).loadGraphic(Paths.image('stages/ikea/cobble'));
 					lol.alpha = 0;
 					add(lol);
 
