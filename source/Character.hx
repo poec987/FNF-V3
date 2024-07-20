@@ -153,7 +153,6 @@ class Character extends FlxSprite
 				setGraphicSize(Std.int(width * PlayState.daPixelZoom));
 				updateHitbox();
 				antialiasing = true;
-
 			case 'dad':
 				// DAD ANIMATION LOADING CODE
 				tex = Paths.getSparrowAtlas('characters/stage/DADDY_DEAREST');
@@ -647,6 +646,7 @@ class Character extends FlxSprite
 				addOffset("singLEFT");
 				addOffset("singDOWN");
 
+				setGraphicSize(Std.int(width * 1.5));
 				updateHitbox();
 
 				playAnim('idle');

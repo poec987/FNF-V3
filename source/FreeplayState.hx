@@ -69,8 +69,8 @@ class FreeplayState extends MusicBeatState
 
 			newSong("Senpai", "Senpai", 6, "sigmio"),
 			newSong("Roses", "Roses", 6, "sigmio"),
-			newSong("Thorns", "Thorns", 6, "spirit")
-			// newSong("Unfairness-Jside", "Unfairness J-Side", 6, "spirit",true), // i dont think its happening bros im losing hope
+			newSong("Thorns", "Thorns", 6, "spirit"),
+			newSong("Unfairness-Jside", "Unfairness J-Side", 6, "spirit",true)
 		],
 		"Funkin");
 

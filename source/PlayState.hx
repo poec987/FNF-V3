@@ -792,6 +792,7 @@ class PlayState extends MusicBeatState
 			add(bg);
 		}
 		else if (SONG.stage == "ikea") {
+			curStage = 'ikea';
 			// Code completely stolen from https://github.com/silkycell/DNB-Background-Generator
 			unfairjShader = new GlitchEffect();
 			unfairjShader.waveAmplitude = 0.1;
@@ -863,6 +864,8 @@ class PlayState extends MusicBeatState
 
 		dad = new Character(100, 100, SONG.player2);
 
+		boyfriend = new Boyfriend(770, 450, SONG.player1);
+
 		var camPos:FlxPoint = new FlxPoint(dad.getGraphicMidpoint().x, dad.getGraphicMidpoint().y);
 
 		switch (SONG.player2)
@@ -918,12 +921,11 @@ class PlayState extends MusicBeatState
 			case 'bean':
 				dad.y += 300;
 				camPos.set(dad.getGraphicMidpoint().x + 200, dad.getGraphicMidpoint().y - 200);
+			case 'sigmio-final':
+				dad.x -= 450;
+				dad.y -= 100;
+				camPos.set(dad.getGraphicMidpoint().x + 200, dad.getGraphicMidpoint().y - 200);
 		}
-		
-
-
-		
-		boyfriend = new Boyfriend(770, 450, SONG.player1);
 		
 
 		// REPOSITIONING PER STAGE
@@ -969,6 +971,12 @@ class PlayState extends MusicBeatState
 				gf.y += 300;
 			case 'bopcity':
 				gf.visible = false;
+			case 'ikea':
+				var evilTrail = new FlxTrail(dad, null, 3, 24, 0.3, 0.05);
+				add(evilTrail);
+
+				gf.visible = false;
+				boyfriend.x += 150;
 		}
 		
 		switch (SONG.player1)
@@ -1940,6 +1948,13 @@ class PlayState extends MusicBeatState
 				camFollow.setPosition(dad.getMidpoint().x + 150, dad.getMidpoint().y - 100);
 				// camFollow.setPosition(lucky.getMidpoint().x - 120, lucky.getMidpoint().y + 210);
 
+				switch (curStage) {
+					case 'ikea':
+						camFollow.y = dad.getMidpoint().y - 225;
+						camFollow.x = dad.getMidpoint().x + 150;
+						// FlxTween.tween(FlxG.camera, {zoom: 0.95}, (Conductor.stepCrochet * 4 / 1000), {ease: FlxEase.linear});
+				}
+
 				switch (dad.curCharacter)
 				{
 					case 'mom':
@@ -1989,6 +2004,10 @@ class PlayState extends MusicBeatState
 					case 'schoolEvil':
 						camFollow.x = boyfriend.getMidpoint().x - 200;
 						camFollow.y = boyfriend.getMidpoint().y - 200;
+					case 'ikea':
+						camFollow.x = boyfriend.getMidpoint().x - 400;
+						camFollow.y = boyfriend.getMidpoint().y - 200;
+						// FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.stepCrochet * 2 / 1000), {ease: FlxEase.linear});
 				}
 				
 				switch (boyfriend.curCharacter)
@@ -2768,7 +2787,10 @@ class PlayState extends MusicBeatState
 		if (!boyfriend.stunned && allowMiss)
 		{
 			misses++;
-			health -= 0.04;
+			if (SONG.song != "unfairness-jside")
+				health -= 0.04;
+			else
+				health -= 0.01;
 			if (combo > 5 && gf.animOffsets.exists('sad'))
 			{
 				gf.playAnim('sad');
