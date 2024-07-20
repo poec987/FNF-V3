@@ -175,7 +175,7 @@ class MainMenuState extends MusicBeatState
 				PlayState.devMode = !PlayState.devMode;
 			}
 
-			if (!PlayState.devMode) {
+			if (PlayState.devMode) {
 				menuItems.getFirstExisting().alpha = 0.5;
 			} else {
 				menuItems.getFirstExisting().alpha = 1;
