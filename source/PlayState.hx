@@ -217,7 +217,7 @@ class PlayState extends MusicBeatState
 	var detailsPausedText:String = "";
 	#end
 
-	public static var devMode = true; // For teh devs
+	public static var devMode = false; // For teh devs
 
 	override public function create()
 	{
