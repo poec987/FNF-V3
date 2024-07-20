@@ -158,6 +158,9 @@ class PlayState extends MusicBeatState
 	var fortnitecard:FlxSprite;
 	var whatthe:FlxSprite;
 
+	var unfairJbg:FlxSprite;
+	var unfairJevents:Array<Bool> = [false, false];
+
 	var fc:Bool = true;
 	var allowMiss = true;
 
@@ -799,11 +802,11 @@ class PlayState extends MusicBeatState
 			unfairjShader.waveFrequency = 5;
 			unfairjShader.waveSpeed = 1;
 
-			var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('stages/ikea/jo'));
-			bg.antialiasing = false;
-			bg.shader = unfairjShader.shader;
-			bg.scrollFactor.set(0.9, 0.9);
-			add(bg);
+			unfairJbg = new FlxSprite(-600, -200).loadGraphic(Paths.image('stages/ikea/jo'));
+			unfairJbg.antialiasing = false;
+			unfairJbg.shader = unfairjShader.shader;
+			unfairJbg.scrollFactor.set(0.9, 0.9);
+			add(unfairJbg);
 		}
 		else
 		{
@@ -1950,8 +1953,14 @@ class PlayState extends MusicBeatState
 
 				switch (curStage) {
 					case 'ikea':
-						camFollow.y = dad.getMidpoint().y - 225;
-						camFollow.x = dad.getMidpoint().x + 150;
+						if (unfairJevents[0] == false) {
+							camFollow.y = dad.getMidpoint().y - 225;
+							camFollow.x = dad.getMidpoint().x + 150;
+						}
+						else {
+							camFollow.y = dad.getMidpoint().y - 225;
+							camFollow.x = dad.getMidpoint().x + 150;
+						}
 						// FlxTween.tween(FlxG.camera, {zoom: 0.95}, (Conductor.stepCrochet * 4 / 1000), {ease: FlxEase.linear});
 				}
 
@@ -2005,8 +2014,14 @@ class PlayState extends MusicBeatState
 						camFollow.x = boyfriend.getMidpoint().x - 200;
 						camFollow.y = boyfriend.getMidpoint().y - 200;
 					case 'ikea':
-						camFollow.x = boyfriend.getMidpoint().x - 400;
-						camFollow.y = boyfriend.getMidpoint().y - 200;
+						if (unfairJevents[0] == false) {
+							camFollow.x = boyfriend.getMidpoint().x - 400;
+							camFollow.y = boyfriend.getMidpoint().y - 200;
+						}
+						else {
+							camFollow.x = boyfriend.getMidpoint().x - 300;
+							camFollow.y = boyfriend.getMidpoint().y - 100;
+						}
 						// FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.stepCrochet * 2 / 1000), {ease: FlxEase.linear});
 				}
 				
@@ -3229,6 +3244,45 @@ class PlayState extends MusicBeatState
 					remove(dad);
 					dad = new Character(100, 250, 'niceblocku');
 					add(dad);
+			}
+		}
+		
+		// UNFAIRJ EVENTS
+		var blackShitJ:FlxSprite = new FlxSprite(-100, -100).makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
+		if (curSong == 'unfairness-jside') {
+			switch (curBeat) {
+				case 480: // 480
+					unfairJevents[0] = true;
+
+					// blackShitJ.scrollFactor.set();
+					// add(blackShitJ);
+					camHUD.visible = false;
+
+					dad.setGraphicSize(Std.int(dad.width * 0.5));
+					dad.x += 200;
+					dad.y -= 150;
+
+					var oldBf = boyfriend;
+					remove(boyfriend);
+					boyfriend = new Boyfriend(oldBf.x, oldBf.y, "unfairJo");
+					add(boyfriend);
+
+					unfairjShader.waveAmplitude = 0.2;
+					unfairjShader.waveSpeed = 1.5;
+				case 484: //484
+					// blackShitJ.color = FlxColor.TRANSPARENT;
+					camHUD.visible = true;
+				case 492: // 492
+					var lol:FlxSprite = new FlxSprite(boyfriend.x-200, boyfriend.y - 50).loadGraphic(Paths.image('stages/ikea/cobble'));
+					lol.alpha = 0;
+					add(lol);
+
+					FlxTween.tween(lol, {alpha: 1}, 1);
+				case 496: // 496
+					FlxTween.tween(lol, {alpha: 0}, 1, { onComplete: (twn:FlxTween) -> {
+						remove(lol);
+					}});
+
 			}
 		}
 

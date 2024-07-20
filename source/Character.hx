@@ -820,6 +820,26 @@ class Character extends FlxSprite
 				addOffset("singDOWN");
 
 				playAnim('idle');
+			case 'unfairJo':
+				tex = Paths.getSparrowAtlas('characters/unfair/unfairJo');
+				frames = tex;
+				animation.addByPrefix('idle', 'Idle instance ', 24);
+				animation.addByPrefix('singUP', 'Up instance ', 24);
+				animation.addByPrefix('singRIGHT', 'Right instance ', 24);
+				animation.addByPrefix('singDOWN', 'Down instance ', 24);
+				animation.addByPrefix('singLEFT', 'Left instance ', 24);
+
+				addOffset('idle');
+				addOffset("singUP");
+				addOffset("singRIGHT");
+				addOffset("singLEFT");
+				addOffset("singDOWN");
+
+				playAnim('idle');
+
+				setGraphicSize(Std.int(width * 2.5));
+
+				flipX = true;
 			default:
 				trace('couldnt get case');
 				var charFile:String;
