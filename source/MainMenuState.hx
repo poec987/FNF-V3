@@ -2,15 +2,18 @@ package;
 
 import FreeplayState.FreeplayPage;
 import flixel.FlxG;
+import flash.system.System;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.effects.FlxFlicker;
 import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.input.keyboard.FlxKey;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
+import flixel.util.FlxTimer;
 import io.newgrounds.NG;
 import lime.app.Application;
 
@@ -31,6 +34,9 @@ class MainMenuState extends MusicBeatState
 	#else
 	var optionShit:Array<String> = ['story mode', 'freeplay'];
 	#end
+	
+	var penKey:Array<FlxKey> = [FlxKey.P, FlxKey.E, FlxKey.N, FlxKey.K, FlxKey.A, FlxKey.R, FlxKey.U];
+	var lastKeysPressed:Array<FlxKey> = [];
 
 	var newGaming:FlxText;
 	var newGaming2:FlxText;
@@ -124,6 +130,8 @@ class MainMenuState extends MusicBeatState
 
 	var selectedSomethin:Bool = false;
 	var bopCount:Int = 0;
+	
+	var isDifferent:Bool = false;
 
 	override function update(elapsed:Float)
 	{			
@@ -131,6 +139,34 @@ class MainMenuState extends MusicBeatState
 		if (FlxG.sound.music.volume < 0.8)
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
+		}
+		
+		var finalKey:FlxKey = FlxG.keys.firstJustPressed();
+		if(finalKey != FlxKey.NONE) {
+			lastKeysPressed.push(finalKey); //Convert int to FlxKey
+			if(lastKeysPressed.length > penKey.length)
+			{
+				lastKeysPressed.shift();
+			}
+				
+			if(lastKeysPressed.length == penKey.length)
+			{
+				
+				for (i in 0...lastKeysPressed.length) {
+					if(lastKeysPressed[i] != penKey[i]) {
+						isDifferent = true;
+						break;
+					}
+				}
+
+				if(!isDifferent) {
+					FlxG.sound.play(Paths.sound('fuckingidiot', "shared"), 1.5);
+					new FlxTimer().start(1, function(tmr:FlxTimer)
+					{
+						System.exit(0);
+					});
+				}
+			}
 		}
 
 		if (!selectedSomethin)

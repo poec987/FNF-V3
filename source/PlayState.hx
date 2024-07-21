@@ -3112,6 +3112,14 @@ class PlayState extends MusicBeatState
 				case "Give Card":
 					fortnitecard.alpha = 1;
 					FlxTween.tween(fortnitecard, {alpha: 0}, 1.5, {ease: FlxEase.quadOut});
+				case "Lazy Chart":
+					var lazyTxt:FlxText = new FlxText(0, 0, FlxG.width, "we didnt want to chart this anymore", 50);
+					lazyTxt.setFormat(Paths.font("papyrus.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+					lazyTxt.cameras = [camHUD];
+					lazyTxt.screenCenter();
+					lazyTxt.alpha = 0;
+					add(lazyTxt);
+					FlxTween.tween(lazyTxt, {alpha: 1}, 10, {ease: FlxEase.linear});
 				case "Kill":
 					health = 0;
 				default:

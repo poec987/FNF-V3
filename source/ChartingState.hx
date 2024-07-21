@@ -400,6 +400,7 @@ class ChartingState extends MusicBeatState
 		"Pico Shoot",
 		"Shield Note",
 		"Kill Mommy",
+		"Lazy Chart",
 		"Give Card",
 		"Don't End The World"
 	];
