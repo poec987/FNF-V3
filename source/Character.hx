@@ -1041,7 +1041,7 @@ class Character extends FlxSprite
 						else
 							playAnim('danceLeft');
 					}
-				case 'senpai':
+				case 'sigmio':
 					if (!animation.curAnim.name.startsWith('hair'))
 					{
 						danced = !danced;

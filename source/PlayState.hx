@@ -1258,7 +1258,7 @@ class PlayState extends MusicBeatState
 
 		var senpaiEvil:FlxSprite = new FlxSprite();
 		senpaiEvil.frames = Paths.getSparrowAtlas('cutscenes/weeb/sigmiofuckingdying');
-		senpaiEvil.animation.addByPrefix('dewaeth', 'sigmiofuckingdying dewaeth', 24, true);
+		senpaiEvil.animation.addByPrefix('dewaeth', 'sigmiofuckingdying dewaeth', 24, false);
 		// senpaiEvil.setGraphicSize(Std.int(senpaiEvil.width * 6));
 		senpaiEvil.scrollFactor.set();
 		senpaiEvil.updateHitbox();
