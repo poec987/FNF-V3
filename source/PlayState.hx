@@ -2278,7 +2278,7 @@ class PlayState extends MusicBeatState
 
 							if (allowMiss) {
 								health -= 0.075;
-								vocals.volume = 0;
+								if (SONG.song != 'unfairness-jside') vocals.volume = 0;
 								if (theFunne)
 									noteTypeCheck(daNote, true, false, true);
 									noteMiss(daNote.noteData);
@@ -2892,7 +2892,8 @@ class PlayState extends MusicBeatState
 
 			songScore -= 10;
 
-			FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
+			if (SONG.song != 'unfairness-jside')
+				FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
 			// FlxG.sound.play(Paths.sound('missnote1'), 1, false);
 			// FlxG.log.add('played imss note');
 
