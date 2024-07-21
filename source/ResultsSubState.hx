@@ -137,7 +137,7 @@ class ResultsSubState extends MusicBeatSubstate {
                 case "bad":
                     beef = new FlxSprite(400, -50).loadGraphic(Paths.image('judgements/bad'));
                 case "shit":
-                    beef = new FlxSprite(400, -50).loadGraphic(Paths.image('judgements/good'));
+                    beef = new FlxSprite(400, -50).loadGraphic(Paths.image('judgements/shit'));
                 case "worst":
                     beef = new FlxSprite(500, 100).loadGraphic(Paths.image('judgements/bruh'));
             }
