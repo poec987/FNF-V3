@@ -3240,6 +3240,9 @@ class PlayState extends MusicBeatState
 					whiteShitJ.alpha = 1;
 					FlxTween.tween(whiteShitJ, {alpha: 0}, 1, {ease: FlxEase.linear});
 
+					unfairjShader.waveFrequency = 4;
+					unfairjShader.waveSpeed = 2;
+
 					remove(bfTrailJ);
 					remove(dadTrailJ);
 					bfTrailJ = new FlxTrail(boyfriend, null, 3, 24, 0.3, 0.05);
@@ -3396,6 +3399,10 @@ class PlayState extends MusicBeatState
 					unfairJevents[1] = true;
 					unfairJbg.alpha = 0;
 
+					unfairjShader.waveAmplitude = 0.3;
+					unfairjShader.waveFrequency = 4.5;
+					unfairjShader.waveSpeed = 1.5;
+
 					var oldDad = dad;
 					remove(dad);
 					dad = new Character(oldDad.x, oldDad.y, 'sigmiofinalalt');
@@ -3404,6 +3411,8 @@ class PlayState extends MusicBeatState
 					whiteShitJ.alpha = 1;
 					
 					FlxTween.tween(whiteShitJ, {alpha: 0}, 1, {ease: FlxEase.linear});
+				case 708: // 708
+					FlxTween.tween(unfairJbg, {alpha: 0.5}, 1, {ease: FlxEase.linear});
 				case 804: // 804
 					bfTrailJ = new FlxTrail(boyfriend, null, 3, 24, 0.3, 0.05);
 					dadTrailJ = new FlxTrail(dad, null, 3, 24, 0.3, 0.05);
