@@ -1466,7 +1466,10 @@ class PlayState extends MusicBeatState
 		// Song duration in a float, useful for the time left feature
 		songLength = FlxG.sound.music.length;
 
-		songTimer.endTime = Math.round(songLength/1000);
+		if (SONG.song != 'unfairness-jside')
+			songTimer.endTime = Math.round(songLength/1000);
+		else 
+			songTimer.endTime = 69;
 		songTimer.updateDisplay();
 
 		// Updating Discord Rich Presence (with Time Left)
@@ -3370,10 +3373,12 @@ class PlayState extends MusicBeatState
 					remove(dad);
 					dad = new Character(oldDad.x, oldDad.y, 'sigmio-final');
 					add(dad);
+					iconP2.animation.play('sigmio-final');
 					sigmioreveal = true;
 					unfairJbg.alpha = 1;
 					thornbg.alpha = 0;
 					FlxTween.tween(whiteShitJ, {alpha: 0}, 1, {ease: FlxEase.linear});
+					FlxTween.tween(songTimer, {"endTime": Math.round(songLength/1000)}, 27, {ease:FlxEase.expoIn});
 				case 492: // 492
 					lol = new FlxSprite(boyfriend.x-200, boyfriend.y - 50).loadGraphic(Paths.image('stages/ikea/cobble'));
 					lol.alpha = 0;
