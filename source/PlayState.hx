@@ -3120,7 +3120,7 @@ class PlayState extends MusicBeatState
 					lazyTxt.screenCenter();
 					lazyTxt.alpha = 0;
 					add(lazyTxt);
-					FlxTween.tween(lazyTxt, {alpha: 1}, 10, {ease: FlxEase.linear});
+					FlxTween.tween(lazyTxt, {alpha: 1}, 10, {ease: FlxEase.linear, type: PINGPONG});
 				case "Kill":
 					health = 0;
 				default:

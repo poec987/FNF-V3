@@ -36,6 +36,7 @@ class ResultsSubState extends MusicBeatSubstate {
 
     var music:FlxSound;
     var judgement:FlxSound;
+    var beef:FlxSprite;
 
     var textTimer:FlxTimer;
     var soundTimer:FlxTimer;
@@ -125,7 +126,26 @@ class ResultsSubState extends MusicBeatSubstate {
             else
                 selectedJudgement = "worst";
 
+            switch (selectedJudgement) {
+                case "pfc":
+                    beef = new FlxSprite(700, 100).loadGraphic(Paths.image('judgements/cinema'), true, 500, 600);
+                    beef.animation.add("jorking", [0, 1], 15, true);
+                case "good":
+                    beef = new FlxSprite(400, -50).loadGraphic(Paths.image('judgements/good'));
+                case "meh":
+                    beef = new FlxSprite(400, -50).loadGraphic(Paths.image('judgements/meh'));
+                case "bad":
+                    beef = new FlxSprite(400, -50).loadGraphic(Paths.image('judgements/bad'));
+                case "shit":
+                    beef = new FlxSprite(400, -50).loadGraphic(Paths.image('judgements/good'));
+                case "worst":
+                    beef = new FlxSprite(500, 100).loadGraphic(Paths.image('judgements/bruh'));
+            }
+
             if (playJudgement) {
+                beef.setGraphicSize(Std.int(beef.width/2));
+                add(beef);
+                beef.animation.play("jorking", true);
                 judgement = new FlxSound().loadEmbedded(Paths.sound('judgements/'+selectedJudgement, "shared"), false, true).play();
                 judgement.volume = 0.5;
                 judgement.autoDestroy = true;
