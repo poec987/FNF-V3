@@ -165,7 +165,7 @@
 
 	<haxedef name='no-deprecation-warnings' />
 
-	<haxedef name='SHADERS_ENABLED' if="desktop"/>
+	<define name="SHADERS_ENABLED" unless="mac"/>
 
 	<!-- _________________________________ Custom _______________________________ -->
 
