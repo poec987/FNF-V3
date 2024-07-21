@@ -17,3 +17,4 @@ winter-horrorland::frosted
 senpai::dialogueBox-pixel
 roses::dialogueBox-senpaiMad
 thorns::dialogueBox-evil
+unfairness-jside::dialogueBox-pixel
