@@ -143,8 +143,23 @@ class TitleState extends MusicBeatState
 		// bg.updateHitbox();
 		add(bg);
 
-		logoBl = new FlxSprite(-150, -100);
-		logoBl.frames = Paths.getSparrowAtlas('logoBumpin');
+		logoBl = new FlxSprite( -150, -100);
+		if (FlxG.random.bool(4))
+		{
+			if (FlxG.save.data.unlockedFreeplay == true)
+			{
+				logoBl.frames = Paths.getSparrowAtlas('logobumping');
+			}
+			else
+			{
+				logoBl.frames = Paths.getSparrowAtlas('logoBumpin');
+			}
+		}
+		else
+		{
+			logoBl.frames = Paths.getSparrowAtlas('logoBumpin');
+		}
+		
 		logoBl.antialiasing = true;
 		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24);
 		logoBl.animation.play('bump');

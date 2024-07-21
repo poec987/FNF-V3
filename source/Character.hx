@@ -865,7 +865,7 @@ class Character extends FlxSprite
 				flipX = true;
 			case 'sigmiofinalalt':
 				frames = Paths.getSparrowAtlas('characters/unfair/sigmiofinale');
-				animation.addByPrefix('idle', "Idle instance ", 24, true);
+				animation.addByPrefix('idle', "Idle instance ", 10, true);
 				animation.addByPrefix('singUP', "Up instance ", 24, false);
 				animation.addByPrefix('singRIGHT', "Right instance ", 24, false);
 				animation.addByPrefix('singLEFT', "Left instance ", 24, false);
@@ -877,7 +877,7 @@ class Character extends FlxSprite
 				addOffset("singLEFT");
 				addOffset("singDOWN");
 
-				setGraphicSize(Std.int(width * 3));
+				setGraphicSize(Std.int(width * 9));
 				updateHitbox();
 
 				playAnim('idle');
