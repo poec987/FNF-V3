@@ -167,6 +167,8 @@ class PlayState extends MusicBeatState
 	var blackShitJ:FlxSprite;
 	var whiteShitJ:FlxSprite;
 	var lol:FlxSprite;
+	var bfTrailJ:FlxTrail;
+	var dadTrailJ:FlxTrail;
 
 	var fc:Bool = true;
 	var allowMiss = true;
@@ -992,8 +994,8 @@ class PlayState extends MusicBeatState
 			case 'bopcity':
 				gf.visible = false;
 			case 'ikea':
-				evilTrail = new FlxTrail(dad, null, 3, 24, 0.3, 0.05);
-				add(evilTrail);
+				// evilTrail = new FlxTrail(dad, null, 3, 24, 0.3, 0.05);
+				// add(evilTrail);
 
 				gf.visible = false;
 				boyfriend.x += 150;
@@ -3189,12 +3191,47 @@ class PlayState extends MusicBeatState
 		
 		if (curSong == 'unfairness-jside') {
 			switch (curStep) {
+				case 1918: // 1918
+					unfairJevents[0] = true;
+
+					blackShitJ.scrollFactor.set();
+					add(blackShitJ);
+					camHUD.visible = false;
+
+					dad.setGraphicSize(Std.int(dad.width * 0.5));
+					dad.x += 200;
+					dad.y -= 150;
+
+					var oldBf = boyfriend;
+					remove(boyfriend);
+					boyfriend = new Boyfriend(oldBf.x, oldBf.y, "unfairJo");
+					add(boyfriend);
+
+					unfairjShader.waveAmplitude = 0.2;
+					unfairjShader.waveSpeed = 1.5;
+				case 1936: // 1936
+					remove(blackShitJ);
+					camHUD.visible = true;
 				case 3470: // 3470
+
+					var oldDad = dad;
+					remove(dad);
+					dad = new Character(oldDad.x, oldDad.y, 'sigmio-final');
+					add(dad);
+
 					boyfriend.visible = true;
+					unfairJevents[0] = true;
 					unfairJevents[1] = false;
 					unfairJbg.alpha = 1;
 					whiteShitJ.alpha = 1;
 					FlxTween.tween(whiteShitJ, {alpha: 0}, 1, {ease: FlxEase.linear});
+
+					remove(bfTrailJ);
+					remove(dadTrailJ);
+					bfTrailJ = new FlxTrail(boyfriend, null, 3, 24, 0.3, 0.05);
+					dadTrailJ = new FlxTrail(dad, null, 3, 24, 0.3, 0.05);
+					add(bfTrailJ);
+					add(dadTrailJ);
 					
 			}
 		}
@@ -3315,33 +3352,17 @@ class PlayState extends MusicBeatState
 		if (curSong == 'unfairness-jside') {
 			switch (curBeat) {
 				case 156: //156
+					dad.animation.play('die', true);
 					FlxTween.tween(whiteShitJ, {alpha: 1}, 1.5, {ease: FlxEase.linear});
 				case 160: //160
+					var oldDad = dad;
+					remove(dad);
+					dad = new Character(oldDad.x, oldDad.y, 'sigmio-final');
+					add(dad);
 					sigmioreveal = true;
 					unfairJbg.alpha = 1;
 					thornbg.alpha = 0;
 					FlxTween.tween(whiteShitJ, {alpha: 0}, 1, {ease: FlxEase.linear});
-				case 480: // 480
-					unfairJevents[0] = true;
-
-					 blackShitJ.scrollFactor.set();
-					add(blackShitJ);
-					camHUD.visible = false;
-
-					dad.setGraphicSize(Std.int(dad.width * 0.5));
-					dad.x += 200;
-					dad.y -= 150;
-
-					var oldBf = boyfriend;
-					remove(boyfriend);
-					boyfriend = new Boyfriend(oldBf.x, oldBf.y, "unfairJo");
-					add(boyfriend);
-
-					unfairjShader.waveAmplitude = 0.2;
-					unfairjShader.waveSpeed = 1.5;
-				case 484: //484
-					remove(blackShitJ);
-					camHUD.visible = true;
 				case 492: // 492
 					lol = new FlxSprite(boyfriend.x-200, boyfriend.y - 50).loadGraphic(Paths.image('stages/ikea/cobble'));
 					lol.alpha = 0;
@@ -3358,10 +3379,21 @@ class PlayState extends MusicBeatState
 					unfairJevents[0] = false;
 					unfairJevents[1] = true;
 					unfairJbg.alpha = 0;
+
+					var oldDad = dad;
+					remove(dad);
+					dad = new Character(oldDad.x, oldDad.y, 'sigmiofinalalt');
+					add(dad);
+
 					whiteShitJ.alpha = 1;
+					
 					FlxTween.tween(whiteShitJ, {alpha: 0}, 1, {ease: FlxEase.linear});
-					remove(evilTrail);
-					evilTrail = null;
+				case 804: // 804
+					bfTrailJ = new FlxTrail(boyfriend, null, 3, 24, 0.3, 0.05);
+					dadTrailJ = new FlxTrail(dad, null, 3, 24, 0.3, 0.05);
+
+					add(bfTrailJ);
+					add(dadTrailJ);
 					
 			}
 		}
