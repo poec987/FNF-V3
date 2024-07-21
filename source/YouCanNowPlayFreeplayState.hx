@@ -34,8 +34,12 @@ class YouCanNowPlayFreeplayState extends FlxState {
     }
 
     override function update(elapsed:Float) {
-        if (FlxG.keys.justPressed.ANY && canQuit)
-            FlxG.switchState(new MainMenuState());
+        if (FlxG.keys.justPressed.ANY && canQuit) {
+            PlayState.isStoryMode = true;
+            PlayState.SONG = Song.loadFromJson('unfairness-jside', 'unfairness-jside');
+            PlayState.storyWeek = PlayState.stageDictionary[PlayState.SONG.stage];
+            LoadingState.loadAndSwitchState(new PlayState());
+        }
         super.update(elapsed);
     }
 }

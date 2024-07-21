@@ -2427,9 +2427,20 @@ class PlayState extends MusicBeatState
 
 				FlxG.sound.play(Paths.sound('Lights_Shut_off'));
 			case 'thorns':
-				SaveManagement.unlockSong("Unfairness-Jside");
 				if (!FlxG.save.data.unlockedFreeplay)
 					FlxG.switchState(new YouCanNowPlayFreeplayState());
+				else {
+					FlxTransitionableState.skipNextTransIn = true;
+					FlxTransitionableState.skipNextTransOut = true;
+					prevCamFollow = camFollow;
+	
+					PlayState.SONG = Song.loadFromJson('unfairness-jside', 'unfairness-jside');
+					PlayState.storyWeek = PlayState.stageDictionary[PlayState.SONG.stage];
+					FlxG.sound.music.stop();
+	
+					LoadingState.loadAndSwitchState(new PlayState());
+				}
+
 			default:
 				//
 		}

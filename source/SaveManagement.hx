@@ -55,6 +55,8 @@ class SaveManagement {
         defaultOptions();
 
         FlxG.save.flush();
+
+        FlxG.switchState(new TitleState());
     }
 
     public static function defaultOptions() {
