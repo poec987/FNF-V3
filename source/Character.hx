@@ -814,10 +814,10 @@ class Character extends FlxSprite
 				animation.addByPrefix('singLEFT', 'Mogus left instance ', 24);
 
 				addOffset('idle');
-				addOffset("singUP");
+				addOffset("singUP",0,180);
 				addOffset("singRIGHT");
-				addOffset("singLEFT");
-				addOffset("singDOWN");
+				addOffset("singLEFT",230,-30);
+				addOffset("singDOWN",50,-40);
 
 				playAnim('idle');
 			case 'spiritfakeout':

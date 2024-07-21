@@ -305,6 +305,11 @@ class StoryMenuState extends MusicBeatState
 		{
 			txtTracklist.text += "\n" + i;
 		}
+		
+		if (FlxG.save.data.unlockedFreeplay == true && weekNames[curWeek].toLowerCase() == 'sigma simulator')
+		{
+			txtTracklist.text += "\nUnfairness-Jside";
+		}
 
 		txtTracklist.text = txtTracklist.text.toUpperCase();
 
