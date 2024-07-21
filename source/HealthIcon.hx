@@ -33,8 +33,8 @@ class HealthIcon extends FlxSprite
 		animation.add('dad', [12, 13], 0, false, isPlayer);
 		animation.add('sigmio', [22, 22], 0, false, isPlayer);
 		animation.add('sigmio-evil', [22, 22], 0, false, isPlayer);
-		animation.add('sigmio-final', [22, 22], 0, false, isPlayer); // TODO: replace with final sigma icon when done
-		animation.add('sigmiofinalalt', [22, 22], 0, false, isPlayer);
+		animation.add('sigmio-final', [42, 42], 0, false, isPlayer); // TODO: replace with final sigma icon when done
+		animation.add('sigmiofinalalt', [42, 42], 0, false, isPlayer);
 		animation.add('spirit', [23, 23], 0, false, isPlayer);
 		animation.add('spiritfakeout', [41, 41], 0, false, isPlayer);
 		animation.add('bf-old', [14, 15], 0, false, isPlayer);
