@@ -820,14 +820,35 @@ class Character extends FlxSprite
 				addOffset("singDOWN");
 
 				playAnim('idle');
+			case 'spiritfakeout':
+				frames = Paths.getSparrowAtlas('characters/unfair/thornsfakeout');
+				animation.addByPrefix('idle', "Idle instance ", 24, false);
+				animation.addByPrefix('singUP', "Up instance ", 24, false);
+				animation.addByPrefix('singRIGHT', "Right instance ", 24, false);
+				animation.addByPrefix('singLEFT', "Left instance ", 24, false);
+				animation.addByPrefix('singDOWN', "Down instance ", 24, false);
+				animation.addByPrefix('die', "die instance ", 24, false);
+
+				addOffset('idle', -550, -300);
+				addOffset("singUP", -550, -300);
+				addOffset("singRIGHT", -550, -300);
+				addOffset("singLEFT", -550, -300);
+				addOffset("singDOWN", -550, -300);
+				addOffset("die", -550, -300);
+
+				setGraphicSize(Std.int(width * 6));
+				updateHitbox();
+
+				playAnim('idle');
+
 			case 'unfairJo':
 				tex = Paths.getSparrowAtlas('characters/unfair/unfairJo');
 				frames = tex;
-				animation.addByPrefix('idle', 'Idle instance ', 24);
-				animation.addByPrefix('singUP', 'Up instance ', 24);
-				animation.addByPrefix('singRIGHT', 'Left instance ', 24);
-				animation.addByPrefix('singDOWN', 'Down instance ', 24);
-				animation.addByPrefix('singLEFT', 'Right instance ', 24);
+				animation.addByPrefix('idle', 'Idle instance ', 24,false);
+				animation.addByPrefix('singUP', 'Up instance ', 24,false);
+				animation.addByPrefix('singRIGHT', 'Left instance ', 24,false);
+				animation.addByPrefix('singDOWN', 'Down instance ', 24,false);
+				animation.addByPrefix('singLEFT', 'Right instance ', 24,false);
 
 				addOffset('idle');
 				addOffset("singUP");
@@ -838,6 +859,8 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 				setGraphicSize(Std.int(width * 2.5));
+				
+				antialiasing = false;
 
 				flipX = true;
 			default:

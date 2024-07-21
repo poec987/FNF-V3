@@ -150,6 +150,8 @@ class PlayState extends MusicBeatState
 	var limo:FlxSprite;
 	var grpLimoDancers:FlxTypedGroup<BackgroundDancer>;
 	var fastCar:FlxSprite;
+	
+	var evilTrail:FlxTrail;
 
 	var upperBoppers:FlxSprite;
 	var bottomBoppers:FlxSprite;
@@ -159,8 +161,11 @@ class PlayState extends MusicBeatState
 	var whatthe:FlxSprite;
 
 	var unfairJbg:FlxSprite;
+	var thornbg:FlxSprite;
+	var sigmioreveal:Bool = false;
 	var unfairJevents:Array<Bool> = [false, false];
 	var blackShitJ:FlxSprite;
+	var whiteShitJ:FlxSprite;
 	var lol:FlxSprite;
 
 	var fc:Bool = true;
@@ -808,7 +813,13 @@ class PlayState extends MusicBeatState
 			unfairJbg.antialiasing = false;
 			unfairJbg.shader = unfairjShader.shader;
 			unfairJbg.scrollFactor.set(0.9, 0.9);
+			unfairJbg.alpha = 0;
 			add(unfairJbg);
+			
+			thornbg = new FlxSprite(-600, -200).loadGraphic(Paths.image('stages/ikea/thorn'));
+			thornbg.antialiasing = false;
+			thornbg.alpha = 1;
+			add(thornbg);
 		}
 		else
 		{
@@ -930,6 +941,10 @@ class PlayState extends MusicBeatState
 				dad.x -= 450;
 				dad.y -= 100;
 				camPos.set(dad.getGraphicMidpoint().x + 200, dad.getGraphicMidpoint().y - 200);
+			case 'spiritfakeout':
+				dad.x -= 450;
+				dad.y -= 100;
+				camPos.set(dad.getGraphicMidpoint().x + 200, dad.getGraphicMidpoint().y - 200);
 		}
 		
 
@@ -964,7 +979,7 @@ class PlayState extends MusicBeatState
 			case 'schoolEvil':
 				// trailArea.scrollFactor.set();
 
-				var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069);
+				evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069);
 				// evilTrail.changeValuesEnabled(false, false, false, false);
 				// evilTrail.changeGraphic()
 				add(evilTrail);
@@ -977,7 +992,7 @@ class PlayState extends MusicBeatState
 			case 'bopcity':
 				gf.visible = false;
 			case 'ikea':
-				var evilTrail = new FlxTrail(dad, null, 3, 24, 0.3, 0.05);
+				evilTrail = new FlxTrail(dad, null, 3, 24, 0.3, 0.05);
 				add(evilTrail);
 
 				gf.visible = false;
@@ -1193,6 +1208,9 @@ class PlayState extends MusicBeatState
 		}
 		
 		blackShitJ = new FlxSprite(-100, -100).makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
+		whiteShitJ = new FlxSprite( -1280, -720).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.WHITE);
+		whiteShitJ.alpha = 0;
+		add(whiteShitJ);
 
 		super.create();
 	}
@@ -1957,15 +1975,23 @@ class PlayState extends MusicBeatState
 
 				switch (curStage) {
 					case 'ikea':
-						if (unfairJevents[0] == false) {
-							camFollow.y = dad.getMidpoint().y - 225;
-							camFollow.x = dad.getMidpoint().x + 150;
+						if (sigmioreveal == true)
+						{
+							if (unfairJevents[0] == false) {
+								camFollow.y = dad.getMidpoint().y - 225;
+								camFollow.x = dad.getMidpoint().x + 150;
+							}
+							else {
+								camFollow.y = dad.getMidpoint().y - 225;
+								camFollow.x = dad.getMidpoint().x + 150;
+							}
+							// FlxTween.tween(FlxG.camera, {zoom: 0.95}, (Conductor.stepCrochet * 4 / 1000), {ease: FlxEase.linear});
 						}
-						else {
-							camFollow.y = dad.getMidpoint().y - 225;
-							camFollow.x = dad.getMidpoint().x + 150;
+						else
+						{
+							camFollow.x = boyfriend.getMidpoint().x - 550;
+							camFollow.y = boyfriend.getMidpoint().y - 220;
 						}
-						// FlxTween.tween(FlxG.camera, {zoom: 0.95}, (Conductor.stepCrochet * 4 / 1000), {ease: FlxEase.linear});
 				}
 
 				switch (dad.curCharacter)
@@ -2969,15 +2995,23 @@ class PlayState extends MusicBeatState
 					var params:Array<String> = noteTypeParam.trim().split(",");
 					var pos:Vector2;
 					if (params[0] == "dad") {
-						pos = new Vector2(dad.charPos.x, dad.charPos.y);
+						pos = new Vector2(dad.x, dad.y);
 						remove(dad);
 						dad = new Character(pos.x, pos.y, params[1]);
 						add(dad);
+						iconP2.animation.play(params[1]);
+						if (evilTrail != null)
+						{
+							remove(evilTrail);
+							evilTrail = new FlxTrail(dad, null, 3, 24, 0.3, 0.05);
+							add(evilTrail);
+						}
 					} else {
 						pos = new Vector2(boyfriend.charPos.x, boyfriend.charPos.y);
 						remove(boyfriend);
 						boyfriend = new Boyfriend(pos.x, pos.y, params[1]);
 						add(boyfriend);
+						iconP1.animation.play(params[1]);
 					}
 				case "Play Video":
 					startVideo(noteTypeParam);
@@ -3254,6 +3288,13 @@ class PlayState extends MusicBeatState
 		// UNFAIRJ EVENTS
 		if (curSong == 'unfairness-jside') {
 			switch (curBeat) {
+				case 156: //156
+					FlxTween.tween(whiteShitJ, {alpha: 1}, 1.5, {ease: FlxEase.linear});
+				case 160: //160
+					sigmioreveal = true;
+					unfairJbg.alpha = 1;
+					thornbg.alpha = 0;
+					FlxTween.tween(whiteShitJ, {alpha: 0}, 1, {ease: FlxEase.linear});
 				case 480: // 480
 					unfairJevents[0] = true;
 
