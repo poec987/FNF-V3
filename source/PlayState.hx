@@ -1995,7 +1995,7 @@ class PlayState extends MusicBeatState
 							}
 							else
 							{
-								camFollow.y = dad.getMidpoint().y - 210;
+								camFollow.y = dad.getMidpoint().y - 290;
 								camFollow.x = dad.getMidpoint().x - 300;
 							}
 						}
@@ -2068,7 +2068,7 @@ class PlayState extends MusicBeatState
 						}
 						else
 						{
-							camFollow.y = dad.getMidpoint().y - 210;
+							camFollow.y = dad.getMidpoint().y - 290;
 							camFollow.x = dad.getMidpoint().x - 300;
 						}
 						// FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.stepCrochet * 2 / 1000), {ease: FlxEase.linear});
