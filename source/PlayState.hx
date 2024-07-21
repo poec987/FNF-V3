@@ -1257,9 +1257,9 @@ class PlayState extends MusicBeatState
 		red.scrollFactor.set();
 
 		var senpaiEvil:FlxSprite = new FlxSprite();
-		senpaiEvil.frames = Paths.getSparrowAtlas('cutscenes/weeb/senpaiCrazy');
-		senpaiEvil.animation.addByPrefix('idle', 'Senpai Pre Explosion', 24, false);
-		senpaiEvil.setGraphicSize(Std.int(senpaiEvil.width * 6));
+		senpaiEvil.frames = Paths.getSparrowAtlas('cutscenes/weeb/sigmiofuckingdying');
+		senpaiEvil.animation.addByPrefix('dewaeth', 'sigmiofuckingdying dewaeth', 24, true);
+		// senpaiEvil.setGraphicSize(Std.int(senpaiEvil.width * 6));
 		senpaiEvil.scrollFactor.set();
 		senpaiEvil.updateHitbox();
 		senpaiEvil.screenCenter();
@@ -1301,7 +1301,7 @@ class PlayState extends MusicBeatState
 							}
 							else
 							{
-								senpaiEvil.animation.play('idle');
+								senpaiEvil.animation.play('dewaeth');
 								FlxG.sound.play(Paths.sound('Senpai_Dies'), 1, false, null, true, function()
 								{
 									remove(senpaiEvil);
@@ -3257,7 +3257,7 @@ class PlayState extends MusicBeatState
 
 					var oldDad = dad;
 					remove(dad);
-					dad = new Character(oldDad.x, oldDad.y, 'sigmio-final');
+					dad = new Character(-350, 0, 'sigmio-final');
 					add(dad);
 
 					boyfriend.visible = true;
@@ -3432,14 +3432,14 @@ class PlayState extends MusicBeatState
 
 					var oldDad = dad;
 					remove(dad);
-					dad = new Character(oldDad.x, oldDad.y, 'sigmiofinalalt');
+					dad = new Character(oldDad.x + 500, oldDad.y+200, 'sigmiofinalalt');
 					add(dad);
 
 					whiteShitJ.alpha = 1;
 					
 					FlxTween.tween(whiteShitJ, {alpha: 0}, 1, {ease: FlxEase.linear});
 				case 708: // 708
-					FlxTween.tween(unfairJbg, {alpha: 0.5}, 1, {ease: FlxEase.linear});
+					FlxTween.tween(unfairJbg, {alpha: 0.05}, 2, {ease: FlxEase.linear});
 				case 804: // 804
 					bfTrailJ = new FlxTrail(boyfriend, null, 3, 24, 0.3, 0.05);
 					dadTrailJ = new FlxTrail(dad, null, 3, 24, 0.3, 0.05);

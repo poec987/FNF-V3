@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="sigmiofuckingdying.png">
+<SubTexture name="sigmiofuckingdying dewaeth0000" x="0" y="0" width="506" height="343" frameX="0" frameY="0" frameWidth="506" frameHeight="343" />
+<SubTexture name="sigmiofuckingdying dewaeth0001" x="506" y="0" width="506" height="343" frameX="0" frameY="0" frameWidth="506" frameHeight="343" />
+<SubTexture name="sigmiofuckingdying dewaeth0002" x="0" y="0" width="506" height="343" frameX="0" frameY="0" frameWidth="506" frameHeight="343" />
+<SubTexture name="sigmiofuckingdying dewaeth0003" x="506" y="0" width="506" height="343" frameX="0" frameY="0" frameWidth="506" frameHeight="343" />
+<SubTexture name="sigmiofuckingdying dewaeth0004" x="0" y="0" width="506" height="343" frameX="0" frameY="0" frameWidth="506" frameHeight="343" />
+<SubTexture name="sigmiofuckingdying dewaeth0005" x="506" y="0" width="506" height="343" frameX="0" frameY="0" frameWidth="506" frameHeight="343" />
+<SubTexture name="sigmiofuckingdying dewaeth0006" x="0" y="0" width="506" height="343" frameX="0" frameY="0" frameWidth="506" frameHeight="343" />
+<SubTexture name="sigmiofuckingdying dewaeth0007" x="506" y="0" width="506" height="343" frameX="0" frameY="0" frameWidth="506" frameHeight="343" />
+<SubTexture name="sigmiofuckingdying dewaeth0008" x="0" y="0" width="506" height="343" frameX="0" frameY="0" frameWidth="506" frameHeight="343" />
+<SubTexture name="sigmiofuckingdying dewaeth0009" x="506" y="0" width="506" height="343" frameX="0" frameY="0" frameWidth="506" frameHeight="343" />
+<SubTexture name="sigmiofuckingdying dewaeth0010" x="0" y="343" width="506" height="343" frameX="0" frameY="0" frameWidth="506" frameHeight="343" />
+<SubTexture name="sigmiofuckingdying dewaeth0011" x="506" y="343" width="506" height="343" frameX="0" frameY="0" frameWidth="506" frameHeight="343" />
+</TextureAtlas>
