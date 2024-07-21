@@ -1977,15 +1977,22 @@ class PlayState extends MusicBeatState
 					case 'ikea':
 						if (sigmioreveal == true)
 						{
-							if (unfairJevents[0] == false) {
-								camFollow.y = dad.getMidpoint().y - 225;
-								camFollow.x = dad.getMidpoint().x + 150;
+							if (unfairJevents[1] == false) { 
+								if (unfairJevents[0] == false) {
+									camFollow.y = dad.getMidpoint().y - 225;
+									camFollow.x = dad.getMidpoint().x + 150;
+								}
+								else {
+									camFollow.y = dad.getMidpoint().y - 225;
+									camFollow.x = dad.getMidpoint().x + 150;
+								}
+								// FlxTween.tween(FlxG.camera, {zoom: 0.95}, (Conductor.stepCrochet * 4 / 1000), {ease: FlxEase.linear});
 							}
-							else {
-								camFollow.y = dad.getMidpoint().y - 225;
-								camFollow.x = dad.getMidpoint().x + 150;
+							else
+							{
+								camFollow.y = dad.getMidpoint().y - 210;
+								camFollow.x = dad.getMidpoint().x - 300;
 							}
-							// FlxTween.tween(FlxG.camera, {zoom: 0.95}, (Conductor.stepCrochet * 4 / 1000), {ease: FlxEase.linear});
 						}
 						else
 						{
@@ -2044,13 +2051,20 @@ class PlayState extends MusicBeatState
 						camFollow.x = boyfriend.getMidpoint().x - 200;
 						camFollow.y = boyfriend.getMidpoint().y - 200;
 					case 'ikea':
-						if (unfairJevents[0] == false) {
-							camFollow.x = boyfriend.getMidpoint().x - 400;
-							camFollow.y = boyfriend.getMidpoint().y - 200;
+						if (unfairJevents[1] == false) { 
+							if (unfairJevents[0] == false) {
+								camFollow.x = boyfriend.getMidpoint().x - 400;
+								camFollow.y = boyfriend.getMidpoint().y - 200;
+							}
+							else {
+								camFollow.x = boyfriend.getMidpoint().x - 300;
+								camFollow.y = boyfriend.getMidpoint().y - 100;
+							}
 						}
-						else {
-							camFollow.x = boyfriend.getMidpoint().x - 300;
-							camFollow.y = boyfriend.getMidpoint().y - 100;
+						else
+						{
+							camFollow.y = dad.getMidpoint().y - 210;
+							camFollow.x = dad.getMidpoint().x - 300;
 						}
 						// FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.stepCrochet * 2 / 1000), {ease: FlxEase.linear});
 				}
@@ -3007,7 +3021,7 @@ class PlayState extends MusicBeatState
 							add(evilTrail);
 						}
 					} else {
-						pos = new Vector2(boyfriend.charPos.x, boyfriend.charPos.y);
+						pos = new Vector2(boyfriend.x, boyfriend.y);
 						remove(boyfriend);
 						boyfriend = new Boyfriend(pos.x, pos.y, params[1]);
 						add(boyfriend);
@@ -3172,6 +3186,18 @@ class PlayState extends MusicBeatState
 					add(boyfriend);
 			}
 		}
+		
+		if (curSong == 'unfairness-jside') {
+			switch (curStep) {
+				case 3470: // 3470
+					boyfriend.visible = true;
+					unfairJevents[1] = false;
+					unfairJbg.alpha = 1;
+					whiteShitJ.alpha = 1;
+					FlxTween.tween(whiteShitJ, {alpha: 0}, 1, {ease: FlxEase.linear});
+					
+			}
+		}
 
 		// yes this updates every step.
 		// yes this is bad
@@ -3326,7 +3352,17 @@ class PlayState extends MusicBeatState
 					FlxTween.tween(lol, {alpha: 0}, 1, { onComplete: (twn:FlxTween) -> {
 						remove(lol);
 					}});
-
+					
+				case 676: // 676
+					boyfriend.visible = false;
+					unfairJevents[0] = false;
+					unfairJevents[1] = true;
+					unfairJbg.alpha = 0;
+					whiteShitJ.alpha = 1;
+					FlxTween.tween(whiteShitJ, {alpha: 0}, 1, {ease: FlxEase.linear});
+					remove(evilTrail);
+					evilTrail = null;
+					
 			}
 		}
 

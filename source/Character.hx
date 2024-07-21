@@ -863,6 +863,26 @@ class Character extends FlxSprite
 				antialiasing = false;
 
 				flipX = true;
+			case 'sigmiofinalalt':
+				frames = Paths.getSparrowAtlas('characters/unfair/sigmiofinale');
+				animation.addByPrefix('idle', "Idle instance ", 24, true);
+				animation.addByPrefix('singUP', "Up instance ", 24, false);
+				animation.addByPrefix('singRIGHT', "Right instance ", 24, false);
+				animation.addByPrefix('singLEFT', "Left instance ", 24, false);
+				animation.addByPrefix('singDOWN', "Down instance ", 24, false);
+
+				addOffset('idle');
+				addOffset('singUP');
+				addOffset("singRIGHT");
+				addOffset("singLEFT");
+				addOffset("singDOWN");
+
+				setGraphicSize(Std.int(width * 3));
+				updateHitbox();
+
+				playAnim('idle');
+
+				antialiasing = false;
 			default:
 				trace('couldnt get case');
 				var charFile:String;
