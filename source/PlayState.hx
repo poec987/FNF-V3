@@ -3438,7 +3438,7 @@ class PlayState extends MusicBeatState
 					
 					FlxTween.tween(whiteShitJ, {alpha: 0}, 1, {ease: FlxEase.linear});
 				case 708: // 708
-					FlxTween.tween(unfairJbg, {alpha: 0.05}, 2, {ease: FlxEase.linear});
+					FlxTween.tween(unfairJbg, {"alpha": 0.5}, 2, {ease: FlxEase.linear});
 				case 804: // 804
 					dadTrailJ = new FlxTrail(dad, null, 3, 24, 0.3, 0.05);
 					
