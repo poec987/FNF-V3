@@ -83,8 +83,6 @@ class Main extends Sprite
 
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, framerate, framerate, skipSplash, startFullscreen));
 		
-		SaveManagement.init();
-		
 		#if !mobile
 		addChild(new FPS(10, 3, 0xFFFFFF));
 		#end

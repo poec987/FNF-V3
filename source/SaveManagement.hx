@@ -1,9 +1,10 @@
+import Controls.KeyboardScheme;
 import flixel.FlxG;
 
 using StringTools;
 
 class SaveManagement {
-    public static function init() {
+    public static function init(controls:Controls) {
         // Songs
         if (FlxG.save.data.unlockedSongs == null) // shhhhhhh
 			FlxG.save.data.unlockedSongs = [];
