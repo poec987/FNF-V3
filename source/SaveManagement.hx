@@ -47,6 +47,8 @@ class SaveManagement {
         FlxG.save.data.downscroll = false;
         FlxG.save.data.botplay = false;
         FlxG.save.data.fps = 60;
+		
+		FlxG.save.data.frostedonespotted = false;
 
         FlxG.save.data.unlockedFreeplay = false;
 
