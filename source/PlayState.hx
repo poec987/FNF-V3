@@ -3270,7 +3270,6 @@ class PlayState extends MusicBeatState
 					unfairjShader.waveFrequency = 4;
 					unfairjShader.waveSpeed = 2;
 
-					remove(bfTrailJ);
 					remove(dadTrailJ);
 					bfTrailJ = new FlxTrail(boyfriend, null, 3, 24, 0.3, 0.05);
 					dadTrailJ = new FlxTrail(dad, null, 3, 24, 0.3, 0.05);
@@ -3441,10 +3440,8 @@ class PlayState extends MusicBeatState
 				case 708: // 708
 					FlxTween.tween(unfairJbg, {alpha: 0.05}, 2, {ease: FlxEase.linear});
 				case 804: // 804
-					bfTrailJ = new FlxTrail(boyfriend, null, 3, 24, 0.3, 0.05);
 					dadTrailJ = new FlxTrail(dad, null, 3, 24, 0.3, 0.05);
-
-					add(bfTrailJ);
+					
 					add(dadTrailJ);
 					
 			}
