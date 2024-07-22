@@ -28,6 +28,11 @@ class SaveManagement {
 
         if (FlxG.save.data.frostedonespotted == null)
             FlxG.save.data.frostedonespotted = false;
+		
+		if (SaveManagement.getOption("Keybinds") == "DFJK")
+			controls.setKeyboardScheme(KeyboardScheme.Solo, true);
+		else
+			controls.setKeyboardScheme(KeyboardScheme.Duo(true), true);
     }
 
     public static function unlockSong(song:String) {

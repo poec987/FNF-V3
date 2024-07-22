@@ -87,13 +87,6 @@ class TitleState extends MusicBeatState
 			if (!StoryMenuState.weekUnlocked[0])
 				StoryMenuState.weekUnlocked[0] = true;
 		}
-		
-		if (FlxG.save.data.frostedonespotted == null) FlxG.save.data.frostedonespotted = false;
-		
-		if (SaveManagement.getOption("Keybinds") == "DFJK")
-			controls.setKeyboardScheme(KeyboardScheme.Solo, true);
-		else
-			controls.setKeyboardScheme(KeyboardScheme.Duo(true), true);
 
 		#if FREEPLAY
 		FlxG.switchState(new FreeplayState());
