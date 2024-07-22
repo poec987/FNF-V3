@@ -814,7 +814,7 @@ class PlayState extends MusicBeatState
 			curStage = 'fnaf';
 
 			defaultCamZoom = 0.9;
-			var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('stages/fnaf/celebratebgv3'));
+			var bg:FlxSprite = new FlxSprite(-300, 200).loadGraphic(Paths.image('stages/fnaf/celebratebgv3'));
 			bg.setGraphicSize(Std.int(bg.width * 10), Std.int(bg.height*5));
 			bg.antialiasing = false;
 			bg.scrollFactor.set(0.9, 0.9);
