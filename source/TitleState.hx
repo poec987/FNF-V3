@@ -3,6 +3,8 @@ package;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
+import Controls.KeyboardScheme;
+import Controls.Control;
 import flixel.addons.display.FlxGridOverlay;
 import flixel.addons.transition.FlxTransitionSprite.GraphicTransTileDiamond;
 import flixel.addons.transition.FlxTransitionableState;
@@ -87,6 +89,11 @@ class TitleState extends MusicBeatState
 		}
 		
 		if (FlxG.save.data.frostedonespotted == null) FlxG.save.data.frostedonespotted = false;
+		
+		if (SaveManagement.getOption("Keybinds") == "DFJK")
+			controls.setKeyboardScheme(KeyboardScheme.Solo, true);
+		else
+			controls.setKeyboardScheme(KeyboardScheme.Duo(true), true);
 
 		#if FREEPLAY
 		FlxG.switchState(new FreeplayState());
