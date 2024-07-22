@@ -1,15 +1,143 @@
-<?xml version='1.0' encoding='utf-8'?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <TextureAtlas imagePath="sigmiofuckingdying.png">
-<SubTexture name="sigmiofuckingdying dewaeth0000" x="0" y="0" width="506" height="343" frameX="0" frameY="0" frameWidth="506" frameHeight="343" />
-<SubTexture name="sigmiofuckingdying dewaeth0001" x="506" y="0" width="506" height="343" frameX="0" frameY="0" frameWidth="506" frameHeight="343" />
-<SubTexture name="sigmiofuckingdying dewaeth0002" x="0" y="0" width="506" height="343" frameX="0" frameY="0" frameWidth="506" frameHeight="343" />
-<SubTexture name="sigmiofuckingdying dewaeth0003" x="506" y="0" width="506" height="343" frameX="0" frameY="0" frameWidth="506" frameHeight="343" />
-<SubTexture name="sigmiofuckingdying dewaeth0004" x="0" y="0" width="506" height="343" frameX="0" frameY="0" frameWidth="506" frameHeight="343" />
-<SubTexture name="sigmiofuckingdying dewaeth0005" x="506" y="0" width="506" height="343" frameX="0" frameY="0" frameWidth="506" frameHeight="343" />
-<SubTexture name="sigmiofuckingdying dewaeth0006" x="0" y="0" width="506" height="343" frameX="0" frameY="0" frameWidth="506" frameHeight="343" />
-<SubTexture name="sigmiofuckingdying dewaeth0007" x="506" y="0" width="506" height="343" frameX="0" frameY="0" frameWidth="506" frameHeight="343" />
-<SubTexture name="sigmiofuckingdying dewaeth0008" x="0" y="0" width="506" height="343" frameX="0" frameY="0" frameWidth="506" frameHeight="343" />
-<SubTexture name="sigmiofuckingdying dewaeth0009" x="506" y="0" width="506" height="343" frameX="0" frameY="0" frameWidth="506" frameHeight="343" />
-<SubTexture name="sigmiofuckingdying dewaeth0010" x="0" y="343" width="506" height="343" frameX="0" frameY="0" frameWidth="506" frameHeight="343" />
-<SubTexture name="sigmiofuckingdying dewaeth0011" x="506" y="343" width="506" height="343" frameX="0" frameY="0" frameWidth="506" frameHeight="343" />
+	<!-- Created with Adobe Animate version 22.0.0.93 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="sigmiofuckingdying dewaeth0000" x="0" y="0" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0001" x="0" y="0" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0002" x="0" y="0" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0003" x="507" y="0" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0004" x="507" y="0" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0005" x="507" y="0" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0006" x="0" y="0" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0007" x="0" y="0" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0008" x="0" y="0" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0009" x="507" y="0" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0010" x="507" y="0" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0011" x="507" y="0" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0012" x="0" y="0" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0013" x="0" y="0" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0014" x="0" y="0" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0015" x="507" y="0" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0016" x="507" y="0" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0017" x="507" y="0" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0018" x="0" y="0" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0019" x="0" y="0" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0020" x="0" y="0" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0021" x="507" y="0" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0022" x="507" y="0" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0023" x="507" y="0" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0024" x="0" y="0" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0025" x="0" y="0" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0026" x="0" y="0" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0027" x="507" y="0" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0028" x="507" y="0" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0029" x="507" y="0" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0030" x="0" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0031" x="0" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0032" x="0" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0033" x="0" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0034" x="0" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0035" x="0" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0036" x="0" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0037" x="0" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0038" x="0" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0039" x="0" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0040" x="0" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0041" x="0" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0042" x="0" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0043" x="0" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0044" x="0" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0045" x="0" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0046" x="0" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0047" x="0" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0048" x="0" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0049" x="0" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0050" x="0" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0051" x="0" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0052" x="0" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0053" x="0" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0054" x="0" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0055" x="0" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0056" x="0" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0057" x="0" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0058" x="0" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0059" x="0" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0060" x="0" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0061" x="0" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0062" x="0" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0063" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0064" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0065" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0066" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0067" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0068" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0069" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0070" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0071" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0072" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0073" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0074" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0075" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0076" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0077" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0078" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0079" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0080" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0081" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0082" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0083" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0084" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0085" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0086" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0087" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0088" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0089" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0090" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0091" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0092" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0093" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0094" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0095" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0096" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0097" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0098" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0099" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0100" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0101" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0102" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0103" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0104" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0105" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0106" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0107" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0108" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0109" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0110" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0111" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0112" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0113" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0114" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0115" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0116" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0117" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0118" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0119" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0120" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0121" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0122" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0123" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0124" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0125" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0126" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0127" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0128" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0129" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0130" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0131" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0132" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0133" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0134" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0135" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0136" x="507" y="344" width="506" height="343"/>
+	<SubTexture name="sigmiofuckingdying dewaeth0137" x="507" y="344" width="506" height="343"/>
 </TextureAtlas>
