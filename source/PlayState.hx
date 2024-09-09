@@ -208,10 +208,11 @@ class PlayState extends MusicBeatState
 		"mallEvil" => 5,
 		"school" => 6,
 		"schoolEvil" => 6,
-		"exe" => 1,
-		"bopcity" => 1,
-		"fnaf" => 1,
-		"ikea" => 1
+		"exe" => -1,
+		"bopcity" => -1,
+		"fnaf" => -1,
+		"ikea" => -1,
+		"foundation" => -1
 	];
 
 	var songTimer:SongTimer;
@@ -223,8 +224,6 @@ class PlayState extends MusicBeatState
 	var detailsText:String = "";
 	var detailsPausedText:String = "";
 	#end
-
-	public static var devMode = false; // For teh devs
 
 	override public function create()
 	{
@@ -352,9 +351,9 @@ class PlayState extends MusicBeatState
 		#end
 
 		defaultCamZoom = 1.05;
-
-		if (SONG.stage == "spooky")
-		{
+		
+		switch(SONG.stage) {
+		case "spooky":
 			curStage = "spooky";
 
 			var hallowTex = Paths.getSparrowAtlas('stages/spooky/halloween_bg');
@@ -368,84 +367,7 @@ class PlayState extends MusicBeatState
 			add(halloweenBG);
 
 			isHalloween = true;
-		}
-		else if (SONG.stage == "exe")
-		{
-			curStage = 'exe';
-
-			var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('stages/exe/exeback'));
-			bg.antialiasing = true;
-			bg.scrollFactor.set(0.9, 0.9);
-			bg.active = false;
-			add(bg);
-
-			var stageFront:FlxSprite = new FlxSprite(-650, 600).loadGraphic(Paths.image('stages/exe/exefront'));
-			stageFront.setGraphicSize(Std.int(stageFront.width * 1.1));
-			stageFront.updateHitbox();
-			stageFront.antialiasing = true;
-			stageFront.scrollFactor.set(0.9, 0.9);
-			stageFront.active = false;
-			add(stageFront);
-		}
-		else if (SONG.stage == "among")
-		{
-			curStage = 'among';
-
-			var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('stages/among/amongback'));
-			bg.antialiasing = true;
-			bg.scrollFactor.set(0.9, 0.9);
-			bg.active = false;
-			add(bg);
-
-			var stageFront:FlxSprite = new FlxSprite(-650, 600).loadGraphic(Paths.image('stages/among/amongfront'));
-			stageFront.setGraphicSize(Std.int(stageFront.width * 1.1));
-			stageFront.updateHitbox();
-			stageFront.antialiasing = true;
-			stageFront.scrollFactor.set(0.9, 0.9);
-			stageFront.active = false;
-			add(stageFront);
-		}
-		else if (SONG.stage == "bopcity")
-		{
-			curStage = 'bopcity';
-
-			var bg:FlxSprite = new FlxSprite(-600, -400).loadGraphic(Paths.image('stages/bopcity/bopback'));
-			bg.antialiasing = true;
-			bg.scrollFactor.set(0.9, 0.9);
-			bg.active = false;
-			add(bg);
-
-			var stageFront:FlxSprite = new FlxSprite(-650, 600).loadGraphic(Paths.image('stages/bopcity/bopfront'));
-			stageFront.setGraphicSize(Std.int(stageFront.width * 1.1));
-			stageFront.updateHitbox();
-			stageFront.antialiasing = true;
-			stageFront.scrollFactor.set(0.9, 0.9);
-			stageFront.active = false;
-			add(stageFront);
-			
-			defaultCamZoom = 0.80;
-			
-			explosion = new FlxSprite( -200, 300);
-			explosion.frames = Paths.getSparrowAtlas('stages/bopcity/explosion');
-			explosion.animation.addByPrefix('idle', 'settle', 24, true);
-			explosion.animation.addByPrefix('boom', 'boom', 30, false);
-			explosion.updateHitbox();
-			explosion.antialiasing = false;
-			explosion.scale.set(2,2.4);
-			explosion.cameras = [camHUD];
-			add(explosion);
-			explosion.animation.play('idle', true);
-			
-			fortnitecard = new FlxSprite( -650, 600).loadGraphic(Paths.image('stages/bopcity/card'));
-			
-			fortnitecard.cameras = [camHUD];
-			fortnitecard.screenCenter();
-			fortnitecard.updateHitbox();
-			fortnitecard.alpha = 0;
-			add(fortnitecard);
-		}
-		else if (SONG.stage == "philly")
-		{
+		case "philly":
 			curStage = 'philly';
 
 			var bg:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('stages/philly/sky'));
@@ -485,9 +407,7 @@ class PlayState extends MusicBeatState
 
 			var street:FlxSprite = new FlxSprite(-40, streetBehind.y).loadGraphic(Paths.image('stages/philly/street'));
 			add(street);
-		}
-		else if (SONG.stage == "limo")
-		{
+		case "limo":
 			curStage = 'limo';
 			defaultCamZoom = 0.90;
 
@@ -532,9 +452,7 @@ class PlayState extends MusicBeatState
 
 			fastCar = new FlxSprite(-300, 160).loadGraphic(Paths.image('stages/limo/fastCarLol'));
 			// add(limo);
-		}
-		else if (SONG.stage == "limonormal")
-		{
+		case "limonormal":
 			curStage = 'limonormal';
 			defaultCamZoom = 0.90;
 
@@ -579,9 +497,7 @@ class PlayState extends MusicBeatState
 
 			fastCar = new FlxSprite(-300, 160).loadGraphic(Paths.image('stages/limo/fastCarLol'));
 			// add(limo);
-		}
-		else if (SONG.stage == "mall")
-		{
+		case "mall":
 			curStage = 'mall';
 
 			defaultCamZoom = 0.80;
@@ -637,9 +553,7 @@ class PlayState extends MusicBeatState
 			santa.antialiasing = true;
 			add(santa);
 			santa.animation.play('idle', true);
-		}
-		else if (SONG.stage == "mallsuspicious")
-		{
+		case "mallsuspicious":
 			curStage = 'mallsuspicious';
 
 			defaultCamZoom = 0.80;
@@ -703,9 +617,7 @@ class PlayState extends MusicBeatState
 			santa.antialiasing = true;
 			add(santa);
 			santa.animation.play('idle', true);
-		}
-		else if (SONG.stage == "mallEvil")
-		{
+		case "mallEvil":
 			curStage = 'mallEvil';
 			var bg:FlxSprite = new FlxSprite(-400, -500).loadGraphic(Paths.image('stages/christmas/evilBG'));
 			bg.antialiasing = true;
@@ -723,9 +635,7 @@ class PlayState extends MusicBeatState
 			var evilSnow:FlxSprite = new FlxSprite(-200, 700).loadGraphic(Paths.image("stages/christmas/evilSnow"));
 			evilSnow.antialiasing = true;
 			add(evilSnow);
-		}
-		else if (SONG.stage == "school")
-		{
+		case "school":
 			curStage = 'school';
 
 			// defaultCamZoom = 0.9;
@@ -790,9 +700,7 @@ class PlayState extends MusicBeatState
 			bgGirls.setGraphicSize(Std.int(bgGirls.width * daPixelZoom));
 			bgGirls.updateHitbox();
 			add(bgGirls);
-		}
-		else if (SONG.stage == "schoolEvil")
-		{
+		case "schoolEvil":
 			curStage = 'schoolEvil';
 
 			var waveEffectBG = new FlxWaveEffect(FlxWaveMode.ALL, 2, -1, 3, 2);
@@ -808,20 +716,7 @@ class PlayState extends MusicBeatState
 			bg.scrollFactor.set(0.8, 0.9);
 			bg.scale.set(6, 6);
 			add(bg);
-		}
-		else if (SONG.stage == "fnaf")
-		{
-			curStage = 'fnaf';
-
-			defaultCamZoom = 0.9;
-			var bg:FlxSprite = new FlxSprite(-300, 200).loadGraphic(Paths.image('stages/fnaf/celebratebgv3'));
-			bg.setGraphicSize(Std.int(bg.width * 10), Std.int(bg.height*5));
-			bg.antialiasing = false;
-			bg.scrollFactor.set(0.9, 0.9);
-			bg.active = false;
-			add(bg);
-		}
-		else if (SONG.stage == "ikea") {
+		case "ikea":
 			curStage = 'ikea';
 			// Code completely stolen from https://github.com/silkycell/DNB-Background-Generator
 			unfairjShader = new GlitchEffect();
@@ -840,9 +735,97 @@ class PlayState extends MusicBeatState
 			thornbg.antialiasing = false;
 			thornbg.alpha = 1;
 			add(thornbg);
-		}
-		else
-		{
+		case "exe":
+			curStage = 'exe';
+
+			var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('stages/exe/exeback'));
+			bg.antialiasing = true;
+			bg.scrollFactor.set(0.9, 0.9);
+			bg.active = false;
+			add(bg);
+
+			var stageFront:FlxSprite = new FlxSprite(-650, 600).loadGraphic(Paths.image('stages/exe/exefront'));
+			stageFront.setGraphicSize(Std.int(stageFront.width * 1.1));
+			stageFront.updateHitbox();
+			stageFront.antialiasing = true;
+			stageFront.scrollFactor.set(0.9, 0.9);
+			stageFront.active = false;
+			add(stageFront);
+		case "among":
+			curStage = 'among';
+
+			var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('stages/among/amongback'));
+			bg.antialiasing = true;
+			bg.scrollFactor.set(0.9, 0.9);
+			bg.active = false;
+			add(bg);
+
+			var stageFront:FlxSprite = new FlxSprite(-650, 600).loadGraphic(Paths.image('stages/among/amongfront'));
+			stageFront.setGraphicSize(Std.int(stageFront.width * 1.1));
+			stageFront.updateHitbox();
+			stageFront.antialiasing = true;
+			stageFront.scrollFactor.set(0.9, 0.9);
+			stageFront.active = false;
+			add(stageFront);
+		case "bopcity":
+			curStage = 'bopcity';
+
+			var bg:FlxSprite = new FlxSprite(-600, -400).loadGraphic(Paths.image('stages/bopcity/bopback'));
+			bg.antialiasing = true;
+			bg.scrollFactor.set(0.9, 0.9);
+			bg.active = false;
+			add(bg);
+
+			var stageFront:FlxSprite = new FlxSprite(-650, 600).loadGraphic(Paths.image('stages/bopcity/bopfront'));
+			stageFront.setGraphicSize(Std.int(stageFront.width * 1.1));
+			stageFront.updateHitbox();
+			stageFront.antialiasing = true;
+			stageFront.scrollFactor.set(0.9, 0.9);
+			stageFront.active = false;
+			add(stageFront);
+			
+			defaultCamZoom = 0.80;
+			
+			explosion = new FlxSprite( -200, 300);
+			explosion.frames = Paths.getSparrowAtlas('stages/bopcity/explosion');
+			explosion.animation.addByPrefix('idle', 'settle', 24, true);
+			explosion.animation.addByPrefix('boom', 'boom', 30, false);
+			explosion.updateHitbox();
+			explosion.antialiasing = false;
+			explosion.scale.set(2,2.4);
+			explosion.cameras = [camHUD];
+			add(explosion);
+			explosion.animation.play('idle', true);
+			
+			fortnitecard = new FlxSprite( -650, 600).loadGraphic(Paths.image('stages/bopcity/card'));
+			
+			fortnitecard.cameras = [camHUD];
+			fortnitecard.screenCenter();
+			fortnitecard.updateHitbox();
+			fortnitecard.alpha = 0;
+			add(fortnitecard);
+		case "fnaf":
+			curStage = 'fnaf';
+
+			defaultCamZoom = 0.9;
+			var bg:FlxSprite = new FlxSprite(-300, 200).loadGraphic(Paths.image('stages/fnaf/celebratebgv3'));
+			bg.setGraphicSize(Std.int(bg.width * 10), Std.int(bg.height*5));
+			bg.antialiasing = false;
+			bg.scrollFactor.set(0.9, 0.9);
+			bg.active = false;
+			add(bg);
+		case "foundation":
+			defaultCamZoom = 0.9;
+			curStage = 'foundation';
+
+			var bg:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('stages/foundation/bg'));
+			bg.antialiasing = true;
+			bg.scrollFactor.set(0.9, 0.9);
+			bg.active = false;
+			bg.setGraphicSize(Std.int(bg.width * 1.1));
+			bg.updateHitbox();
+			add(bg);
+		default:
 			defaultCamZoom = 0.9;
 			curStage = 'stage';
 			var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('stages/stage/stageback'));
@@ -1901,10 +1884,11 @@ class PlayState extends MusicBeatState
 
 		if (FlxG.keys.justPressed.SEVEN)
 		{
-			if (devMode)
-				FlxG.switchState(new ChartingState());
-			else
-				FreeplayState.playSong("dotdotdot", 1);
+			#if notRelease
+			FlxG.switchState(new ChartingState());
+			#else
+			FreeplayState.playSong("dotdotdot", 1);
+			#end
 		}
 
 		if (FlxG.keys.justPressed.EIGHT)

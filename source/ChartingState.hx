@@ -1,5 +1,10 @@
 package;
 
+import flixel.addons.ui.FlxUIText;
+import flixel.addons.ui.FlxUILine;
+import flixel.addons.ui.interfaces.IFlxUIWidget;
+import flixel.addons.ui.FlxUIButton;
+import flixel.addons.ui.FlxUIList;
 import lime.tools.Platform;
 import Conductor.BPMChangeEvent;
 import Section.SwagSection;
@@ -206,18 +211,6 @@ class ChartingState extends MusicBeatState
 			trace('CHECKED!');
 		};
 
-		var check_mute_inst = new FlxUICheckBox(10, 200, null, null, "Mute Instrumental (in editor)", 100);
-		check_mute_inst.checked = false;
-		check_mute_inst.callback = function()
-		{
-			var vol:Float = 1;
-
-			if (check_mute_inst.checked)
-				vol = 0;
-
-			FlxG.sound.music.volume = vol;
-		};
-
 		var saveButton:FlxButton = new FlxButton(110, 8, "Save", function()
 		{
 			saveLevel();
@@ -254,40 +247,62 @@ class ChartingState extends MusicBeatState
 
 		var characters:Array<String> = CoolUtil.coolTextFile(Paths.txt('characterList'));
 
-		var player1DropDown = new FlxUIDropDownMenu(10, 100, FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)
-		{
-			_song.player1 = characters[Std.parseInt(character)];
-		});
-		player1DropDown.selectedLabel = _song.player1;
+		var player1Label = new FlxUIText(10, 100, 0, "Player 1: " + _song.player1);
+		var player2Label = new FlxUIText(140, 100, 0, "Player 2: " + _song.player2);
 
-		var player2DropDown = new FlxUIDropDownMenu(140, 100, FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)
-		{
-			_song.player2 = characters[Std.parseInt(character)];
-		});
-		player2DropDown.selectedLabel = _song.player2;
+		var player1Buttons = new Array<IFlxUIWidget>();
+		var player2Buttons = new Array<IFlxUIWidget>();
+		for (char in characters) {
+			var bu1 = new FlxUIButton(0, 0, char, () -> {
+				_song.player1 = char;
+				player1Label.text = "Player 1: " + char;
+			});
+			player1Buttons.push(bu1);
+
+			var bu2 = new FlxUIButton(0, 0, char, () -> {
+				_song.player2 = char;
+				player2Label.text = "Player 2: " + char;
+			});
+			player2Buttons.push(bu2);
+		}
+
+		var player1Dropdown = new FlxUIList(10, 140, player1Buttons, 100, 80);
+		var player2Dropdown = new FlxUIList(140, 140, player2Buttons, 100, 80);
+
+		// var player1DropDown = new FlxUIDropDownMenu(10, 100, FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)
+		// {
+		// 	_song.player1 = characters[Std.parseInt(character)];
+		// });
+		// player1DropDown.selectedLabel = _song.player1;
+
+		// var player2DropDown = new FlxUIDropDownMenu(140, 100, FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)
+		// {
+		// 	_song.player2 = characters[Std.parseInt(character)];
+		// });
+		// player2DropDown.selectedLabel = _song.player2;
 
 		var stages:Array<String> = CoolUtil.coolTextFile(Paths.txt('stageList'));
 
-		var stageDropDown = new FlxUIDropDownMenu(10, 125, FlxUIDropDownMenu.makeStrIdLabelArray(stages, true), function(stage:String) {
+		var stageDropDown = new FlxUIDropDownMenu(10, 300, FlxUIDropDownMenu.makeStrIdLabelArray(stages, true), function(stage:String) {
 			_song.stage = stages[Std.parseInt(stage)];
 		});
 		stageDropDown.selectedLabel = _song.stage;
 
 		// Extra check boxessss
 
-		var hasDialogueCheckbox:FlxUICheckBox = new FlxUICheckBox(10, 150, null, null, "Has Dialogue", 100);
+		var hasDialogueCheckbox:FlxUICheckBox = new FlxUICheckBox(10, 250, null, null, "Has Dialogue", 100);
 		hasDialogueCheckbox.checked = _song.hasDialogue;
 		hasDialogueCheckbox.callback = function() {
 			_song.hasDialogue = hasDialogueCheckbox.checked;
 		}
 
-		var isPixelCheckbox:FlxUICheckBox = new FlxUICheckBox(140, 150, null, null, "Is Pixel", 100);
+		var isPixelCheckbox:FlxUICheckBox = new FlxUICheckBox(140, 250, null, null, "Is Pixel", 100);
 		isPixelCheckbox.checked = _song.isPixel;
 		isPixelCheckbox.callback = function() {
 			_song.isPixel = isPixelCheckbox.checked;
 		}
 
-		var isGoodCheckbox:FlxUICheckBox = new FlxUICheckBox(10, 170, null, null, "Is Good", 100);
+		var isGoodCheckbox:FlxUICheckBox = new FlxUICheckBox(10, 270, null, null, "Is Good", 100);
 		isGoodCheckbox.checked = _song.isGood;
 		isGoodCheckbox.callback = function() {
 			_song.isGood = isGoodCheckbox.checked;
@@ -298,22 +313,24 @@ class ChartingState extends MusicBeatState
 		tab_group_song.add(UI_songTitle);
 
 		tab_group_song.add(check_voices);
-		tab_group_song.add(check_mute_inst);
-		tab_group_song.add(saveButton);
-		tab_group_song.add(reloadSong);
-		tab_group_song.add(reloadSongJson);
-		tab_group_song.add(loadAutosaveBtn);
-		tab_group_song.add(stepperBPM);
-		tab_group_song.add(stepperSpeed);
-		tab_group_song.add(player1DropDown);
-		tab_group_song.add(player2DropDown);
-		tab_group_song.add(stageDropDown);
-
 		tab_group_song.add(hasDialogueCheckbox);
 		tab_group_song.add(isGoodCheckbox);
 		tab_group_song.add(isPixelCheckbox);
 
+		tab_group_song.add(saveButton);
+		tab_group_song.add(reloadSong);
+		tab_group_song.add(reloadSongJson);
+		tab_group_song.add(loadAutosaveBtn);
 		tab_group_song.add(clearChart);
+
+		tab_group_song.add(stepperBPM);
+		tab_group_song.add(stepperSpeed);
+
+		tab_group_song.add(stageDropDown);
+		tab_group_song.add(player1Label);
+		tab_group_song.add(player2Label);
+		tab_group_song.add(player1Dropdown);
+		tab_group_song.add(player2Dropdown);
 
 		UI_box.addGroup(tab_group_song);
 		UI_box.scrollFactor.set();
@@ -460,7 +477,20 @@ class ChartingState extends MusicBeatState
 			hitSounds.splice(0, hitSounds.length);
 		};
 
+		var check_mute_inst = new FlxUICheckBox(10, 250, null, null, "Mute Instrumental (in editor)", 100);
+		check_mute_inst.checked = false;
+		check_mute_inst.callback = function()
+		{
+			var vol:Float = 1;
+
+			if (check_mute_inst.checked)
+				vol = 0;
+
+			FlxG.sound.music.volume = vol;
+		};
+
 		tab_group_options.add(check_hitSounds);
+		tab_group_options.add(check_mute_inst);
 
 		UI_box.addGroup(tab_group_options);
 	}

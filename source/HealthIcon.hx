@@ -55,16 +55,22 @@ class HealthIcon extends FlxSprite
 		animation.add('lock', [33, 33], 0, false, isPlayer);
 
 		if (!animation.exists(char)) {
-			var charFile:String = Paths.txtImages("characters/"+char);
-			var charFileParams:Array<String> = CoolUtil.coolTextFile(charFile);
+			try {
+				var charFile:String = Paths.txtImages("characters/"+char);
+				var charFileParams:Array<String> = CoolUtil.coolTextFile(charFile);
 
-			for (i in 0...charFileParams.length) {
-				charFileParams[i].trim();
-				var line:Array<String> = charFileParams[i].split("::");
-				
-				if (line[0] == "icon") {
-					animation.add(char, [Std.parseInt(line[1]), Std.parseInt(line[2])], 0, false, isPlayer);
+				for (i in 0...charFileParams.length) {
+					charFileParams[i].trim();
+					var line:Array<String> = charFileParams[i].split("::");
+					
+					if (line[0] == "icon") {
+						animation.add(char, [Std.parseInt(line[1]), Std.parseInt(line[2])], 0, false, isPlayer);
+					}
 				}
+			}
+			catch(e) {
+				trace("No icon found for "+char);
+				animation.add(char, [10, 11], 0, false, isPlayer);
 			}
 		}
 

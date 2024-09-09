@@ -85,33 +85,47 @@ class DialogueBox extends FlxSpriteGroup
 		if (!hasDialog)
 			return;
 
-		var configFile:Array<String> = CoolUtil.coolTextFile(Paths.txtImages("dialogue/characters/" + PlayState.SONG.player2));
-		portraitLeft = new FlxSprite(Std.parseFloat(configFile[3]), Std.parseFloat(configFile[4]));
-		portraitLeft.frames = Paths.getSparrowAtlas('dialogue/characters/' + PlayState.SONG.player2);
-		portraitLeft.animation.addByPrefix('enter', configFile[0], 24, false);
-		if (configFile[5] == "true")
-			portraitLeft.flipX = true;
-		else
-			portraitLeft.flipX = false;
-		portraitLeft.setGraphicSize(Std.int(portraitLeft.width * PlayState.daPixelZoom * 0.9));
-		portraitLeft.updateHitbox();
-		portraitLeft.scrollFactor.set();
-		add(portraitLeft);
-		portraitLeft.visible = false;
+		try {
+			var configFile:Array<String> = CoolUtil.coolTextFile(Paths.txtImages("dialogue/characters/" + PlayState.SONG.player2));
+			portraitLeft = new FlxSprite(Std.parseFloat(configFile[3]), Std.parseFloat(configFile[4]));
+			portraitLeft.frames = Paths.getSparrowAtlas('dialogue/characters/' + PlayState.SONG.player2);
+			portraitLeft.animation.addByPrefix('enter', configFile[0], 24, false);
+			if (configFile[5] == "true")
+				portraitLeft.flipX = true;
+			else
+				portraitLeft.flipX = false;
+			portraitLeft.setGraphicSize(Std.int(portraitLeft.width * PlayState.daPixelZoom * 0.9));
+			portraitLeft.updateHitbox();
+			portraitLeft.scrollFactor.set();
+			add(portraitLeft);
+			portraitLeft.visible = false;
+		}
+		catch(e) {
+			trace("Couldn't find left portrait for " + PlayState.SONG.player2);
+			portraitLeft = new FlxSprite(0, 0).makeGraphic(0, 0, FlxColor.TRANSPARENT);
+			add(portraitLeft);
+		}
 
-		var configFile:Array<String> = CoolUtil.coolTextFile(Paths.txtImages("dialogue/characters/" + PlayState.SONG.player1));
-		portraitRight = new FlxSprite(Std.parseFloat(configFile[1]), Std.parseFloat(configFile[2]));
-		portraitRight.frames = Paths.getSparrowAtlas('dialogue/characters/' + PlayState.SONG.player1);
-		portraitRight.animation.addByPrefix('enter', configFile[0], 24, false);
-		if (configFile[5] == "true")
-			portraitRight.flipX = true;
-		else
-			portraitRight.flipX = false;
-		portraitRight.setGraphicSize(Std.int(portraitRight.width * PlayState.daPixelZoom * 0.9));
-		portraitRight.updateHitbox();
-		portraitRight.scrollFactor.set();
-		add(portraitRight);
-		portraitRight.visible = false;
+		try {
+			var configFile:Array<String> = CoolUtil.coolTextFile(Paths.txtImages("dialogue/characters/" + PlayState.SONG.player1));
+			portraitRight = new FlxSprite(Std.parseFloat(configFile[1]), Std.parseFloat(configFile[2]));
+			portraitRight.frames = Paths.getSparrowAtlas('dialogue/characters/' + PlayState.SONG.player1);
+			portraitRight.animation.addByPrefix('enter', configFile[0], 24, false);
+			if (configFile[5] == "true")
+				portraitRight.flipX = true;
+			else
+				portraitRight.flipX = false;
+			portraitRight.setGraphicSize(Std.int(portraitRight.width * PlayState.daPixelZoom * 0.9));
+			portraitRight.updateHitbox();
+			portraitRight.scrollFactor.set();
+			add(portraitRight);
+			portraitRight.visible = false;
+		}
+		catch(e) {
+			trace("Couldn't find right portrait for " + PlayState.SONG.player1);
+			portraitRight = new FlxSprite(0, 0).makeGraphic(0, 0, FlxColor.TRANSPARENT);
+			add(portraitRight);
+		}
 
 		box.animation.play('normalOpen');
 		box.setGraphicSize(Std.int(box.width * PlayState.daPixelZoom * 0.9));
