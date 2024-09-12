@@ -88,7 +88,9 @@ class FreeplayState extends MusicBeatState
 			newSong("Do-You-Get-The-Refrance", "Do You Get The Refrance?", 1, "bean", true),
 			newSong("dotdotdot", "dotdotdot", 1, "sonicexe", true),
 			newSong("bopcityfansong", "bopcityfansong", 1, "blocku", true),
-			newSong("celebrate", "Celebrate", 1, "afton")
+			newSong("celebrate", "Celebrate", 1, "afton"),
+			newSong("scopophobia", "Scopophobia", 1, "scopguy"),
+			newSong("stop-right-there-criminal-scum", "SRTCS", 1, "dave")
 		],
 		"Extras");
 

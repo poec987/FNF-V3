@@ -822,7 +822,7 @@ class PlayState extends MusicBeatState
 			bg.antialiasing = true;
 			bg.scrollFactor.set(0.9, 0.9);
 			bg.active = false;
-			bg.setGraphicSize(Std.int(bg.width * 1.1));
+			bg.setGraphicSize(Std.int(bg.width * 1.5));
 			bg.updateHitbox();
 			add(bg);
 		default:
@@ -866,6 +866,8 @@ class PlayState extends MusicBeatState
 					gfVersion = 'gf-pixelgroove';
 				case 'schoolEvil':
 					gfVersion = 'gf-pixel';
+				case 'foundation':
+					gfVersion = 'vyst-gf';
 					
 			}
 			if (curStage == 'limo')
@@ -948,6 +950,8 @@ class PlayState extends MusicBeatState
 				dad.x -= 450;
 				dad.y -= 100;
 				camPos.set(dad.getGraphicMidpoint().x + 200, dad.getGraphicMidpoint().y - 200);
+			case 'scopguy':
+				camPos.y + 500;
 		}
 		
 
@@ -1000,6 +1004,15 @@ class PlayState extends MusicBeatState
 
 				gf.visible = false;
 				boyfriend.x += 150;
+			case 'foundation':
+				boyfriend.x += 200;
+				boyfriend.y += 100;
+
+				dad.x += 200;
+				dad.y += 100;
+
+				gf.x += 200;
+				gf.y += 100;
 		}
 		
 		switch (SONG.player1)
@@ -2027,6 +2040,8 @@ class PlayState extends MusicBeatState
 						camFollow.y = dad.getMidpoint().y + 30;
 					case 'niceblocku':
 						camFollow.y = dad.getMidpoint().y + 30;
+					case 'scopguy':
+						camFollow.y = dad.getMidpoint().y + 200;
 				}
 				
 
@@ -3024,6 +3039,8 @@ class PlayState extends MusicBeatState
 							endSong();
 						});
 					}
+				case "Vyst Meow":
+					gf.animation.play("meow", true);
 				case "Change Character":
 					var params:Array<String> = noteTypeParam.trim().split(",");
 					var pos:Vector2;
@@ -3064,6 +3081,8 @@ class PlayState extends MusicBeatState
 						dad.animation.play(noteTypeParam, true);
 					else
 						boyfriend.animation.play(noteTypeParam, true);
+				case "Vyst Meow":
+					gf.animation.play("meow", true);
 				case "Pico Shoot":
 					picoShoot.visible = true;
 					dad.visible = false;

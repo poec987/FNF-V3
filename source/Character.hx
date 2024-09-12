@@ -348,6 +348,17 @@ class Character extends FlxSprite
 				addOffset('scared', -2, -17);
 
 				playAnim('danceRight');			
+			case 'vyst-gf':
+				// GIRLFRIEND CODE
+				tex = Paths.getSparrowAtlas('characters/foundation/VYST_GF_assets');
+				frames = tex;
+				animation.addByPrefix('idle', 'VYST IDLE DANCE', 24, false);
+				animation.addByPrefix('meow', 'VYST MEOW', 24, false);
+		
+				addOffset('meow');
+				addOffset('idle');
+
+				playAnim('idle');			
 			case 'gogfgo':
 				// GIRLFRIEND CODE
 				tex = Paths.getSparrowAtlas('characters/gogirlfriendgo');
