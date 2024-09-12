@@ -85,6 +85,7 @@ class Main extends Sprite
 		
 		#if !mobile
 		addChild(new FPS(10, 3, 0xFFFFFF));
+		addChild(new RAM(10, 18));
 		#end
 
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);

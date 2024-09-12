@@ -43,7 +43,7 @@ class MainMenuState extends MusicBeatState
 	var newInput:Bool = true;
 
 	public static var gameVer:String = "0.2.7.1";
-	public static var cinemaEngineVer = "1.0";
+	public static var cinemaEngineVer = "1.01";
 
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
