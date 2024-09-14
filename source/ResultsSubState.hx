@@ -10,6 +10,8 @@ import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxSprite;
 
+using StringTools;
+
 typedef FunkinResults = {
     var sick:Int;
     var good:Int;
@@ -37,6 +39,7 @@ class ResultsSubState extends MusicBeatSubstate {
     var music:FlxSound;
     var judgement:FlxSound;
     var beef:FlxSprite;
+    var character:String = "bf";
 
     var textTimer:FlxTimer;
     var soundTimer:FlxTimer;
@@ -126,20 +129,34 @@ class ResultsSubState extends MusicBeatSubstate {
             else
                 selectedJudgement = "worst";
 
+            var judgeFile:Array<String> = CoolUtil.coolTextFile(Paths.txtImages("judgements/judgeConfig"));
+
+            for (i in 0...judgeFile.length) {
+                judgeFile[i].trim();
+                var line:Array<String> = judgeFile[i].split("::");
+
+                if (PlayState.SONG.player1 == line[0]) {
+                    character = line[1];
+                    break;
+                }
+
+                character = "bf";
+            }
+
             switch (selectedJudgement) {
                 case "pfc":
-                    beef = new FlxSprite(700, 100).loadGraphic(Paths.image('judgements/cinema'), true, 500, 600);
+                    beef = new FlxSprite(700, 100).loadGraphic(Paths.image('judgements/'+character+'/cinema'), true, 500, 600);
                     beef.animation.add("jorking", [0, 1], 15, true);
                 case "good":
-                    beef = new FlxSprite(400, -50).loadGraphic(Paths.image('judgements/good'));
+                    beef = new FlxSprite(400, -50).loadGraphic(Paths.image('judgements/'+character+'/good'));
                 case "meh":
-                    beef = new FlxSprite(400, -50).loadGraphic(Paths.image('judgements/meh'));
+                    beef = new FlxSprite(400, -50).loadGraphic(Paths.image('judgements/'+character+'/meh'));
                 case "bad":
-                    beef = new FlxSprite(400, -50).loadGraphic(Paths.image('judgements/bad'));
+                    beef = new FlxSprite(400, -50).loadGraphic(Paths.image('judgements/'+character+'/bad'));
                 case "shit":
-                    beef = new FlxSprite(400, -50).loadGraphic(Paths.image('judgements/shit'));
+                    beef = new FlxSprite(400, -50).loadGraphic(Paths.image('judgements/'+character+'/shit'));
                 case "worst":
-                    beef = new FlxSprite(500, 100).loadGraphic(Paths.image('judgements/bruh'));
+                    beef = new FlxSprite(500, 100).loadGraphic(Paths.image('judgements/'+character+'/bruh'));
             }
 
             if (playJudgement) {
