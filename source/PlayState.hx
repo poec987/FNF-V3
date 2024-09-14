@@ -295,10 +295,6 @@ class PlayState extends MusicBeatState
 
 		FlxCamera.defaultCameras = [camGame];
 
-		songCard = new SongCard();
-		add(songCard);
-		songCard.cameras = [camHUD];
-
 		persistentUpdate = true;
 		persistentDraw = true;
 
@@ -318,6 +314,16 @@ class PlayState extends MusicBeatState
 		} else {
 			infoJsonExists = false;
 		}
+
+		if (getValueFromInfoJsonKey("songName", null) != null && getValueFromInfoJsonKey("songAuthor", null) != null) {
+			songCard = new SongCard(getValueFromInfoJsonKey("songName", null), getValueFromInfoJsonKey("songAuthor", null));
+		} else {
+			songCard = new SongCard("keemstar", "bald shadow mario");
+		}
+
+		add(songCard);
+
+		songCard.cameras = [camHUD];
 
 		// Unlock songs when you play them, aint fucking no one beating unfairness j after other 3 songs
 		SaveManagement.unlockSong(SONG.song);

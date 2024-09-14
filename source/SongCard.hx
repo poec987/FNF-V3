@@ -17,7 +17,7 @@ class SongCard extends FlxTypedGroup<FlxSprite>{
     var creditTxt:FlxText;
     var bg:FlxSprite;
 
-    public function new() {
+    public function new(cname:String, cauthor:String) {
         super();
 
         // creditTxt = new FlxText(-1000, 200, 0, "", 28);
@@ -40,6 +40,9 @@ class SongCard extends FlxTypedGroup<FlxSprite>{
         add(nameTxt);
         add(authorTxt);
         // add(creditTxt);
+
+        name = cname;
+        author = cauthor;
 
         setShit();
     }
@@ -130,7 +133,8 @@ class SongCard extends FlxTypedGroup<FlxSprite>{
                 setName("Celebrate V3", "Xarion");
 
             default:
-                setName("keemstar", "bald shadow mario");
+                // setName("keemstar", "bald shadow mario");
+                setName(name, author);
         }
     }
 
