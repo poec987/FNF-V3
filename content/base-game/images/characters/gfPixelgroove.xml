@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="gfPixelgroove.png">
+	<!-- Created with Adobe Animate version 22.0.0.93 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="dance0000" x="0" y="0" width="94" height="82"/>
+	<SubTexture name="dance0001" x="95" y="0" width="94" height="82"/>
+	<SubTexture name="dance0002" x="0" y="83" width="94" height="82"/>
+	<SubTexture name="dance0003" x="95" y="83" width="94" height="82"/>
+</TextureAtlas>
