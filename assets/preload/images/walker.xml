@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="walker.png">
+	<!-- Created with Adobe Animate version 22.0.0.93 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="walker0000" x="0" y="0" width="343" height="628" frameX="0" frameY="0" frameWidth="343" frameHeight="672"/>
+	<SubTexture name="walker0001" x="343" y="0" width="327" height="637" frameX="-5" frameY="-1" frameWidth="343" frameHeight="672"/>
+	<SubTexture name="walker0002" x="670" y="0" width="313" height="647" frameX="-10" frameY="0" frameWidth="343" frameHeight="672"/>
+	<SubTexture name="walker0003" x="983" y="0" width="294" height="650" frameX="-24" frameY="-1" frameWidth="343" frameHeight="672"/>
+	<SubTexture name="walker0004" x="1277" y="0" width="280" height="672" frameX="-38" frameY="0" frameWidth="343" frameHeight="672"/>
+</TextureAtlas>

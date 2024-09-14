@@ -90,6 +90,7 @@ class FreeplayState extends MusicBeatState
 			newSong("bopcityfansong", "bopcityfansong", 1, "blocku", true),
 			newSong("celebrate", "Celebrate", 1, "afton"),
 			newSong("scopophobia", "Scopophobia", 1, "scopguy"),
+			newSong("andy", "andy", 1, "andy"),
 			newSong("stop-right-there-criminal-scum", "SRTCS", 1, "dave")
 		],
 		"Extras");

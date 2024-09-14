@@ -914,6 +914,49 @@ class Character extends FlxSprite
 				addOffset("singDOWN",50,-40);
 
 				playAnim('idle');
+			case 'andy':
+				tex = Paths.getSparrowAtlas('characters/andy/andy');
+				frames = tex;
+				animation.addByPrefix('singUP', 'Up', 30, false);
+				animation.addByPrefix('singDOWN', 'Down', 30, false);
+				animation.addByPrefix('singLEFT', 'Left', 30, false);
+				animation.addByPrefix('singRIGHT', 'Right', 30, false);
+				animation.addByPrefix('idle', 'Idle', 30, true);
+	
+				addOffset('idle');
+	
+				addOffset("singUP", 119, 44);
+				addOffset("singRIGHT", 32, 0);
+				addOffset("singLEFT", 27, 0);
+				addOffset("singDOWN", 4, -10);
+	
+				playAnim('idle');
+			case 'picy':
+				frames = Paths.getSparrowAtlas('characters/andy/picy');
+				animation.addByPrefix('idle', 'Idle', 30, true);
+				animation.addByPrefix('singUP', 'Up', 30, false);
+				animation.addByPrefix('singLEFT', 'Left', 30, false);
+				animation.addByPrefix('singRIGHT', 'Right', 30, false);
+				animation.addByPrefix('singDOWN', 'Down', 30, false);
+				animation.addByPrefix('singUPmiss', 'MISSUp', 30, false);
+				animation.addByPrefix('singLEFTmiss', 'MISSLeft', 30, false);
+				animation.addByPrefix('singRIGHTmiss', 'MISSRight', 30, false);
+				animation.addByPrefix('singDOWNmiss', 'MISSDown', 30, false);
+
+
+				addOffset('idle');
+				addOffset("singUP", 36, 55);
+				addOffset("singRIGHT", -50, 2);
+				addOffset("singLEFT", 146, -10);
+				addOffset("singDOWN", 20, -41);
+				addOffset("singUPmiss", 36, 55);
+				addOffset("singRIGHTmiss", -50, 2);
+				addOffset("singLEFTmiss", 146, -10);
+				addOffset("singDOWNmiss", 20, -41);
+
+				playAnim('idle');
+
+				flipX = false;
 			case 'scopguy':
 				frames = Paths.getSparrowAtlas('characters/foundation/scopguy');
 

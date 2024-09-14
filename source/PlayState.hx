@@ -212,7 +212,8 @@ class PlayState extends MusicBeatState
 		"bopcity" => -1,
 		"fnaf" => -1,
 		"ikea" => -1,
-		"foundation" => -1
+		"foundation" => -1,
+		"andy" => -1
 	];
 
 	var songTimer:SongTimer;
@@ -846,6 +847,17 @@ class PlayState extends MusicBeatState
 			bg.setGraphicSize(Std.int(bg.width * 1.5));
 			bg.updateHitbox();
 			add(bg);
+		case "andy":
+			defaultCamZoom = 0.9;
+			curStage = 'andy';
+
+			var bg:FlxSprite = new FlxSprite(-300, 0).loadGraphic(Paths.image('stages/andy/andy'));
+			bg.antialiasing = true;
+			bg.scrollFactor.set(0.9, 0.9);
+			bg.active = false;
+			bg.setGraphicSize(Std.int(bg.width * 1.5));
+			bg.updateHitbox();
+			add(bg);
 		default:
 			defaultCamZoom = 0.9;
 			curStage = 'stage';
@@ -951,6 +963,10 @@ class PlayState extends MusicBeatState
 				dad.x += 100;
 				dad.y += 330;
 				camPos.set(dad.getGraphicMidpoint().x + 200, dad.getGraphicMidpoint().y - 200);
+			case 'andy':
+				dad.x += 100;
+				dad.y += 330;
+				camPos.set(dad.getGraphicMidpoint().x + 200, dad.getGraphicMidpoint().y - 200);
 			case 'blocku':
 				dad.y += 150;
 				camPos.set(dad.getGraphicMidpoint().x + 200, dad.getGraphicMidpoint().y - 200);
@@ -1034,6 +1050,14 @@ class PlayState extends MusicBeatState
 
 				gf.x += 200;
 				gf.y += 100;
+			case 'andy':
+				boyfriend.x += 450;
+				boyfriend.y += 200;
+
+				dad.x += 450;
+				dad.y += 100;
+
+				gf.visible = false;
 		}
 		
 		switch (SONG.player1)
@@ -2054,6 +2078,8 @@ class PlayState extends MusicBeatState
 						camFollow.y = dad.getMidpoint().y - 200;
 						camFollow.x = dad.getMidpoint().x - 100;
 					case 'sonicexe':
+						camFollow.y = dad.getMidpoint().y + 30;
+					case 'andy':
 						camFollow.y = dad.getMidpoint().y + 30;
 					case 'blocku':
 						camFollow.y = dad.getMidpoint().y + 30;
