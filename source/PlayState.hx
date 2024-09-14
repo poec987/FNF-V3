@@ -2324,7 +2324,7 @@ class PlayState extends MusicBeatState
 					transIn = FlxTransitionableState.defaultTransIn;
 					transOut = FlxTransitionableState.defaultTransOut;
 	
-					FlxG.switchState(new StoryMenuState());
+					checkForCutscene(PlayState.curSong.toLowerCase()+"-end", new StoryMenuState());
 	
 					// if ()
 					StoryMenuState.weekUnlocked[Std.int(Math.min(storyWeek + 1, StoryMenuState.weekUnlocked.length - 1))] = true;
@@ -2352,7 +2352,7 @@ class PlayState extends MusicBeatState
 					PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase(), PlayState.storyPlaylist[0]);
 					FlxG.sound.music.stop();
 	
-					LoadingState.loadAndSwitchState(new PlayState());
+					checkForCutscene(PlayState.storyPlaylist[0].toLowerCase(), new PlayState());
 				}
 			}
 			else
@@ -2361,11 +2361,23 @@ class PlayState extends MusicBeatState
 			}
 	}
 
+	public static function checkForCutscene(vidName:String, nextState:flixel.FlxState) {
+		var files:Array<String> = sys.FileSystem.readDirectory('assets/data/'+SONG.song.toLowerCase().trim());
+
+		if (FileSystem.exists(Paths.video(vidName))) {
+			VideoCutsceneState.videoFile = vidName.trim();
+			VideoCutsceneState.targetState = nextState;
+			LoadingState.loadAndSwitchState(new VideoCutsceneState());
+		} else {
+			LoadingState.loadAndSwitchState(nextState);
+		}
+	}
+
 	function returnToFreeplay() {
 		trace('WENT BACK TO FREEPLAY??');
 		FreeplayState.lastPage = lastFPpage;
 		FreeplayState.lastSelected = lastFPselect;
-		FlxG.switchState(new FreeplayState());
+		checkForCutscene(PlayState.curSong.toLowerCase()+"-end", new FreeplayState());
 	}
 
 	public function startVideo(name:String)

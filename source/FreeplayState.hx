@@ -186,7 +186,7 @@ class FreeplayState extends MusicBeatState
 
 		PlayState.lastFPpage = page;
 		PlayState.lastFPselect = curSelected;
-		LoadingState.loadAndSwitchState(new PlayState());
+		PlayState.checkForCutscene(song, new PlayState());
 	}
 
 	public function refreshSongList(skipDestroy:Bool=false) {
@@ -303,7 +303,7 @@ class FreeplayState extends MusicBeatState
 					PlayState.isStoryMode = false;
 
 					PlayState.storyWeek = PlayState.stageDictionary[PlayState.SONG.stage];
-					LoadingState.loadAndSwitchState(new PlayState());
+					PlayState.checkForCutscene(poop, new PlayState());
 				}
 				catch(e) {
 					trace(e);
