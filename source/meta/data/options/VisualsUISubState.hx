@@ -112,9 +112,9 @@ class VisualsUISubState extends BaseOptionsMenu
 		addOption(option);
 		option.onChange = onChangePauseMusic;
 
-		var option:Option = new Option('Darnell mode.',
-		"darnell.",
-		'darnell',
+		var option:Option = new Option('Chud mode.',
+		"chud.",
+		'chud',
 		'bool',
 		false);
 		addOption(option);
