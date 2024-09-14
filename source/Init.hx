@@ -93,7 +93,7 @@ class Init extends FlxState
 
 		function validPath(str:String):String return str.replace(' ','-');
 		@:privateAccess 
-			FlxG.save.bind('cinemamakers', validPath('${FlxG.stage.application.meta.get('company')}/${flixel.util.FlxSave.validate(FlxG.stage.application.meta.get('file'))}'));
+			FlxG.save.bind('v3', validPath('${FlxG.stage.application.meta.get('company')}/${flixel.util.FlxSave.validate(FlxG.stage.application.meta.get('file'))}'));
 
 		var nextData = FlxG.save.data;
 
