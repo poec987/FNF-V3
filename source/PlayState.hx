@@ -217,6 +217,9 @@ class PlayState extends MusicBeatState
 
 	var songTimer:SongTimer;
 
+	var infoJson:Dynamic;
+	var infoJsonExists:Bool = false;
+
 	#if desktop
 	// Discord RPC variables
 	var iconRPC:String = "";
@@ -302,6 +305,20 @@ class PlayState extends MusicBeatState
 		if (SONG == null)
 			SONG = Song.loadFromJson('tutorial');
 
+		if (FileSystem.exists(Paths.json(SONG.song.toLowerCase().trim()+"/info"))) {
+			infoJsonExists = true;
+			var infoJsonRaw = Assets.getText(Paths.json(SONG.song.toLowerCase().trim()+"/info")).trim();
+
+			while (!infoJsonRaw.endsWith("}"))
+			{
+				infoJsonRaw = infoJsonRaw.substr(0, infoJsonRaw.length - 1);
+			}
+
+			infoJson = Json.parse(infoJsonRaw);
+		} else {
+			infoJsonExists = false;
+		}
+
 		// Unlock songs when you play them, aint fucking no one beating unfairness j after other 3 songs
 		SaveManagement.unlockSong(SONG.song);
 
@@ -313,18 +330,16 @@ class PlayState extends MusicBeatState
 
 		hasDialogue = false;
 
-		var files:Array<String> = sys.FileSystem.readDirectory('assets/data/'+SONG.song.toLowerCase().trim());
 		var dialogueFiles:Array<String> = [];
-		for (i in 0...files.length) {
-			if (files.length != 1) {
-				if (files[i].endsWith('.txt')) {
-					dialogueFiles.push(files[i].replace('.txt', '').trim());
-					hasDialogue = true;
-				}
-			} else {
-				hasDialogue = false;
+		if (getValueFromInfoJsonKey("dialogues", []).length >= 1) {
+			hasDialogue = true;
+			for (i in 0...getValueFromInfoJsonKey("dialogues", []).length) {
+				dialogueFiles.push(getValueFromInfoJsonKey("dialogues", [])[i]);
 			}
-		}			
+		} else {
+			hasDialogue = false;
+		}
+
 		if (hasDialogue)
 			dialogue = CoolUtil.coolTextFile(Paths.txt(SONG.song.toLowerCase().trim()+'/'+dialogueFiles[FlxG.random.int(0, dialogueFiles.length-1)]));
 		#else
@@ -856,7 +871,7 @@ class PlayState extends MusicBeatState
 
 		if (specialgf == false || SONG.song.toLowerCase() == 'tutorial' || SONG.song.toLowerCase() == 'senpai' || SONG.song.toLowerCase() == 'roses' || SONG.song.toLowerCase() == 'thorns')
 		{
-			switch (curStage)
+			/*switch (curStage)
 			{
 				case 'limo' | 'limonormal':
 					gfVersion = 'gf-car';
@@ -869,9 +884,9 @@ class PlayState extends MusicBeatState
 				case 'foundation':
 					gfVersion = 'vyst-gf';
 					
-			}
-			if (curStage == 'limo')
-				gfVersion = 'gf-car';
+			}*/
+
+			gfVersion = getValueFromInfoJsonKey("gfVersion", "gf");
 		}
 		else
 		{
@@ -2362,8 +2377,9 @@ class PlayState extends MusicBeatState
 	}
 
 	public static function checkForCutscene(vidName:String, nextState:flixel.FlxState) {
-		FlxG.sound.music.stop();
-		
+		if (FlxG.sound.music.playing)
+			FlxG.sound.music.stop();
+
 		if (FileSystem.exists(Paths.video(vidName))) {
 			VideoCutsceneState.videoFile = vidName.trim();
 			VideoCutsceneState.targetState = nextState;
@@ -2371,6 +2387,13 @@ class PlayState extends MusicBeatState
 		} else {
 			LoadingState.loadAndSwitchState(nextState);
 		}
+	}
+
+	function getValueFromInfoJsonKey(key:String, defaultValue:Dynamic):Dynamic {
+		if (infoJsonExists && Reflect.hasField(infoJson, key))
+			return Reflect.field(infoJson, key);
+		else
+			return defaultValue;
 	}
 
 	function returnToFreeplay() {
