@@ -1,6 +1,0 @@
-Senpai portrait enter
-0
-40
--20
-40
-false

@@ -1,5 +1,0 @@
-bf-pixel::jo
-bf-pixel-good::jo
-unfairJo::jo
-Nugget::nugget
-nuggetdance::nugget

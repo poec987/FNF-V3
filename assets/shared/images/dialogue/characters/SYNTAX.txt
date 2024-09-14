@@ -1,6 +1,0 @@
-Animation Name
-Right X-Offset
-Right Y-Offset
-Left X-Offset
-Left Y-Offset
-Flip
