@@ -62,11 +62,9 @@ class FunkinScript {
 			set('scrollSpeed', PlayState.SONG.speed);
 			set('songName', PlayState.SONG.song);
 			set('isStoryMode', PlayState.isStoryMode);
-			set('difficulty', PlayState.storyDifficulty);
 			set('weekRaw', PlayState.storyWeek);
 			set('seenCutscene', PlayState.seenCutscene);
 			set('week', WeekData.weeksList[PlayState.storyWeek]);
-			set('difficultyName', CoolUtil.difficulties[PlayState.storyDifficulty]);
 			set('songLength', flixel.FlxG.sound.music.length);
 			set('healthGainMult', PlayState.instance.healthGain);
 			set('healthLossMult', PlayState.instance.healthLoss);

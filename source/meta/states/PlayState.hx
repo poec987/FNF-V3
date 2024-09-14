@@ -184,7 +184,6 @@ class PlayState extends MusicBeatState
 	public static var isStoryMode:Bool = false;
 	public static var storyWeek:Int = 0;
 	public static var storyPlaylist:Array<String> = [];
-	public static var storyDifficulty:Int = 1;
 
 	public var spawnTime:Float = 3000;
 
@@ -657,8 +656,6 @@ class PlayState extends MusicBeatState
 
 
 		#if desktop
-		storyDifficultyText = CoolUtil.difficulties[storyDifficulty];
-
 		// String that contains the mode defined here so it isn't necessary to call changePresence for each mode
 		if (isStoryMode)
 		{
@@ -4409,7 +4406,7 @@ class PlayState extends MusicBeatState
 				#if !switch
 				var percent:Float = ratingPercent;
 				if(Math.isNaN(percent)) percent = 0;
-				Highscore.saveScore(SONG.song, songScore, storyDifficulty, percent);
+				Highscore.saveScore(SONG.song, songScore, percent);
 				#end
 			}
 
@@ -4447,7 +4444,7 @@ class PlayState extends MusicBeatState
 
 						if (SONG.validScore)
 						{
-							Highscore.saveWeekScore(WeekData.getWeekFileName(), campaignScore, storyDifficulty);
+							Highscore.saveWeekScore(WeekData.getWeekFileName(), campaignScore);
 						}
 
 						FlxG.save.data.weekCompleted = StoryMenuState.weekCompleted;
@@ -4457,10 +4454,8 @@ class PlayState extends MusicBeatState
 				}
 				else
 				{
-					var difficulty:String = CoolUtil.getDifficultyFilePath();
-
 					trace('LOADING NEXT SONG');
-					trace(Paths.formatToSongPath(PlayState.storyPlaylist[0]) + difficulty);
+					trace(Paths.formatToSongPath(PlayState.storyPlaylist[0]));
 
 					var winterHorrorlandNext = (Paths.formatToSongPath(SONG.song) == "eggnog");
 					if (winterHorrorlandNext)
@@ -4480,7 +4475,7 @@ class PlayState extends MusicBeatState
 					prevCamFollow = camFollow;
 					prevCamFollowPos = camFollowPos;
 
-					PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0] + difficulty, PlayState.storyPlaylist[0]);
+					PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0], PlayState.storyPlaylist[0]);
 					FlxG.sound.music.stop();
 
 					if(winterHorrorlandNext) {

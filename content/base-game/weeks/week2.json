@@ -5,14 +5,9 @@
 		["Monster", "monster", [34, 51, 68]]
 	],
 
-	"weekCharacters": [
-		"spooky",
-		"bf",
-		"gf"
-	],
 	"weekBackground": "halloween",
 
-	"storyName": "Spooky Month",
+	"storyName": "Pumpkin monster revenge",
 	"weekBefore": "week1",
 	"weekName": "Week 2",
 	"startUnlocked": true,

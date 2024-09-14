@@ -3,14 +3,9 @@
 		["Tutorial", "gf", [165, 0, 77]]
 	],
 
-	"weekCharacters": [
-		"",
-		"bf",
-		"gf"
-	],
-	"weekBackground": "stage",
+	"weekBackground": "tutorial",
 
-	"storyName": "",
+	"storyName": "Threetorial",
 	"weekBefore": "tutorial",
 	"weekName": "Tutorial",
 	"startUnlocked": true,

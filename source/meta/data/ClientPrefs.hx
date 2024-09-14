@@ -16,6 +16,9 @@ import meta.data.Controls.KeyboardScheme;
 }
 class ClientPrefs {
 
+	public static var frostedOneSpotted:Bool = false;
+	public static var freeplayUnlocked:Bool = false;
+
 	public static var kutData:KutData={};
 
 	public static var yoshi:Bool = true;
@@ -155,6 +158,8 @@ class ClientPrefs {
 	public static function saveSettings() {
 		for (i in Reflect.fields(kutData)) Reflect.setField(FlxG.save.data, i, Reflect.field(kutData, i));
 
+		FlxG.save.data.frostedOneSpotted = frostedOneSpotted;
+		FlxG.save.data.freeplayUnlocked = freeplayUnlocked;
 
 		FlxG.save.data.gpuCaching = gpuCaching;
 
@@ -212,7 +217,7 @@ class ClientPrefs {
 		FlxG.save.flush();
 
 		var save:FlxSave = new FlxSave();
-		save.bind('controls_v2', 'ninjamuffin99'); //Placing this in a separate save so that it can be manually deleted without removing your Score and stuff
+		save.bind('controls_v2', 'cinemamakers'); //Placing this in a separate save so that it can be manually deleted without removing your Score and stuff
 		save.data.customControls = keyBinds;
 		save.flush();
 		FlxG.log.add("Settings saved!");
@@ -221,6 +226,12 @@ class ClientPrefs {
 	public static function loadPrefs() {
 		for (i in Reflect.fields(kutData)) if (Reflect.hasField(FlxG.save.data, i))
 			Reflect.setField(kutData, i, Reflect.field(FlxG.save.data, i));
+
+		if (FlxG.save.data.frostedOneSpotted != null)
+			frostedOneSpotted = FlxG.save.data.frostedOneSpotted;
+
+		if (FlxG.save.data.freeplayUnlocked != null)
+			freeplayUnlocked = FlxG.save.data.freeplayUnlocked;
 
 		if (FlxG.save.data.gpuCaching != null) FlxG.save.data.gpuCaching = gpuCaching;
 		
@@ -395,7 +406,7 @@ class ClientPrefs {
 		}
 
 		var save:FlxSave = new FlxSave();
-		save.bind('controls_v2', 'ninjamuffin99');
+		save.bind('controls_v2', 'cinemamakers');
 		if(save != null && save.data.customControls != null) {
 			var loadedControls:Map<String, Array<FlxKey>> = save.data.customControls;
 			for (control => keys in loadedControls) {

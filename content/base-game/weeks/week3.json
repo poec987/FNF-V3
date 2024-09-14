@@ -5,14 +5,9 @@
 		["Blammed", "pico", [148, 22, 83]]
 	],
 
-	"weekCharacters": [
-		"pico",
-		"bf",
-		"gf"
-	],
 	"weekBackground": "philly",
 
-	"storyName": "PICO",
+	"storyName": "Peako",
 	"weekBefore": "week2",
 	"weekName": "Week 3",
 	"startUnlocked": true,

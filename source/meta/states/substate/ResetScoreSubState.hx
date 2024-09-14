@@ -36,7 +36,6 @@ class ResetScoreSubState extends MusicBeatSubstate
 		if(week > -1) {
 			name = WeekData.weeksLoaded.get(WeekData.weeksList[week]).weekName;
 		}
-		name += ' (' + CoolUtil.difficulties[difficulty] + ')?';
 
 		bg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		bg.alpha = 0;
@@ -97,9 +96,9 @@ class ResetScoreSubState extends MusicBeatSubstate
 		} else if(controls.ACCEPT) {
 			if(onYes) {
 				if(week == -1) {
-					Highscore.resetSong(song, difficulty);
+					Highscore.resetSong(song);
 				} else {
-					Highscore.resetWeek(WeekData.weeksList[week], difficulty);
+					Highscore.resetWeek(WeekData.weeksList[week]);
 				}
 			}
 			FlxG.sound.play(Paths.sound('cancelMenu'), 1);
