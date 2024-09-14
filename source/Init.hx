@@ -88,12 +88,12 @@ class Init extends FlxState
 
 	static function setSaveBind() {
 		var prevSave = new FlxSave();
-		prevSave.bind('funkin','ninjamuffin99');
+		prevSave.bind('cinemamakers','v3');
 		var prevData = prevSave.data;
 
 		function validPath(str:String):String return str.replace(' ','-');
 		@:privateAccess 
-			FlxG.save.bind('funkin', validPath('${FlxG.stage.application.meta.get('company')}/${flixel.util.FlxSave.validate(FlxG.stage.application.meta.get('file'))}'));
+			FlxG.save.bind('cinemamakers', validPath('${FlxG.stage.application.meta.get('company')}/${flixel.util.FlxSave.validate(FlxG.stage.application.meta.get('file'))}'));
 
 		var nextData = FlxG.save.data;
 
