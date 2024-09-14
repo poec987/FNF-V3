@@ -1,0 +1,11 @@
+sprite::DADDY_DEAREST
+icon::0::1
+anim::idle::Dad idle dance::24::false::false::false
+anim::singUP::Dad Sing Note UP::24::false::false::false
+anim::singDOWN::Dad Sing Note DOWN::24::false::false::false
+anim::singLEFT::Dad Sing Note LEFT::24::false::false::false
+anim::singRIGHT::Dad Sing Note RIGHT::24::false::false::false
+offset::singUP::-6::50
+offset::singLEFT::-10::10
+offset::singRIGHT::0::27
+offset::singDOWN::0::-30
