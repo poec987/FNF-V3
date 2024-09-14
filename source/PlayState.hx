@@ -2362,8 +2362,8 @@ class PlayState extends MusicBeatState
 	}
 
 	public static function checkForCutscene(vidName:String, nextState:flixel.FlxState) {
-		var files:Array<String> = sys.FileSystem.readDirectory('assets/data/'+SONG.song.toLowerCase().trim());
-
+		FlxG.sound.music.stop();
+		
 		if (FileSystem.exists(Paths.video(vidName))) {
 			VideoCutsceneState.videoFile = vidName.trim();
 			VideoCutsceneState.targetState = nextState;

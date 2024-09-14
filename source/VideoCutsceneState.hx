@@ -20,8 +20,6 @@ class VideoCutsceneState extends MusicBeatState {
     public override function create() {
         super.create();
 
-        FlxG.sound.music.stop();
-
         startVideo(videoFile);
     }
 
