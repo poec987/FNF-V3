@@ -866,12 +866,12 @@ class EditorPlayState extends MusicBeatSubstate
 				daRating = 'bad';
 			*/
 
-		var pixelShitPart1:String = "";
+		var pixelShitPart1:String = Paths.getSkinPath();
 		var pixelShitPart2:String = '';
 
 		if (PlayState.isPixelStage)
 		{
-			pixelShitPart1 = 'pixelUI/';
+			pixelShitPart1 = Paths.getSkinPath(true);
 			pixelShitPart2 = '-pixel';
 		}
 
