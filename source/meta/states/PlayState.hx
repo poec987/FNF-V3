@@ -717,22 +717,22 @@ class PlayState extends MusicBeatState
 			trace("started preload at " + currentTime);
 			#end
 			var shitToLoad:Array<AssetPreload> = [
-				{path: "sick"},
-				{path: "good"},
-				{path: "bad"},
-				{path: "shit"},
-				{path: "epic"},
-				{path: "healthBar", library: "shared"},
-				{path: "combo"}
+				{path: Paths.getSkinPath() + "sick"},
+				{path: Paths.getSkinPath() + "good"},
+				{path: Paths.getSkinPath() + "bad"},
+				{path: Paths.getSkinPath() + "shit"},
+				{path: Paths.getSkinPath() + "epic"},
+				{path: Paths.getSkinPath() + "healthBar", library: "shared"},
+				{path: Paths.getSkinPath() + "combo"}
 			];
 			for (number in 0...10)
-				shitToLoad.push({path: 'num$number'});
+				shitToLoad.push({path: Paths.getSkinPath() + 'num$number'});
 
 
 			for(i in arrowSkins){
 				if(i!=null && i.trim()!='' && i.length > 0){
 					shitToLoad.push({
-						path: i
+						path: Paths.getSkinPath() + i
 					});
 				}
 			}
@@ -744,38 +744,38 @@ class PlayState extends MusicBeatState
 				});
 			}else{
 				shitToLoad.push({
-					path: "noteSplashes"
+					path: Paths.getSkinPath() + "noteSplashes"
 				});
 			}
 
 			shitToLoad.push({
-				path: "NOTE_assets"
+				path: Paths.getSkinPath() + "NOTE_assets"
 			});
 
 			if(isPixelStage){
 				for (number in 0...10)
-					shitToLoad.push({path: 'pixelUI/num${number}-pixel', library: "shared"});
+					shitToLoad.push({path: Paths.getSkinPath(true) + 'num${number}-pixel', library: "shared"});
 
-				shitToLoad.push({path: "pixelUI/sick-pixel", library: "shared"});
-				shitToLoad.push({path: "pixelUI/good-pixel", library: "shared"});
-				shitToLoad.push({path: "pixelUI/bad-pixel", library: "shared"});
-				shitToLoad.push({path: "pixelUI/shit-pixel", library: "shared"});
-				shitToLoad.push({path: "pixelUI/combo-pixel", library: "shared"});
+				shitToLoad.push({path: Paths.getSkinPath(true) + "sick-pixel", library: "shared"});
+				shitToLoad.push({path: Paths.getSkinPath(true) + "good-pixel", library: "shared"});
+				shitToLoad.push({path: Paths.getSkinPath(true) + "bad-pixel", library: "shared"});
+				shitToLoad.push({path: Paths.getSkinPath(true) + "shit-pixel", library: "shared"});
+				shitToLoad.push({path: Paths.getSkinPath(true) + "combo-pixel", library: "shared"});
 
 				shitToLoad.push({
-					path: "pixelUI/NOTE_assets",
+					path: Paths.getSkinPath(true) + "NOTE_assets",
 					library: "shared",
 				});
 				if(ClientPrefs.noteSkin=='Quants'){
 					shitToLoad.push({
-						path: "pixelUI/QUANTNOTE_assets",
+						path: Paths.getSkinPath(true) + "QUANTNOTE_assets",
 						library: "shared"
 					});
 				}
 			}else{
 				if(ClientPrefs.noteSkin=='Quants'){
 					shitToLoad.push({
-						path: "QUANTNOTE_assets"
+						path: Paths.getSkinPath() + "QUANTNOTE_assets"
 					});
 				}
 			}
@@ -783,7 +783,7 @@ class PlayState extends MusicBeatState
 
 			if(ClientPrefs.timeBarType != 'Disabled'){
 				shitToLoad.push({
-					path: "timeBar",
+					path: Paths.getSkinPath() + "timeBar",
 					library: "shared"
 				});
 			}
@@ -2152,7 +2152,7 @@ class PlayState extends MusicBeatState
 						case 0:
 							if(countdownSounds) FlxG.sound.play(Paths.sound('intro3' + introSoundsSuffix), 0.6);
 						case 1:
-							countdownReady = new FlxSprite().loadGraphic(Paths.image(introAlts[0]));
+							countdownReady = new FlxSprite().loadGraphic(Paths.image(Paths.getSkinPath() + introAlts[0]));
 							countdownReady.scrollFactor.set();
 							countdownReady.updateHitbox();
 	
@@ -2175,7 +2175,7 @@ class PlayState extends MusicBeatState
 							setOnHScripts('countdownReady', countdownReady);
 	
 						case 2:
-							countdownSet = new FlxSprite().loadGraphic(Paths.image(introAlts[1]));
+							countdownSet = new FlxSprite().loadGraphic(Paths.image(Paths.getSkinPath() + introAlts[1]));
 							countdownSet.scrollFactor.set();
 	
 							if (PlayState.isPixelStage)
@@ -2196,7 +2196,7 @@ class PlayState extends MusicBeatState
 							setOnHScripts('countdownSet', countdownSet);
 	
 						case 3:
-							countdownGo = new FlxSprite().loadGraphic(Paths.image(introAlts[2]));
+							countdownGo = new FlxSprite().loadGraphic(Paths.image(Paths.getSkinPath() + introAlts[2]));
 							countdownGo.scrollFactor.set();
 	
 							if (PlayState.isPixelStage)
@@ -5707,68 +5707,9 @@ class PlayState extends MusicBeatState
 			var achievementName:String = achievesToCheck[i];
 			if(!Achievements.isAchievementUnlocked(achievementName) && !cpuControlled) {
 				var unlock:Bool = false;
-				switch(achievementName)
-				{
-					case 'week1_nomiss' | 'week2_nomiss' | 'week3_nomiss' | 'week4_nomiss' | 'week5_nomiss' | 'week6_nomiss':
-						if(isStoryMode && campaignMisses + songMisses < 1 && CoolUtil.difficultyString() == 'HARD' && storyPlaylist.length <= 1 && !changedDifficulty && !usedPractice)
-						{
-							var weekName:String = WeekData.getWeekFileName();
-							switch(weekName) //I know this is a lot of duplicated code, but it's easier readable and you can add weeks with different names than the achievement tag
-							{
-								case 'week1':
-									if(achievementName == 'week1_nomiss') unlock = true;
-								case 'week2':
-									if(achievementName == 'week2_nomiss') unlock = true;
-								case 'week3':
-									if(achievementName == 'week3_nomiss') unlock = true;
-								case 'week4':
-									if(achievementName == 'week4_nomiss') unlock = true;
-								case 'week5':
-									if(achievementName == 'week5_nomiss') unlock = true;
-								case 'week6':
-									if(achievementName == 'week6_nomiss') unlock = true;
-							}
-						}
-					case 'ur_bad':
-						if(ratingPercent < 0.2 && !practiceMode) {
-							unlock = true;
-						}
-					case 'ur_good':
-						if(ratingPercent >= 1 && !usedPractice) {
-							unlock = true;
-						}
-					case 'roadkill_enthusiast':
-						if(Achievements.henchmenDeath >= 100) {
-							unlock = true;
-						}
-					case 'oversinging':
-						if(boyfriend.holdTimer >= 10 && !usedPractice) {
-							unlock = true;
-						}
-					case 'hype':
-						if(!boyfriendIdled && !usedPractice) {
-							unlock = true;
-						}
-					case 'two_keys':
-						if(!usedPractice) {
-							var howManyPresses:Int = 0;
-							for (j in 0...keysPressed.length) {
-								if(keysPressed[j]) howManyPresses++;
-							}
-
-							if(howManyPresses <= 2) {
-								unlock = true;
-							}
-						}
-					case 'toastie':
-						if(/*ClientPrefs.framerate <= 60 &&*/ ClientPrefs.lowQuality && !ClientPrefs.globalAntialiasing && !ClientPrefs.imagesPersist) {
-							unlock = true;
-						}
-					case 'debugger':
-						if(Paths.formatToSongPath(SONG.song) == 'test' && !usedPractice) {
-							unlock = true;
-						}
-				}
+				// switch(achievementName)
+				// {
+				// }
 
 				if(unlock) {
 					Achievements.unlockAchievement(achievementName);

@@ -27,6 +27,19 @@ using StringTools;
 
 class Paths
 {
+	public static var skinPaths:Map<String, String> = [
+		"original" => "ui/original/",
+		"v3" => "ui/v3/",
+		"pixel-original" => "pixelUI/original/",
+		"pixel-v3" => "pixelUI/v3/"
+	];
+
+	public static var currentSkin = "v3";
+
+	inline public static function getSkinPath(isPixel:Bool = false):String {
+		return skinPaths[(isPixel ? "pixel-" : "") + currentSkin];
+	}
+
 	inline public static var SOUND_EXT = #if web "mp3" #else "ogg" #end;
 	inline public static var VIDEO_EXT = "mp4";
 
@@ -281,7 +294,6 @@ class Paths
 	
 	inline static public function modsShaderVertex(key:String, ?library:String)
 		return modFolders('shaders/'+key+'.vert');
-
 
 	inline static public function image(key:String, ?library:String):FlxGraphic
 	{
