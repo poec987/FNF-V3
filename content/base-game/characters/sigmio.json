@@ -1,0 +1,98 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-7,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"cameraOffset": [
+				0,
+				0
+			],
+			"anim": "idle",
+			"loop": false,
+			"name": "dance"
+		},
+		{
+			"offsets": [
+				1,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"cameraOffset": [
+				0,
+				0
+			],
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "Left"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"cameraOffset": [
+				0,
+				0
+			],
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "Right"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"cameraOffset": [
+				0,
+				-30
+			],
+			"anim": "singUP",
+			"loop": false,
+			"name": "Up"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"cameraOffset": [
+				0,
+				-30
+			],
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "Down"
+		}
+	],
+	"no_antialiasing": true,
+	"image": "characters/sigmio",
+	"position": [
+		130,
+		-10
+	],
+	"healthicon": "sigmio",
+	"flip_x": false,
+	"healthbar_colors": [
+		161,
+		161,
+		161
+	],
+	"camera_position": [
+		-500,
+		40
+	],
+	"sing_duration": 6.1,
+	"scale": 3
+}
