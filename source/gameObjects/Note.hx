@@ -507,16 +507,16 @@ class Note extends FlxSprite
 		if(PlayState.isPixelStage) {
 			if(isSustainNote) {
 				if ((ClientPrefs.noteSkin == 'Quants' || ClientPrefs.noteSkin == "QuantStep") && canQuant){
-					if(Assets.exists(Paths.getPath("images/" + Paths.getSkinPath(true) + "QUANT" + blahblah + "ENDS.png", IMAGE)) || FileSystem.exists(Paths.modsImages("pixelUI/QUANT" + blahblah + "ENDS"))) {
+					if(Assets.exists(Paths.getPath("images/" + "QUANT" + blahblah + "ENDS.png", IMAGE)) || FileSystem.exists(Paths.modsImages("pixelUI/QUANT" + blahblah + "ENDS"))) {
 						blahblah = "QUANT" + blahblah;
 						isQuant = true;
 					}
 				}
-				loadGraphic(Paths.image(Paths.getSkinPath(true) + blahblah + 'ENDS'));
+				loadGraphic(Paths.image(blahblah + 'ENDS'));
 				width = width / 4;
 				height = height / 2;
 				originalHeightForCalcs = height;
-				loadGraphic(Paths.image(Paths.getSkinPath(true) + blahblah + 'ENDS'), true, Math.floor(width), Math.floor(height));
+				loadGraphic(Paths.image(blahblah + 'ENDS'), true, Math.floor(width), Math.floor(height));
 			} else {
 				if ((ClientPrefs.noteSkin == 'Quants' || ClientPrefs.noteSkin == "QuantStep") && canQuant){
 					if(Assets.exists(Paths.getPath("images/" + Paths.getSkinPath(true) + "QUANT" + blahblah + ".png", IMAGE)) || FileSystem.exists(Paths.modsImages("pixelUI/QUANT" + blahblah))) {
@@ -524,10 +524,10 @@ class Note extends FlxSprite
 						isQuant = true;
 					}
 				}
-				loadGraphic(Paths.image(Paths.getSkinPath(true) + blahblah));
+				loadGraphic(Paths.image(blahblah));
 				width = width / 4;
 				height = height / 5;
-				loadGraphic(Paths.image(Paths.getSkinPath(true) + blahblah), true, Math.floor(width), Math.floor(height));
+				loadGraphic(Paths.image(blahblah), true, Math.floor(width), Math.floor(height));
 			}
 			setGraphicSize(Std.int(width * PlayState.daPixelZoom));
 			loadPixelNoteAnims();

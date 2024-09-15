@@ -91,15 +91,15 @@ class StrumNote extends FlxSprite
 		if(PlayState.isPixelStage)
 		{
 			if((ClientPrefs.noteSkin == 'Quants' || ClientPrefs.noteSkin == "QuantStep")){
-				if(Assets.exists(Paths.getPath("images/pixelUI/QUANT" + texture + ".png", IMAGE)) || FileSystem.exists(Paths.modsImages("pixelUI/QUANT" + texture))) {
+				if(Assets.exists(Paths.getPath("images/" + Paths.getSkinPath(true) + "QUANT" + texture + ".png", IMAGE)) || FileSystem.exists(Paths.modsImages("pixelUI/QUANT" + texture))) {
 					br = "QUANT" + texture;
 					isQuant=true;
 				}
 			}
-			loadGraphic(Paths.image('pixelUI/' + br));
+			loadGraphic(Paths.image(Paths.getSkinPath(true) + br));
 			width = width / 4;
 			height = height / 5;
-			loadGraphic(Paths.image('pixelUI/' + br), true, Math.floor(width), Math.floor(height));
+			loadGraphic(Paths.image(Paths.getSkinPath(true) + br), true, Math.floor(width), Math.floor(height));
 
 			antialiasing = false;
 			setGraphicSize(Std.int(width * PlayState.daPixelZoom));
@@ -131,7 +131,7 @@ class StrumNote extends FlxSprite
 		else
 		{
 			if((ClientPrefs.noteSkin == 'Quants' || ClientPrefs.noteSkin == "QuantStep")){
-				if(Assets.exists(Paths.getPath("images/QUANT" + texture + ".png", IMAGE)) || FileSystem.exists(Paths.modsImages("QUANT" + texture))) {
+				if(Assets.exists(Paths.getPath("images/" + Paths.getSkinPath()+ "QUANT" + texture + ".png", IMAGE)) || FileSystem.exists(Paths.modsImages("QUANT" + texture))) {
 					br = "QUANT" + texture;
 					isQuant=true;
 					trace(br);

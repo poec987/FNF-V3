@@ -594,6 +594,20 @@ class PlayState extends MusicBeatState
 		Conductor.mapBPMChanges(SONG);
 		Conductor.changeBPM(SONG.bpm);
 
+		GameOverSubstate.resetVariables();
+		var songName:String = Paths.formatToSongPath(SONG.song);
+
+		curStage = SONG.stage;
+		if (SONG.stage == null || SONG.stage.length < 1)
+			SONG.stage = 'stage';
+		curStage = SONG.stage;
+
+		stage = new Stage(curStage);
+		stageData = stage.stageData;
+		setStageData(stageData);
+
+		setOnScripts('stage', stage);
+
 		arrowSkin = SONG.arrowSkin;
 		scriptedNoteOffsets = [];
 		scriptedStrumOffsets = [];
@@ -637,7 +651,7 @@ class PlayState extends MusicBeatState
 			var skins = ['bfSkin', 'dadSkin'];
 			arrowSkins = [];
 			for(skin in skins){
-				arrowSkins.push(Paths.getSkinPath() + noteskinScript.call(skin, []));
+				arrowSkins.push(Paths.getSkinPath(PlayState.isPixelStage) + noteskinScript.call(skin, []));
 			}
 			arrowSkin = noteskinScript.call('arrowSkin', []);
 			trace(noteskinScript.call('bfSkin', []));
@@ -648,7 +662,7 @@ class PlayState extends MusicBeatState
 			trace(scriptedSustainOffsets);
 
 		}else{
-			arrowSkins = [Paths.getSkinPath() + 'NOTE_assets', Paths.getSkinPath() + 'NOTE_assets'];
+			arrowSkins = [Paths.getSkinPath(PlayState.isPixelStage) + 'NOTE_assets', Paths.getSkinPath(PlayState.isPixelStage) + 'NOTE_assets'];
 			trace('oops.. your noteskin script is null!!!!!\nMake sure your noteskin exists under one of these names:');
 			for(ext in hscriptExts){ trace(Paths.modsNoteskin('${SONG.arrowSkin}.$ext')); trace(FileSystem.exists(Paths.modsNoteskin('${SONG.arrowSkin}.$ext'))); }
 		}
@@ -674,14 +688,6 @@ class PlayState extends MusicBeatState
 		bottomBar = new FlxSprite(0, 720).makeGraphic(1280, 170, FlxColor.BLACK);
 
 
-		GameOverSubstate.resetVariables();
-		var songName:String = Paths.formatToSongPath(SONG.song);
-
-		curStage = SONG.stage;
-		if (SONG.stage == null || SONG.stage.length < 1)
-			SONG.stage = 'stage';
-		curStage = SONG.stage;
-
 		// stageData = StageData.getStageFile(curStage);
 		// if(stageData == null) { //Stage couldn't be found, create a dummy stage for preventing a crash
 		// 	stageData = {
@@ -700,12 +706,6 @@ class PlayState extends MusicBeatState
 		// 		camera_speed: 1
 		// 	};
 		// }
-
-		stage = new Stage(curStage);
-		stageData = stage.stageData;
-		setStageData(stageData);
-
-		setOnScripts('stage', stage);
 
 		#if loadBenchmark
 		var startLoadTime = Sys.time();
@@ -763,12 +763,12 @@ class PlayState extends MusicBeatState
 				shitToLoad.push({path: Paths.getSkinPath(true) + "combo-pixel", library: "shared"});
 
 				shitToLoad.push({
-					path: Paths.getSkinPath(true) + "NOTE_assets",
+					path: "NOTE_assets",
 					library: "shared",
 				});
 				if(ClientPrefs.noteSkin=='Quants'){
 					shitToLoad.push({
-						path: Paths.getSkinPath(true) + "QUANTNOTE_assets",
+						path: "QUANTNOTE_assets",
 						library: "shared"
 					});
 				}
