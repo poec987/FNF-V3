@@ -505,30 +505,29 @@ class Note extends FlxSprite
 		var blahblah:String = arraySkin.join('/');
 		isQuant = false;
 		if(PlayState.isPixelStage) {
-			Paths.currentSkin = "pixel-v3";
 			if(isSustainNote) {
 				if ((ClientPrefs.noteSkin == 'Quants' || ClientPrefs.noteSkin == "QuantStep") && canQuant){
-					if(Assets.exists(Paths.getPath("images/" + Paths.getSkinPath() + "QUANT" + blahblah + "ENDS.png", IMAGE)) || FileSystem.exists(Paths.modsImages("pixelUI/QUANT" + blahblah + "ENDS"))) {
+					if(Assets.exists(Paths.getPath("images/" + Paths.getSkinPath(true) + "QUANT" + blahblah + "ENDS.png", IMAGE)) || FileSystem.exists(Paths.modsImages("pixelUI/QUANT" + blahblah + "ENDS"))) {
 						blahblah = "QUANT" + blahblah;
 						isQuant = true;
 					}
 				}
-				loadGraphic(Paths.image(Paths.getSkinPath() + blahblah + 'ENDS'));
+				loadGraphic(Paths.image(Paths.getSkinPath(true) + blahblah + 'ENDS'));
 				width = width / 4;
 				height = height / 2;
 				originalHeightForCalcs = height;
-				loadGraphic(Paths.image(Paths.getSkinPath() + blahblah + 'ENDS'), true, Math.floor(width), Math.floor(height));
+				loadGraphic(Paths.image(Paths.getSkinPath(true) + blahblah + 'ENDS'), true, Math.floor(width), Math.floor(height));
 			} else {
 				if ((ClientPrefs.noteSkin == 'Quants' || ClientPrefs.noteSkin == "QuantStep") && canQuant){
-					if(Assets.exists(Paths.getPath("images/" + Paths.getSkinPath() + "QUANT" + blahblah + ".png", IMAGE)) || FileSystem.exists(Paths.modsImages("pixelUI/QUANT" + blahblah))) {
+					if(Assets.exists(Paths.getPath("images/" + Paths.getSkinPath(true) + "QUANT" + blahblah + ".png", IMAGE)) || FileSystem.exists(Paths.modsImages("pixelUI/QUANT" + blahblah))) {
 						blahblah = "QUANT" + blahblah;
 						isQuant = true;
 					}
 				}
-				loadGraphic(Paths.image(Paths.getSkinPath() + blahblah));
+				loadGraphic(Paths.image(Paths.getSkinPath(true) + blahblah));
 				width = width / 4;
 				height = height / 5;
-				loadGraphic(Paths.image(Paths.getSkinPath() + blahblah), true, Math.floor(width), Math.floor(height));
+				loadGraphic(Paths.image(Paths.getSkinPath(true) + blahblah), true, Math.floor(width), Math.floor(height));
 			}
 			setGraphicSize(Std.int(width * PlayState.daPixelZoom));
 			loadPixelNoteAnims();
@@ -547,7 +546,6 @@ class Note extends FlxSprite
 				}*/
 			}
 		} else {
-			Paths.currentSkin = "v3";
 			if ((ClientPrefs.noteSkin == 'Quants' || ClientPrefs.noteSkin == "QuantStep") && canQuant){
 				if(Assets.exists(Paths.getPath(Paths.getSkinPath() + "/QUANT" + blahblah + ".png", IMAGE)) || FileSystem.exists(Paths.modsImages("QUANT" + blahblah))) { // this can probably only be done once and then added to some sort of cache
 					// soon:tm:

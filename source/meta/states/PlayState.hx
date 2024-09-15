@@ -637,7 +637,7 @@ class PlayState extends MusicBeatState
 			var skins = ['bfSkin', 'dadSkin'];
 			arrowSkins = [];
 			for(skin in skins){
-				arrowSkins.push(noteskinScript.call(skin, []));
+				arrowSkins.push(Paths.getSkinPath() + noteskinScript.call(skin, []));
 			}
 			arrowSkin = noteskinScript.call('arrowSkin', []);
 			trace(noteskinScript.call('bfSkin', []));
@@ -648,7 +648,7 @@ class PlayState extends MusicBeatState
 			trace(scriptedSustainOffsets);
 
 		}else{
-			arrowSkins = ['NOTE_assets', 'NOTE_assets'];
+			arrowSkins = [Paths.getSkinPath() + 'NOTE_assets', Paths.getSkinPath() + 'NOTE_assets'];
 			trace('oops.. your noteskin script is null!!!!!\nMake sure your noteskin exists under one of these names:');
 			for(ext in hscriptExts){ trace(Paths.modsNoteskin('${SONG.arrowSkin}.$ext')); trace(FileSystem.exists(Paths.modsNoteskin('${SONG.arrowSkin}.$ext'))); }
 		}
@@ -1178,7 +1178,7 @@ class PlayState extends MusicBeatState
 
 		updateTime = showTime;
 
-		timeBarBG = new AttachedSprite('timeBar');
+		timeBarBG = new AttachedSprite(Paths.getSkinPath() + 'timeBar');
 		timeBarBG.x = timeTxt.x;
 		timeBarBG.y = timeTxt.y + (timeTxt.height / 4);
 		timeBarBG.scrollFactor.set();
@@ -1318,7 +1318,7 @@ class PlayState extends MusicBeatState
 		FlxG.fixedTimestep = false;
 		moveCameraSection();
 
-		healthBarBG = new AttachedSprite('healthBar');
+		healthBarBG = new AttachedSprite(Paths.getSkinPath() + 'healthBar');
 		healthBarBG.y = camHUD.height * 0.89;
 		healthBarBG.screenCenter(X);
 		healthBarBG.scrollFactor.set();
