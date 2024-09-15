@@ -1,13 +1,13 @@
 function onLoad(){
-    var bg:BGSprite = new BGSprite('christmas/evilBG', -400, -500, 0.2, 0.2);
+    var bg:BGSprite = new BGSprite('stages/christmas/evilBG', -400, -500, 0.2, 0.2);
     bg.setGraphicSize(Std.int(bg.width * 0.8));
     bg.updateHitbox();
     add(bg);
 
-    var evilTree:BGSprite = new BGSprite('christmas/evilTree', 300, -300, 0.2, 0.2);
+    var evilTree:BGSprite = new BGSprite('stages/christmas/evilTree', 300, -300, 0.2, 0.2);
     add(evilTree);
 
-    var evilSnow:BGSprite = new BGSprite('christmas/evilSnow', -200, 700);
+    var evilSnow:BGSprite = new BGSprite('stages/christmas/evilSnow', -200, 700);
     add(evilSnow);
 }
 
@@ -26,7 +26,7 @@ function onStartCountdown(){
                 remove(blackScreen);
             }
         });
-        FlxG.sound.play(Paths.sound('Lights_Turn_On'));
+        FlxG.sound.play(Paths.sound('stages/christmas/Lights_Turn_On'));
         game.snapCamFollowToPos(400, -2050);
         FlxG.camera.focusOn(game.camFollow);
         FlxG.camera.zoom = 1.5;

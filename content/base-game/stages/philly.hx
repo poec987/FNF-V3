@@ -6,34 +6,34 @@ var blammedLightsBlack:FlxSprite;
 var trainSound:FlxSound;
 function onLoad(){
     if(!ClientPrefs.lowQuality) {
-        var bg:BGSprite = new BGSprite('philly/sky', -100, 0, 0.1, 0.1);
+        var bg:BGSprite = new BGSprite('stages/philly/sky', -100, 0, 0.1, 0.1);
         add(bg);
     }
 
-    var city:BGSprite = new BGSprite('philly/city', -10, 0, 0.3, 0.3);
+    var city:BGSprite = new BGSprite('stages/philly/city', -10, 0, 0.3, 0.3);
     city.setGraphicSize(Std.int(city.width * 0.85));
     city.updateHitbox();
     add(city);
 
     phillyLightsColors = [0xFF31A2FD, 0xFF31FD8C, 0xFFFB33F5, 0xFFFD4531, 0xFFFBA633];
-    phillyWindow = new BGSprite('philly/window', city.x, city.y, 0.3, 0.3);
+    phillyWindow = new BGSprite('stages/philly/window', city.x, city.y, 0.3, 0.3);
     phillyWindow.setGraphicSize(Std.int(phillyWindow.width * 0.85));
     phillyWindow.updateHitbox();
     add(phillyWindow);
     phillyWindow.alpha = 0;
 
     if(!ClientPrefs.lowQuality) {
-        var streetBehind:BGSprite = new BGSprite('philly/behindTrain', -40, 50);
+        var streetBehind:BGSprite = new BGSprite('stages/philly/behindTrain', -40, 50);
         add(streetBehind);
     }
 
-    phillyTrain = new BGSprite('philly/train', 2000, 360);
+    phillyTrain = new BGSprite('stages/philly/train', 2000, 360);
     add(phillyTrain);
 
-    trainSound = new FlxSound().loadEmbedded(Paths.sound('train_passes'));
+    trainSound = new FlxSound().loadEmbedded(Paths.sound('stages/philly/train_passes'));
     FlxG.sound.list.add(trainSound);
 
-    phillyStreet = new BGSprite('philly/street', -40, 50);
+    phillyStreet = new BGSprite('stages/philly/street', -40, 50);
     add(phillyStreet);   
 }
 
