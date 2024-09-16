@@ -519,7 +519,7 @@ class Note extends FlxSprite
 				loadGraphic(Paths.image(blahblah + 'ENDS'), true, Math.floor(width), Math.floor(height));
 			} else {
 				if ((ClientPrefs.noteSkin == 'Quants' || ClientPrefs.noteSkin == "QuantStep") && canQuant){
-					if(Assets.exists(Paths.getPath("images/" + Paths.getSkinPath(true) + "QUANT" + blahblah + ".png", IMAGE)) || FileSystem.exists(Paths.modsImages("pixelUI/QUANT" + blahblah))) {
+					if(Assets.exists(Paths.getPath("images/QUANT" + blahblah + ".png", IMAGE)) || FileSystem.exists(Paths.modsImages("pixelUI/QUANT" + blahblah))) {
 						blahblah = "QUANT" + blahblah;
 						isQuant = true;
 					}

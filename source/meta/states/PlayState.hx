@@ -606,6 +606,11 @@ class PlayState extends MusicBeatState
 		stageData = stage.stageData;
 		setStageData(stageData);
 
+		if (SONG.song.toLowerCase() == 'thorns')
+			Paths.currentSkin = "original";
+		else
+			Paths.currentSkin = "v3";
+
 		setOnScripts('stage', stage);
 
 		arrowSkin = SONG.arrowSkin;
@@ -732,7 +737,7 @@ class PlayState extends MusicBeatState
 			for(i in arrowSkins){
 				if(i!=null && i.trim()!='' && i.length > 0){
 					shitToLoad.push({
-						path: Paths.getSkinPath() + i
+						path: i
 					});
 				}
 			}
@@ -749,7 +754,7 @@ class PlayState extends MusicBeatState
 			}
 
 			shitToLoad.push({
-				path: Paths.getSkinPath() + "NOTE_assets"
+				path: "NOTE_assets"
 			});
 
 			if(isPixelStage){
@@ -764,7 +769,6 @@ class PlayState extends MusicBeatState
 
 				shitToLoad.push({
 					path: "NOTE_assets",
-					library: "shared",
 				});
 				if(ClientPrefs.noteSkin=='Quants'){
 					shitToLoad.push({
