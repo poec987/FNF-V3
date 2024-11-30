@@ -21,7 +21,10 @@ class HealthIcon extends FlxSprite
 		animation.add('ogbf-pixel', [0, 1], 0, false, isPlayer);
 		animation.add('bf-bside', [0, 1], 0, false, isPlayer);
 		animation.add('bf-car', [0, 1], 0, false, isPlayer);
+		animation.add('scpboyfriend', [0, 1], 0, false, isPlayer);
+		animation.add('perkydeath', [0, 1], 0, false, isPlayer);
 		animation.add('bf-christmas', [0, 1], 0, false, isPlayer);
+		animation.add('bf-thanksgiving', [0, 1], 0, false, isPlayer);
 		animation.add('bf-pixel', [21, 21], 0, false, isPlayer);
 		animation.add('bf-pixel-good', [28, 28], 0, false, isPlayer);
 		animation.add('spooky', [2, 3], 0, false, isPlayer);
@@ -41,6 +44,7 @@ class HealthIcon extends FlxSprite
 		animation.add('gf', [16], 0, false, isPlayer);
 		animation.add('parents-christmas', [17], 0, false, isPlayer);
 		animation.add('monster', [19, 20], 0, false, isPlayer);
+		animation.add('monster-thanksgiving', [19, 20], 0, false, isPlayer);
 		animation.add('monster-christmas', [59, 59], 0, false, isPlayer);
 		animation.add('dickhead', [24, 25], 0, false, isPlayer);
 		animation.add('dave', [26, 27], 0, false, isPlayer);

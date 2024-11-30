@@ -131,6 +131,11 @@ class SongCard extends FlxTypedGroup<FlxSprite>{
                 setName("bopcityfansong", "Didgie");
             case 'celebrate':
                 setName("Celebrate V3", "Xarion");
+			//Thanksgiving
+			case 'gravy':
+                setName("Gravy", "Peako");
+            case 'pumpkin-die':
+                setName("Pumpkin Die", "Didgie");
 
             default:
                 // setName("keemstar", "bald shadow mario");

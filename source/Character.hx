@@ -125,6 +125,34 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 				flipX = true;
+			case 'bf-thanksgiving':
+				var tex = Paths.getSparrowAtlas('characters/thanksgiving/bfThanksgiving');
+				frames = tex;
+				animation.addByPrefix('idle', 'BF idle dance', 24, false);
+				animation.addByPrefix('singUP', 'BF NOTE UP0', 24, false);
+				animation.addByPrefix('singLEFT', 'BF NOTE LEFT0', 24, false);
+				animation.addByPrefix('singRIGHT', 'BF NOTE RIGHT0', 24, false);
+				animation.addByPrefix('singDOWN', 'BF NOTE DOWN0', 24, false);
+				animation.addByPrefix('singUPmiss', 'BF NOTE UP MISS', 24, false);
+				animation.addByPrefix('singLEFTmiss', 'BF NOTE LEFT MISS', 24, false);
+				animation.addByPrefix('singRIGHTmiss', 'BF NOTE RIGHT MISS', 24, false);
+				animation.addByPrefix('singDOWNmiss', 'BF NOTE DOWN MISS', 24, false);
+				animation.addByPrefix('hey', 'BF HEY', 24, false);
+
+				addOffset('idle', -5);
+				addOffset("singUP", -29, 27);
+				addOffset("singRIGHT", -38, -7);
+				addOffset("singLEFT", 12, -6);
+				addOffset("singDOWN", -10, -50);
+				addOffset("singUPmiss", -29, 27);
+				addOffset("singRIGHTmiss", -30, 21);
+				addOffset("singLEFTmiss", 12, 24);
+				addOffset("singDOWNmiss", -11, -19);
+				addOffset("hey", 7, 4);
+
+				playAnim('idle');
+
+				flipX = true;
 			case 'bf-car':
 				var tex = Paths.getSparrowAtlas('characters/limo/bfCar');
 				frames = tex;
@@ -279,6 +307,25 @@ class Character extends FlxSprite
 				updateHitbox();
 				antialiasing = false;
 				flipX = true;
+			case 'perkydeath':
+				frames = Paths.getSparrowAtlas('characters/BOYFRIEND_PERKY_DEATH');
+				animation.addByPrefix('singUP', "Beef Perky", 24, false);
+				animation.addByPrefix('singRIGHT', "Beef Perky", 24, false);
+				animation.addByPrefix('singLEFT', "Beef Perky", 24, false);
+				animation.addByPrefix('singDOWN', "Beef Perky", 24, false);
+				animation.addByPrefix('firstDeath', "Beef Perky", 24, false);
+				animation.addByPrefix('deathLoop', "yeah", 24, true);
+				animation.addByPrefix('deathConfirm', "yeah", 24, false);
+				animation.play('firstDeath');
+
+				addOffset('firstDeath');
+				addOffset('deathLoop');
+				addOffset('deathConfirm');
+				playAnim('firstDeath');
+				// pixel bullshit
+				updateHitbox();
+
+				flipX = true;
 			case 'scpboyfriend':
 				frames = Paths.getSparrowAtlas('characters/foundation/SCPBOYFRIEND');
 
@@ -373,6 +420,36 @@ class Character extends FlxSprite
 				updateHitbox();
 			case 'gf-christmas':
 				tex = Paths.getSparrowAtlas('characters/christmas/gfChristmas');
+				frames = tex;
+				animation.addByPrefix('cheer', 'GF Cheer', 24, false);
+				animation.addByPrefix('singLEFT', 'GF left note', 24, false);
+				animation.addByPrefix('singRIGHT', 'GF Right Note', 24, false);
+				animation.addByPrefix('singUP', 'GF Up Note', 24, false);
+				animation.addByPrefix('singDOWN', 'GF Down Note', 24, false);
+				animation.addByIndices('sad', 'gf sad', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "", 24, false);
+				animation.addByIndices('danceLeft', 'GF Dancing Beat', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
+				animation.addByIndices('danceRight', 'GF Dancing Beat', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
+				animation.addByIndices('hairBlow', "GF Dancing Beat Hair blowing", [0, 1, 2, 3], "", 24);
+				animation.addByIndices('hairFall', "GF Dancing Beat Hair Landing", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], "", 24, false);
+				animation.addByPrefix('scared', 'GF FEAR', 24);
+
+				addOffset('cheer');
+				addOffset('sad', -2, -2);
+				addOffset('danceLeft', 0, -9);
+				addOffset('danceRight', 0, -9);
+
+				addOffset("singUP", 0, 4);
+				addOffset("singRIGHT", 0, -20);
+				addOffset("singLEFT", 0, -19);
+				addOffset("singDOWN", 0, -20);
+				addOffset('hairBlow', 45, -8);
+				addOffset('hairFall', 0, -9);
+
+				addOffset('scared', -2, -17);
+
+				playAnim('danceRight');
+			case 'gf-thanksgiving':
+				tex = Paths.getSparrowAtlas('characters/thanksgiving/gfThanksgiving');
 				frames = tex;
 				animation.addByPrefix('cheer', 'GF Cheer', 24, false);
 				animation.addByPrefix('singLEFT', 'GF left note', 24, false);
@@ -527,6 +604,25 @@ class Character extends FlxSprite
 				addOffset("singLEFT", -30);
 				addOffset("singDOWN", -30, -40);
 				playAnim('idle');
+			case 'monster-thanksgiving':
+				tex = Paths.getSparrowAtlas('characters/thanksgiving/monsterThanksgiving');
+				frames = tex;
+				animation.addByPrefix('danceLeft', 'danceLeft', 30, false);
+				animation.addByPrefix('danceRight', 'danceRight', 30, false);
+				animation.addByPrefix('singUP', 'Up', 30, false);
+				animation.addByPrefix('singDOWN', 'Down', 30, false);
+				animation.addByPrefix('singLEFT', 'Left', 30, false);
+				animation.addByPrefix('singRIGHT', 'Right', 30, false);
+				scale.set(0.9,0.9);
+				updateHitbox();
+				
+				addOffset('danceLeft');
+				addOffset('danceRight', -88,-4);
+				addOffset("singUP", -44, -2);
+				addOffset("singRIGHT", -177,-123);
+				addOffset("singLEFT", 127,-27);
+				addOffset("singDOWN", -31, -269);
+				playAnim('danceLeft');
 			case 'monster-christmas':
 				tex = Paths.getSparrowAtlas('characters/christmas/monsterChristmas');
 				frames = tex;
@@ -966,11 +1062,11 @@ class Character extends FlxSprite
 				animation.addByPrefix('singLEFT', "Left", 24, false);
 				animation.addByPrefix('singDOWN', "Down", 24, false);
 
-				addOffset('idle', 0, -200);
-				addOffset('singUP', 0, -200);
-				addOffset("singRIGHT", 0, -200);
-				addOffset("singLEFT", 0, -200);
-				addOffset("singDOWN", 0, -200);
+				addOffset('idle', -40, -230);
+				addOffset('singUP', -50, -165);
+				addOffset("singRIGHT", -55, -295);
+				addOffset("singLEFT", 30, -285);
+				addOffset("singDOWN", -160, -375);
 
 				updateHitbox();
 
@@ -1112,6 +1208,16 @@ class Character extends FlxSprite
 						else
 							playAnim('danceLeft');
 					}
+				case 'gf-thanksgiving':
+					if (!animation.curAnim.name.startsWith('hair'))
+					{
+						danced = !danced;
+
+						if (danced)
+							playAnim('danceRight');
+						else
+							playAnim('danceLeft');
+					}
 
 				case 'gf-car':
 					if (!animation.curAnim.name.startsWith('hair'))
@@ -1134,6 +1240,16 @@ class Character extends FlxSprite
 							playAnim('danceLeft');
 					}
 				case 'sigmio':
+					if (!animation.curAnim.name.startsWith('hair'))
+					{
+						danced = !danced;
+
+						if (danced)
+							playAnim('danceRight');
+						else
+							playAnim('danceLeft');
+					}
+				case 'monster-thanksgiving':
 					if (!animation.curAnim.name.startsWith('hair'))
 					{
 						danced = !danced;

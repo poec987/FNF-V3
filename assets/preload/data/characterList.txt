@@ -13,6 +13,8 @@ monster-christmas
 bf-christmas
 gf-christmas
 monster
+bf-thanksgiving
+monster-thanksgiving
 bf-pixel
 bf-pixel-good
 ogbf-pixel

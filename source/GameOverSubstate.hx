@@ -11,13 +11,14 @@ class GameOverSubstate extends MusicBeatSubstate
 {
 	var bf:Boyfriend;
 	var camFollow:FlxObject;
+	var daBf:String = '';
 
 	var stageSuffix:String = "";
 
 	public function new(x:Float, y:Float)
 	{
 		var daSong = PlayState.curSong;
-		var daBf:String = '';
+		
 		switch (daSong.toLowerCase())
 		{
 			case 'senpai':
@@ -29,6 +30,8 @@ class GameOverSubstate extends MusicBeatSubstate
 			case 'thorns':
 				stageSuffix = '-pixel-good';
 				daBf = 'bf-pixel-dead';
+			case 'scopophobia':
+				daBf = 'perkydeath';
 			default:
 				daBf = 'bf';
 		}
@@ -39,11 +42,15 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		bf = new Boyfriend(x, y, daBf);
 		add(bf);
+		trace('bf added');
 
-		camFollow = new FlxObject(bf.getGraphicMidpoint().x, bf.getGraphicMidpoint().y, 1, 1);
+		camFollow = new FlxObject(bf.getGraphicMidpoint().x, bf.getGraphicMidpoint().y,1,1);
 		add(camFollow);
 
-		FlxG.sound.play(Paths.sound('fnf_loss_sfx' + stageSuffix));
+		if (daBf != 'perkydeath')
+			FlxG.sound.play(Paths.sound('fnf_loss_sfx' + stageSuffix));
+		else
+			FlxG.sound.play(Paths.sound('PERKY'));
 		Conductor.changeBPM(85);
 
 		// FlxG.camera.followLerp = 1;
@@ -53,9 +60,12 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		bf.playAnim('firstDeath');
 
-		new FlxTimer().start(2, (tmr:FlxTimer) -> {
-			FlxG.sound.playMusic(Paths.music('gameOver' + stageSuffix));
-		});
+		if (daBf != 'perkydeath')
+		{
+			new FlxTimer().start(2, (tmr:FlxTimer) -> {
+				FlxG.sound.playMusic(Paths.music('gameOver' + stageSuffix));
+			});
+		}
 	}
 
 	override function update(elapsed:Float)
@@ -77,10 +87,10 @@ class GameOverSubstate extends MusicBeatSubstate
 				FlxG.switchState(new FreeplayState());
 		}
 
-		// if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.curFrame == 12)
-		// {
-		// 	FlxG.camera.follow(camFollow, LOCKON, 0.01);
-		// }
+		if (daBf == 'perkydeath')
+		{
+			FlxG.camera.follow(camFollow, LOCKON, 0.01);
+		}
 
 		// if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.finished)
 		// {

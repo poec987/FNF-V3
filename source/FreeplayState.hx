@@ -45,55 +45,13 @@ class FreeplayState extends MusicBeatState
 	override function create()
 	{
 		pages[0] = new FreeplayPage([
-			newSong("Tutorial", "Tutorial", 1, "gf"),
+			newSong("Gravy", "Gravy", 1, "pico"),
+			newSong("Pumpkin-Die", "Pumpkin Die", 1, "monster-thanksgiving"),
 
-			newSong("Bopeebo", "Bopeebo", 1, "dad"),
-			newSong("Fresh", "Fresh", 1, "dad"),
-			newSong("Dadbattle", "Dadbattle", 1, "dad"),
-
-			newSong("Spookeez", "Spookeez", 2, "spooky"),
-			newSong("South", "South", 2, "spooky"),
-			newSong("Monster", "Monster", 2, "monster"),
-
-			newSong("Pico", "Pico", 3, "pico"),
-			newSong("Philly", "Philly", 3, "pico"),
-			newSong("Blammed", "Blammed", 3, "pico"),
-
-			newSong("Satin-Panties", "Satin Panties", 4, "mom"),
-			newSong("High", "High", 4, "pico"),
-			newSong("MILF", "MILF", 4, "pico"),
-
-			newSong("Cocoa", "Cocoa", 5, "parents-christmas"),
-			newSong("Eggnog", "Eggnog", 5, "parents-christmas"),
-			newSong("Winter-Horrorland", "Winter Horrorland", 5, "monster-christmas"),
-
-			newSong("Senpai", "Senpai", 6, "sigmio"),
-			newSong("Roses", "Roses", 6, "sigmio"),
-			newSong("Thorns", "Thorns", 6, "spirit"),
-			newSong("Unfairness-Jside", "Unfairness J-Side", 6, "sigmio-final",true)
-		],
-		"Funkin");
-
-		pages[1] = new FreeplayPage([
-			newSong("Tutorial-BSide", "Tutorial B-Side", 1, "gf"),
-			newSong("Tutorial-Erect", "Tutorial Erect", 1, "gf"),
-			newSong("Tutorial-BSide-Erect", "Tutorial B-Side Erect", 1, "gf"),
-			newSong("Spookeez-Erect", "Spookeez Erect", 1, "spooky"),
-			newSong("Blammed-alt", "Blammed (Alt)", 1, "pico"),
-			newSong("Senpai-Impossible-Ver", "Senpai Impossible Ver.", 1, "sigmio")
-		],
-		"Remixes");
-
-		pages[2] = new FreeplayPage([
-			newSong("Do-You-Get-The-Refrance", "Do You Get The Refrance?", 1, "bean", true),
-			newSong("dotdotdot", "dotdotdot", 1, "sonicexe", true),
-			newSong("bopcityfansong", "bopcityfansong", 1, "blocku", true),
-			newSong("celebrate", "Celebrate", 1, "afton"),
 			newSong("scopophobia", "Scopophobia", 1, "scopguy"),
 			newSong("andy", "andy", 1, "andy"),
-			newSong("stop-right-there-criminal-scum", "SRTCS", 1, "dave")
 		],
-		"Extras");
+		"Demo");
 
 		var isDebug:Bool = false;
 

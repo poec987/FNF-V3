@@ -11,5 +11,7 @@ bopcity
 fnaf
 among
 ikea
+thanksgiving
+thanksgivingEvil
 foundation
 andy

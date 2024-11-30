@@ -155,6 +155,7 @@ class PlayState extends MusicBeatState
 
 	var upperBoppers:FlxSprite;
 	var bottomBoppers:FlxSprite;
+	var thankBoppers:FlxSprite;
 	var santa:FlxSprite;
 	var explosion:FlxSprite;
 	var fortnitecard:FlxSprite;
@@ -205,6 +206,8 @@ class PlayState extends MusicBeatState
 		"limo" => 4,
 		"limonormal" => 4,
 		"mall" => 5,
+		"thanksgiving" => 5,
+		"thanksgivingEvil" => 5,
 		"mallEvil" => 5,
 		"school" => 6,
 		"schoolEvil" => 6,
@@ -575,6 +578,52 @@ class PlayState extends MusicBeatState
 			santa.antialiasing = true;
 			add(santa);
 			santa.animation.play('idle', true);
+		case "thanksgiving":
+			curStage = 'thanksgiving';
+
+			defaultCamZoom = 0.70;
+
+			var bg:FlxSprite = new FlxSprite(-600, -800).loadGraphic(Paths.image('stages/thanksgiving/thankback'));
+			bg.antialiasing = true;
+			bg.scrollFactor.set(0.9, 0.9);
+			bg.active = false;
+			bg.updateHitbox();
+			add(bg);
+
+			thankBoppers = new FlxSprite(-550, -160);
+			thankBoppers.frames = Paths.getSparrowAtlas('stages/thanksgiving/boppers');
+			thankBoppers.animation.addByPrefix('bop', 'bop', 24, false);
+			thankBoppers.antialiasing = true;
+			thankBoppers.updateHitbox();
+
+			var fg:FlxSprite = new FlxSprite(-600, 330).loadGraphic(Paths.image('stages/thanksgiving/thankfront'));
+			fg.active = false;
+			fg.antialiasing = true;
+			add(fg);
+			add(thankBoppers);
+		case "thanksgivingEvil":
+			curStage = 'thanksgivingEvil';
+
+			defaultCamZoom = 0.70;
+
+			var bg:FlxSprite = new FlxSprite(-600, -800).loadGraphic(Paths.image('stages/thanksgiving/evilBG'));
+			bg.antialiasing = true;
+			bg.scrollFactor.set(0.9, 0.9);
+			bg.active = false;
+			bg.updateHitbox();
+			add(bg);
+
+			thankBoppers = new FlxSprite(-550, -160);
+			thankBoppers.frames = Paths.getSparrowAtlas('stages/thanksgiving/scaredboppers');
+			thankBoppers.animation.addByPrefix('bop', 'bop', 24, false);
+			thankBoppers.antialiasing = true;
+			thankBoppers.updateHitbox();
+
+			var fg:FlxSprite = new FlxSprite(-600, 330).loadGraphic(Paths.image('stages/thanksgiving/evilfront'));
+			fg.active = false;
+			fg.antialiasing = true;
+			add(fg);
+			add(thankBoppers);
 		case "mallsuspicious":
 			curStage = 'mallsuspicious';
 
@@ -939,9 +988,12 @@ class PlayState extends MusicBeatState
 				dad.y += 200;
 			case "monster":
 				dad.y += 100;
+			case "monster-thanksgiving":
+				dad.y -= 110;
+				dad.x += 30;
 			case 'monster-christmas':
-				dad.y += 250;
-				dad.x += 170;
+				dad.y -= 160;
+				dad.x += 30;
 			case 'dad':
 				camPos.x += 400;
 			case 'pico':
@@ -1011,6 +1063,14 @@ class PlayState extends MusicBeatState
 
 			case 'mall':
 				boyfriend.x += 200;
+				
+			case 'thanksgiving':
+				boyfriend.x += 200;
+				gf.y -= 150;
+
+			case 'thanksgivingEvil':
+				boyfriend.x += 200;
+				gf.y -= 150;
 
 			case 'mallEvil':
 				boyfriend.x += 320;
@@ -1230,6 +1290,32 @@ class PlayState extends MusicBeatState
 					new FlxTimer().start(2, function(tmr:FlxTimer)
 					{
 						startDialogue(doof);
+					});
+				case "pumpkin-die":
+					var blackScreen:FlxSprite = new FlxSprite(0, 0).makeGraphic(Std.int(FlxG.width * 2), Std.int(FlxG.height * 2), FlxColor.BLACK);
+					add(blackScreen);
+					blackScreen.scrollFactor.set();
+					camHUD.visible = false;
+
+					new FlxTimer().start(0.1, function(tmr:FlxTimer)
+					{
+						remove(blackScreen);
+						camFollow.y = dad.getMidpoint().y + 90;
+						camFollow.x = dad.getMidpoint().x + 180;
+						FlxG.camera.zoom = 1.1;
+						FlxG.camera.focusOn(camFollow.getPosition());
+						FlxG.sound.play(Paths.sound('pumpkinscare'));
+						new FlxTimer().start(3, function(tmr:FlxTimer)
+						{
+							camHUD.visible = true;
+							FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, 1, {
+								ease: FlxEase.quadInOut,
+								onComplete: function(twn:FlxTween)
+								{
+									startDialogue(doof);
+								}
+							});
+						});
 					});
 				case "winter-horrorland":
 					if (FlxG.save.data.frostedonespotted == false) { FlxG.save.data.frostedonespotted = true; }
@@ -2074,6 +2160,9 @@ class PlayState extends MusicBeatState
 					case 'sigmio':
 						camFollow.y = dad.getMidpoint().y - 200;
 						camFollow.x = dad.getMidpoint().x - 100;
+					case 'monster-thanksgiving':
+						camFollow.y = dad.getMidpoint().y + 90;
+						camFollow.x = dad.getMidpoint().x + 180;
 					case 'sigmio-evil':
 						camFollow.y = dad.getMidpoint().y - 200;
 						camFollow.x = dad.getMidpoint().x - 100;
@@ -2112,6 +2201,10 @@ class PlayState extends MusicBeatState
 					case 'limonormal':
 						camFollow.x = boyfriend.getMidpoint().x - 300;
 					case 'mall':
+						camFollow.y = boyfriend.getMidpoint().y - 200;
+					case 'thanksgiving':
+						camFollow.y = boyfriend.getMidpoint().y - 200;
+					case 'thanksgivingEvil':
 						camFollow.y = boyfriend.getMidpoint().y - 200;
 					case 'school':
 						camFollow.x = boyfriend.getMidpoint().x - 200;
@@ -2371,7 +2464,7 @@ class PlayState extends MusicBeatState
 					transIn = FlxTransitionableState.defaultTransIn;
 					transOut = FlxTransitionableState.defaultTransOut;
 	
-					checkForCutscene(PlayState.curSong.toLowerCase()+"-end", new StoryMenuState());
+					checkForCutscene(PlayState.curSong.toLowerCase()+"-end", new MainMenuState());
 	
 					// if ()
 					StoryMenuState.weekUnlocked[Std.int(Math.min(storyWeek + 1, StoryMenuState.weekUnlocked.length - 1))] = true;
@@ -3178,8 +3271,18 @@ class PlayState extends MusicBeatState
 					FlxTween.tween(dad, {x: dad.x - 800}, 1.5, {ease: FlxEase.sineOut});
 					FlxTween.tween(dad, {angle: -210}, 1, {ease: FlxEase.sineOut});
 					FlxTween.tween(dad, {y: dad.y + 550}, 1.2, {ease: FlxEase.sineOut, startDelay: 0.3});
+				case "Pico Leave":
+					FlxTween.tween(dad, {x: dad.x - 1500}, 2, {ease: FlxEase.linear});
 				case "Monster Leave":
 					FlxTween.tween(dad, {alpha: 0}, 1.5, {ease: FlxEase.linear});
+				case "Scop Die":
+					FlxTween.tween(dad, {x: boyfriend.x}, 0.2, { onComplete: (twn:FlxTween) -> {
+						add(blackShitJ);
+					}});
+				case "Monster Bye":
+					whiteShitJ.alpha = 1;
+					FlxTween.tween(whiteShitJ, {alpha: 0}, 1, {ease: FlxEase.linear});
+					dad.visible = false;
 				case "Give Card":
 					fortnitecard.alpha = 1;
 					FlxTween.tween(fortnitecard, {alpha: 0}, 1.5, {ease: FlxEase.quadOut});
@@ -3525,6 +3628,11 @@ class PlayState extends MusicBeatState
 			case 'mall':
 				upperBoppers.animation.play('bop', true);
 				bottomBoppers.animation.play('bop', true);
+				
+			case 'thanksgiving':
+				thankBoppers.animation.play('bop', true);
+			case 'thanksgivingEvil':
+				thankBoppers.animation.play('bop', true);
 
 			case 'limo':
 				grpLimoDancers.forEach(function(dancer:BackgroundDancer)

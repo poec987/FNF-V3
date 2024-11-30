@@ -170,4 +170,5 @@
 	<SubTexture name="Beef Perky0165" x="2577" y="3449" width="444" height="368" frameX="-199" frameY="-461" frameWidth="1697" frameHeight="829"/>
 	<SubTexture name="Beef Perky0166" x="2577" y="3449" width="444" height="368" frameX="-199" frameY="-461" frameWidth="1697" frameHeight="829"/>
 	<SubTexture name="Beef Perky0167" x="2577" y="3449" width="444" height="368" frameX="-199" frameY="-461" frameWidth="1697" frameHeight="829"/>
+	<SubTexture name="yeah0000" x="2577" y="3449" width="444" height="368" frameX="-199" frameY="-461" frameWidth="1697" frameHeight="829"/>
 </TextureAtlas>

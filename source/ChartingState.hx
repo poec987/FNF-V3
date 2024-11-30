@@ -420,7 +420,10 @@ class ChartingState extends MusicBeatState
 		"Kill Mommy",
 		"Lazy Chart",
 		"Give Card",
-		"Don't End The World"
+		"Don't End The World",
+		"Pico Leave",
+		"Monster Bye",
+		"Scop Die"
 	];
 
 	var noteTypeDropDown:FlxUIDropDownMenu;

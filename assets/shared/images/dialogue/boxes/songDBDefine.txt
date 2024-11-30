@@ -18,3 +18,5 @@ senpai::dialogueBox-pixel
 roses::dialogueBox-senpaiMad
 thorns::dialogueBox-evil
 unfairness-jside::dialogueBox-pixel
+gravy::week3
+pumpkin-die::pumpkin

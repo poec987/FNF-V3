@@ -30,7 +30,7 @@ class MainMenuState extends MusicBeatState
 	var menuItems:FlxTypedGroup<FlxSprite>;
 
 	#if !switch
-	var optionShit:Array<String> = ['story mode', 'freeplay', 'donate', 'credits', 'options'];
+	var optionShit:Array<String> = ['story mode', 'freeplay', 'credits', 'options'];
 	#else
 	var optionShit:Array<String> = ['story mode', 'freeplay'];
 	#end
@@ -55,8 +55,6 @@ class MainMenuState extends MusicBeatState
 			FlxG.sound.playMusic(Paths.music('freakyMenu'));
 		}
 
-		if (!FlxG.save.data.unlockedFreeplay)
-			optionShit.remove("freeplay");
 
 		persistentUpdate = persistentDraw = true;
 
@@ -188,30 +186,11 @@ class MainMenuState extends MusicBeatState
 				FlxG.switchState(new TitleState());
 			}
 
-			if (FlxG.keys.justPressed.B && bopCount == 0) {
-				var b = new FlxSprite(150).loadGraphic(Paths.image("B"));
-				add(b);
-				bopCount++;
-			}
-				
-			if (FlxG.keys.justPressed.O && bopCount == 1) {
-				var o = new FlxSprite(300).loadGraphic(Paths.image("O"));
-				add(o);
-				bopCount++;
-			}
-
-			if (FlxG.keys.justPressed.P && bopCount == 2) {
-				var p = new FlxSprite(450).loadGraphic(Paths.image("P"));
-				add(p);
-				bopCount = 0;
-				FreeplayState.playSong("bopcityfansong", 1);
-			}
-
 			if (controls.ACCEPT)
 			{
 				if (optionShit[curSelected] == 'donate')
 				{
-					FreeplayState.playSong("do-you-get-the-refrance", 1);
+					FlxG.sound.play(Paths.sound('fuckingidiot', "shared"), 1.5);
 				}
 				else
 				{
@@ -241,7 +220,16 @@ class MainMenuState extends MusicBeatState
 								switch (daChoice)
 								{
 									case 'story mode':
-										FlxG.switchState(new StoryMenuState());
+										PlayState.storyPlaylist = ['Gravy', 'Pumpkin-Die'];
+										PlayState.isStoryMode = true;
+
+										PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase(), PlayState.storyPlaylist[0].toLowerCase());
+										PlayState.storyWeek = 6;
+										PlayState.campaignScore = 0;
+										new FlxTimer().start(1, function(tmr:FlxTimer)
+										{
+											PlayState.checkForCutscene(PlayState.storyPlaylist[0].toLowerCase(), new PlayState());
+										});
 										trace("Story Menu Selected");
 									case 'freeplay':
 										FlxG.switchState(new FreeplayState());
