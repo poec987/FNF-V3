@@ -1,9 +1,9 @@
 var halloweenWhite:BGSprite;
 function onLoad(){
     if(!ClientPrefs.lowQuality) {
-        halloweenBG = new BGSprite('week2/halloween_bg', -200, -100, ['halloweem bg0', 'halloweem bg lightning strike']);
+        halloweenBG = new BGSprite('stages/spooky/halloween_bg', -200, -100, ['halloweem bg0', 'halloweem bg lightning strike']);
     } else {
-        halloweenBG = new BGSprite('week2/halloween_bg_low', -200, -100);
+        halloweenBG = new BGSprite('stages/spooky/halloween_bg_low', -200, -100);
     }
     halloweenBG.scrollFactor.set(1,1);
     add(halloweenBG);
@@ -24,7 +24,7 @@ function onBeatHit(){
 }
 
 function lightningStrikeShit(){
-    FlxG.sound.play(Paths.sound("thunder_" + FlxG.random.int(1,2)));
+    FlxG.sound.play(Paths.sound("stages/spooky/thunder_" + FlxG.random.int(1,2)));
     if(!ClientPrefs.lowQuality) halloweenBG.animation.play("halloweem bg0");
 
     // lightningStrikeBeat = game.curBeat;
