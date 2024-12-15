@@ -77,7 +77,7 @@ class Note extends FlxSprite
 	public var extraData:Map<String,Dynamic> = [];
 	public var hitbox:Float = Conductor.safeZoneOffset;
 	public var isQuant:Bool = false; // mainly for color swapping, so it changes color depending on which set (quants or regular notes)
-	public var canQuant:Bool = true;
+	public var canQuant:Bool = false;
 	public var strumTime:Float = 0;
 
 	public var mustPress:Bool = false;
