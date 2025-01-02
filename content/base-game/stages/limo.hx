@@ -1,5 +1,5 @@
 addHaxeLibrary('BackgroundDancer', 'gameObjects');
-var grpLimoDancers:Array<BackgroundDancer> = [];
+var grpLimoDancers:Array<BGSprite> = [];
 var grpLimoParticles:Array<BGSprite> = [];
 var limo:BGSprite;
 var limoMetalPole:BGSprite;
@@ -30,8 +30,9 @@ function onLoad(){
 
         for (i in 0...5)
         {
-            var dancer:BackgroundDancer = new BackgroundDancer((370 * i) + 170, bgLimo.y - 400);
-            dancer.scrollFactor.set(0.4, 0.4);
+            var dancer:BGSprite;
+            if (PlayState.SONG.song == "Satin-Panties") dancer = new BGSprite('stages/limo/limoDancernormal', (370 * i) + 170, bgLimo.y - 400, 0.4, 0.4, ['bg dancer sketch PINK']);
+            else dancer = new BGSprite('stages/limo/limoDancer', (370 * i) + 170, bgLimo.y - 400, 0.4, 0.4, ['bg dancer sketch PINK']);
             add(dancer);
             grpLimoDancers.push(dancer);
         }
@@ -127,7 +128,7 @@ function onUpdate(elapsed){
                 limoCorpse.x = limoLight.x - 50;
                 limoCorpseTwo.x = limoLight.x + 35;
 
-                var dancers:Array<BackgroundDancer> = grpLimoDancers.members;
+                var dancers:Array<BGSprite> = grpLimoDancers.members;
                 for (i in 0...dancers.length) {
                     if(dancers[i].x < FlxG.width * 1.5 && limoLight.x > (370 * i) + 170) {
                         switch(i) {

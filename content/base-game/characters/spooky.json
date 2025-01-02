@@ -1,90 +1,79 @@
 {
 	"animations": [
 		{
-			"loop": false,
-			"offsets": [
-				59,
-				-20
-			],
-			"anim": "hey",
-			"fps": 24,
-			"name": "spooky kids YEAH!!",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				130,
-				-10
-			],
-			"anim": "singLEFT",
-			"fps": 24,
-			"name": "note sing left",
-			"indices": []
-		},
-		{
-			"loop": false,
 			"offsets": [
 				-130,
 				-14
 			],
+			"indices": [],
+			"fps": 30,
+			"cameraOffset": [
+				30,
+				0
+			],
 			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "spooky sing right",
-			"indices": []
+			"loop": false,
+			"name": "spooky sing right"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-50,
 				-130
 			],
+			"indices": [],
+			"fps": 30,
+			"cameraOffset": [
+				0,
+				30
+			],
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "spooky DOWN note",
-			"indices": []
+			"loop": false,
+			"name": "spooky DOWN note"
 		},
 		{
-			"loop": false,
-			"offsets": [
-				0,
-				0
-			],
-			"fps": 12,
-			"anim": "danceLeft",
-			"indices": [
-				0,
-				2,
-				6
-			],
-			"name": "spooky dance idle"
-		},
-		{
-			"loop": false,
-			"offsets": [
-				0,
-				0
-			],
-			"fps": 12,
-			"anim": "danceRight",
-			"indices": [
-				8,
-				10,
-				12,
-				14
-			],
-			"name": "spooky dance idle"
-		},
-		{
-			"loop": false,
 			"offsets": [
 				-20,
 				26
 			],
-			"fps": 24,
-			"anim": "singUP",
 			"indices": [],
+			"fps": 30,
+			"cameraOffset": [
+				0,
+				-30
+			],
+			"anim": "singUP",
+			"loop": false,
 			"name": "spooky UP NOTE"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
+			"fps": 30,
+			"cameraOffset": [
+				0,
+				0
+			],
+			"anim": "idle",
+			"loop": true,
+			"name": "spooky dance idle"
+		},
+		{
+			"offsets": [
+				130,
+				-10
+			],
+			"indices": [],
+			"fps": 30,
+			"cameraOffset": [
+				-30,
+				0
+			],
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "spooky LEFT note"
 		}
 	],
 	"no_antialiasing": false,
