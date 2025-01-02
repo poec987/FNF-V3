@@ -1,8 +1,13 @@
+var bgFucks:BGSprite;
+var pissedSigma:Bool = false;
+
 function onLoad(){
     GameOverSubstate.deathSoundName = 'pixel/fnf_loss_sfx-pixel';
     GameOverSubstate.loopSoundName = 'pixel/gameOver-pixel';
     GameOverSubstate.endSoundName = 'pixel/gameOverEnd-pixel';
     GameOverSubstate.characterName = 'pixel/bf-pixel-dead';
+
+    if (PlayState.SONG.song == "Roses") pissedSigma = true;
 
     var bgSky:BGSprite = new BGSprite('stages/weeb/weebSky', 0, 0, 0.1, 0.1);
     add(bgSky);
@@ -54,29 +59,35 @@ function onLoad(){
     bgTrees.updateHitbox();
 
     if(!ClientPrefs.lowQuality) {
-        bgGirls = new BackgroundGirls(-100, 190);
-        bgGirls.scrollFactor.set(0.9, 0.9);
+        bgFucks = new BGSprite('stages/weeb/bgFreaks', -100, 190, 1, 1, ['BG girls group', 'BG fangirls dissuaded']);
+        bgFucks.scrollFactor.set(0.9, 0.9);
 
         // bgGirls.setGraphicSize(Std.int(bgGirls.width * game.daPixelZoom));
-        bgGirls.scale.set(6,6);
-        bgGirls.updateHitbox();
-        add(bgGirls);
+        bgFucks.scale.set(6,6);
+
+        if (pissedSigma) bgFucks.playAnim('BG fangirls dissuaded', true);
+        else bgFucks.playAnim('BG girls group', true);
+        
+        bgFucks.updateHitbox();
+        add(bgFucks);
     }
 }
 
 function onEvent(eventName, value1, value2){ 
-    if(eventName == 'BG Freaks Expression') bgGirls.swapDanceType();
+    if(eventName == 'BG Freaks Expression') pissedSigma = true;
 }
 
 function onCountdownTick(){
     if(!ClientPrefs.lowQuality) {
-        bgGirls.dance();
+        if (pissedSigma) bgFucks.playAnim('BG fangirls dissuaded', true);
+        else bgFucks.playAnim('BG girls group', true);
     }
 }
 
 function onBeatHit(){
     if(!ClientPrefs.lowQuality) {
-        bgGirls.dance();
+        if (pissedSigma) bgFucks.playAnim('BG fangirls dissuaded', true);
+        else bgFucks.playAnim('BG girls group', true);
     }
 }
 

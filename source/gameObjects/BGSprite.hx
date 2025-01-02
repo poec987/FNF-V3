@@ -36,4 +36,8 @@ class BGSprite extends FlxSprite
 			animation.play(idleAnim, forceplay);
 		}
 	}
+
+	public function playAnim(anim:String, ?forceplay:Bool = false) {
+		animation.play(anim, forceplay);
+	}
 }
