@@ -202,6 +202,7 @@ class ClientPrefs {
 		FlxG.save.data.comboOffset = comboOffset;
 		FlxG.save.data.achievementsMap = Achievements.achievementsMap;
 		FlxG.save.data.henchmenDeath = Achievements.henchmenDeath;
+		FlxG.save.data.flagMap = Flags.flags;
 
 		FlxG.save.data.ratingOffset = ratingOffset;
 		FlxG.save.data.epicWindow = epicWindow;
