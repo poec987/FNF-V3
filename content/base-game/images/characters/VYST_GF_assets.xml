@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="VYST_GF_assets.png">
+	<!-- Created with Adobe Animate version 22.0.0.93 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="VYST IDLE DANCE0000" x="0" y="0" width="663" height="619"/>
+	<SubTexture name="VYST IDLE DANCE0001" x="0" y="0" width="663" height="619"/>
+	<SubTexture name="VYST IDLE DANCE0002" x="663" y="0" width="663" height="619"/>
+	<SubTexture name="VYST IDLE DANCE0003" x="663" y="0" width="663" height="619"/>
+	<SubTexture name="VYST IDLE DANCE0004" x="1326" y="0" width="663" height="619"/>
+	<SubTexture name="VYST IDLE DANCE0005" x="1326" y="0" width="663" height="619"/>
+	<SubTexture name="VYST IDLE DANCE0006" x="0" y="619" width="663" height="619"/>
+	<SubTexture name="VYST IDLE DANCE0007" x="0" y="619" width="663" height="619"/>
+	<SubTexture name="VYST IDLE DANCE0008" x="0" y="619" width="663" height="619"/>
+	<SubTexture name="VYST IDLE DANCE0009" x="0" y="619" width="663" height="619"/>
+	<SubTexture name="VYST IDLE DANCE0010" x="0" y="619" width="663" height="619"/>
+	<SubTexture name="VYST IDLE DANCE0011" x="0" y="619" width="663" height="619"/>
+	<SubTexture name="VYST IDLE DANCE0012" x="0" y="619" width="663" height="619"/>
+	<SubTexture name="VYST IDLE DANCE0013" x="0" y="619" width="663" height="619"/>
+	<SubTexture name="VYST MEOW0000" x="663" y="619" width="663" height="623"/>
+	<SubTexture name="VYST MEOW0001" x="663" y="619" width="663" height="623"/>
+	<SubTexture name="VYST MEOW0002" x="1326" y="619" width="663" height="623"/>
+	<SubTexture name="VYST MEOW0003" x="1326" y="619" width="663" height="623"/>
+	<SubTexture name="VYST MEOW0004" x="0" y="1242" width="663" height="623"/>
+	<SubTexture name="VYST MEOW0005" x="0" y="1242" width="663" height="623"/>
+	<SubTexture name="VYST MEOW0006" x="663" y="1242" width="663" height="623"/>
+	<SubTexture name="VYST MEOW0007" x="663" y="1242" width="663" height="623"/>
+	<SubTexture name="VYST MEOW0008" x="663" y="1242" width="663" height="623"/>
+	<SubTexture name="VYST MEOW0009" x="663" y="1242" width="663" height="623"/>
+	<SubTexture name="VYST MEOW0010" x="663" y="1242" width="663" height="623"/>
+	<SubTexture name="VYST MEOW0011" x="663" y="1242" width="663" height="623"/>
+	<SubTexture name="VYST MEOW0012" x="663" y="1242" width="663" height="623"/>
+	<SubTexture name="VYST MEOW0013" x="663" y="1242" width="663" height="623"/>
+</TextureAtlas>

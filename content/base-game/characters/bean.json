@@ -1,0 +1,98 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"cameraOffset": [
+				0,
+				0
+			],
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "amogus idle instance",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"cameraOffset": [
+				-30,
+				0
+			],
+			"offsets": [
+				230,
+				-30
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "Mogus left instance",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"cameraOffset": [
+				0,
+				30
+			],
+			"offsets": [
+				50,
+				-40
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down instance",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"cameraOffset": [
+				0,
+				-30
+			],
+			"offsets": [
+				0,
+				180
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "amogus up instance",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"cameraOffset": [
+				30,
+				0
+			],
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "rightt instance",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/bean",
+	"position": [
+		0,
+		300
+	],
+	"healthicon": "face",
+	"flip_x": false,
+	"healthbar_colors": [
+		161,
+		161,
+		161
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 6.1,
+	"scale": 1
+}

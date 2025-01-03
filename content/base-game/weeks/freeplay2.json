@@ -1,0 +1,19 @@
+{
+	"songs": [
+		["dotdotdot", "gf", [255, 120, 191]],
+		["bopcityfansong", "gf", [255, 120, 191]],
+		["do you get the refrance", "gf", [255, 120, 191]],
+		["celebrate", "spooky", [255, 120, 191]],
+		["arrestation", "pico", [255, 120, 191]]
+	],
+
+	"weekBackground": "school",
+
+	"storyName": "sigma simulator",
+	"weekBefore": "week5",
+	"weekName": "Week 6",
+	"startUnlocked": true,
+
+	"hideStoryMode": true,
+	"hideFreeplay": false
+}
