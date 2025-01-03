@@ -81,6 +81,7 @@ function onMoveCamera(who:String) {
 }
 
 function onBeatHit() {
+    PlayState.instance.updateTime = false;
     switch (curBeat) {
         case 156: //156
             dad.animation.play('die', true);

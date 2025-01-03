@@ -2,6 +2,7 @@ var heyTimer:Float;
 var upperBoppers:BGSprite;
 var bottomBoppers:BGSprite;
 var santa:BGSprite;
+var dieded:Bool = false;
 
 function onLoad(){
     var bg:BGSprite = new BGSprite('stages/christmas/bgWalls', -1000, -500, 0.2, 0.2);
@@ -24,7 +25,7 @@ function onLoad(){
     var tree:BGSprite = new BGSprite('stages/christmas/christmasTree', 370, -250, 0.40, 0.40);
     add(tree);
 
-    bottomBoppers = new BGSprite('stages/christmas/bottomBop', -300, 140, 0.9, 0.9, ['Bottom Level Boppers Idle']);
+    bottomBoppers = new BGSprite('stages/christmas/bottomBop', -300, 140, 0.9, 0.9, ['Bottom Level Boppers']);
     bottomBoppers.animation.addByPrefix('hey', 'Bottom Level Boppers HEY', 24, false);
     bottomBoppers.setGraphicSize(Std.int(bottomBoppers.width * 1));
     bottomBoppers.updateHitbox();
@@ -34,6 +35,7 @@ function onLoad(){
     add(fgSnow);
 
     santa = new BGSprite('stages/christmas/santa', -840, 150, 1, 1, ['santa idle in fear']);
+    santa.animation.addByPrefix('die', 'santa DIE', 24, false);
     add(santa);
 }
 
@@ -47,10 +49,14 @@ function onCountdownTick(){
 }
 
 function onBeatHit(){
+    if (curBeat == 96) {
+        santa.playAnim("die");
+        dieded = true;
+    }
     if(!ClientPrefs.lowQuality) {
         upperBoppers.dance(true);
     }
 
     bottomBoppers.dance(true);
-    santa.dance(true);
+    if (!dieded) santa.dance(true);
 }

@@ -1,4 +1,3 @@
-addHaxeLibrary('BackgroundDancer', 'gameObjects');
 var grpLimoDancers:Array<BGSprite> = [];
 var grpLimoParticles:Array<BGSprite> = [];
 var limo:BGSprite;
@@ -53,6 +52,17 @@ function onLoad(){
     fastCar = new BGSprite('stages/limo/fastCarLol', -300, 160);
     fastCar.active = true;
     limoKillingState = 0;
+}
+
+function onCreate() {
+    if (PlayState.SONG.song == "High") {
+        dad.y -= 1000;
+		FlxTween.tween(dad, {y: dad.y + 1000}, 1, {ease: FlxEase.quadOut});
+		new FlxTimer().start(2, function(tmr:FlxTimer)
+		{
+			//startDialogue(doof);
+		});
+    }
 }
 
 function resetLimoKill():Void
@@ -212,6 +222,22 @@ function onCountdownTick(){
 }
 
 function onBeatHit(){
+    if (curBeat == 160 && PlayState.SONG.song == "Satin-Panties") {
+        FlxTween.tween(dad, {x: dad.x - 800}, 1.5, {ease: FlxEase.sineOut});
+		FlxTween.tween(dad, {angle: -210}, 1, {ease: FlxEase.sineOut});
+		FlxTween.tween(dad, {y: dad.y + 550}, 1.2, {ease: FlxEase.sineOut, startDelay: 0.3});
+    }
+
+    if (curBeat == 146 && PlayState.SONG.song == "High") {
+        var lazyTxt:FlxText = new FlxText(0, 0, FlxG.width, "we didnt want to chart this anymore", 50);
+		lazyTxt.setFormat(Paths.font("papyrus.ttf"), 32, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		lazyTxt.cameras = [camHUD];
+		lazyTxt.screenCenter();
+		lazyTxt.alpha = 0;
+		foreground.add(lazyTxt);
+		FlxTween.tween(lazyTxt, {alpha: 1}, 10, {ease: FlxEase.linear, type: 4});
+    }
+
     if(!ClientPrefs.lowQuality) {
         for(dancer in grpLimoDancers){
             dancer.dance();

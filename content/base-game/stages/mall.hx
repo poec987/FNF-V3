@@ -24,8 +24,7 @@ function onLoad(){
     var tree:BGSprite = new BGSprite('stages/christmas/christmasTree', 370, -250, 0.40, 0.40);
     add(tree);
 
-    bottomBoppers = new BGSprite('stages/christmas/bottomBop', -300, 140, 0.9, 0.9, ['Bottom Level Boppers Idle']);
-    bottomBoppers.animation.addByPrefix('hey', 'Bottom Level Boppers HEY', 24, false);
+    bottomBoppers = new BGSprite('stages/christmas/bottomBop', -300, 140, 0.9, 0.9, ['Bottom Level Boppers']);
     bottomBoppers.setGraphicSize(Std.int(bottomBoppers.width * 1));
     bottomBoppers.updateHitbox();
     add(bottomBoppers);
@@ -47,6 +46,7 @@ function onCountdownTick(){
 }
 
 function onBeatHit(){
+
     if(!ClientPrefs.lowQuality) {
         upperBoppers.dance(true);
     }
