@@ -3,7 +3,8 @@ package source.meta.data;
 class Flags {
     public static var flags:Array<Dynamic> = [
         "frosted_one_encountered",
-        "got_19_dollar_card"
+        "got_19_dollar_card",
+        "unfairness_beat"
     ];
 
     public static var flagMap:Map<String, Bool> = new Map<String, Bool>();
