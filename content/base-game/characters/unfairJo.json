@@ -1,0 +1,98 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"cameraOffset": [
+				0,
+				0
+			],
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "Idle instance",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"cameraOffset": [
+				-30,
+				0
+			],
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "Left instance",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"cameraOffset": [
+				0,
+				30
+			],
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "Down instance",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"cameraOffset": [
+				30,
+				0
+			],
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "Right instance",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"cameraOffset": [
+				0,
+				-30
+			],
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "Up instance",
+			"indices": []
+		}
+	],
+	"no_antialiasing": true,
+	"image": "characters/unfairJo",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "bf-pixel",
+	"flip_x": true,
+	"healthbar_colors": [
+		0,
+		0,
+		0
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 4,
+	"scale": 2.50000000000001
+}

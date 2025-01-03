@@ -256,7 +256,7 @@ class PlayState extends MusicBeatState
 	private var generatedMusic:Bool = false;
 	public var endingSong:Bool = false;
 	public var startingSong:Bool = false;
-	private var updateTime:Bool = true;
+	public var updateTime:Bool = true;
 	public static var changedDifficulty:Bool = false;
 	public static var chartingMode:Bool = false;
 	public static var startOnTime:Float = 0;
@@ -3708,6 +3708,7 @@ class PlayState extends MusicBeatState
 
 		setOnLuas('cameraX', camFollowPos.x);
 		setOnLuas('cameraY', camFollowPos.y);
+		setOnHScripts('camFollow', camFollow);
 		setOnScripts('botPlay', cpuControlled);
 		callOnScripts('onUpdatePost', [elapsed]);
 		for (i in shaderUpdates){

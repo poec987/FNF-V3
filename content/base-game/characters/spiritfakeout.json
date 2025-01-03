@@ -1,0 +1,113 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-550,
+				-300
+			],
+			"cameraOffset": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "Idle instance"
+		},
+		{
+			"offsets": [
+				-550,
+				-300
+			],
+			"cameraOffset": [
+				-30,
+				0
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Left instance"
+		},
+		{
+			"offsets": [
+				-550,
+				-300
+			],
+			"cameraOffset": [
+				0,
+				30
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Down instance"
+		},
+		{
+			"offsets": [
+				-550,
+				-300
+			],
+			"cameraOffset": [
+				30,
+				0
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Right instance"
+		},
+		{
+			"offsets": [
+				-550,
+				-300
+			],
+			"cameraOffset": [
+				0,
+				-30
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "Up instance"
+		},
+		{
+			"offsets": [
+				-550,
+				-300
+			],
+			"cameraOffset": [
+				0,
+				-30
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "die",
+			"indices": [],
+			"name": "die instance"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/thornsfakeout",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "spirit-pixel",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		60,
+		110
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 4,
+	"scale": 6
+}
