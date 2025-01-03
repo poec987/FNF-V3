@@ -107,7 +107,8 @@ function fastCarDrive()
 }
 
 function onCreatePost(){
-    game.addBehindBF(limo);
+    // game.addBehindBF(limo);
+    midground.add(limo);
     game.addBehindGF(fastCar);
     resetFastCar();
 }

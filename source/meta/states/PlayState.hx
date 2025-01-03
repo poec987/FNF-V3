@@ -991,6 +991,7 @@ class PlayState extends MusicBeatState
 				add(stage);
 
 				add(gfGroup);
+				add(stage.midground);
 				add(dadGroup);
 				add(boyfriendGroup);
 

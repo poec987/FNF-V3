@@ -56,6 +56,7 @@ class Stage extends FlxTypedGroup<FlxBasic>
 
 	public var spriteMap = new Map<String, FlxBasic>();
 	public var foreground = new FlxTypedGroup<FlxBasic>();
+	public var midground = new FlxTypedGroup<FlxBasic>();
 
 	public function new(?StageName = "stage")
 	{
@@ -98,9 +99,10 @@ class Stage extends FlxTypedGroup<FlxBasic>
 						// define variables lolol
 						script.set("add", add);
 						script.set("stage", this);
+						script.set("midground", midground);
 						script.set("foreground", foreground);
 						
-						script.call("onLoad", [this, foreground]);
+						script.call("onLoad", [this, midground, foreground]);
 						doPush = true;
 					#if LUA_ALLOWED
 					} else if (ext == 'lua'){
