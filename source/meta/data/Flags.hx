@@ -1,4 +1,4 @@
-package source.meta.data;
+package meta.data;
 
 class Flags {
     public static var flags:Array<Dynamic> = [
