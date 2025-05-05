@@ -4,7 +4,7 @@
 		["bopcityfansong", "gf", [255, 120, 191]],
 		["do you get the refrance", "gf", [255, 120, 191]],
 		["celebrate", "spooky", [255, 120, 191]],
-		["arrestation", "pico", [255, 120, 191]]
+		["investigate", "pico", [255, 120, 191]]
 	],
 
 	"weekBackground": "school",
