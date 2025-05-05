@@ -2147,13 +2147,15 @@ class PlayState extends MusicBeatState
 						antialias = false;
 					}
 	
+					var goodPostfix = "";
+					if (PlayState.SONG.song.toLowerCase() == "thorns") goodPostfix = "-good";
 					// head bopping for bg characters on Mall
 					switch (swagCounter)
 					{
 						case 0:
 							if(countdownSounds) FlxG.sound.play(Paths.sound('intro3' + introSoundsSuffix), 0.6);
 						case 1:
-							countdownReady = new FlxSprite().loadGraphic(Paths.image(introAlts[0]));
+							countdownReady = new FlxSprite().loadGraphic(Paths.image(introAlts[0] + goodPostfix));
 							countdownReady.scrollFactor.set();
 							countdownReady.updateHitbox();
 	
@@ -2176,7 +2178,7 @@ class PlayState extends MusicBeatState
 							setOnHScripts('countdownReady', countdownReady);
 	
 						case 2:
-							countdownSet = new FlxSprite().loadGraphic(Paths.image(introAlts[1]));
+							countdownSet = new FlxSprite().loadGraphic(Paths.image(introAlts[1] + goodPostfix));
 							countdownSet.scrollFactor.set();
 	
 							if (PlayState.isPixelStage)
@@ -2197,7 +2199,7 @@ class PlayState extends MusicBeatState
 							setOnHScripts('countdownSet', countdownSet);
 	
 						case 3:
-							countdownGo = new FlxSprite().loadGraphic(Paths.image(introAlts[2]));
+							countdownGo = new FlxSprite().loadGraphic(Paths.image(introAlts[2] + goodPostfix));
 							countdownGo.scrollFactor.set();
 	
 							if (PlayState.isPixelStage)
@@ -4624,14 +4626,16 @@ class PlayState extends MusicBeatState
 
 		var pixelShitPart1:String = "";
 		var pixelShitPart2:String = '';
+		var goodPostfix:String = '';
 
 		if (PlayState.isPixelStage)
 		{
 			pixelShitPart1 = 'pixelUI/';
 			pixelShitPart2 = '-pixel';
 		}
+		if (PlayState.SONG.song.toLowerCase() == "thorns") goodPostfix = "-good";
 
-		rating.loadGraphic(Paths.image(pixelShitPart1 + daRating.image + pixelShitPart2));
+		rating.loadGraphic(Paths.image(pixelShitPart1 + daRating.image + pixelShitPart2 + goodPostfix));
 		rating.cameras = [camHUD];
 		rating.screenCenter();
 		rating.x = coolText.x - 40;
@@ -4690,7 +4694,7 @@ class PlayState extends MusicBeatState
 		var daLoop:Int = 0;
 		for (i in seperatedScore)
 		{
-			var numScore:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'num' + Std.int(i) + pixelShitPart2));
+			var numScore:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'num' + Std.int(i) + pixelShitPart2 + goodPostfix));
 			numScore.cameras = [camHUD];
 			numScore.screenCenter();
 			numScore.x = coolText.x + (43 * daLoop) - 90;
