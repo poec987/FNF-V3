@@ -13,3 +13,5 @@ function quants() { return true; }
 // offset notes, receptors and sustains
 function offset(noteOff, strumOff, susOff){}
 
+// this gets the hud suffix
+function hud() { return ""; }
