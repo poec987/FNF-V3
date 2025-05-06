@@ -53,7 +53,7 @@ class StoryMenuState extends MusicBeatState
 		Paths.clearUnusedMemory();
 
 		PlayState.isStoryMode = true;
-		WeekData.reloadWeekFiles(true);
+		WeekData.reloadWeekFiles(true, "base");
 		if(curWeek >= WeekData.weeksList.length) curWeek = 0;
 		persistentUpdate = persistentDraw = true;
 

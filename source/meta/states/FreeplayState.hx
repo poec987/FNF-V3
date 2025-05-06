@@ -52,7 +52,7 @@ class FreeplayState extends MusicBeatState
 	var intendedColor:Int;
 	var colorTween:FlxTween;
 
-	private var pages:Array<String> = ["", "-remixes", "-extras"]; // TODO: Softcode this maybe...
+	private var pages:Array<String> = ["base", "remixes", "extras"]; // TODO: Softcode this maybe...
 
 	public static var curCharacter:String = ""; // Character select thing maybe idk
 	private static var curPage:Int = 0;
@@ -64,7 +64,7 @@ class FreeplayState extends MusicBeatState
 		
 		persistentUpdate = true;
 		PlayState.isStoryMode = false;
-		WeekData.reloadWeekFiles(false, "");
+		WeekData.reloadWeekFiles(false, pages[curPage]);
 
 		#if desktop
 		// Updating Discord Rich Presence
