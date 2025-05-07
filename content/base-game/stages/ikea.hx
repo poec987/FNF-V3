@@ -1,4 +1,6 @@
 addHaxeLibrary("GlitchEffect", "gameObjects.shader");
+addHaxeLibrary("FlxStringUtil", "flixel.util");
+addHaxeLibrary("FlxTrail", "flixel.addons.effects");
 var unfairJbg:FlxSprite;
 var thornbg:FlxSprite;
 var sigmioreveal:Bool = false;
@@ -8,6 +10,8 @@ var whiteShitJ:FlxSprite;
 var lol:FlxSprite;
 var bfTrailJ:FlxTrail;
 var dadTrailJ:FlxTrail;
+
+var endTime:Float = 66857;
 
 
 function onLoad() {
@@ -32,6 +36,8 @@ function onLoad() {
 	whiteShitJ = new FlxSprite( -1280, -720).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.WHITE);
 	whiteShitJ.alpha = 0;
 	foreground.add(whiteShitJ);
+
+    PlayState.instance.updateTime = false;
 }
 
 function onMoveCamera(who:String) {
@@ -40,48 +46,62 @@ function onMoveCamera(who:String) {
         {
             if (unfairJevents[1] == false) { 
                 if (unfairJevents[0] == false) {
-                    camFollow.y = dad.getMidpoint().y - 225;
-                    camFollow.x = dad.getMidpoint().x + 150;
+                    game.camFollow.y = dad.getMidpoint().y - 225;
+                    game.camFollow.x = dad.getMidpoint().x + 150;
                 }
                 else {
-                    camFollow.y = dad.getMidpoint().y - 225;
-                    camFollow.x = dad.getMidpoint().x + 150;
+                    game.camFollow.y = dad.getMidpoint().y - 225;
+                    game.camFollow.x = dad.getMidpoint().x + 150;
                 }
                 // FlxTween.tween(FlxG.camera, {zoom: 0.95}, (Conductor.stepCrochet * 4 / 1000), {ease: FlxEase.linear});
             }
             else
             {
-                camFollow.y = dad.getMidpoint().y - 290;
-                camFollow.x = dad.getMidpoint().x - 300;
+                game.camFollow.y = dad.getMidpoint().y - 290;
+                game.camFollow.x = dad.getMidpoint().x - 300;
             }
         }
         else
         {
-            camFollow.x = boyfriend.getMidpoint().x - 550;
-            camFollow.y = boyfriend.getMidpoint().y - 220;
+            game.camFollow.x = boyfriend.getMidpoint().x - 550;
+            game.camFollow.y = boyfriend.getMidpoint().y - 220;
         }
     }
     else {
         if (unfairJevents[1] == false) { 
             if (unfairJevents[0] == false) {
-                camFollow.x = boyfriend.getMidpoint().x - 400;
-                camFollow.y = boyfriend.getMidpoint().y - 200;
+                game.camFollow.x = boyfriend.getMidpoint().x - 400;
+                game.camFollow.y = boyfriend.getMidpoint().y - 200;
             }
             else {
-                camFollow.x = boyfriend.getMidpoint().x - 300;
-                camFollow.y = boyfriend.getMidpoint().y - 100;
+                game.camFollow.x = boyfriend.getMidpoint().x - 300;
+                game.camFollow.y = boyfriend.getMidpoint().y - 100;
             }
         }
         else
         {
-            camFollow.y = dad.getMidpoint().y - 290;
-            camFollow.x = dad.getMidpoint().x - 300;
+            game.camFollow.y = dad.getMidpoint().y - 290;
+            game.camFollow.x = dad.getMidpoint().x - 300;
         }
     }
 }
 
+function onUpdatePost() {
+    if (Conductor.songPosition < 66857) {
+        game.songPercent = ((Conductor.songPosition - ClientPrefs.noteOffset) / (66857));
+		timeTxt.text = FlxStringUtil.formatTime(Math.floor(((66857) - (Conductor.songPosition - ClientPrefs.noteOffset)) / 1000), false);
+    }
+    else if (endTime > 66857) {
+        game.songPercent = ((Conductor.songPosition - ClientPrefs.noteOffset) / (endTime));
+		timeTxt.text = FlxStringUtil.formatTime(Math.floor(((endTime) - (Conductor.songPosition - ClientPrefs.noteOffset)) / 1000), false);
+    }
+    else {
+        game.songPercent = 1;
+        timeTxt.text = "0:00";
+    }
+}
+
 function onBeatHit() {
-    PlayState.instance.updateTime = false;
     switch (curBeat) {
         case 156: //156
             dad.animation.play('die', true);
@@ -92,7 +112,8 @@ function onBeatHit() {
             unfairJbg.alpha = 1;
             thornbg.alpha = 0;
             FlxTween.tween(whiteShitJ, {alpha: 0}, 1, {ease: FlxEase.linear});
-            FlxTween.tween(songTimer, {"endTime": Math.round(songLength/1000)}, 27, {ease:FlxEase.expoIn});
+            FlxTween.num(endTime, songLength, 27, {ease: FlxEase.expoIn}, (v) -> {endTime = v;});
+            // FlxTween.tween(songTimer, {"endTime": Math.round(songLength/1000)}, 27, {ease:FlxEase.expoIn});
         case 492: // 492
             lol = new FlxSprite(boyfriend.x-200, boyfriend.y - 50).loadGraphic(Paths.image('stages/ikea/cobble'));
             lol.alpha = 0;
@@ -146,6 +167,7 @@ function onStepHit() {
             dad.y -= 150;
 
             PlayState.instance.triggerEventNote('Change Character', 'bf', 'unfairJo');
+            boyfriend.y += 200;
 
             unfairjShader.waveAmplitude = 0.2;
             unfairjShader.waveSpeed = 1.5;
