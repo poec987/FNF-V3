@@ -39,6 +39,10 @@ class StoryMenuState extends MusicBeatState
 
 	private static var curWeek:Int = 0;
 
+	private static var curPage:Int = 0;
+
+	private var pages:Array<String> = ["base", "leeks"]; // TODO: Maybe also softcode this
+
 	var txtTracklist:FlxText;
 
 	var grpWeekText:FlxTypedGroup<MenuItem>;
@@ -46,6 +50,8 @@ class StoryMenuState extends MusicBeatState
 	var grpLocks:FlxTypedGroup<FlxSprite>;
 
 	var loadedWeeks:Array<WeekData> = [];
+
+	var ui_tex:FlxAtlasFrames;
 
 	override function create()
 	{
@@ -70,7 +76,7 @@ class StoryMenuState extends MusicBeatState
 		rankText.size = scoreText.size;
 		rankText.screenCenter(X);
 
-		var ui_tex = Paths.getSparrowAtlas('campaign_menu_UI_assets');
+		ui_tex = Paths.getSparrowAtlas('campaign_menu_UI_assets');
 		var bgYellow:FlxSprite = new FlxSprite(0, 56).makeGraphic(FlxG.width, 386, 0xFFF9CF51);
 		bgSprite = new FlxSprite(0, 56);
 		bgSprite.antialiasing = ClientPrefs.globalAntialiasing;
@@ -165,6 +171,8 @@ class StoryMenuState extends MusicBeatState
 		{
 			var upP = controls.UI_UP_P;
 			var downP = controls.UI_DOWN_P;
+			var leftP = controls.UI_LEFT_P;
+			var rightP = controls.UI_RIGHT_P;
 			if (upP)
 			{
 				changeWeek(-1);
@@ -174,6 +182,18 @@ class StoryMenuState extends MusicBeatState
 			if (downP)
 			{
 				changeWeek(1);
+				FlxG.sound.play(Paths.sound('scrollMenu'));
+			}
+
+			if (leftP)
+			{
+				changePage(-1);
+				FlxG.sound.play(Paths.sound('scrollMenu'));
+			}
+
+			if (rightP)
+			{
+				changePage(1);
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 			}
 
@@ -295,6 +315,68 @@ class StoryMenuState extends MusicBeatState
 		PlayState.storyWeek = curWeek;
 
 		updateText();
+	}
+
+	function changePage(change:Int = 0):Void 
+	{
+		curPage += change;
+
+		if (curPage >= pages.length)
+			curPage = 0;
+		if (curPage < 0)
+			curPage = pages.length - 1;
+
+		
+		for (text in grpWeekText)
+			text.destroy();
+
+		for (lock in grpLocks)
+			lock.destroy();
+
+		grpLocks.clear();
+		grpWeekText.clear();
+
+		loadedWeeks = [];
+
+		WeekData.weeksList = [];
+		WeekData.reloadWeekFiles(true, pages[curPage]);
+		if(curWeek >= WeekData.weeksList.length) curWeek = 0;
+
+		var num:Int = 0;
+		for (i in 0...WeekData.weeksList.length)
+		{
+			var weekFile:WeekData = WeekData.weeksLoaded.get(WeekData.weeksList[i]);
+			var isLocked:Bool = weekIsLocked(WeekData.weeksList[i]);
+			if(!isLocked || !weekFile.hiddenUntilUnlocked)
+			{
+				loadedWeeks.push(weekFile);
+				WeekData.setDirectoryFromWeek(weekFile);
+				var weekThing:MenuItem = new MenuItem(0, bgSprite.y + 396, WeekData.weeksList[i]);
+				weekThing.y += ((weekThing.height + 20) * num);
+				weekThing.targetY = num;
+				grpWeekText.add(weekThing);
+
+				weekThing.screenCenter(X);
+				weekThing.antialiasing = ClientPrefs.globalAntialiasing;
+				// weekThing.updateHitbox();
+
+				// Needs an offset thingie
+				if (isLocked)
+				{
+					var lock:FlxSprite = new FlxSprite(weekThing.width + 10 + weekThing.x);
+					lock.frames = ui_tex;
+					lock.animation.addByPrefix('lock', 'lock');
+					lock.animation.play('lock');
+					lock.ID = i;
+					lock.antialiasing = ClientPrefs.globalAntialiasing;
+					grpLocks.add(lock);
+				}
+				num++;
+			}
+		}
+
+		WeekData.setDirectoryFromWeek(loadedWeeks[0]);
+		changeWeek();
 	}
 
 	function weekIsLocked(name:String):Bool {

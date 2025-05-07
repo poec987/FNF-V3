@@ -1,0 +1,16 @@
+{
+	"songs": [
+		["Gravy", "pico", [255, 120, 191]],
+		["Pumpkin Die", "monster", [255, 120, 191]]
+	],
+
+	"weekBackground": "halloween",
+
+	"storyName": "thanksgiving",
+	"weekBefore": "week5",
+	"weekName": "Leek 1",
+	"startUnlocked": true,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false
+}
