@@ -314,6 +314,8 @@ class PlayState extends MusicBeatState
 	public var defaultHudZoom:Float = 1;
 	public var beatsPerZoom:Int = 4;
 
+	public var stageZoom:Float = 1.05;
+
 	var totalBeat:Int = 0;
 	var totalShake:Int = 0;
 	var timeBeat:Float = 1;
@@ -421,6 +423,7 @@ class PlayState extends MusicBeatState
 
 	function setStageData(stageData:StageFile){
 		defaultCamZoom = stageData.defaultZoom;
+		stageZoom = stageData.defaultZoom;
 		FlxG.camera.zoom = defaultCamZoom;
 		isPixelStage = stageData.isPixelStage;
 		BF_X = stageData.boyfriend[0];
@@ -3976,6 +3979,43 @@ class PlayState extends MusicBeatState
 				if(Math.isNaN(val1)) val1 = 1;
 
 				var targetZoom = defaultCamZoom * val1;
+				if (value2 != '')
+				{
+					var split = value2.split(',');
+					var duration:Float = 0;
+					var leEase:String = 'linear';
+					if(split[0] != null) duration = Std.parseFloat(split[0].trim());
+					if(split[1] != null) leEase = split[1].trim();
+					if(Math.isNaN(duration)) duration = 0;
+
+					if (duration > 0)
+					{
+						camTween = FlxTween.tween(FlxG.camera, {zoom: targetZoom}, duration, {ease: FlxEase.circOut, onComplete:
+							function (twn:FlxTween)
+							{
+								camTween = null;
+							}
+						});
+					}
+					else
+					{
+						FlxG.camera.zoom = targetZoom;
+					}
+				}
+				defaultCamZoom = targetZoom;
+				setOnHScripts('defaultCamZoom', defaultCamZoom);
+
+
+			case 'Camera Zoom (Unused Mix)':
+				if (camTween != null)
+				{
+					camTween.cancel();
+					camTween = null;
+				}
+				var val1:Float = Std.parseFloat(value1);
+				if(Math.isNaN(val1)) val1 = 1;
+
+				var targetZoom = stageZoom * val1; // I am cinema -PoeDev
 				if (value2 != '')
 				{
 					var split = value2.split(',');
