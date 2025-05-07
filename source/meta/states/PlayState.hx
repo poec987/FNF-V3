@@ -229,6 +229,7 @@ class PlayState extends MusicBeatState
 
 	public var grpNoteSplashes:FlxTypedGroup<NoteSplash>;
 
+	public var allowCamZooming:Bool = true;
 	public var camZooming:Bool = false;
 	public var camZoomingMult:Float = 1;
 	public var camZoomingDecay:Float = 1;
@@ -3311,7 +3312,7 @@ class PlayState extends MusicBeatState
 			// Conductor.lastSongPos = FlxG.sound.music.time;
 		}
 
-		if (camZooming)
+		if (camZooming && allowCamZooming)
 		{
 			FlxG.camera.zoom = FlxMath.lerp(defaultCamZoom + defaultCamZoomAdd, FlxG.camera.zoom, Math.exp(-elapsed * 3.125 * camZoomingDecay));
 			camHUD.zoom = FlxMath.lerp(defaultHudZoom, camHUD.zoom, Math.exp(-elapsed * 3.125 * camZoomingDecay));
@@ -5508,7 +5509,7 @@ class PlayState extends MusicBeatState
 		}
 
 		if (beatsPerZoom == 0) beatsPerZoom = 4;
-		if (camZooming && ClientPrefs.camZooms && curBeat % beatsPerZoom == 0)
+		if (camZooming && ClientPrefs.camZooms && allowCamZooming && curBeat % beatsPerZoom == 0)
 		{
 			FlxG.camera.zoom += 0.015 * camZoomingMult;
 			camHUD.zoom += 0.03 * camZoomingMult;
