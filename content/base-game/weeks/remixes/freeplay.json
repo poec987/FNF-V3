@@ -5,7 +5,7 @@
 		["Tutorial-BSide-Erect", "gf", [255, 120, 191]],
 		["Spookeez-Erect", "spooky", [255, 120, 191]],
 		["Blammed-alt", "pico", [255, 120, 191]],
-		["Senpai-Impossible-Ver", "senpai", [255, 120, 191]]
+		["Senpai-Impossible-Ver", "senpai-pixel", [255, 120, 191]]
 	],
 
 	"weekBackground": "school",

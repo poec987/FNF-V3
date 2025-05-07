@@ -97,7 +97,7 @@
 		0,
 		0
 	],
-	"healthicon": "spirit-pixel",
+	"healthicon": "spirit-bad-pixel",
 	"flip_x": false,
 	"healthbar_colors": [
 		255,
