@@ -23,9 +23,24 @@ function onLoad(){
     }
 }
 
+function onCreate() {
+    addCharacterToList("bf-pixel-real", "bf");
+}
+
 function onUpdate(elapsed){
     if(!ClientPrefs.lowQuality && bgGhouls.animation.curAnim.finished) {
         bgGhouls.visible = false;
+    }
+}
+
+var isBF:Bool = false;
+
+function onBeatHit() {
+
+    if (FlxG.random.bool(25)) {
+        if (isBF) PlayState.instance.triggerEventNote('Change Character', 'bf', 'bf-pixel-good');
+        else PlayState.instance.triggerEventNote('Change Character', 'bf', 'bf-pixel-real');
+        isBF = !isBF;
     }
 }
 
