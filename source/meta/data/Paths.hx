@@ -173,6 +173,11 @@ class Paths
 		return getPath('data/$key.txt', TEXT, library);
 	}
 
+	inline static public function txtImages(key:String, ?library:String)
+	{
+		return getPath('images/$key.txt', TEXT, library);
+	}
+
 	inline static public function xml(key:String, ?library:String)
 	{
 		return getPath('data/$key.xml', TEXT, library);
@@ -530,6 +535,10 @@ class Paths
 
 	inline static public function modsTxt(key:String) {
 		return modFolders('images/' + key + '.txt');
+	}
+
+	inline static public function modsTxtData(key:String) {
+		return modFolders('data/' + key + '.txt');
 	}
 
 	/* Goes unused for now

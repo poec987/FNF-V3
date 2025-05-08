@@ -293,6 +293,8 @@ class PlayState extends MusicBeatState
 	var dialogue:Array<String> = ['blah blah blah', 'coolswag'];
 	var dialogueJson:DialogueFile = null;
 
+	public static var hasDialogue:Bool = false;
+
 	public var songScore:Int = 0;
 	public var songHits:Int = 0;
 	public var songMisses:Int = 0;
@@ -1156,8 +1158,16 @@ class PlayState extends MusicBeatState
 		}
 
 		var file:String = Paths.txt(songName + '/' + songName + 'Dialogue'); //Checks for vanilla/Senpai dialogue
+
+		if (!OpenFlAssets.exists(file)) { // You have ONE MORE CHANCE
+			file = Paths.modsTxtData(songName + '/' + songName + 'Dialogue');
+		}
+
 		if (OpenFlAssets.exists(file)) {
+			hasDialogue = true;
 			dialogue = CoolUtil.coolTextFile(file);
+		} else {
+			hasDialogue = false;
 		}
 		var doof:DialogueBox = new DialogueBox(false, dialogue);
 		// doof.x += 70;
@@ -1494,37 +1504,24 @@ class PlayState extends MusicBeatState
 					if (gf != null)
 						gf.playAnim('scared', true);
 					boyfriend.playAnim('scared', true);
-
-				case "winter-horrorland":
-					var blackScreen:FlxSprite = new FlxSprite().makeGraphic(Std.int(FlxG.width * 2), Std.int(FlxG.height * 2), FlxColor.BLACK);
-					add(blackScreen);
-					blackScreen.scrollFactor.set();
-					camHUD.visible = false;
-					inCutscene = true;
-
-					FlxTween.tween(blackScreen, {alpha: 0}, 0.7, {
-						ease: FlxEase.linear,
-						onComplete: function(twn:FlxTween)
-						{
-							remove(blackScreen);
-						}
-					});
-					FlxG.sound.play(Paths.sound('Lights_Turn_On'));
-					snapCamFollowToPos(400, -2050);
-					FlxG.camera.focusOn(camFollow);
-					FlxG.camera.zoom = 1.5;
-
-					new FlxTimer().start(0.8, function(tmr:FlxTimer)
+				case 'high':
+					new FlxTimer().start(2, function(tmr:FlxTimer)
 					{
+						startPixelDialogue(doof);
+					});
+				case "winter-horrorland":
+					Flags.setFlag("frosted_one_encountered", true);
+					var frosted:FlxSprite = new FlxSprite().loadGraphic(Paths.image('thefrostedoneishere'));
+					add(frosted);
+					frosted.scrollFactor.set();
+					frosted.cameras = [camOther];
+					camHUD.visible = false;
+
+					new FlxTimer().start(4, function(tmr:FlxTimer)
+					{
+						remove(frosted);
 						camHUD.visible = true;
-						remove(blackScreen);
-						FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, 2.5, {
-							ease: FlxEase.quadInOut,
-							onComplete: function(twn:FlxTween)
-							{
-								startCountdown();
-							}
-						});
+						startPixelDialogue(doof);
 					});
 				case 'senpai' | 'roses' | 'thorns':
 					if (daSong == 'roses')
@@ -1534,10 +1531,15 @@ class PlayState extends MusicBeatState
 				default:
 					var ret:Dynamic = callOnHScripts("doStartCountdown", []);
 					trace(ret);
-					if(ret != null && ret == Globals.Function_Continue)
-						startCountdown();
-					else
-						callOnHScripts("presongCutscene", []);
+
+					if (!hasDialogue) {
+						if(ret != null && ret == Globals.Function_Continue)
+							startCountdown();
+						else
+							callOnHScripts("presongCutscene", []);
+					} else {
+						startPixelDialogue(doof);
+					}
 			}
 			seenCutscene = true;
 		}
@@ -1939,6 +1941,16 @@ class PlayState extends MusicBeatState
 		}
 	}
 
+	function startPixelDialogue(?dialogueBox:DialogueBox):Void {
+		inCutscene = true;
+		new FlxTimer().start(0.3, function(tmr:FlxTimer)
+		{
+			if (dialogueBox != null) {
+				add(dialogueBox);
+			} else startCountdown();
+		});
+	}
+
 	function schoolIntro(?dialogueBox:DialogueBox):Void
 	{
 		inCutscene = true;
@@ -1950,7 +1962,7 @@ class PlayState extends MusicBeatState
 		red.scrollFactor.set();
 
 		var senpaiEvil:FlxSprite = new FlxSprite();
-		senpaiEvil.frames = Paths.getSparrowAtlas('weeb/senpaiCrazy');
+		senpaiEvil.frames = Paths.getSparrowAtlas('senpaiCrazy');
 		senpaiEvil.animation.addByPrefix('idle', 'Senpai Pre Explosion', 24, false);
 		senpaiEvil.setGraphicSize(Std.int(senpaiEvil.width * 6));
 		senpaiEvil.scrollFactor.set();
