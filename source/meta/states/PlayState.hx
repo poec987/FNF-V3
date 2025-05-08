@@ -1497,7 +1497,7 @@ class PlayState extends MusicBeatState
 						{
 							camHUD.visible = true;
 							remove(whiteScreen);
-							startCountdown();
+							startPixelDialogue(doof);
 						}
 					});
 					FlxG.sound.play(Paths.soundRandom('thunder_', 1, 2));
