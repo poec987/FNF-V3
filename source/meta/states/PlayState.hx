@@ -1557,15 +1557,13 @@ class PlayState extends MusicBeatState
 
 					trace(hasDialogue);
 
-					if (!hasDialogue) {
-						if(ret != null && ret == Globals.Function_Continue)
-							startCountdown();
-						else
-							callOnHScripts("presongCutscene", []);
-					} else {
-						trace('has dialogue!!!!');
-						startPixelDialogue(doof);
+					
+					if(ret != null && ret == Globals.Function_Continue) {
+						if (!hasDialogue) startCountdown();
+						else startPixelDialogue(doof);
 					}
+					else
+						callOnHScripts("presongCutscene", []);
 			}
 			seenCutscene = true;
 		}
