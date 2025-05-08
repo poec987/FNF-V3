@@ -42,6 +42,7 @@ class StoryMenuState extends MusicBeatState
 	private static var curPage:Int = 0;
 
 	private var pages:Array<String> = ["base", "leeks"]; // TODO: Maybe also softcode this
+	var pageTxt:FlxText;
 
 	var txtTracklist:FlxText;
 
@@ -75,6 +76,11 @@ class StoryMenuState extends MusicBeatState
 		rankText.setFormat(Paths.font("vcr.ttf"), 32);
 		rankText.size = scoreText.size;
 		rankText.screenCenter(X);
+
+		pageTxt = new FlxText(0, 10);
+		pageTxt.text = "< WEEKS >";
+		pageTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER);
+		pageTxt.screenCenter(X);
 
 		ui_tex = Paths.getSparrowAtlas('campaign_menu_UI_assets');
 		var bgYellow:FlxSprite = new FlxSprite(0, 56).makeGraphic(FlxG.width, 386, 0xFFF9CF51);
@@ -145,6 +151,7 @@ class StoryMenuState extends MusicBeatState
 		// add(rankText);
 		add(scoreText);
 		add(txtWeekTitle);
+		add(pageTxt);
 
 		changeWeek();
 
@@ -341,6 +348,13 @@ class StoryMenuState extends MusicBeatState
 		WeekData.weeksList = [];
 		WeekData.reloadWeekFiles(true, pages[curPage]);
 		if(curWeek >= WeekData.weeksList.length) curWeek = 0;
+		
+		switch(pages[curPage]) {
+			case "base":
+				pageTxt.text = "< WEEKS >";
+			case "leeks":
+				pageTxt.text = "< LEEKS >";
+		}
 
 		var num:Int = 0;
 		for (i in 0...WeekData.weeksList.length)
