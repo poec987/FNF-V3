@@ -77,6 +77,13 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			false);
 		addOption(option);
 
+		var option:Option = new Option('Always Show Cutscenes',
+			'Always show cutscenes and dialogue even when playing songs through Freeplay."',
+			'alwaysShowCutscenes',
+			'bool',
+			false);
+		addOption(option);
+
 		var option:Option = new Option('Hitsound Volume',
 			'Funny notes does \"Tick!\" when you hit them."',
 			'hitsoundVolume',

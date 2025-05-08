@@ -1,5 +1,6 @@
 package meta.states;
 
+import meta.data.Metadata.SongMetadata;
 import gameObjects.PsychVideoSprite.VidCallbacks;
 import flixel.graphics.FlxGraphic;
 import meta.data.scripts.*;
@@ -115,6 +116,9 @@ typedef SpeedEvent =
 
 class PlayState extends MusicBeatState
 {
+	public static var metadata:SongMetadata = null;
+	public static var hasMetadata:Bool = false;
+
 	public var modManager:ModManager;
 
 	// i accidentally left this off OOPSSSS
@@ -598,6 +602,9 @@ class PlayState extends MusicBeatState
 
 		if (SONG == null)
 			SONG = Song.loadFromJson('tutorial');
+
+		metadata = Metadata.load(SONG.song);
+		hasMetadata = (metadata != null);
 
 		Conductor.mapBPMChanges(SONG);
 		Conductor.changeBPM(SONG.bpm);
@@ -1152,23 +1159,39 @@ class PlayState extends MusicBeatState
 				gf.visible = false;
 		}
 
-		var file:String = Paths.json(songName + '/dialogue'); //Checks for json/Psych Engine dialogue
-		if (OpenFlAssets.exists(file)) {
-			dialogueJson = DialogueBoxPsych.parseDialogue(file);
+		var file:String = "";
+		if (hasMetadata) { // V3 Dialogue
+			if (metadata.dialogues != null) {
+
+			var pick = metadata.dialogues[FlxG.random.int(0, metadata.dialogues.length-1)];
+			file = Paths.modsTxtData(songName + '/' + pick);
+
+			if (OpenFlAssets.exists(file) || FileSystem.exists(file)) {
+				hasDialogue = true;
+				dialogue = CoolUtil.coolTextFile(file);
+			}
+
+			}
 		}
 
-		var file:String = Paths.txt(songName + '/' + songName + 'Dialogue'); //Checks for vanilla/Senpai dialogue
+		// file = Paths.json(songName + '/dialogue'); //Checks for json/Psych Engine dialogue
+		// trace(file);
+		// if (OpenFlAssets.exists(file)) {
+		// 	dialogueJson = DialogueBoxPsych.parseDialogue(file);
+		// }
 
-		if (!OpenFlAssets.exists(file)) { // You have ONE MORE CHANCE
-			file = Paths.modsTxtData(songName + '/' + songName + 'Dialogue');
-		}
+		// file = Paths.txt(songName + '/' + songName + 'Dialogue'); //Checks for vanilla/Senpai dialogue
 
-		if (OpenFlAssets.exists(file)) {
-			hasDialogue = true;
-			dialogue = CoolUtil.coolTextFile(file);
-		} else {
-			hasDialogue = false;
-		}
+		// if (!OpenFlAssets.exists(file)) { // You have ONE MORE CHANCE
+		// 	file = Paths.modsTxtData(songName + '/' + songName + 'Dialogue');
+		// }
+
+		// if (OpenFlAssets.exists(file)) {
+		// 	hasDialogue = true;
+		// 	dialogue = CoolUtil.coolTextFile(file);
+		// } else {
+		// 	hasDialogue = false;
+		// }
 		var doof:DialogueBox = new DialogueBox(false, dialogue);
 		// doof.x += 70;
 		// doof.y = FlxG.height * 0.5;
@@ -1477,7 +1500,7 @@ class PlayState extends MusicBeatState
 
 		var daSong:String = Paths.formatToSongPath(curSong);
 
-		if (isStoryMode && !seenCutscene)
+		if ((ClientPrefs.alwaysShowCutscenes || isStoryMode) && !seenCutscene)
 		{
 			switch (daSong)
 			{
@@ -1532,12 +1555,15 @@ class PlayState extends MusicBeatState
 					var ret:Dynamic = callOnHScripts("doStartCountdown", []);
 					trace(ret);
 
+					trace(hasDialogue);
+
 					if (!hasDialogue) {
 						if(ret != null && ret == Globals.Function_Continue)
 							startCountdown();
 						else
 							callOnHScripts("presongCutscene", []);
 					} else {
+						trace('has dialogue!!!!');
 						startPixelDialogue(doof);
 					}
 			}

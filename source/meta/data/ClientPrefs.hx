@@ -15,9 +15,11 @@ import meta.data.Controls.KeyboardScheme;
 	public var kutRerollCount = 0;
 }
 class ClientPrefs {
-
+	// Legacy V3 savedata
 	public static var frostedOneSpotted:Bool = false;
 	public static var freeplayUnlocked:Bool = false;
+
+	public static var alwaysShowCutscenes:Bool = false;
 
 	public static var kutData:KutData={};
 
@@ -158,6 +160,8 @@ class ClientPrefs {
 	public static function saveSettings() {
 		for (i in Reflect.fields(kutData)) Reflect.setField(FlxG.save.data, i, Reflect.field(kutData, i));
 
+		FlxG.save.data.alwaysShowCutscenes = alwaysShowCutscenes;
+
 		FlxG.save.data.frostedOneSpotted = frostedOneSpotted;
 		FlxG.save.data.freeplayUnlocked = freeplayUnlocked;
 
@@ -227,6 +231,9 @@ class ClientPrefs {
 	public static function loadPrefs() {
 		for (i in Reflect.fields(kutData)) if (Reflect.hasField(FlxG.save.data, i))
 			Reflect.setField(kutData, i, Reflect.field(FlxG.save.data, i));
+
+		if (FlxG.save.data.alwaysShowCutscenes != null)
+			alwaysShowCutscenes = FlxG.save.data.alwaysShowCutscenes;
 
 		if (FlxG.save.data.frostedOneSpotted != null)
 			frostedOneSpotted = FlxG.save.data.frostedOneSpotted;
