@@ -1,0 +1,71 @@
+{
+  "dependencies": [
+    {
+      "name": "flixel-addons",
+      "type": "haxelib",
+      "version": "2.10.0"
+    },
+    {
+      "name": "flixel-tools",
+      "type": "haxelib",
+      "version": "1.5.1"
+    },
+    {
+      "name": "flixel-ui",
+      "type": "haxelib",
+      "version": "2.6.0"
+    },
+    {
+      "name": "flixel",
+      "type": "haxelib",
+      "version": "5.2.2"
+    },
+    {
+      "name": "lime",
+      "type": "haxelib",
+      "version": "8.1.1"
+    },
+    {
+      "name": "openfl",
+      "type": "haxelib",
+      "version": "9.3.0"
+    },
+    {
+      "name": "hscript",
+      "type": "haxelib",
+      "version": "2.5.0"
+    },
+    {
+      "name": "hxvlc",
+      "type": "haxelib",
+      "version": "1.2.0"
+    },
+    {
+      "name": "hxcpp",
+      "type": "haxelib",
+      "version": "4.3.2"
+    },
+    {
+      "name": "flxanimate",
+      "type": "haxelib",
+      "version": "3.0.4"
+    },
+    {
+      "name": "away3d",
+      "type": "haxelib",
+      "version": ""
+    },
+    {
+      "name": "linc_luajit",
+      "type": "git",
+      "dir": "",
+      "url": "https://github.com/superpowers04/linc_luajit"
+    },
+    {
+      "name": "discord_rpc",
+      "type": "git",
+      "dir": "src",
+      "url": "https://github.com/Aidan63/linc_discord-rpc.git"
+    }
+  ]
+}

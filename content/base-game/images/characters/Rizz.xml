@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Rizz.png">
+	<!-- Created using the Spritesheet and XML generator -->
+	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
+	<SubTexture name="Down010000" x="876" y="1075" width="419" height="369" frameX="-51" frameY="-567" frameWidth="558" frameHeight="934"/>
+	<SubTexture name="Down020000" x="0" y="1613" width="417" height="370" frameX="-54" frameY="-566" frameWidth="558" frameHeight="934"/>
+	<SubTexture name="idle010000" x="1647" y="502" width="325" height="367" frameX="-97" frameY="-553" frameWidth="558" frameHeight="934"/>
+	<SubTexture name="idle020000" x="883" y="538" width="295" height="381" frameX="-115" frameY="-536" frameWidth="558" frameHeight="934"/>
+	<SubTexture name="Idle030000" x="1984" y="418" width="361" height="447" frameX="-62" frameY="-465" frameWidth="558" frameHeight="934"/>
+	<SubTexture name="Idle040000" x="1984" y="418" width="361" height="447" frameX="-62" frameY="-465" frameWidth="558" frameHeight="934"/>
+	<SubTexture name="Idle050000" x="1984" y="418" width="361" height="447" frameX="-62" frameY="-465" frameWidth="558" frameHeight="934"/>
+	<SubTexture name="jump0010000" x="1647" y="869" width="323" height="361" frameX="-109" frameY="-554" frameWidth="558" frameHeight="934"/>
+	<SubTexture name="jump0020000" x="1647" y="1230" width="328" height="343" frameX="-107" frameY="-572" frameWidth="558" frameHeight="934"/>
+	<SubTexture name="jump0030000" x="0" y="1075" width="411" height="538" frameX="-79" frameY="-156" frameWidth="558" frameHeight="934"/>
+	<SubTexture name="jump0040000" x="1236" y="0" width="411" height="538" frameX="-75" frameY="2" frameWidth="558" frameHeight="934"/>
+	<SubTexture name="jump0050000" x="412" y="0" width="412" height="538" frameX="-66" frameY="-96" frameWidth="558" frameHeight="934"/>
+	<SubTexture name="jump0060000" x="824" y="0" width="412" height="538" frameX="-66" frameY="-132" frameWidth="558" frameHeight="934"/>
+	<SubTexture name="jump0070000" x="0" y="0" width="412" height="538" frameX="-66" frameY="-196" frameWidth="558" frameHeight="934"/>
+	<SubTexture name="jump0080000" x="0" y="538" width="412" height="537" frameX="-66" frameY="-254" frameWidth="558" frameHeight="934"/>
+	<SubTexture name="jump0090000" x="1647" y="1230" width="328" height="343" frameX="-107" frameY="-572" frameWidth="558" frameHeight="934"/>
+	<SubTexture name="jump0100000" x="1647" y="869" width="323" height="361" frameX="-109" frameY="-554" frameWidth="558" frameHeight="934"/>
+	<SubTexture name="jump0110000" x="1984" y="418" width="361" height="447" frameX="-62" frameY="-465" frameWidth="558" frameHeight="934"/>
+	<SubTexture name="jump0120000" x="1984" y="418" width="361" height="447" frameX="-62" frameY="-465" frameWidth="558" frameHeight="934"/>
+	<SubTexture name="Left010000" x="1984" y="0" width="401" height="418" frameX="2" frameY="-490" frameWidth="558" frameHeight="934"/>
+	<SubTexture name="Left020000" x="1984" y="865" width="390" height="406" frameX="2" frameY="-495" frameWidth="558" frameHeight="934"/>
+	<SubTexture name="Right010000" x="412" y="538" width="471" height="395" frameX="-89" frameY="-497" frameWidth="558" frameHeight="934"/>
+	<SubTexture name="Right020000" x="411" y="1075" width="465" height="395" frameX="-74" frameY="-503" frameWidth="558" frameHeight="934"/>
+	<SubTexture name="Up010000" x="1236" y="538" width="343" height="525" frameX="-66" frameY="-392" frameWidth="558" frameHeight="934"/>
+	<SubTexture name="Up020000" x="1647" y="0" width="337" height="502" frameX="-75" frameY="-413" frameWidth="558" frameHeight="934"/>
+</TextureAtlas>

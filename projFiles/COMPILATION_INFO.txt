@@ -1,0 +1,5 @@
+INSTALL, SET UP AND INITIATE HMM OR THE COMPILE WILL NOT WORK
+
+haxelib --global install hmm
+haxelib --global run hmm setup
+hmm init
