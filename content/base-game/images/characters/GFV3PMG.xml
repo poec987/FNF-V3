@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="GFV3PMG.png">
+	<!-- Created with Adobe Animate version 22.0.0.93 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="idleloop0000" x="0" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0001" x="0" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0002" x="0" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0003" x="0" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0004" x="0" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0005" x="0" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0006" x="0" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0007" x="0" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0008" x="0" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0009" x="0" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0010" x="0" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0011" x="0" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0012" x="0" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0013" x="314" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0014" x="314" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0015" x="314" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0016" x="314" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0017" x="314" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0018" x="314" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0019" x="314" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0020" x="314" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0021" x="314" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0022" x="0" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0023" x="0" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0024" x="0" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0025" x="0" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0026" x="0" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0027" x="0" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0028" x="0" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0029" x="0" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0030" x="0" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0031" x="0" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0032" x="0" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0033" x="0" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0034" x="0" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0035" x="0" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0036" x="0" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0037" x="0" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0038" x="0" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0039" x="0" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0040" x="0" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0041" x="0" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0042" x="0" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0043" x="628" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0044" x="628" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0045" x="942" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0046" x="942" y="0" width="311" height="329"/>
+	<SubTexture name="idleloop0047" x="1256" y="0" width="308" height="328" frameX="-1" frameY="-1" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0048" x="1256" y="0" width="308" height="328" frameX="-1" frameY="-1" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0049" x="1567" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0050" x="1567" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0051" x="1567" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0052" x="1567" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0053" x="1567" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0054" x="1567" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0055" x="1567" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0056" x="1567" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0057" x="1567" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0058" x="1567" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0059" x="1567" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0060" x="1567" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0061" x="1567" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0062" x="1567" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0063" x="1567" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0064" x="1567" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0065" x="1567" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0066" x="1567" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0067" x="1567" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0068" x="1567" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0069" x="1567" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0070" x="1567" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0071" x="1567" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0072" x="1567" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0073" x="1567" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0074" x="1567" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0075" x="1567" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0076" x="1567" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0077" x="1567" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0078" x="1567" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0079" x="1567" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0080" x="1880" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0081" x="1880" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0082" x="1880" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0083" x="1880" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0084" x="1880" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0085" x="1880" y="0" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0086" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0087" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0088" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0089" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0090" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0091" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0092" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0093" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0094" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0095" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0096" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0097" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0098" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0099" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0100" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0101" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0102" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0103" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0104" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0105" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0106" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0107" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0108" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0109" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0110" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0111" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0112" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0113" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0114" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0115" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0116" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0117" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0118" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0119" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0120" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0121" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0122" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0123" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0124" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0125" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0126" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0127" x="0" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0128" x="313" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0129" x="313" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0130" x="626" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0131" x="626" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0132" x="939" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0133" x="939" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0134" x="1252" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0135" x="1252" y="332" width="310" height="329" frameX="-1" frameY="0" frameWidth="311" frameHeight="329"/>
+	<SubTexture name="idleloop0136" x="1565" y="332" width="311" height="329"/>
+	<SubTexture name="idleloop0137" x="1565" y="332" width="311" height="329"/>
+	<SubTexture name="idleloop0138" x="1879" y="332" width="311" height="329"/>
+	<SubTexture name="idleloop0139" x="1879" y="332" width="311" height="329"/>
+	<SubTexture name="idleloop0140" x="1879" y="332" width="311" height="329"/>
+	<SubTexture name="idleloop0141" x="1879" y="332" width="311" height="329"/>
+	<SubTexture name="idleloop0142" x="1879" y="332" width="311" height="329"/>
+	<SubTexture name="idleloop0143" x="1879" y="332" width="311" height="329"/>
+	<SubTexture name="idleloop0144" x="1879" y="332" width="311" height="329"/>
+	<SubTexture name="idleloop0145" x="1879" y="332" width="311" height="329"/>
+	<SubTexture name="idleloop0146" x="1879" y="332" width="311" height="329"/>
+	<SubTexture name="idleloop0147" x="1879" y="332" width="311" height="329"/>
+	<SubTexture name="idleloop0148" x="1879" y="332" width="311" height="329"/>
+	<SubTexture name="idleloop0149" x="1879" y="332" width="311" height="329"/>
+</TextureAtlas>
