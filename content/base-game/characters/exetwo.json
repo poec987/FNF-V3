@@ -2,87 +2,87 @@
 	"animations": [
 		{
 			"offsets": [
-				0,
-				0
+				89,
+				-14
 			],
-			"indices": [],
-			"fps": 24,
-			"cameraOffset": [
-				0,
-				0
-			],
-			"anim": "idle",
-			"loop": false,
-			"name": "Idle"
-		},
-		{
-			"offsets": [
-				60,
-				-2
-			],
-			"indices": [],
-			"fps": 24,
 			"cameraOffset": [
 				-30,
 				0
 			],
-			"anim": "singLEFT",
 			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
 			"name": "Left"
 		},
 		{
 			"offsets": [
-				0,
-				-30
+				144,
+				-181
 			],
-			"indices": [],
-			"fps": 24,
 			"cameraOffset": [
 				0,
 				30
 			],
-			"anim": "singDOWN",
 			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
 			"name": "Down"
 		},
 		{
 			"offsets": [
-				-6,
-				50
+				32,
+				118
 			],
-			"indices": [],
-			"fps": 24,
 			"cameraOffset": [
 				0,
 				-30
 			],
-			"anim": "singUP",
 			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
 			"name": "Up"
 		},
 		{
 			"offsets": [
-				0,
-				27
+				-41,
+				11
 			],
-			"indices": [],
-			"fps": 24,
 			"cameraOffset": [
 				30,
 				0
 			],
-			"anim": "singRIGHT",
 			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
 			"name": "Right"
+		},
+		{
+			"loop": true,
+			"cameraOffset": [
+				0,
+				0
+			],
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "Idle",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/DADDY_DEAREST",
+	"image": "characters/exetwo",
 	"position": [
-		0,
-		0
+		90,
+		330
 	],
-	"healthicon": "dad",
+	"healthicon": "exe",
 	"flip_x": false,
 	"healthbar_colors": [
 		175,
@@ -90,8 +90,8 @@
 		206
 	],
 	"camera_position": [
-		0,
-		0
+		-10,
+		70
 	],
 	"sing_duration": 6.1,
 	"scale": 1
