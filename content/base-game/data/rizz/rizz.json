@@ -1,7 +1,7 @@
 {
 	"song": {
 		"player1": "bf",
-		"player2": "dad",
+		"player2": "rizz",
 		"notes": [
 			{
 				"lengthInSteps": 16,
@@ -2734,7 +2734,7 @@
 		"keys": 4,
 		"song": "Rizz",
 		"needsVoices": true,
-		"stage": "stage",
+		"stage": "rizz",
 		"validScore": true,
 		"speed": 2.7,
 		"bpm": 100
