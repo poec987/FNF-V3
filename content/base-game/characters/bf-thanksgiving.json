@@ -1,154 +1,154 @@
 {
 	"animations": [
 		{
+			"loop": false,
+			"cameraOffset": [
+				0,
+				0
+			],
 			"offsets": [
 				-5,
 				0
 			],
-			"indices": [],
-			"fps": 24,
-			"cameraOffset": [
-				0,
-				0
-			],
 			"anim": "idle",
-			"loop": false,
-			"name": "Idle"
+			"fps": 24,
+			"name": "Idle",
+			"indices": []
 		},
 		{
-			"offsets": [
-				45,
-				-6
-			],
-			"indices": [],
-			"fps": 24,
+			"loop": false,
 			"cameraOffset": [
 				-30,
 				0
+			],
+			"offsets": [
+				11,
+				-16
 			],
 			"anim": "singLEFT",
-			"loop": false,
-			"name": "Left"
+			"fps": 24,
+			"name": "Left",
+			"indices": []
 		},
 		{
-			"offsets": [
-				-20,
-				-51
-			],
-			"indices": [],
-			"fps": 24,
+			"loop": false,
 			"cameraOffset": [
 				0,
 				30
 			],
+			"offsets": [
+				-6,
+				-12
+			],
 			"anim": "singDOWN",
-			"loop": false,
-			"name": "Down"
+			"fps": 24,
+			"name": "Down",
+			"indices": []
 		},
 		{
-			"offsets": [
-				-46,
-				47
-			],
-			"indices": [],
-			"fps": 24,
+			"loop": false,
 			"cameraOffset": [
 				0,
 				-30
 			],
+			"offsets": [
+				-8,
+				33
+			],
 			"anim": "singUP",
-			"loop": false,
-			"name": "Up"
+			"fps": 24,
+			"name": "Up",
+			"indices": []
 		},
 		{
-			"offsets": [
-				-68,
-				-7
-			],
-			"indices": [],
-			"fps": 24,
+			"loop": false,
 			"cameraOffset": [
 				30,
 				0
 			],
+			"offsets": [
+				-33,
+				5
+			],
 			"anim": "singRIGHT",
-			"loop": false,
-			"name": "Right"
+			"fps": 24,
+			"name": "Right",
+			"indices": []
 		},
 		{
-			"offsets": [
-				57,
-				-11
-			],
-			"indices": [],
-			"fps": 24,
+			"loop": false,
 			"cameraOffset": [
 				-30,
 				0
 			],
+			"offsets": [
+				15,
+				-15
+			],
 			"anim": "singLEFTmiss",
-			"loop": false,
-			"name": "MissLeft"
+			"fps": 24,
+			"name": "MissLeft",
+			"indices": []
 		},
 		{
-			"offsets": [
-				-15,
-				-39
-			],
-			"indices": [],
-			"fps": 24,
+			"loop": false,
 			"cameraOffset": [
 				0,
 				30
 			],
+			"offsets": [
+				-5,
+				-18
+			],
 			"anim": "singDOWNmiss",
-			"loop": false,
-			"name": "MissDown"
+			"fps": 24,
+			"name": "MissDown",
+			"indices": []
 		},
 		{
-			"offsets": [
-				-46,
-				67
-			],
-			"indices": [],
-			"fps": 24,
+			"loop": false,
 			"cameraOffset": [
 				0,
 				-30
 			],
+			"offsets": [
+				-14,
+				30
+			],
 			"anim": "singUPmiss",
-			"loop": false,
-			"name": "MissUp"
+			"fps": 24,
+			"name": "MissUp",
+			"indices": []
 		},
 		{
-			"offsets": [
-				-94,
-				22
-			],
-			"indices": [],
-			"fps": 24,
+			"loop": false,
 			"cameraOffset": [
 				30,
 				0
 			],
+			"offsets": [
+				-33,
+				5
+			],
 			"anim": "singRIGHTmiss",
-			"loop": false,
-			"name": "MissRight"
+			"fps": 24,
+			"name": "MissRight",
+			"indices": []
 		},
 		{
-			"offsets": [
-				-23,
-				-5
-			],
-			"indices": [],
-			"fps": 24,
+			"loop": false,
 			"cameraOffset": [
 				0,
 				0
 			],
+			"offsets": [
+				-24,
+				-13
+			],
 			"anim": "hey",
-			"loop": false,
-			"name": "Yeah"
+			"fps": 24,
+			"name": "Yeah",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,

@@ -7,6 +7,10 @@ function onLoad(){
     }
     halloweenBG.scrollFactor.set(1,1);
     add(halloweenBG);
+	
+	halloweenFG = new BGSprite('stages/spooky/halloween_fg', -200, -100);
+	halloweenFG.scrollFactor.set(0.7,0.7);
+	foreground.add(halloweenFG);
 
     halloweenWhite = new BGSprite(null, -800, -400, 0, 0);
     halloweenWhite.makeGraphic(Std.int(FlxG.width * 2), Std.int(FlxG.height * 2), FlxColor.WHITE);
@@ -18,10 +22,10 @@ function onLoad(){
 var lightningStrikeBeat:Int = 0;
 var lightningOffset:Int = 8;
 
-function onBeatHit(){
+/*function onBeatHit(){
     if(FlxG.random.bool(10) && game.curBeat > lightningStrikeBeat + lightningOffset)
          lightningStrikeShit();
-}
+}*/
 
 function lightningStrikeShit(){
     FlxG.sound.play(Paths.sound("stages/spooky/thunder_" + FlxG.random.int(1,2)));
@@ -43,3 +47,4 @@ function lightningStrikeShit(){
         FlxTween.tween(halloweenWhite, {alpha: 0}, 0.25, {startDelay: 0.15});
     }
 }
+

@@ -7,8 +7,8 @@
 				0
 			],
 			"offsets": [
-				-5,
-				0
+				0,
+				-467
 			],
 			"anim": "idle",
 			"fps": 24,
@@ -22,8 +22,8 @@
 				0
 			],
 			"offsets": [
-				11,
-				-16
+				61,
+				-497
 			],
 			"anim": "singLEFT",
 			"fps": 24,
@@ -37,8 +37,8 @@
 				30
 			],
 			"offsets": [
-				-6,
-				-12
+				21,
+				-549
 			],
 			"anim": "singDOWN",
 			"fps": 24,
@@ -52,8 +52,8 @@
 				-30
 			],
 			"offsets": [
-				-8,
-				33
+				0,
+				-391
 			],
 			"anim": "singUP",
 			"fps": 24,
@@ -67,8 +67,8 @@
 				0
 			],
 			"offsets": [
-				-33,
-				5
+				-1,
+				-523
 			],
 			"anim": "singRIGHT",
 			"fps": 24,
@@ -78,96 +78,36 @@
 		{
 			"loop": false,
 			"cameraOffset": [
-				-30,
-				0
-			],
-			"offsets": [
-				15,
-				-15
-			],
-			"anim": "singLEFTmiss",
-			"fps": 24,
-			"name": "MissLeft",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"cameraOffset": [
-				0,
-				30
-			],
-			"offsets": [
-				-5,
-				-18
-			],
-			"anim": "singDOWNmiss",
-			"fps": 24,
-			"name": "MissDown",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"cameraOffset": [
-				0,
-				-30
-			],
-			"offsets": [
-				-14,
-				30
-			],
-			"anim": "singUPmiss",
-			"fps": 24,
-			"name": "MissUp",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"cameraOffset": [
-				30,
-				0
-			],
-			"offsets": [
-				-33,
-				5
-			],
-			"anim": "singRIGHTmiss",
-			"fps": 24,
-			"name": "MissRight",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"cameraOffset": [
 				0,
 				0
 			],
 			"offsets": [
-				-24,
-				-13
+				0,
+				0
 			],
-			"anim": "hey",
+			"anim": "jump",
 			"fps": 24,
-			"name": "Yeah",
+			"name": "jump",
 			"indices": []
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/bfFoundation",
+	"image": "characters/Rizz",
 	"position": [
-		0,
-		350
+		-100,
+		-150
 	],
-	"healthicon": "bf",
-	"flip_x": true,
+	"healthicon": "dad",
+	"flip_x": false,
 	"healthbar_colors": [
-		49,
-		176,
-		209
+		175,
+		102,
+		206
 	],
 	"camera_position": [
-		0,
-		0
+		60,
+		490
 	],
-	"sing_duration": 4,
+	"sing_duration": 6.1,
 	"scale": 1
 }

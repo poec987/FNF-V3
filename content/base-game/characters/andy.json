@@ -3,42 +3,12 @@
 		{
 			"loop": false,
 			"cameraOffset": [
-				0,
-				0
-			],
-			"offsets": [
-				0,
-				0
-			],
-			"anim": "danceLeft",
-			"fps": 24,
-			"name": "danceLeft",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"cameraOffset": [
-				0,
-				0
-			],
-			"offsets": [
-				-25,
-				-9
-			],
-			"anim": "danceRight",
-			"fps": 24,
-			"name": "danceRight",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"cameraOffset": [
 				-30,
 				0
 			],
 			"offsets": [
-				133,
-				18
+				27,
+				0
 			],
 			"anim": "singLEFT",
 			"fps": 24,
@@ -49,11 +19,26 @@
 			"loop": false,
 			"cameraOffset": [
 				0,
+				30
+			],
+			"offsets": [
+				4,
+				-10
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "Down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"cameraOffset": [
+				0,
 				-30
 			],
 			"offsets": [
-				-15,
-				83
+				119,
+				44
 			],
 			"anim": "singUP",
 			"fps": 24,
@@ -67,8 +52,8 @@
 				0
 			],
 			"offsets": [
-				-105,
-				-47
+				32,
+				0
 			],
 			"anim": "singRIGHT",
 			"fps": 24,
@@ -76,38 +61,38 @@
 			"indices": []
 		},
 		{
-			"loop": false,
+			"loop": true,
 			"cameraOffset": [
 				0,
-				30
+				0
 			],
 			"offsets": [
-				28,
-				-33
+				0,
+				0
 			],
-			"anim": "singDOWN",
+			"anim": "idle",
 			"fps": 24,
-			"name": "Down",
+			"name": "Idle",
 			"indices": []
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/Monster_Assets",
+	"image": "characters/Andy",
 	"position": [
-		10,
-		50
+		70,
+		20
 	],
-	"healthicon": "monster",
+	"healthicon": "andy",
 	"flip_x": false,
 	"healthbar_colors": [
-		243,
 		255,
-		110
+		0,
+		255
 	],
 	"camera_position": [
-		10,
-		0
+		0,
+		20
 	],
-	"sing_duration": 4,
+	"sing_duration": 6.1,
 	"scale": 1
 }

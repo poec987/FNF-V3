@@ -188,10 +188,10 @@
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/gfThanksgiving",
+	"image": "characters/GFV3Monster",
 	"position": [
 		50,
-		100
+		-10
 	],
 	"healthicon": "gf",
 	"flip_x": false,

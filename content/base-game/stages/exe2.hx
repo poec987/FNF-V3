@@ -30,10 +30,6 @@ function onLoad() {
 	add(fg);
 }
 
-function onCreatePost() {
-    playerStrums.autoPlayed = true;
-	game.camHUD.visible = false;
-}
 
 function onBeatHit() {
 	if (curBeat >= 72)
