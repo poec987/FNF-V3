@@ -1,0 +1,18 @@
+{
+	"songs": [
+		["dotdotdot", "exe", [255, 120, 191]],
+		["Play My Games", "exe", [255, 120, 191]],
+		["Sextuple Showdown", "exe", [255, 120, 191]],
+		["Finale Run Time", "exe", [255, 120, 191]]
+	],
+
+	"weekBackground": "thanksgiving",
+
+	"storyName": "exe",
+	"weekBefore": "week5",
+	"weekName": "Leek 2",
+	"startUnlocked": true,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false
+}
