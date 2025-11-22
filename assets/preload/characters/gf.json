@@ -3,8 +3,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				6,
-				-91
+				3,
+				0
 			],
 			"fps": 24,
 			"anim": "cheer",
@@ -58,8 +58,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				-10,
-				-19
+				-2,
+				-21
 			],
 			"fps": 24,
 			"anim": "sad",
@@ -190,8 +190,8 @@
 	"no_antialiasing": false,
 	"image": "characters/GF_assets",
 	"position": [
-		50,
-		-10
+		0,
+		0
 	],
 	"healthicon": "gf",
 	"flip_x": false,
